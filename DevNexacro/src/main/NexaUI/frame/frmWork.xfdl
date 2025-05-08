@@ -26,10 +26,10 @@
     </Layouts>
     <Objects/>
     <Script type="xscript5.1"><![CDATA[/**
-* fraem work
+* frmWork
 *@FileName  frmWork
-*@Creator 	{J}
-*@CreateDate 2024/10/11
+*@Creator 	
+*@CreateDate 2025/05/09
 *@Desction    
 ************** 소스 수정 이력 ***********************************************
 *  date          		Modifier                Description
@@ -79,7 +79,6 @@ this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 //     this.divTitle.form.staTitle.text = this.menuNm + "(" + this.menuCd  +")";
  	this.fnSetFavor();  //즐겨찾기
  	this.fnSetUrl();
-		
 };
 
 //
