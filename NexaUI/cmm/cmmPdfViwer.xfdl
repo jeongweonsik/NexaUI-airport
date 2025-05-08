@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="cmmPdfViwer" width="1024" height="800" titletext="pdf viwer popup" onload="fomrOnload">
+    <Layouts>
+      <Layout height="800" mobileorientation="portrait" width="1024">
+        <WebBrowser id="webPdf" taborder="0" left="0" top="0" ureadonly="" right="0" bottom="0" visible="true"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+* pdf viwer 공통폼
+*@FileName  cmmPdfViwer
+*@Creator 	
+*@CreateDate 2025/04/18
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+/************************************************************************
+* variable
+************************************************************************/
+this.web = this.webPdf;   // set component
+this.sulr = "";
+
+this.fomrOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.surl = this.parentUrl;
+	this.setReport();
+};
+
+
+
+this.setReport = function ()
+{
+   this.webPdf.set_url(this.surl);
+};
+
+
+]]></Script>
+  </Form>
+</FDL>

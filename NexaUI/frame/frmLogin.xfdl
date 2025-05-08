@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frmLogin" width="1280" height="720" onsize="frmLogin_onsize" visible="false" onload="formOnload" titletext="로그인">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Div id="divLogin" taborder="0" text="" left="440" top="95" width="400" height="305" background="#fafafc" cssclass="div_LOGIN_Bg" formscrollbartype="none none" boxShadow="3px 3px 10px #cacbd9" borderRadius="3px">
+          <Layouts>
+            <Layout>
+              <Static id="staUserId" taborder="2" left="30" top="140" height="50" right="30" border="0px none, 0px none, 2px solid #e9ebf3, 0px none" background="URL(&quot;imagerc::frame/sta_LOGIN_Id.png&quot;) no-repeat left transparent"/>
+              <Button id="btnLogin" taborder="1" text="로그인" left="0" bottom="0" height="70" right="0" cssclass="btn_POP_Confirm" onclick="divLogin_btnLogin_onclick" font="bold 18px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;"/>
+              <Edit id="edtUserId" taborder="0" left="153" top="146" width="210" height="33" text="" cssclass="edt_LOGIN_Input" onkeyup="edt_keyup"/>
+              <Static id="Static00" taborder="3" left="30" top="45" width="297" height="70" text="&lt;b v='true'&gt;인천공항&lt;/b&gt;&#13;&#10;&lt;fs v='11'&gt;&lt;fc v='#5BAFF8'&gt;인사급여&lt;/fc&gt;&lt;/fs&gt;" cssclass="sta_WF_GTxt01" usedecorate="true"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  로그인
+*  @Creator 	
+*  @CreateDate 	2025/04/25
+*  @Desction   
+************** 소스 수정 이력 ***********************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 
+*******************************************************************************
+*/
+
+const reqUserId = nexacro.getEnvironmentVariable("evUserId"); // sso userId
+
+
+/*******************************************************************************************************************************
+* FORM 변수 선언 영역
+*******************************************************************************************************************************/
+
+/************************************************************************************
+*******************************************
+* FORM EVENT 영역(onload, onbeforeclose..)
+********************************************/
+
+/**
+* @description 화면 오픈
+*/
+this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+    this.fnDivLoginResize();
+    this.fnOnInit();
+	
+};
+
+this.fnOnInit = function ()
+{
+    //sso
+	if(this.isNull(reqUserId)){
+	  this.visible  = true;	
+	  this.divLogin.form.edtUserId.setFocus();
+	}else{  
+	  this.visible = false;
+	  this.fnLoginTran(reqUserId);   //transaction 
+	}
+};
+
+/**
+* @description 화면 리사이징
+*/
+this.frmLogin_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
+{
+	// form size 변경시 divLogin size 변경
+	this.fnDivLoginResize();
+};
+
+/*******************************************************************************************************************************
+* Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+/**
+*  transaction login
+* @return 
+* @example
+* @memberOf 
+*/
+this.fnLoginTran = function (id)
+{      
+	if(!this.isNull(reqUserId)) id = reqUserId; // sso id
+
+	//refresh sessin 체크
+      if(!!id) app.v.login = true;
+	  else app.v.login = false;  //refresh
+	  
+	  this.dsInUser.setColumn(0,'sysUserId',id);
+	 
+	   var id      = "svcSearch";
+	   var url     = "cmm/login.do";
+	   var inds    = "inSys1=dsInUser";        // input 사용자 id
+	   var outds   = "gdsUserInfo=outUser"         //  사용자
+	               + " gdsMenu=outMenu"       // 메뉴
+	               + " gdsMessage=outMessage"  // 메시지
+				   + " gdsComCode=outComCode" // 공통코드
+				   + " gdsFavor=outFavor";  // 즐겨찾기
+  
+// 	this.gfnSetFrame("mdi");  // mdi 활성화
+// 	return;
+	   this.gfnTran(id, url, inds,	outds, 
+					(code,msg)=>{   // callback
+			
+// 						if(code < 0 ){
+// 						 this.gfnAlert(msg,"","e"); // 로그인 에러 메시지
+// 						 return;
+// 						}
+				
+						// 테스트 용
+					//    app.gdsUserInfo.setColumn(app.gdsUserInfo.addRow(), this.colInfo.user.id, this.divLogin.form.edtUserId.value); // 임시
+						
+						nexacro.setEnvironmentVariable("evUserId",app.gdsUserInfo.getColumn(0,this.colInfo.user.id)); // sso userId
+						
+						if(app.gdsUserInfo.getRowCount() > 0){ 
+
+						         this.gfnSetFrame("mdi");
+						}else{
+						     this.gfnAlert("사용자 데이타가 존재하지 않습니다. 관리자에게 문의해 주세요.","","e"); // 로그인 에러 메시지
+						}
+	   });
+//    
+};
+
+/*******************************************************************************************************************************
+* 사용자 Function 영역
+*******************************************************************************************************************************/
+
+/**
+* @description form size 변경시 divLogin size 변경
+*/ 
+this.fnDivLoginResize = function()
+{
+  	var nLeft = (nexacro.getApplication().mainframe.width / 2) - Math.round((this.divLogin.getOffsetWidth()) / 2);
+  	var nTop = (nexacro.getApplication().mainframe.height / 2) - Math.round((this.divLogin.getOffsetHeight()) / 2);
+	
+	if(nLeft <= 0){
+		this.divLogin.setOffsetLeft(0);
+	}else{
+    	this.divLogin.setOffsetLeft(nLeft);
+		this.divLogin.setOffsetTop(nTop);
+	}
+}
+
+// login 정합성 체크
+this.setLogin = function (id)
+{
+	if(this.visible && !!!id){
+ 
+		 this.gfnAlert("아이디는 필수 입니다.",(yes)=>{
+		  if(!this.isNull(reqUserId))  this.divLogin.form.edtUserId.setFocus();
+		});	
+		return;
+	}	
+
+	this.fnLoginTran(id); // transaction	
+}
+
+/*******************************************************************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+
+/**
+* @description 로그인 버튼 클릭 이벤트
+*/ 
+this.divLogin_btnLogin_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    const id = this.divLogin.form.edtUserId.value;	
+	this.setLogin(id);
+};
+
+this.edt_keyup = function(obj:nexacro.Edit,e:nexacro.KeyEventInfo)
+{
+	if( e.keycode == 13){
+		const id = this.divLogin.form.edtUserId.value;
+		this.setLogin(id);
+	}
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsInUser" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="sysUserId" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="sysUserId"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="divLogin.form.edtUserId" propid="value" datasetid="dsInUser" columnid="sysUserId"/>
+      <BindItem id="item1" compid="divLogin.form.edtPassword" propid="value" datasetid="dsCond" columnid="USER_PASSWORD"/>
+      <BindItem id="item2" compid="divLogin.form.edtUserId" propid="accessibilityaction" datasetid="ds_cond" columnid="evUserId"/>
+    </Bind>
+  </Form>
+</FDL>

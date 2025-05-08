@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="cmmAlert" width="440" height="220" titletext="알림창" onload="formOnload" cssclass="frm_POP_Message">
+    <Layouts>
+      <Layout height="220" width="440">
+        <Static id="sta00" taborder="9" left="0" right="0" height="70" bottom="0" cssclass="sta_POP_BtnArea"/>
+        <Static id="staType" taborder="1" cssclass="sta_POP_TitleMsgInfo" left="24" top="24" height="28" text="Information" right="36" fittocontents="width"/>
+        <Static id="Static06_00" taborder="2" cssclass="sta_POP_TitleMsgInfo" left="480" top="30" width="320" height="28" visible="false" text="Information" fittocontents="width"/>
+        <Static id="Static06_01" taborder="3" cssclass="sta_POP_TitleMsgSuccess" left="480" top="70" width="320" height="28" visible="false" text="Success" fittocontents="width"/>
+        <Static id="Static06_02_00" taborder="4" cssclass="sta_POP_TitleMsgQuestion" left="480" top="190" width="320" height="28" visible="false" text="Question" fittocontents="width"/>
+        <Static id="Static06_02_00_00" taborder="5" left="480" top="110" width="320" height="28" visible="false" cssclass="sta_POP_TitleMsgWarning" text="Warning" fittocontents="width"/>
+        <Button id="btnOk" taborder="0" text="확인" width="60" height="30" defaultbutton="true" cssclass="btn_POP_PrimaryMd" right="20" bottom="20" fittocontents="none" visible="true" onclick="btnOk_onclick"/>
+        <Static id="Static06_02" taborder="6" cssclass="sta_POP_TitleMsgError" left="480" top="150" width="320" height="28" visible="false" text="Error" fittocontents="width"/>
+        <Static id="txtMsgContent" taborder="7" left="64" top="70" usedecorate="true" cssclass="sta_POP_Message" right="30" bottom="80" text="내용"/>
+        <Button id="btnCloeTItle" taborder="8" top="20" height="30" cssclass="btn_POP_Close2" right="20" tooltiptext="닫기" width="30" onclick="btnCloeTItle_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+* 메시지 창 공통(Alert)
+*@MenuPath  
+*@FileName  cmmAlert
+*@Creator 	 
+*@CreateDate 2023/07/12
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+* 
+*******************************************************************************
+*/
+
+/************************************************************************************************
+ * FORM 변수 선언 영역
+ ************************************************************************************************/
+
+/***********************************************************************************************
+* FORM EVENT 영역(onload)
+/***********************************************************************************************/
+this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	const sContents = this.getOwnerFrame().paramContents;
+	const sparamType = this.getOwnerFrame().paramType;
+		
+	this.fnMsgSetting(sContents);
+	this.fnMsgSetType(sparamType);
+	this.resetScroll();
+	
+};
+
+
+/************************************************************************************************
+* 사용자 FUNCTION 영역
+************************************************************************************************/
+
+ 
+/**
+* @description 메세지설정
+*/
+ this.fnMsgSetting = function (sMsgContent)
+ {
+	this.txtMsgContent.text = sMsgContent;
+	//this.txtMsgContent.set_value(sMsgContent); 
+ };
+ 
+ 
+ /**
+  * msg type 설정
+  */
+ this.fnMsgSetType = function (scode)
+ {
+  
+	if(this.gfnIsNull(scode)) scode = "";
+	let sCss = "";
+	
+	switch(scode) {
+	case "q": //question
+		sCss = "sta_POP_TitleMsgQuestion";
+		break;
+	case "e":  //error
+		sCss = "sta_POP_TitleMsgError";
+		break;
+	case "i" : //info
+		sCss = "sta_POP_TitleMsgInfo";
+		break;
+	case "w" : //waring
+		sCss = "sta_POP_TitleMsgWarning";
+		break;
+	default:
+		sCss = "sta_POP_TitleMsgSuccess";
+		break;
+	}
+	
+	this.staType.cssclass = sCss;
+ };
+ 
+ /************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+ ************************************************************************************************/
+
+
+this.btnClose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+
+this.btnCloeTItle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close("x");
+};
+
+this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close(true);  
+};
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frm" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Static id="sta03" taborder="0" text="" left="20" top="70" height="150" background="cornsilk" right="20" verticalAlign="top" onclick="sta03_onclick"/>
+        <Static id="sta00" taborder="1" text="H30" left="26" top="220" width="464" height="30" background="RGBA(36,19,214,0.33)" visible="false"/>
+        <Button id="btn00" taborder="2" left="704" top="450" width="59" height="42" onclick="btn00_onclick" cssclass="btn_WF_ShuttleL" text="&lt;="/>
+        <Button id="btn01" taborder="3" left="704" top="404" width="59" height="42" onclick="btn01_onclick" cssclass="btn_WF_ShuttleR" text="=&gt;"/>
+        <TextArea id="txt00" taborder="4" left="770" top="250" wordWrap="char" right="20" height="460"/>
+        <Div id="divWebEditor" taborder="5" text="cmmWebEditor" left="14" top="266" width="677" height="432" visible="true" url="cmm::cmmWebEditor.xfdl" ureadonly="false"/>
+        <Static id="sta_00" taborder="6" text="웹에디터(sample012)" left="0" top="0" height="40" cssclass="sta_GA_Header" right="260"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  웹에디터 샘플
+*@FileName  sample010WebEditor
+*@Creator 	
+*@CreateDate 2025/04/30
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+
+/************************************************************************************************
+ * includes
+ ************************************************************************************************/
+
+/************************************************************************************************
+ * FORM 변수 선언 영역
+ ************************************************************************************************/
+
+
+/************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose)
+ ************************************************************************************************/
+ 
+this.addEventHandler("onload",function(obj,e)
+{
+	/*  readonly여부  
+	*@param {boolean} false : 기본(생략가능) 
+					  true: : 툴바제거 읽기기능   
+	*/
+	 this.divWebEditor.init(false); 
+
+},this);
+ 
+
+//webEidtor onload  실행시 사용
+this.cfnEditor_onload = function (id,userData)
+{
+    if(id == "divWebEditor"){
+	  trace(" ## id : " +id + "<> userData : " +userData);
+	}
+};
+
+/*
+ *	editor get value
+ */ 
+this.btn00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sContents = this.txt00.value;	
+	this.divWebEditor.setValue(sContents);
+};
+
+/*
+ *	editor set value
+ */ 
+this.btn01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sEditorData = this.divWebEditor.getValue();
+	this.txt00.value = sEditorData;
+};
+]]></Script>
+  </Form>
+</FDL>

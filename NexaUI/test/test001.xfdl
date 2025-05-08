@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frm" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Button id="Button00" taborder="0" text="Button00" left="130" top="69" width="135" height="81" onclick="Button00_onclick"/>
+        <Button id="Button01" taborder="1" text="Button01" left="456" top="103" width="176" height="62" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="2" text="Button02" left="424" top="41" width="171" height="39" onclick="Button02_onclick"/>
+        <Button id="Button03" taborder="3" text="Button03" left="660" top="77" width="97" height="55" onclick="Button03_onclick"/>
+        <Div id="Div00" taborder="4" text="Div00" left="187" top="199" width="883" height="321" url="test::sample009CommonCode.xfdl"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+* 
+*@FileName test001
+*@Creator 	
+*@CreateDate 2025/04/28
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+
+/************************************************************************************************
+* include 영역
+************************************************************************************************/
+
+/************************************************************************************************
+* FORM 변수 선언 영역
+************************************************************************************************/
+
+/************************************************************************************************
+* FORM EVENT 영역(onload, onbeforeclose)
+************************************************************************************************/
+/**
+* @description 화면 onload시 처리내역(필수)
+*/
+this.addEventHandler("onload", function(obj,e)
+{
+
+},this);
+
+/*
+*@description 화면 이동 후 넘어온 값 처리	
+*@param {string}{object}{array} 넘어온 아규먼트 처리
+*/
+this.cfnMoveOnActie = function(param)
+{
+	//trace("fnMoveOnActie formName ===>" + this.name + "<> parg ====> " + param);
+};
+
+/**
+* @description 화면 닫힐때 변경사항 체크(입력 화면에서 변경되는 Dataset 체크 필요, 선택)
+* @return {boolean} true(화면 닫지 않음) / false(화면 닫음)
+*/
+this.cfnClose = function()
+{
+	return false;
+};
+
+/**
+ * //paging 버튼 // next prev 클릭 이벤트 후처리
+ * @param {number} 누른 페이지
+  * @param {number} 시작데이터rownum계산
+ * @return 
+ * @example
+ * @memberOf 
+ */
+this.cfnPaging_onclick = function(nPage,nRecordOffset)
+{
+	trace(" ## nPage : " +nPage + "<> nRecordOffset : " + nRecordOffset);
+
+}
+
+/************************************************************************************************
+* CALLBACK 콜백 처리부분(Transaction, Popup)
+************************************************************************************************/
+this.fnCallback = function(id,code,msg)
+{
+	// 에러 시 화면 처리 내역
+	if(code < 0) return;
+	
+	
+	switch(id) {
+	case "":
+		break;
+
+	default:
+	}
+
+};
+
+/************************************************************************************************
+* CRUD 및 TRANSACTION 서비스 호출 처리
+************************************************************************************************/
+
+/************************************************************************************************
+* 사용자 FUNCTION 영역
+************************************************************************************************/
+
+/************************************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+************************************************************************************************/
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("id : " + app.id);
+	
+};
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+ {
+// 	 let objDivPaging = new Div();
+// 	//objDivPaging.init("divPage", 0, 5, 800, 23, null, null);
+// 	//	objDivPaging.init("divPage", 0, 0, 800, 23, null, null);
+// 	//objDivPaging.init("divPage", 0, 0, null, null,0 , 0);
+// 	objDivPaging.init("Div", 30, 120, 196, 46, null, null);
+var objDivPaging = new Div("Div", 0, 5, 800, 23, null, null);
+objDivPaging.text = "divpaging";
+	objDivPaging.border = "1px solid red";
+	objDivPaging.background = "#ffffaa";
+
+alert(" objDivPaging : " + objDivPaging);
+    this.addChild(objDivPaging.name, objDivPaging);
+    objDivPaging.show();  
+	
+	
+	let objBtnFirst = new Button("btnFirst", 0, 0, 100,100, null, null);   
+	objBtnFirst.border = "1px solid red";
+	objBtnFirst.background = "#ffffaa";
+		objDivPaging.addChild(objBtnFirst.name, objBtnFirst);
+	objBtnFirst.show();
+	
+	
+};
+
+this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	// Create Object  
+// var objDiv = new Div();  
+// objDiv.init("Div", 30, 120, 196, 46, null, null);
+
+// objDiv.init("Div", null, null, 300, "400px", "80%", 300);
+// or
+let objDiv = new Div("Div", 30, 120, 196, 46, null, null);
+//var objDiv = new Div("Div", null, null, 300, "400px", "80%", 300);
+ 
+// Add Object to Parent Form  
+this.addChild("Div", objDiv); 
+ 
+// Insert Object to Parent Form  
+//this.insertChild(1, "Div", objDiv); 
+ 
+// Remove Object form Parent Form  
+//this.removeChild("Div"); 
+ 
+// Show Object  
+objDiv.show(); 
+objDiv.background = "#ffffaa";
+objDiv.text = "text";
+
+alert(" this.Div :  " + objDiv.name);
+
+
+};
+
+this.Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	trace(" max : " +this.Div00.form.vscrollbar.max);
+};
+]]></Script>
+    <Objects>
+      <Dataset id="Dataset00"/>
+    </Objects>
+  </Form>
+</FDL>

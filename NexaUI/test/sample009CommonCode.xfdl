@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frm" width="1020" height="600" titletext="공통코드 바인딩 샘플" onload="frm_onload">
+    <Layouts>
+      <Layout height="600" mobileorientation="landscape" width="1020">
+        <Div id="Div00_00" taborder="0" left="0" top="472" height="48" cssclass="div_WF_SearchBg" text="" right="0">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Static id="sta07" taborder="1" cssclass="sta_WF_Guide" text="h20" bottom="-30" visible="false" left="0" height="20" right="0"/>
+        <Button id="btnComCodeFilter" taborder="2" text="공통코드 filter" left="110" top="93" width="139" height="27" onclick="Div00_btnComCodeFilter_onclick"/>
+        <Combo id="cboComCode" taborder="3" left="266" top="93" width="174" height="28" codecolumn="CODE_CD" datacolumn="CODE_NM" innerdataset="dsOutComCode"/>
+        <Radio id="rdoComCode" taborder="4" left="280" top="142" width="390" height="35" codecolumn="CODE_CD" datacolumn="CODE_NM" innerdataset="dsOutComCode" direction="vertical" fittocontents="width"/>
+        <Static id="sta_00" taborder="5" text="공통코드바인딩 (sample011)" left="0" top="0" height="40" cssclass="sta_GA_Header" right="0"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsOutComCode"/>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+* 공통코드 샘플
+*@FileName  sample011CommonCode
+*@Creator 	
+*@CreateDate 2024/10/14
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+
+
+/************************************************************************************************
+* include 영역(업무화면에서 꼭 필요한 경우에만 사용하세요)
+************************************************************************************************/
+
+
+/************************************************************************************************
+* FORM 변수 선언 영역
+************************************************************************************************/
+
+
+/************************************************************************************************
+* FORM EVENT 영역(onload, onbeforeclose)
+************************************************************************************************/
+/**
+* @description 화면 onload시 처리내역(필수)
+*/
+this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{ 
+	
+	
+};
+
+
+
+//공통코드 필터
+this.Div00_btnComCodeFilter_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+  /*
+   *@param {object} 필터할 코드 값 : 명
+   *@param {component} 필터할 데이타셋
+   *@param {string}  선택 값 입력 옵션   (생락갸능) 값없음
+	       '': 공백    's' : =선택=  'a' : =전체=
+   */
+  this.gfnGetComCodeFilter({HIGH_CD : "00001"}, this.dsOutComCode,'a');  // 전체
+  this.cboComCode.set_index(0);  
+
+  // radio 설정
+  this.rdoComCode.set_index(0);  
+  this.resetScroll();   // radio fitcontents  사용시 처리
+   // radio end
+};
+]]></Script>
+  </Form>
+</FDL>

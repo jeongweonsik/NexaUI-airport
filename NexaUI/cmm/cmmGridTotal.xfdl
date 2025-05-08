@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="cmmGridTotal" width="100" height="44" titletext="데이터총건수" onload="formOnload">
+    <Layouts>
+      <Layout height="44" width="100">
+        <Static id="staTotal" taborder="1" top="0" text="&lt;b v='true'&gt;총건수 : &lt;/b&gt;&lt;fc v='#4D769A'&gt;&lt;b v='true'&gt;0&lt;/fc&gt;&lt;/b&gt;" cssclass="sta_WF_Total" usedecorate="true" fittocontents="width" textAlign="left" left="0" right="0" bottom="0" padding="0px 5px"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+* 그리드 총계 공통
+*@FileName  cmmGridTotal
+*@Creator 	
+*@CreateDate 2025/04/24
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+
+/************************************************************************************************
+* FORM 변수 선언 영역
+************************************************************************************************/
+
+this.bindds = "";
+this.oCodeCol = "";
+this.oNameCol = "";
+this.objTarget;
+/************************************************************************************************
+* FORM EVENT 영역(onload, onbeforeclose)
+************************************************************************************************/
+/**
+* @description 화면 onload시 처리내역(필수)
+*/
+this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+    const oForm = this.gfnGetTopLevelForm(this);
+	this.objTarget = this.parent;	 // div
+	this.bindds = this.objTarget.ubindds;  // dataset binding
+
+	if(!this.gfnIsNull(this.bindds ))   //초기 bindds 
+	{
+		const bindds = this.bindds.split(",");
+		const ds = oForm[bindds[0]];
+
+		if (!this.gfnIsNull(ds)){
+		
+			ds.addEventHandler("onrowsetchanged", this.bindds_onrowsetchanged, this);
+			ds.addEventHandler("onload", this.bindds_onload, this);
+		}
+	}
+};
+
+/************************************************************************************************
+* 사용자 FUNCTION 영역
+************************************************************************************************/
+/*
+ *	값 셋팅
+ *@param {dataset} 처리할 dataset
+ */
+ 
+this.setTotValue = function (dsObj)
+{
+    if(this.gfnIsNull(dsObj)) return;
+		
+	const stTotTxt = "<b v='true'>총건수 : </b><fc v='#4D769A'><b v='true'>"+this.gfnAppendComma(dsObj.getRowCount())+"</fc></b>";
+
+	this.staTotal.set_text(stTotTxt);
+	this.resetScroll();
+};
+
+this.getTotValue = function ()
+{
+	return 	this.staTotal.text;
+};
+
+/************************************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+************************************************************************************************/
+this.bindds_onrowsetchanged = function (obj:nexacro.NormalDataset,e:nexacro.DSRowsetChangeEventInfo)
+{	
+	this.setTotValue(obj);
+}
+
+this.bindds_onload = function (obj:nexacro.NormalDataset,e:nexacro.DSLoadEventInfo)
+{	
+	this.setTotValue(obj);
+}]]></Script>
+    <Objects/>
+  </Form>
+</FDL>

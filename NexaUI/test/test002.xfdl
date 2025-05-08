@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sample_datefield_01" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <DateField id="DateField00" taborder="0" left="50.00" top="50" width="210" height="50" inputtype="time" format="h:mm:ss aa" labelfloatingfixed="false" popuptype="default" usehelpertext="true" labelposition="inside"/>
+        <Calendar id="Calendar00" taborder="1" left="296" top="50" width="274" height="260" type="monthonly"/>
+        <DateRangePicker id="DateRangePicker00" taborder="2" left="700" top="50" width="340" height="330" direction="horizontal" headlineposition="top" displaytype="time" type="single" useheadline="false"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+* 샘플화면
+*@FileName  test002
+*@Creator 	
+*@CreateDate 2025/04/29
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+
+/**
+* @description 화면 onload시 처리내역(필수)
+*/
+this.addEventHandler("onload",  function(obj,e)
+{
+  //폼로드시 공통함수 
+	
+	/**
+	 * 부모 창에서 넘어온 아규먼트 받는 처리
+	 */
+	//var p_paramcode = this.paramCode;
+   //var p_paramNum = this.paramNum;
+	//var p_paramDataset = this.paramDataset;
+	
+},this);
+
+/**
+ * //paging 버튼 // next prev 클릭 이벤트 후처리
+ * @param {number} 누른 페이지
+  * @param {number} 시작데이터rownum계산
+ * @return 
+ * @example
+ * @memberOf 
+ */
+this.cfnPaging_onclick = function(nPage,nRecordOffset)
+{
+	trace(" ## nPage : " +nPage + "<> nRecordOffset : " + nRecordOffset);
+
+}
+
+/************************************************************************************************
+* CALLBACK 콜백 처리부분(Transaction, Popup)
+************************************************************************************************/
+
+this.fnCallback = function(id,code,msg)
+{
+	// 에러 시 화면 처리 내역
+	if(code < 0) return;
+	
+	switch(id) {
+	case "":
+		break;
+	
+	default:
+	}
+};
+
+/************************************************************************************************
+* CRUD 및 TRANSACTION 서비스 호출 처리
+************************************************************************************************/
+
+/************************************************************************************************
+* 사용자 FUNCTION 영역
+************************************************************************************************/
+
+/************************************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+************************************************************************************************/
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+     trace(" urlPath : " + urlPath + "<> webPath : " +webPath);
+	//alert(" ## getPrjUrl == > " + this.getPrjUrl() + "<> webPath : " +webPath);
+    // this.console.dev("ddddddddddd");
+//	this.console.warn(" getSvcUrl : " + this.getSvcUrl());
+};
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let oparam = {id:"svcSearch",callback :"fnCallback"};
+// 	oparam = oparam.map((key,value)=>{
+// 	   return 
+// 	
+// 	});
+
+
+// var res2 = Object.formEntries(Object.entries(oparam).map(([])=>[
+//   ])
+// );
+// 	
+//  var resObj = Object.fromEntries(
+//                 Object.entries(oparam).map(([key, value]) => [
+// 	    key.toUpperCase(),
+// 		value+ "aa"
+// //	trace(" key : " +key + "<> value : "+ value);
+//    //   key.toUpperCase(),
+//    //   this.gfnRecursiveKeyUpperCase(value)
+//     ])
+//   );
+  
+ //  trace(" resObj : " + JSON.stringify(resObj));
+// 	
+// 	 let oparam2 = Object.assign({TEST:"Test1"},this.gfnRecursiveKeyUpperCase(oparam));
+// 	delete oparam2.ID;
+	
+	//trace( "oparam2 : "+ JSON.stringify(oparam2));
+	
+};
+
+/**
+ * json key 대문자 변경 return
+ * @param {object}  json s
+ * @return 
+ * @example
+ * @memberOf 
+ */
+this.gfnRecursiveKeyUpperCase = function(obj) {
+  if (typeof obj !== 'object' || obj === null) return obj;
+  
+  if (Array.isArray(obj)) {
+    return obj.map(item => this.gfnRecursiveKeyUpperCase(item));
+  }
+
+  return Object.fromEntries(
+    Object.entries(obj).map(([key, value]) => [
+      key.toUpperCase(),
+      this.gfnRecursiveKeyUpperCase(value)
+    ])
+  );
+}
+
+this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var smsg = this.gfnGetMessage("5509",[""]);
+	trace(" smsmg : " + smsg);
+};
+
+
+this.Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var oparams = {
+		breadcrumb : "인사>인사정보>인사정보",
+		favPgmAt : "N",
+		menuId : "84",
+		menuTyCod : "aa",
+		pathname : "/emp/psmstinforeq/emppsmstinforeq100/view",
+		pgmId : "1346",
+		relBizCod :"PS",
+		uprMenuId : "50",
+	};
+
+   var res =  Object.entries(oparams).map(([key,value])=>`${key}=${value}`);
+   
+   trace(" res : " +res);
+
+};
+
+]]></Script>
+    <Objects/>
+  </Form>
+</FDL>

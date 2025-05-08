@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="cmmWebEditor" width="460" height="360" titletext="New Form" onload="cmmWebEditor_onload">
+    <Layouts>
+      <Layout height="360" mobileorientation="landscape" width="460">
+        <WebBrowser id="webEditor" taborder="0" left="0" top="0" onloadcompleted="webEditor_onloadcompleted" onusernotify="webEditor_onusernotify" onsize="webEditor_onsize" ureadonly="" right="0" bottom="0" visible="false"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+* webEidtor 공통 폼
+*@FileName  cmmWebEditor
+*@Creator 	
+*@CreateDate 2025/04/18
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+
+/************************************************************************
+* variable
+************************************************************************/
+this.fvDocWeb    = "";
+this.fvRtnHeight = 257; //버튼사이즈
+this.readonly    = false;
+this.surl        = '';
+const parentForm = this.parent;
+
+/**
+* form onload 
+* @param {string} 
+* @return 
+* @example
+* @memberOf 
+*/
+this.cmmWebEditor_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{   
+	
+	this.webEditor.visible = false;
+	if(!(parentForm instanceof nexacro.Div)){
+		this.console.dev("현재폼은 division 이어야만 합니다.");
+	}
+	
+};
+
+
+// webEditor 초기 설정
+this.init = function (param)
+{	
+	
+	this.setHeightSieze();
+	let bReadOnly = false;
+	
+	if(("ureadonly" in parentForm) && !!parentForm.ureadonly){
+	    bReadOnly = parentForm.ureadonly ;
+	}
+	
+	if(!!param) bReadOnly = param;
+	
+	
+	//  this.surl = this.gfnGetServerUrl() + "html/webEditor/index.html" + "?readonly="+this.readonly+"";	
+	this.surl = webPath  + "editor/index.html" + "?readonly="+bReadOnly+"";	
+	this.webEditor.url = "";
+	this.webEditor.url = this.surl;
+};
+
+this.setHeightSieze = function ()
+{
+	if(this.readonly) this.fvRtnHeight = 207;
+	// else this.fvRtnHeight = 255;
+};
+
+//true /false
+this.setReadOnly = function (vReadOnly)
+{   
+	// alert(" set ReadOnly " );
+	this.reload  = true;
+    parentForm.ureadonly  = vReadOnly || false;	    
+	// 	this.init();
+};
+
+
+this.fnEditorCallback = function(sType)
+{      
+	switch (sType)
+	{
+		
+	case "onload" :
+		var sContents = "";
+		this.fvDocWeb.getProperty("ir1").setProperty("value",sContents);
+		this.fvDocWeb.getProperty("editorSetBtn").callMethod("click");	
+		break;	
+	}
+};
+
+this.set_on_resize = function(nWidth, nHeight)
+{
+	var sValue = nWidth+","+nHeight;
+	
+	this.fvDocWeb.getProperty("resize").setProperty("value",sValue);
+	this.fvDocWeb.getProperty("btnResize").callMethod("click");
+	this.webEditor.set_visible(true);
+};
+
+
+this.webEditor_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
+{
+	this.fvDocWeb = this.webEditor.getProperty("document").getProperty("all");
+};
+
+
+this.webEditor_onusernotify = function(obj:nexacro.WebBrowser,e:nexacro.WebUserNotifyEventInfo)
+{
+	try
+	{
+		if (e.userdata == "onload"){	
+			
+			let initHeight = this.webEditor.getOffsetHeight();		
+			//initHeight-this.fvRtnHeight
+			this.set_on_resize(obj.getOffsetWidth(),initHeight-this.fvRtnHeight);	
+			this.webEditor.visible = true;
+			let topForm = this.gfnGetTopLevelForm(this.parent); 			
+			let id = parentForm.name;
+			
+			
+			//form editor onload call
+			if (nexacro._isFunction(topForm["cfnEditor_onload"])){	
+				topForm["cfnEditor_onload"](id,e.userdata);
+			}
+		}
+	}
+	catch(e){
+		trace("sampleNaverEditor.xfdl :: webEditor_onusernotify() => " + e.message);
+	}
+};
+
+//web editor setting
+this.setValue = function (sContents)
+{
+	if(this.gfnIsNull(sContents)) sContents = "";
+	this.fvDocWeb.getProperty("ir1").setProperty("value",sContents);
+	this.fvDocWeb.getProperty("editorSetBtn").callMethod("click");	
+};
+
+
+//web editor setting
+this.getValue = function (sContents)
+{
+	this.fvDocWeb.getProperty("editorGetBtn").callMethod("click");
+ 	return this.fvDocWeb.getProperty("ir1").getProperty("value");
+};
+]]></Script>
+  </Form>
+</FDL>

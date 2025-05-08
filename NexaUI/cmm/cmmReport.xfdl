@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="cmmReport" width="1024" height="800" titletext="New Form" onload="cmmReport_onload">
+    <Layouts>
+      <Layout height="800" mobileorientation="portrait" width="1024">
+        <WebBrowser id="webReport" taborder="0" left="0" top="0" ureadonly="" right="0" bottom="0" visible="true" onloadcompleted="webReport_onloadcompleted"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+* 리포트 공통 팝업
+*@FileName  cmmReport
+*@Creator 	
+*@CreateDate 2025/04/25
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+/************************************************************************
+* variable
+************************************************************************/
+this.web = this.webReport;   // set component
+this.urlReport = "";
+
+/**
+* form onload 
+* @param {obj}{e} 
+* @return 
+* @example
+* @memberOf 
+*/
+this.cmmReport_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{	
+// 	if(system.navigatorname == "nexacro"){     
+// 		alert("webBrowser 에서만 실행 가능 합니다.");
+// 		return;	   
+//     }  
+// 	
+	
+	//  this.urlReport =  ;
+    if(!!!this.fileNm || !!!this.arrDs){
+	    this.console.error(`param[fileNm] :${this.fileNm} param[arrDs]:${this.arrDs}` );
+		alert(" 하나의 아규먼트 필수값이 존재하지 않습니다.");
+		return;
+	}
+	const userId = nexacro.getEnvironmentVariable("evUserId");
+    const surl = `${this.urlReport}?/resno?emplList[0]=${userId}`;
+	this.web.set_url(""); 
+    this.web.set_url(surl); 
+};
+
+this.webReport_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
+{
+	 obj.docAll = obj.getProperty("document").getProperty("all");	
+//	this.callReport( this.fileNm,this.arrDs,this.argus);
+};
+
+
+/**
+* 
+* @param {string}  fileNm
+* @param {array}  arrDs
+
+   // //     let oparam =  {"xpath1" : "rexdataset/rexrow",
+// // 	               "xpath2": "rexdataset/rexrow1"						
+// // 	              };
+* @param {string}  crfParams
+* @return 
+* @example
+var fileNm = "xml샘플";
+var arrDs  =  [this.dsList,this.dsList2];
+var argus  = "";
+this.callReport(fileNm,arrDs,argus);
+* @memberOf 
+*/
+this.callReport = function (fileNm,arrDs,param)
+{	
+	
+// 	let doc = this.web.docAll;  
+// 	
+// 	if(!!!doc) return;
+// 	if(!!!fileNm) {
+// 		trace("fileNm 은 필수 입니다 ","e");
+// 		return;
+// 	}
+// 	
+// 	if(!nexacro._isArray(arrDs) || arrDs.length == 0)
+// 	{
+// 		trace("argumnetns 오류!! 생성할 한개 이상의 데이타셋이 필요합니다. ","e");
+// 	  	return;
+// 	}
+// 	
+// 	this.setValue(fileNm,arrDs,param);
+// 	this.web.callMethod("callReport");  //call function webPage  
+};
+
+
+
+
+]]></Script>
+  </Form>
+</FDL>

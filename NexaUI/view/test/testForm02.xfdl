@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="testForm02" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Button id="btnSaveProfile" taborder="0" text="saveMenu" left="140" top="256" width="166" height="45" onclick="btnSaveProfile_onclick"/>
+        <Button id="btnLoadMenu" taborder="1" text="loadMenu" left="317" top="256" width="166" height="45" onclick="btnLoadMenu_onclick"/>
+        <Button id="Button00" taborder="2" text="Button00" left="514" top="257" width="144" height="50" onclick="Button00_onclick"/>
+        <Button id="Button01" taborder="3" text="Button01" left="698" top="259" width="126" height="50" onclick="Button01_onclick"/>
+        <Grid id="Grid00" taborder="4" left="146" top="344" width="757" height="228" binddataset="dsMenuJSON">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="cd"/>
+                <Cell col="1" text="nm"/>
+                <Cell col="2" text="url"/>
+                <Cell col="3" text="winId"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:cd"/>
+                <Cell col="1" text="bind:nm"/>
+                <Cell col="2" text="bind:url"/>
+                <Cell col="3" text="bind:winId"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button02" taborder="5" text="Button02" left="851" top="260" width="131" height="42" onclick="Button02_onclick"/>
+        <Static id="Static00" taborder="6" text="테스트02" left="0" top="0" width="485" height="76" font="normal 50pt/normal &quot;Arial&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsMenu">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="5" description="메뉴코드"/>
+          <Column id="nm" type="STRING" size="100" description="메뉴명"/>
+          <Column id="url" type="STRING" size="100" description="url"/>
+          <Column id="winId" type="STRING" size="256" description="windowID"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">10001</Col>
+            <Col id="nm">메뉴1</Col>
+            <Col id="url">test::test001.xfdl</Col>
+            <Col id="winId">win_10001</Col>
+          </Row>
+          <Row>
+            <Col id="cd">10002</Col>
+            <Col id="nm">메뉴2</Col>
+            <Col id="url">test::test002.xfdl</Col>
+            <Col id="winId">win_10002</Col>
+          </Row>
+          <Row>
+            <Col id="cd">10003</Col>
+          </Row>
+          <Row>
+            <Col id="cd">10004</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMenuJSON">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="5" description="메뉴코드"/>
+          <Column id="nm" type="STRING" size="100" description="메뉴명"/>
+          <Column id="url" type="STRING" size="100" description="url"/>
+          <Column id="winId" type="STRING" size="256" description="windowID"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+* 
+*@FileName  testForm02
+*@Creator 	
+*@CreateDate 2025/04/23
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+
+/************************************************************************
+ * 
+ ************************************************************************/
+this.addEventHandler("onload",function(obj,e)
+{
+	
+},this);
+
+
+
+this.btnSaveProfile_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.gfnSaveDsStore("openMenu",this.dsMenu);
+				 
+};
+
+this.btnLoadMenu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   const rowCnt = this.gfnLoadDsStore("openMenu",this.dsMenuJSON);
+};
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//trace(" strDsJson : " + strDsJson);	
+};
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+//	trace(" this.dsMenuJSON : " + this.dsMenuJSON.saveXML());
+};
+
+this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.dsMenu.deleteRow(0);
+};]]></Script>
+  </Form>
+</FDL>

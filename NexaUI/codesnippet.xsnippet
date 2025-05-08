@@ -1,0 +1,1279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Snippets version="2.0">
+  <Script>
+    <Group name="codesnippet">
+      <Group name="app">
+        <Snippet name="app.frame.hFrs" shortcut="app" description="">app.frame.hFrs</Snippet>
+        <Snippet name="app.frame.isClose" shortcut="app" description="">app.frame.isClose</Snippet>
+        <Snippet name="app.frame.left" shortcut="app" description="">app.frame.left</Snippet>
+        <Snippet name="app.frame.login" shortcut="app" description="">app.frame.login</Snippet>
+        <Snippet name="app.frame.main" shortcut="app" description="">app.frame.main</Snippet>
+        <Snippet name="app.frame.mdi" shortcut="app" description="">app.frame.mdi</Snippet>
+        <Snippet name="app.frame.path" shortcut="app" description="네비게이션">app.frame.path</Snippet>
+        <Snippet name="app.frame.status" shortcut="app" description="">app.frame.status</Snippet>
+        <Snippet name="app.frame.top" shortcut="app" description="">app.frame.top</Snippet>
+        <Snippet name="app.frame.vFrs" shortcut="app" description="">app.frame.vFrs</Snippet>
+        <Snippet name="app.frame.vFrsWork" shortcut="app" description="">app.frame.vFrsWork</Snippet>
+        <Snippet name="app.frame.work" shortcut="app" description="">app.frame.work</Snippet>
+        <Snippet name="app.httpError" shortcut="app" description="">app.httpError</Snippet>
+        <Snippet name="app.path.bottom" shortcut="app" description="bottom frame url">app.frame.path.bottom</Snippet>
+        <Snippet name="app.path.left" shortcut="app" description="frame left url">app.frame.path.left</Snippet>
+        <Snippet name="app.path.login" shortcut="app" description="login url">app.frame.path.login</Snippet>
+        <Snippet name="app.path.main" shortcut="app" description="main frame url">app.frame.path.main</Snippet>
+        <Snippet name="app.path.mdi" shortcut="app" description="mdi frame url">app.frame.path.mdi</Snippet>
+        <Snippet name="app.path.top" shortcut="app" description="top frame url">app.frame.path.top</Snippet>
+        <Snippet name="app.path.work" shortcut="app" description="work fom path">app.frame.path.work</Snippet>
+        <Snippet name="v.exit" shortcut="app" description="">app.v.exit&#13;
+</Snippet>
+        <Snippet name="v.httpError" shortcut="app" description="">app.v.httpError</Snippet>
+        <Snippet name="v.mode " shortcut="app" description="">app.v.mode&#13;
+</Snippet>
+      </Group>
+      <Group name="callback">
+        <Snippet name="fnCallback" shortcut="callback" description="transaction calllback 함수">/**&#13;
+ * &#13;
+ * @param {string}  service id&#13;
+ * @param {number} erororcode &#13;
+  * @param {string} errrMsg&#13;
+ * @return &#13;
+ * @example&#13;
+ * @memberOf &#13;
+ */&#13;
+this.fnCallback = function(id,code,msg)&#13;
+{&#13;
+	// 에러 시 화면 처리 내역&#13;
+	if(code &lt; 0) return;&#13;
+	&#13;
+	switch(id) {&#13;
+	case "":&#13;
+		break;&#13;
+&#13;
+	default:&#13;
+	}&#13;
+};</Snippet>
+        <Snippet name="fnExcelImportCallback" shortcut="callback" description="">/*&#13;
+ * impoart callback&#13;
+ *@param{string} import id&#13;
+ *@param {dataset}  original excel column dataset&#13;
+  *@param {dataset} input dataset import dataset&#13;
+ */ &#13;
+this.fnExcelImportCallback = function(importId,dsCol,dsImport)&#13;
+{&#13;
+	&#13;
+}&#13;
+</Snippet>
+        <Snippet name="fnImportCallback" shortcut="callback" description="">/*&#13;
+ * file up callback&#13;
+  *@param{string} errorCode&#13;
+ *@param{string} import id&#13;
+ *@param {dataset} result  dataset&#13;
+ */ &#13;
+this.fnImportCallback = function (errorCode,obj,resDs)&#13;
+{   &#13;
+&#13;
+};&#13;
+&#13;
+</Snippet>
+        <Snippet name="popupCallBack" shortcut="callback" description="">/**&#13;
+* fnPopupCallback : modaless popup callback&#13;
+* @param  : strId		   - [string]popup id&#13;
+* @param  : strVal		   - [string]return val&#13;
+* @return : N/A&#13;
+*/&#13;
+ this.popupCallBack = function(id, reValue)&#13;
+ {&#13;
+	switch(id) {&#13;
+	case "":&#13;
+		break;&#13;
+	}&#13;
+ };</Snippet>
+      </Group>
+      <Group name="cfn">
+        <Snippet name="cfn_onclose" shortcut="" description="프레임 버튼 닫기 체크">/**&#13;
+* @description 화면 닫힐때 변경사항 체크(입력 화면에서 변경되는 Dataset 체크 필요, 선택)&#13;
+* @return {boolean} true(화면 닫지 않음) / false(화면 닫음)&#13;
+*/&#13;
+this.cfn_onclose = function()&#13;
+{&#13;
+ // if(this.gfnDsIsUpdated(ds)){&#13;
+ //    return true;&#13;
+ // }&#13;
+	return false;&#13;
+};</Snippet>
+        <Snippet name="cfnEditor_onload" shortcut="" description="">//webEidtor onload  실행시 사용&#13;
+this.cfnEditor_onload = function (userData)&#13;
+{&#13;
+&#13;
+//    var vReadOnly = true;   // 생략 기본은  false  &#13;
+//   this.divWebEditor.setReadOnly(vReadOnly);&#13;
+	// trace("  == webEidtor userdata : " + userData);&#13;
+};</Snippet>
+        <Snippet name="cfnMove_onactive" shortcut="" description="">/*&#13;
+*@description 화면 이동 후 넘어온 값 처리	&#13;
+*@param {string}{object}{array} 넘어온 아규먼트 처리&#13;
+*/&#13;
+this.cfnMove_onactive = function(param)&#13;
+{&#13;
+	//trace("fnMoveOnActie formName ===&gt;" + this.name + "&lt;&gt; parg ====&gt; " + param);&#13;
+};</Snippet>
+        <Snippet name="cfnPaging_onclick" shortcut="" description="* paging 버튼 // next prev 클릭 이벤트 후처리">/**&#13;
+ * //paging 버튼 // next prev 클릭 이벤트 후처리&#13;
+ * @param {number} 누른 페이지&#13;
+  * @param {number} 시작데이터rownum계산&#13;
+ * @return &#13;
+ * @example&#13;
+ * @memberOf &#13;
+ */&#13;
+this.cfnPaging_onclick = function(nPage,nRecordOffset)&#13;
+{&#13;
+	trace(" ## nPage : " +nPage + "&lt;&gt; nRecordOffset : " + nRecordOffset);&#13;
+&#13;
+}</Snippet>
+        <Snippet name="cfnTitlebarClose_onclick" shortcut="cfn" description="">//popup titlebar close(x) 버튼 클릭 event&#13;
+this.cfnTitlebarClose_onclick = function()&#13;
+{&#13;
+   return false;&#13;
+}</Snippet>
+      </Group>
+      <Group name="cal">
+        <Snippet name="calFromTo.getFromDate" shortcut="cal" description="기간달력 set from date">$end$.getFromDate(sdate);</Snippet>
+        <Snippet name="calFromTo.getToDate" shortcut="cal" description="기간달력 from 날짜 가져오는 함수">$end$.getToDate();</Snippet>
+        <Snippet name="calFromTo.init" shortcut="cal" description="기간달력 초기화">$end$.init();</Snippet>
+        <Snippet name="calFromTo.setBinds" shortcut="cal" description="기간달력 set binds">$end$.setBinds(binds,colFr,colTo);</Snippet>
+        <Snippet name="calFromTo.setFromDate" shortcut="cal" description="기간달력 fromdate 날짜 셋팅">$end$.setFromDate(sdate);</Snippet>
+        <Snippet name="calFromTo.setFromToDate" shortcut="cal" description="기간 달력 from to 날짜 셋팅 함수">$end$.setFromToDate(sfr,sto);</Snippet>
+        <Snippet name="calFromTo.setToDate" shortcut="cal" description="기간달력 todaet 날짜 셋팅">$end$.setToDate(sdate);</Snippet>
+        <Snippet name="calMM.getValue" shortcut="cal" description="월력 값 가져오는 함수">$end$.getValue();</Snippet>
+        <Snippet name="calMM.init" shortcut="cal" description="월력 초기화 함수&#13;&#10;">$end$.init();</Snippet>
+        <Snippet name="calMM.setBinds" shortcut="cal" description="월력 바인딩 셋&#13;&#10;bindds,colFrom,calTo&#13;&#10;">$end$.setBinds(bindds,colFrom,calTo);</Snippet>
+        <Snippet name="calMM.setEnable" shortcut="cal" description="월력 컴퍼넌트 enable 활성/비활성">$end$.setEnable(benable);</Snippet>
+        <Snippet name="calMM.setEssential" shortcut="cal" description="필수 여부 처리   true/false">$end$.setEssential(true);</Snippet>
+        <Snippet name="calMM.setReadonly" shortcut="cal" description="월력 readonly ">$end$.setReadonly(true);</Snippet>
+        <Snippet name="calMM.setValue" shortcut="cal" description="월력 날짜값 셋팅">$end$.setValue(sdate);</Snippet>
+      </Group>
+      <Group name="colInfo">
+        <Snippet name="file.ext" shortcut="colInfo" description="">this.colInfo.file.ext</Snippet>
+        <Snippet name="file.gseq" shortcut="colInfo" description="">this.colInfo.file.gseq</Snippet>
+        <Snippet name="file.nm" shortcut="colino" description="">this.colInfo.file.nm</Snippet>
+        <Snippet name="file.nmorg" shortcut="colInfo" description="">this.colInfo.file.nmorg</Snippet>
+        <Snippet name="file.seq" shortcut="colInfo" description="">this.colInfo.file.seq</Snippet>
+        <Snippet name="file.size" shortcut="colInfo" description="">this.colInfo.file.size</Snippet>
+        <Snippet name="menu.cd" shortcut="colInfo" description="메뉴코드">this.colInfo.menu.cd</Snippet>
+        <Snippet name="menu.gcd " shortcut="colInfo" description="메뉴그룹">this.colInfo.menu.gcd</Snippet>
+        <Snippet name="menu.key" shortcut="colInfo" description="local store 저장 key">this.colInfo.menu.key</Snippet>
+        <Snippet name="menu.lvl " shortcut="colInfo" description="메뉴레벨">this.colInfo.menu.lvl</Snippet>
+        <Snippet name="menu.max" shortcut="colInfo" description="메뉴최대갯수">this.colInfo.menu.max</Snippet>
+        <Snippet name="menu.navi" shortcut="colInfo" description="메뉴경로">this.colInfo.menu.navi</Snippet>
+        <Snippet name="menu.nm " shortcut="colInfo" description="메뉴명">this.colInfo.menu.nm</Snippet>
+        <Snippet name="menu.params" shortcut="colInfo" description="메뉴params">this.colInfo.menu.params</Snippet>
+        <Snippet name="menu.pcd" shortcut="colInfo" description="상위코드">this.colInfo.menu.pcd</Snippet>
+        <Snippet name="menu.url" shortcut="colInfo" description="메뉴URL">this.colInfo.menu.url</Snippet>
+        <Snippet name="menu.winid" shortcut="colInfo" description="window open menuid">this.colInfo.menu.winid</Snippet>
+        <Snippet name="msg.cd" shortcut="colInfo" description="">this.colInfo.msg.cd</Snippet>
+        <Snippet name="msg.nm" shortcut="colInfo" description="">this.colInfo.msg.nm</Snippet>
+        <Snippet name="tab.id" shortcut="colInfo" description="tabid">this.colInfo.tab.id</Snippet>
+        <Snippet name="tab.nm" shortcut="colInfo" description="tab명">this.colInfo.tab.nm</Snippet>
+        <Snippet name="tab.win" shortcut="colInfo" description="tab winid">this.colInfo.tab.win</Snippet>
+        <Snippet name="user.gb" shortcut="colInfo" description="">this.colInfo.user.gb&#13;
+&#13;
+</Snippet>
+        <Snippet name="user.id" shortcut="colInfo" description="">this.colInfo.user.id</Snippet>
+        <Snippet name="user.nm" shortcut="colInfo" description="">this.colInfo.user.nm&#13;
+</Snippet>
+      </Group>
+      <Group name="editor">
+        <Snippet name="getValue" shortcut="editor" description="editor 가져오는 함수">$end$.getValue(); </Snippet>
+        <Snippet name="init" shortcut="editor" description="초기설정  readonly : true/false">$end$.init(false); </Snippet>
+        <Snippet name="setValue" shortcut="editor" description="">$end$.setValue(str); </Snippet>
+      </Group>
+      <Group name="ev">
+        <Snippet name="evFormUrl" shortcut="ev" description="">nexacro.getEnvironmentVariable("evFormUrl");</Snippet>
+        <Snippet name="evParams" shortcut="ev" description="sso params">nexacro.getEnvironmentVariable("evParams");</Snippet>
+        <Snippet name="evPopupUrl" shortcut="ev" description="sso popup url">nexacro.getEnvironmentVariable("evPopupUrl")</Snippet>
+        <Snippet name="evQuikView" shortcut="ev" description="">nexacro.getEnvironmentVariable("evQuikView");</Snippet>
+        <Snippet name="evRunMode" shortcut="ev" description="">nexacro.getEnvironmentVariable("evRunMode"); </Snippet>
+        <Snippet name="evUserId" shortcut="" description="sso userid">nexacro.getEnvironmentVariable("evUserId")</Snippet>
+      </Group>
+      <Group name="gds">
+        <Snippet name="gdsComCode" shortcut="" description="">app.gdsComCode$end$</Snippet>
+        <Snippet name="gdsGridPersonal" shortcut="" description="">app.gdsGridPersonal$end$</Snippet>
+        <Snippet name="gdsGridPopupMenu" shortcut="" description="">app.gdsGridPopupMenu$end$</Snippet>
+        <Snippet name="gdsMenu" shortcut="" description="">app.gdsMenu$end$</Snippet>
+        <Snippet name="gdsMessage" shortcut="" description="">app.gdsMessage$end$</Snippet>
+        <Snippet name="gdsMyMenu" shortcut="" description="">app.gdsMyMenu$end$</Snippet>
+        <Snippet name="gdsOpenMenu" shortcut="" description="">app.gdsOpenMenu$end$</Snippet>
+        <Snippet name="gdsUserInfo" shortcut="" description="">app.gdsUserInfo$end$</Snippet>
+      </Group>
+      <Group name="gfn">
+        <Snippet name="getCheckRow" shortcut="" description="그리드 체크박스 가져오는 함수">let chk = this.Grid00.getCheckRow();</Snippet>
+        <Snippet name="gfn10To16 " shortcut="" description="">this.gfn10To16(nVal);  </Snippet>
+        <Snippet name="gfn16To10 " shortcut="" description="">this.gfn16To10(nVal); </Snippet>
+        <Snippet name="gfnAddDate" shortcut="" description="">this.gfnAddMonth(strDate, OffSet); </Snippet>
+        <Snippet name="gfnAddMonth " shortcut="" description="">this.gfnGetHolidays(nYear); </Snippet>
+        <Snippet name="gfnAlert" shortcut="" description="공통 메시지창&#13;&#10;parm1 : 등록된 메시지 id 및 메시지명(필수)&#13;&#10;param2: 처리 할 parameter (생략가능)&#13;&#10;param3 : 유형(e,q,i,v)(생략가능)&#13;&#10;param3 : callback function(생략가능)">this.gfnAlert($end$);&#13;
+return;</Snippet>
+        <Snippet name="gfnAllTrim" shortcut="" description="">this.gfnAllTrim(str); </Snippet>
+        <Snippet name="gfnAppendComma" shortcut="" description="">this.gfnAppendComma(nNumber,nDetail); </Snippet>
+        <Snippet name="gfnChangeLang" shortcut="" description="">this.gfnChangeLang(objComp); </Snippet>
+        <Snippet name="gfnClearValidation" shortcut="" description="">this.gfnClearValidation(obj);</Snippet>
+        <Snippet name="gfnCompsQuery" shortcut="" description="컴퍼넌트 검색 함수">this.gfnCompsQuery(this, "isVisible == true &amp;&amp; typeOf == 'Button'");</Snippet>
+        <Snippet name="gfnConfirm" shortcut="" description=""> // 변경된 내역을 저장 하시겠습니까?&#13;
+ this.gfnConfirm(msgId$end$,(yes)=&gt;{&#13;
+&#13;
+	   if(yes) trace(" OK ");&#13;
+		else trace('CANCEL');&#13;
+ });</Snippet>
+        <Snippet name="gfnContains " shortcut="" description="">this.gfnContains(array, item, strict);   </Snippet>
+        <Snippet name="gfnConvertMessage" shortcut="" description="">this.gfnConvertMessage(msg, values); </Snippet>
+        <Snippet name="gfnCreateFileUpTransfer" shortcut="" description="">this.gfnCreateFileUpTransfer()</Snippet>
+        <Snippet name="gfnCurrontMdiClose" shortcut="" description="현재MDI 메뉴 닫기">this.gfnCurrontMdiClose();</Snippet>
+        <Snippet name="gfnCutFileSize" shortcut="" description="">this.gfnCutFileSize($end$);</Snippet>
+        <Snippet name="gfnDateToStr" shortcut="" description="">this.gfnDateToStr(sDate);  </Snippet>
+        <Snippet name="gfnDecode" shortcut="" description="">this.gfnDecode();  </Snippet>
+        <Snippet name="gfnDevLog" shortcut="" description="개발자 오류 로그">this.gfnDevLog($end$);&#13;
+&#13;
+</Snippet>
+        <Snippet name="gfnDsIsUpdated" shortcut="" description="">this.gfnDsIsUpdated(ods); </Snippet>
+        <Snippet name="gfnEach " shortcut="" description="">this.gfnEach(object, func, scope);  </Snippet>
+        <Snippet name="gfnEnterFullscreen" shortcut="" description="브라우저 전체화면으로 전환">this.gfnEnterFullscreen();</Snippet>
+        <Snippet name="gfnExcelExport " shortcut="" description="">this.gfnExcelExport(objGrid,sSheetNm,sFileNm); </Snippet>
+        <Snippet name="gfnExcelImport " shortcut="" description="">    var dsName = "dsUser";&#13;
+	var id = "importExcel&#13;
+	this.gfnExcelImport(dsName,id,"fnImportCallback");&#13;
+		&#13;
+		 &#13;
+	//	 var dsExcel = "dsList";&#13;
+	//	 var id        = "importExGrid00"; // 생략가능&#13;
+	//	 var sheetNm   = "SheetName";  // 생략가능&#13;
+	//	 var bodyNm    =  "A2";   // 생략가능&#13;
+	//	 var headNm    = "!A1:Q1";    // 생략가능&#13;
+	//	 var callback   ="fnImportCallback";	   // 생략가능	 &#13;
+		 &#13;
+  // this.gfnExcelImport(dsExcel,id,sheetNm,bodyNm,headNm,callback);&#13;
+</Snippet>
+        <Snippet name="gfnExitFullscreen" shortcut="" description="브라우저 전체화면 종료">this.gfnExitFullscreen();</Snippet>
+        <Snippet name="gfnFileDelete" shortcut="" description="">this.gfnFileDelete(ds,nRow,fileNm);  &#13;
+</Snippet>
+        <Snippet name="gfnFileDeleteAll" shortcut="" description="">this.gfnFileDeleteAll(ds);</Snippet>
+        <Snippet name="gfnFileDialog" shortcut="" description="">/*&#13;
+* @param {number} 1 : "LOAD"  or&#13;
+*                 2 : ""MULTILOAD"  &#13;
+* @param {string}[생략가능] FileDialog 에 적용될 파일형식을 확장자 또는 MIME 형태로 설정합니다&#13;
+*                 (".png", ".exe", ".png, .exe" 형식의 확장자 형태로 파일형식을 설정)&#13;
+*/&#13;
+this.gfnFileDialog(constOpenMode,strAccept);&#13;
+</Snippet>
+        <Snippet name="gfnFileDownLoad" shortcut="" description="">this.gfnFileDownLoad(filename);</Snippet>
+        <Snippet name="gfnFileUpGetId" shortcut="" description="">this.gfnFileUpGetId();</Snippet>
+        <Snippet name="gfnFileUpload" shortcut="" description="">this.gfnFileUpload();</Snippet>
+        <Snippet name="gfnFrameInfoAll" shortcut="" description="전체 프레임 ">this.gfnFrameInfoAll();</Snippet>
+        <Snippet name="gfnFrameLength" shortcut="" description="프레임 수량 가져오는 함수">this.gfnFrameLength();</Snippet>
+        <Snippet name="gfnGetAge " shortcut="" description="">this.gfnGetAge();  </Snippet>
+        <Snippet name="gfnGetApplicationId" shortcut="" description="프로젝트 id 가져오는 함수">this.gfnGetApplicationId();</Snippet>
+        <Snippet name="gfnGetArgument" shortcut="" description="">this.gfnGetArgument(sName); </Snippet>
+        <Snippet name="gfnGetBirthDateBySSN" shortcut="" description="">this.gfnGetBirthDateBySSN(ssn); </Snippet>
+        <Snippet name="gfnGetBirthYear " shortcut="" description="">this.gfnGetBirthYear(sJuminNo); </Snippet>
+        <Snippet name="gfnGetCellIdx " shortcut="" description="">this.gfnGetCellIdx(objGrid, strCompColumnId); </Snippet>
+        <Snippet name="gfnGetComCode" shortcut="" description="컴퍼넌트 공통코드 바인딩">	var param = [&#13;
+			// combo&#13;
+			{&#13;
+				objectId : this.Div00.form.cboComobo1&#13;
+				//, filterCode : {CD_SEL : "029,011" ,CD_CODE:"001"}   // 필터 컬럼 설정  (멀티)&#13;
+				, filterCode : {HIGH_CD : "00001"}   // 필터 컬럼 설정  (멀티)&#13;
+				, selectType : "a"    // "" 공백 "a" (전체기본) "s" (선택)&#13;
+			}&#13;
+			// radio  &#13;
+			,{&#13;
+				  objectId : this.Div00.form.rdo00&#13;
+				, filterCode : {HIGH_CD : "00020" }&#13;
+				, selectType : ""    //"" 공백 "a" (전체기본) "s" (선택)&#13;
+				, direction : "vertical"   //라디오 정렬 옵션&#13;
+			} &#13;
+			// grid&#13;
+			,{&#13;
+				objectId : this.grdHeader&#13;
+				, selectType : "NONE"&#13;
+				, filterCode : { HIGH_CD : "00005" }&#13;
+				, bindColumn : "EMPL_ID"   // 그리드 바인딩 아이디 컬럼&#13;
+				, edit : "true"&#13;
+				, selectType : "s"    // "" 공백 "a" (전체기본) "s" (선택)&#13;
+			  ,displayType : "combocontrol"    // combo display   combocontrol or combotext &#13;
+			} // multiCombo&#13;
+			,{&#13;
+				 objectId : this.Div00.form.MultiCombo&#13;
+				, filterCode : { HIGH_CD : "00001" }		&#13;
+			} &#13;
+	];	&#13;
+	&#13;
+ this.gfnGetComCode(param);		
+				   </Snippet>
+        <Snippet name="gfnGetComponentFullName " shortcut="" description="">this.gfnGetComponentFullName(objComp); </Snippet>
+        <Snippet name="gfnGetCurrentForm" shortcut="" description="">this.gfnGetCurrentForm();</Snippet>
+        <Snippet name="gfnGetDataSet " shortcut="" description="">this.gfnGetDataSet(sDs); </Snippet>
+        <Snippet name="gfnGetDate" shortcut="" description="">this.gfnGetDate(sGubun);  </Snippet>
+        <Snippet name="gfnGetDay " shortcut="" description="">this.gfnGetDay(sDate);  </Snippet>
+        <Snippet name="gfnGetDiffDate" shortcut="" description="">this.gfnGetDiffDate(sStartDate, sEndDate); </Snippet>
+        <Snippet name="gfnGetDiffMonth " shortcut="" description="">this.gfnAddDate(strDate, nOffSet); 	</Snippet>
+        <Snippet name="gfnGetDigit" shortcut="" description="">this.gfnGetDigit(strValue); </Snippet>
+        <Snippet name="gfnGetFileName" shortcut="" description="">/*&#13;
+ * @param {String} sPath - File Path 문자열 (예 : "C:\a\b\filename.ext")&#13;
+ * @param {String} bExt - extend를 return되는 File명에 포함시킬지 여부 ( 옵션 : Default=false )&#13;
+*/&#13;
+this.gfnGetFileName(sPath, bExt);</Snippet>
+        <Snippet name="gfnGetFirstDate " shortcut="" description="">this.gfnGetFirstDate(sDate); </Snippet>
+        <Snippet name="gfnGetFrameNo" shortcut="" description="">this.gfnGetFrameNo(nNo);</Snippet>
+        <Snippet name="gfnGetFrameWinId" shortcut="" description="winID 가져오는 함수">this.gfnGetFrameWinId(winid);</Snippet>
+        <Snippet name="gfnGetHolidays" shortcut="" description="">this.gfnGetHolidays(svalue); </Snippet>
+        <Snippet name="gfnGetKoreanTarget" shortcut="" description="">this.gfnGetKoreanTarget(itemName, option);</Snippet>
+        <Snippet name="gfnGetLastDate" shortcut="" description="">this.gfnGetLastDate(sDate); </Snippet>
+        <Snippet name="gfnGetLocaltionUrl" shortcut="" description="포털 url ">this.gfnGetLocaltionUrl();</Snippet>
+        <Snippet name="gfnGetLocalWord" shortcut="" description="">this.gfnGetLocalWord(sid,arrArg);</Snippet>
+        <Snippet name="gfnGetMainArgs" shortcut="" description="">let args= this.gfnGetMainArgs();</Snippet>
+        <Snippet name="gfnGetMemberArgs" shortcut="" description="회원가입 아규먼트 가져오는 함수">this.gfnGetMemberArgs();</Snippet>
+        <Snippet name="gfnGetMenuCd" shortcut="" description="메뉴ID 가져오는 함수">this.gfnGetMenuCd();</Snippet>
+        <Snippet name="gfnGetMenuNm" shortcut="" description="메뉴 명">this.gfnGetMenuNm();</Snippet>
+        <Snippet name="gfnGetMessage" shortcut="" description="">this.gfnGetMessage(sMsgId, arrArg); </Snippet>
+        <Snippet name="gfnGetNullAll" shortcut="" description="">this.gfnGetNullAll();</Snippet>
+        <Snippet name="gfnGetNullSelect" shortcut="" description="선택, select 선택">this.gfnGetNullSelect();</Snippet>
+        <Snippet name="gfnGetScreenId" shortcut="" description="">let screenId = this.gfnGetScreenId();</Snippet>
+        <Snippet name="gfnGetSequenceId" shortcut="" description="">this.gfnGetSequenceId(form, prefi);</Snippet>
+        <Snippet name="gfnGetServerUrl" shortcut="" description="">this.gfnGetServerUrl(); </Snippet>
+        <Snippet name="gfnGetStirngTypeOf" shortcut="" description="">this.gfnGetStirngTypeOf(arg); </Snippet>
+        <Snippet name="gfnGetTopLevelForm" shortcut="" description="">this.gfnGetTopLevelForm(this); </Snippet>
+        <Snippet name="gfnGetUniqueId" shortcut="" description="">this.gfnGetUniqueId(prefix, separator); </Snippet>
+        <Snippet name="gfnGetWeek" shortcut="" description="">this.gfnGetWeek(sDate); </Snippet>
+        <Snippet name="gfnGetWinId" shortcut="" description="winid 가져오는 함수">let winid = this.gfnGetWinId();</Snippet>
+        <Snippet name="gfnGoHome" shortcut="" description="초기 홈으로 이동">this.gfnGoHome();</Snippet>
+        <Snippet name="gfnGoLogin" shortcut="" description="로그인 페이지로 이동">this.gfnGoLogin();</Snippet>
+        <Snippet name="gfnGoMain" shortcut="" description="메인홈으로 이동">this.gfnGoMain();</Snippet>
+        <Snippet name="gfnIndexOf" shortcut="" description="">this.gfnIndexOf(array, item, from, strict); </Snippet>
+        <Snippet name="gfnInitComp " shortcut="" description="">this.gfnInitComp(this); </Snippet>
+        <Snippet name="gfnInitLang" shortcut="" description="">this.gfnInitLang(objForm); </Snippet>
+        <Snippet name="gfnIsAccessPrj" shortcut="" description="접근성 체크">this.gfnIsAccessPrj();</Snippet>
+        <Snippet name="gfnIsBoolean" shortcut="" description="">this.gfnIsBoolean($end$obj); </Snippet>
+        <Snippet name="gfnIsBzIdNo" shortcut="" description="">this.gfnIsBzIdNo(strNo);</Snippet>
+        <Snippet name="gfnIsCardNo" shortcut="" description="">this.gfnIsCardNo(strNo);</Snippet>
+        <Snippet name="gfnIsDate " shortcut="" description="">this.gfnIsDate();  </Snippet>
+        <Snippet name="gfnIsDigit" shortcut="" description="">this.gfnIsDigit(sNum);</Snippet>
+        <Snippet name="gfnIsEmail" shortcut="" description="">this.gfnIsEmail(sMail);</Snippet>
+        <Snippet name="gfnIsEmpty" shortcut="" description="null,undefined,empty 체크">this.gfnIsEmpty($end$);</Snippet>
+        <Snippet name="gfnIsExistInArray " shortcut="" description="">this.gfnIsExistInArray(arrVal, varVal); </Snippet>
+        <Snippet name="gfnIsFirmIdNo" shortcut="" description="">this.gfnIsFirmIdNo(strNo);</Snippet>
+        <Snippet name="gfnIsFrnrIdNo" shortcut="" description="">this.gfnIsFrnrIdNo(strNo);</Snippet>
+        <Snippet name="gfnIsKoreanChar" shortcut="" description="">this.gfnIsKoreanChar(strValue);</Snippet>
+        <Snippet name="gfnIsLocal" shortcut="" description="">let isLocal = this.gfnIsLocal();</Snippet>
+        <Snippet name="gfnIsLogin" shortcut="" description="">this.gfnIsLogin();</Snippet>
+        <Snippet name="gfnIsNexaBrowser" shortcut="" description="nexacro 전용브라우저 체크 함수">this.gfnIsNexaBrowser()$end$</Snippet>
+        <Snippet name="gfnIsNexaComponent" shortcut="" description="">this.gfnIsNexaComponent(svalue);</Snippet>
+        <Snippet name="gfnIsNexacro" shortcut="" description="넥사크로 브라우저 여부 체크 함수">var isNexaro = this.gfnIsNexacro();</Snippet>
+        <Snippet name="gfnIsNotNull" shortcut="" description="not null 함수">this.gfnIsNotNull($end$);</Snippet>
+        <Snippet name="gfnIsNull" shortcut="" description="">this.gfnIsNull($end$)</Snippet>
+        <Snippet name="gfnIsNullEssential" shortcut="" description="true 면 정상 false면 에러">this.gfnIsNullEssential($end$);</Snippet>
+        <Snippet name="gfnIsPrjMain" shortcut="" description="">this.gfnIsPrjMain();</Snippet>
+        <Snippet name="gfnIsQuickView" shortcut="" description="개발툴 실행모드 여부">this.gfnIsQuickView()</Snippet>
+        <Snippet name="gfnIsSpecialChar" shortcut="" description="">this.gfnIsSpecialChar(strValue);</Snippet>
+        <Snippet name="gfnIsSSN" shortcut="" description="">this.gfnIsSSN(sJuminNo);</Snippet>
+        <Snippet name="gfnIsTime " shortcut="" description="">this.gfnIsTime(sTime);  </Snippet>
+        <Snippet name="gfnIsUndefined" shortcut="" description="">this.gfnIsUndefined(str);</Snippet>
+        <Snippet name="gfnIsUpdateColumn " shortcut="" description="">this.gfnIsUpdateColumn(objDs, nRow, Column); </Snippet>
+        <Snippet name="gfnIsUpdatedRow " shortcut="" description="">this.gfnIsUpdatedRow(ods,nrow); </Snippet>
+        <Snippet name="gfnIsYM " shortcut="" description="">this.gfnIsYM($end$yyyyyMM);  </Snippet>
+        <Snippet name="gfnIsYMD" shortcut="" description="">this.gfnIsYMD(sDate);  </Snippet>
+        <Snippet name="gfnLastIndexOfProp" shortcut="" description="">this.gfnLastIndexOfProp(array, prop, item, from, strict);</Snippet>
+        <Snippet name="gfnLeft" shortcut="" description="">this.gfnLeft(sOrg, nSize);  </Snippet>
+        <Snippet name="gfnLengthByte" shortcut="" description="">this.gfnLengthByte(str);</Snippet>
+        <Snippet name="gfnLoadDsStore" shortcut="" description="로컬저장 dataset load">this.gfnLoadDsStore(key);</Snippet>
+        <Snippet name="gfnLog" shortcut="" description="">this.gfnLog($end$);</Snippet>
+        <Snippet name="gfnLoginTran" shortcut="" description="">this.gfnLoginTran(userId,userPw,inds);</Snippet>
+        <Snippet name="gfnLookup " shortcut="" description="">this.gfnLookup(p, name); </Snippet>
+        <Snippet name="gfnLunarToSolar " shortcut="" description="">this.gfnLunarToSolar(value, leapMonth); </Snippet>
+        <Snippet name="gfnMdiClose" shortcut="" description="메뉴 닫기(menuid)">this.gfnMdiClose(menuid);</Snippet>
+        <Snippet name="gfnMemberArgsInit" shortcut="" description="회원가입 아규먼트 초기화">this.gfnMemberArgsInit();</Snippet>
+        <Snippet name="gfnMessage(multi)" shortcut="" description=""> new Promise(resolve =&gt;{&#13;
+     &#13;
+     msgId = "첫번째 메시지 입니다.";&#13;
+     this.gfnAlert(msgId,(ok)=&gt;{&#13;
+	     resolve(ok);&#13;
+	 });&#13;
+	 &#13;
+  }).then(result =&gt;{     &#13;
+&#13;
+	  return new Promise((resolve,reject) =&gt; {&#13;
+	       msgId = "마지막 메시지 입니다.";	          &#13;
+	       // 변경된 내역을 저장 하시겠습니까?&#13;
+	       this.gfnConfirm(msgId,(yes)=&gt;{&#13;
+&#13;
+	      	   if(yes) resolove(ok);&#13;
+	      		else reject("ERR01");&#13;
+	       });&#13;
+	 });&#13;
+	  &#13;
+  }).then(result =&gt;{&#13;
+      trace(" last : " + result);&#13;
+  }).catch((errId)=&gt;{&#13;
+      trace(" errId : " + errId);&#13;
+  });;</Snippet>
+        <Snippet name="gfnModalPdfViwer" shortcut="" description="pdfViwer popup 공통">var surl = "https://s3.ap-northeast-2.amazonaws.com/recruit.nidsoft.com/sample.pdf";&#13;
+this.gfnModalPdfViwer(surl);</Snippet>
+        <Snippet name="gfnMsToTime" shortcut="" description="밀리세컨즈를 시:분:초로 변환">this.gfnMsToTime(miliseconds);</Snippet>
+        <Snippet name="gfnNewMain" shortcut="" description="">this.gfnNewMain(url,args);</Snippet>
+        <Snippet name="gfnNewWork" shortcut="" description="">this.gfnNewWork(sMenuId, oargs); </Snippet>
+        <Snippet name="gfnNvl" shortcut="" description="nvl">&#13;
+this.gfnNvl($end$,s2);</Snippet>
+        <Snippet name="gfnObjView" shortcut="" description="">this.gfnObjView(objArg, sName);  </Snippet>
+        <Snippet name="gfnOpen" shortcut="" description="팝업(modeless)">  var args  = {};  	  &#13;
+	  args.id         = "popModeless";   //필수&#13;
+	  args.url        = "sample::sample0031PopupP.xfdl"; //필수&#13;
+	  args.titletext  = '샘플팝업';   //필수&#13;
+	  args.paramCode  = "abcd";    // paremeter&#13;
+&#13;
+	this.gfnOpen( args,"popupCallBack");	</Snippet>
+        <Snippet name="gfnOpenMenu" shortcut="" description="">this.gfnOpenMenu(sMenuId, objParam,pReload);</Snippet>
+        <Snippet name="gfnPosReverse" shortcut="" description="">this.gfnPosReverse(sOrg, sFind, nStart);</Snippet>
+        <Snippet name="gfnReload" shortcut="" description="프로젝트 reload 함수">this.gfnReload();</Snippet>
+        <Snippet name="gfnRemoveAt " shortcut="" description="">this.gfnRemoveAt(array, index); </Snippet>
+        <Snippet name="gfnRemoveHtmlTag" shortcut="" description="">this.gfnRemoveHtmlTag(sHtml, sTag);</Snippet>
+        <Snippet name="gfnRemoveSpecialChar" shortcut="" description="">this.gfnRemoveSpecialChar(strValue); </Snippet>
+        <Snippet name="gfnRemoveStoreMenu" shortcut="" description="로컬저장 key 삭제"> this.gfnRemoveStoreMenu(key);</Snippet>
+        <Snippet name="gfnRemoveValidation" shortcut="" description="">this.gfnClearValidation(obj, sColumID);</Snippet>
+        <Snippet name="gfnReportPop" shortcut="" description="리포트 미리보기 공통"> var params = {};&#13;
+	 params.fileNm = "xml샘플";  // file name&#13;
+	 params.arrDs =  [this.dsList,this.dsList2];   	 &#13;
+	 params.argus =  "";&#13;
+	 	&#13;
+	  this.gfnReportPop(params);&#13;
+	  return;</Snippet>
+        <Snippet name="gfnResetValidationCss" shortcut="" description="">this.gfnResetValidationCss(validationarg);</Snippet>
+        <Snippet name="gfnRight" shortcut="" description="">this.gfnRight(sOrg, nSize); </Snippet>
+        <Snippet name="gfnRpad " shortcut="" description="">this.gfnRpad(sValue, nLength, Char);  </Snippet>
+        <Snippet name="gfnSaveDsStore" shortcut="" description="dataset local 저장">this.gfnSaveDsStore(key,ds)</Snippet>
+        <Snippet name="gfnSearchOpenClose" shortcut="" description="">let arrDiv = ["divSearch","divBody"];&#13;
+let btnOpenClose = this.btnOpenMenu;&#13;
+let nea =btnOpenClose._stage;   //확장 사이즈 1: 1단 2 : 2단&#13;
+this.gfnSearchOpenClose(arrDiv,btnOpenClose,nea);</Snippet>
+        <Snippet name="gfnSearchOpenCloseInit" shortcut="" description="펼침 / 접힘 단 영역 설정">let stage = this.btnOpenMenu._stage;&#13;
+this.gfnSearchOpenCloseInit(stage);</Snippet>
+        <Snippet name="gfnSetFrame" shortcut="" description="">this.gfnSetFrame($end$);</Snippet>
+        <Snippet name="gfnSetGrdChkAll" shortcut="" description="">this.gfnSetGrdChkAll(ogrid,nCell,schk);</Snippet>
+        <Snippet name="gfnSetGrid" shortcut="" description="">this.gfnSetGrid(oGrid); </Snippet>
+        <Snippet name="gfnSetLeft" shortcut="" description="">this.gfnSetLeft()$end$</Snippet>
+        <Snippet name="gfnSetMainFrame" shortcut="" description=""> this.gfnSetMainFrame($end$); //login,mdi&#13;
+</Snippet>
+        <Snippet name="gfnSetOpenMenuDs" shortcut="" description="">this.gfnSetOpenMenuDs(winid, menuid, strTitle, spageUrl, sGroupId); </Snippet>
+        <Snippet name="gfnSetTotal" shortcut="" description="total 수량 체크 함수">this.gfnSetTotal(sta00,ds.rowcount);</Snippet>
+        <Snippet name="gfnSetValidation" shortcut="" description="">this.gfnSetValidation(obj, sColumID, sColumName, sValidRule);</Snippet>
+        <Snippet name="gfnSetWaitcursor" shortcut="" description="">this.gfnSetWaitcursor($tab$);</Snippet>
+        <Snippet name="gfnShowModal" shortcut="" description="팝업(모달) 실행 함수&#13;&#10;/**&#13;&#10; * @param {string}{필수} id,url&#13;&#10; * @param {string} titletext  : 타이틀 테스트 설정(생락 시 팝업 폼 titletext 설정 됨)&#13;&#10;* @param {boolean} resize  : 폼 사이즈 자동 여부 기본 true&#13;&#10; * @param {string}{function}  callaback&#13;&#10; * @return {function}  callaback&#13;&#10; */">  var args  = {};  	  &#13;
+	  args.id         = "popId";   //필수&#13;
+	  args.url        = "sample::sample0031PopupP.xfdl"; //필수&#13;
+	  args.titletext  = '샘플팝업';   //필수&#13;
+	  args.paramCode  = "abcd";    // paremeter&#13;
+&#13;
+	this.gfnShowModal(args,&#13;
+	     (resVar)=&gt;{  //callback&#13;
+			&#13;
+		 });</Snippet>
+        <Snippet name="gfnSolarBase" shortcut="" description="">this.gfnSolarBase();  </Snippet>
+        <Snippet name="gfnSolarToLunar " shortcut="" description="">this.gfnSolarToLunar(value, leapMonth); </Snippet>
+        <Snippet name="gfnStrToDate" shortcut="" description="">this.gfnStrToDate();  </Snippet>
+        <Snippet name="gfnToast" shortcut="" description="toast  message 함수 추가">this.gfnToast(msg);</Snippet>
+        <Snippet name="gfnToday" shortcut="" description="">this.gfnToday();  </Snippet>
+        <Snippet name="gfnTran" shortcut="" description="trnasaction 조회용"> var id      = "svc$end$";   // service id&#13;
+ var url     = "";  //service url&#13;
+ var inds    = "";  //input dataset&#13;
+ var outds   = "";   //output dataset&#13;
+ var callback = "fnCallback";    //callback&#13;
+ &#13;
+ this.gfnTran(id, url, inds, outds, callback);   </Snippet>
+        <Snippet name="gfnTran(funcCallback)" shortcut="" description="공통 transaction function callback"> var id        = "svc$end$";&#13;
+ var url       = "";&#13;
+ var inds      = "";&#13;
+ var outds     = "";  &#13;
+&#13;
+ this.gfnTran(id, url, inds, outds,&#13;
+ (code,msg)=&gt;{&#13;
+	 if(code &lt; 0) return;&#13;
+ });</Snippet>
+        <Snippet name="gfnTran(save)" shortcut="" description=""> var id      = "svcSave$end$"; // service id&#13;
+ var url     = "";             // service url&#13;
+ var inds    = "inSys1=dsUser:u"; // input dataset&#13;
+ &#13;
+ this.gfnTran(id, url, inds, "fnCallback");  </Snippet>
+        <Snippet name="gfnTransformKeys" shortcut="" description="json key 형 변환 ">const result = this.gfnTransformKeys(json, key =&gt; key.toUpperCase());</Snippet>
+        <Snippet name="gfnTrim" shortcut="" description="">this.gfnAllTrim(str);</Snippet>
+        <Snippet name="gfnTypeOf " shortcut="" description="">this.gfnTypeOf($end$); </Snippet>
+        <Snippet name="gfnUpdateToDataset" shortcut="" description="">this.gfnUpdateToDataset(); </Snippet>
+        <Snippet name="gfnValidation" shortcut="" description="">this.gfnValidation(obj, sColumID, sColumName, sValidRule);</Snippet>
+        <Snippet name="gfnValidationCheckRule" shortcut="" description="">this.gfnValidationCheckRule(itemName, itemValue, validationRuleSet, compare1, compare2);&#13;
+</Snippet>
+        <Snippet name="gfnWindownOpenMenu" shortcut="" description="menu form modeless 실행"> this.gfnWindownOpenMenu("M10001",{param1 : "aaa"},(resVar)=&gt;{&#13;
+     &#13;
+   });</Snippet>
+      </Group>
+      <Group name="gv">
+        <Snippet name="gvFrameInfo" shortcut="" description="">var objApp = nexacro.getApplication();&#13;
+objApp.gvFrameInfo;</Snippet>
+        <Snippet name="gvHomeFrame" shortcut="" description="">objApp.gvHomeFrame;</Snippet>
+        <Snippet name="gvHttpError" shortcut="" description="">objApp.gvHttpError;</Snippet>
+        <Snippet name="gvIndexFrame" shortcut="" description="">&#13;
+var objApp = nexacro.getApplication();&#13;
+objApp.gvIndexFrame</Snippet>
+        <Snippet name="gvLeftS" shortcut="" description="">this.objApp.gvLeftS;</Snippet>
+        <Snippet name="gvMainFrame" shortcut="" description="">var objApp = nexacro.getApplication();&#13;
+objApp.gvMainFrame;</Snippet>
+        <Snippet name="gvMainS" shortcut="" description="">this.objApp.gvMainS;</Snippet>
+        <Snippet name="gvMdiFrame" shortcut="" description="">var objApp = nexacro.getApplication();&#13;
+objApp.gvMdiFrame</Snippet>
+        <Snippet name="gvMenuColumns" shortcut="" description="">/*&#13;
+ID_MENU 	  : "ID_MENU"    // MENU ID&#13;
+	,NM_MENU      : "NM_MENU"&#13;
+	,NM_MENUPATH   : "NM_MENUPATH"  //네비게이션&#13;
+	,MENU_TOOLTIP : "MENU_TOOLTIP"&#13;
+	,CL_MENU      : "CL_MENU"&#13;
+	,URL          : "URL"&#13;
+	,WINID 	      : "WIN_ID"     // 윈도우(프레임)아이디(열린 메뉴의 윈도우 아이디)&#13;
+	,TITLE 	      : "TITLE"     // 메뉴 타이틀&#13;
+	,CL_SYSTEM    : "CL_SYSTEM"&#13;
+	,MENU_ARGS    : "MENU_ARGS"  // 메뉴파라메터&#13;
+	,NO_LEVEL     : "NO_LEVEL"     // 메뉴레벨	&#13;
+	,YN_NEW       : "YN_NEW"  // 신규버튼&#13;
+	,YN_SEARCH    : "YN_SEARCH"   // 검색버튼&#13;
+	,YN_SAVE      : "YN_SAVE" //저장버튼&#13;
+	,YN_DELETE    : "YN_DELETE"   // 삭제&#13;
+	,YN_PRINT     : "YN_PRINT"   // 프린터&#13;
+	,YN_USE       : "YN_USE"   //메뉴 사용유무 1: 유&#13;
+	,YN_MYMENU    : "YN_MYMENU" //마이메뉴 저장 여부 (0,1)&#13;
+	,YN_DISPLAY   : "YN_DISPLAY"  //화면유무&#13;
+*/&#13;
+this.gvMenuColumns.</Snippet>
+        <Snippet name="gvTopFrame" shortcut="" description="">this.objApp.gvTopFrame;</Snippet>
+        <Snippet name="gvWorkFrame" shortcut="" description="">objApp.gvWorkFrame</Snippet>
+      </Group>
+      <Group name="paging">
+        <Snippet name="callPaging" shortcut="paging" description="">var totalCnt =  nexacro.toNumber(this.dsPagingInfo.getColumn(0, "totalCount")); //전체로우갯수	&#13;
+$end$.callPaging(totalCnt);	</Snippet>
+        <Snippet name="getPageNumber" shortcut="paging" description=" 현재페이지 갯수 가져오는 함수">$end$.getPageNumber()</Snippet>
+        <Snippet name="upage" shortcut="paging" description="">$end$.upage    //현재 page&#13;
+</Snippet>
+        <Snippet name="upageCount" shortcut="paging" description="실제표출페이지갯수">$end$.upageCount         //실제표출페이지갯수</Snippet>
+        <Snippet name="urecords" shortcut="paging" description="목록갯수">$end$.urecords           //목록갯수</Snippet>
+        <Snippet name="urecordsOffset" shortcut="paging" description="/시작rownum">$end$.urecordsOffset      //시작rownum</Snippet>
+        <Snippet name="utotalCount" shortcut="paging" description="전체데이터갯수">$end$.utotalCount        //전체데이터갯수</Snippet>
+      </Group>
+      <Group name="Work"/>
+      <Snippet name="/*" shortcut="" description="">/*
+ *	$end$
+ */
+ </Snippet>
+      <Snippet name="/**" shortcut="" description="">/************************************************************************
+ * $end$
+ ************************************************************************/
+</Snippet>
+      <Snippet name="///" shortcut="" description="">//////////////////////////////////////////////////////////////////////////</Snippet>
+      <Snippet name="/base script" shortcut="" description="업무화면 기본 script 생성">/**&#13;
+* $end$&#13;
+*@FileName $FILE_BASE$&#13;
+*@Creator 	&#13;
+*@CreateDate $DATE$&#13;
+*@Desction    &#13;
+************** 소스 수정 이력 ***********************************************&#13;
+*  date          		Modifier                Description&#13;
+*******************************************************************************&#13;
+*  &#13;
+*******************************************************************************&#13;
+*/&#13;
+&#13;
+/************************************************************************************************&#13;
+* include 영역&#13;
+************************************************************************************************/&#13;
+&#13;
+/************************************************************************************************&#13;
+* FORM 변수 선언 영역&#13;
+************************************************************************************************/&#13;
+&#13;
+/************************************************************************************************&#13;
+* FORM EVENT 영역(onload, onbeforeclose)&#13;
+************************************************************************************************/&#13;
+/**&#13;
+* @description 화면 onload시 처리내역(필수)&#13;
+*/&#13;
+this.addEventHandler("onload",  function(obj,e)&#13;
+{&#13;
+&#13;
+},this);&#13;
+/*&#13;
+*@description 화면 이동 후 넘어온 값 처리	&#13;
+*@param {string}{object}{array} 넘어온 아규먼트 처리&#13;
+*/&#13;
+this.cfnMove_onactive = function(param)&#13;
+{&#13;
+	//trace("fnMoveOnActie formName ===&gt;" + this.name + "&lt;&gt; parg ====&gt; " + param);&#13;
+};&#13;
+&#13;
+/**&#13;
+* @description 화면 닫힐때 변경사항 체크(입력 화면에서 변경되는 Dataset 체크 필요, 선택)&#13;
+* @return {boolean} true(화면 닫지 않음) / false(화면 닫음)&#13;
+*/&#13;
+this.cfn_onclose = function()&#13;
+{&#13;
+	return false;&#13;
+};&#13;
+&#13;
+/**&#13;
+ * //paging 버튼 // next prev 클릭 이벤트 후처리&#13;
+ * @param {number} 누른 페이지&#13;
+  * @param {number} 시작데이터rownum계산&#13;
+ * @return &#13;
+ * @example&#13;
+ * @memberOf &#13;
+ */&#13;
+this.cfnPaging_onclick = function(nPage,nRecordOffset)&#13;
+{&#13;
+	trace(" ## nPage : " +nPage + "&lt;&gt; nRecordOffset : " + nRecordOffset);&#13;
+&#13;
+}&#13;
+&#13;
+/************************************************************************************************&#13;
+* CALLBACK 콜백 처리부분(Transaction, Popup)&#13;
+************************************************************************************************/&#13;
+this.fnCallback = function(id,code,msg)&#13;
+{&#13;
+	// 에러 시 화면 처리 내역&#13;
+	if(code &lt; 0) return;&#13;
+	&#13;
+	&#13;
+	switch(id) {&#13;
+	case "":&#13;
+		break;&#13;
+&#13;
+	default:&#13;
+	}&#13;
+&#13;
+};&#13;
+&#13;
+/************************************************************************************************&#13;
+* CRUD 및 TRANSACTION 서비스 호출 처리&#13;
+************************************************************************************************/&#13;
+&#13;
+/************************************************************************************************&#13;
+* 사용자 FUNCTION 영역&#13;
+************************************************************************************************/&#13;
+&#13;
+/************************************************************************************************&#13;
+* 각 COMPONENT 별 EVENT 영역&#13;
+************************************************************************************************/</Snippet>
+      <Snippet name="/base script popup" shortcut="" description="팝업 화면 기본 script 생성">/**&#13;
+*&#13;
+*@FileName  $FILE_BASE$&#13;
+*@Creator 	&#13;
+*@CreateDate $DATE$&#13;
+*@Desction    &#13;
+************** 소스 수정 이력 ***********************************************&#13;
+*  date          		Modifier                Description&#13;
+*******************************************************************************&#13;
+*  &#13;
+*******************************************************************************&#13;
+*/&#13;
+&#13;
+/***********************************************************************************&#13;
+* Form Event&#13;
+***********************************************************************************/&#13;
+/**&#13;
+* @description 화면 onload시 처리내역(필수)&#13;
+*/&#13;
+this.addEventHandler("onload",  function(obj,e)&#13;
+{&#13;
+  &#13;
+  //폼로드시 공통함수 &#13;
+	&#13;
+	/**&#13;
+	 * 부모 창에서 넘어온 아규먼트 받는 처리&#13;
+	 */&#13;
+	//var p_paramcode = this.paramCode;&#13;
+   //var p_paramNum = this.paramNum;&#13;
+	//var p_paramDataset = this.paramDataset;&#13;
+	&#13;
+},this);&#13;
+&#13;
+/**&#13;
+ * //paging 버튼 // next prev 클릭 이벤트 후처리&#13;
+ * @param {number} 누른 페이지&#13;
+  * @param {number} 시작데이터rownum계산&#13;
+ * @return &#13;
+ * @example&#13;
+ * @memberOf &#13;
+ */&#13;
+this.cfnPaging_onclick = function(nPage,nRecordOffset)&#13;
+{&#13;
+	trace(" ## nPage : " +nPage + "&lt;&gt; nRecordOffset : " + nRecordOffset);&#13;
+&#13;
+}&#13;
+&#13;
+//popup titlebar close(x) 버튼 클릭 event&#13;
+this.cfnTitlebarClose_onclick = function()&#13;
+{&#13;
+   return false;&#13;
+}&#13;
+&#13;
+/************************************************************************************************&#13;
+* CALLBACK 콜백 처리부분(Transaction, Popup)&#13;
+************************************************************************************************/&#13;
+&#13;
+this.fnCallback = function(id,code,msg)&#13;
+{&#13;
+	// 에러 시 화면 처리 내역&#13;
+	if(code &lt; 0) return;&#13;
+	&#13;
+	switch(id) {&#13;
+	case "":&#13;
+		break;&#13;
+	&#13;
+	default:&#13;
+	}&#13;
+};&#13;
+&#13;
+/************************************************************************************************&#13;
+* CRUD 및 TRANSACTION 서비스 호출 처리&#13;
+************************************************************************************************/&#13;
+&#13;
+/************************************************************************************************&#13;
+* 사용자 FUNCTION 영역&#13;
+************************************************************************************************/&#13;
+&#13;
+/************************************************************************************************&#13;
+* 각 COMPONENT 별 EVENT 영역&#13;
+************************************************************************************************/&#13;
+</Snippet>
+      <Snippet name="/function" shortcut="" description="function 주석">/**&#13;
+ * $end$&#13;
+ * @param {string} &#13;
+ * @return &#13;
+ * @example&#13;
+ * @memberOf &#13;
+ */</Snippet>
+      <Snippet name="/include" shortcut="" description="">/************************************************************************************************&#13;
+ * include 영역&#13;
+ ************************************************************************************************/&#13;
+</Snippet>
+      <Snippet name="/title header" shortcut="" description="폼 header 주석">/**&#13;
+* $end$&#13;
+*@FileName  $FILE_BASE$&#13;
+*@Creator 	&#13;
+*@CreateDate $DATE$&#13;
+*@Desction    &#13;
+************** 소스 수정 이력 ***********************************************&#13;
+*  date          		Modifier                Description&#13;
+*******************************************************************************&#13;
+*  &#13;
+*******************************************************************************&#13;
+*/</Snippet>
+      <Snippet name="alert();" shortcut="al" description="">alert($end$);</Snippet>
+      <Snippet name="alertjob" shortcut="this" description="작업중입니다. 메시지">this.alertjob();</Snippet>
+      <Snippet name="console.dev" shortcut="this" description="">this.console.dev($end$);</Snippet>
+      <Snippet name="console.error" shortcut="this" description="">this.console.error($end$);</Snippet>
+      <Snippet name="console.log" shortcut="this" description="">this.console.log($end$);</Snippet>
+      <Snippet name="console.warn" shortcut="this" description="">this.console.warn($end$);</Snippet>
+      <Snippet name="do { } while();" shortcut="do" description="">do {
+$tab$$end$
+} while();</Snippet>
+      <Snippet name="formOnlaod" shortcut="this" description="">this.addEventHandler("onload",function(obj,e)&#13;
+{&#13;
+$tab$$end$&#13;
+},this);</Snippet>
+      <Snippet name="funcionArrow" shortcut="" description="arrrow function">($end$)=&gt;{&#13;
+$tab$&#13;
+}</Snippet>
+      <Snippet name="function() {}" shortcut="" description="">function ($end$)
+{
+$tab$
+};</Snippet>
+      <Snippet name="getPrjUrl" shortcut="this" description="project Url 가져오는 함수">this.getPrjUrl()</Snippet>
+      <Snippet name="getSvcUrl" shortcut="this" description="service url 가져오는 함수">this.getSvcUrl()</Snippet>
+      <Snippet name="if () {}" shortcut="if" description="">if ($end$)
+{
+$tab$
+}</Snippet>
+      <Snippet name="if () {} else {}" shortcut="ifel" description="">if ($end$)
+{
+$tab$
+}
+else
+{
+$tab$
+}</Snippet>
+      <Snippet name="isNexaBrowser" shortcut="this" description="전용브라우저 체크 ">this.isNexaBrowser()</Snippet>
+      <Snippet name="isNull" shortcut="this" description="">this.isNull($end$);</Snippet>
+      <Snippet name="switch() { case : break..." shortcut="switch" description="">switch($end$) {
+case :
+$tab$break;
+case :
+$tab$break;
+default:
+}</Snippet>
+      <Snippet name="while () {}" shortcut="while" description="">while ($end$)
+{
+$tab$
+}</Snippet>
+    </Group>
+    <Snippet name="/*" shortcut="" description="">/*
+ *	$end$
+ */
+ </Snippet>
+    <Snippet name="/**" shortcut="" description="">/************************************************************************
+ * $end$
+ ************************************************************************/
+</Snippet>
+    <Snippet name="///" shortcut="" description="">//////////////////////////////////////////////////////////////////////////</Snippet>
+    <Snippet name="/include" shortcut="" description="">/************************************************************************************************&#13;
+ * include 영역&#13;
+ ************************************************************************************************/&#13;
+</Snippet>
+    <Snippet name="alert();" shortcut="al" description="">alert($end$);</Snippet>
+    <Snippet name="do { } while();" shortcut="do" description="">do {
+$tab$$end$
+} while();</Snippet>
+    <Snippet name="for" shortcut="" description="">for (var i=0; i&lt;str.length;i++)&#13;
+{&#13;
+&#13;
+}</Snippet>
+    <Snippet name="for in" shortcut="" description="">for (i in obj.length)&#13;
+{&#13;
+$tab$&#13;
+}</Snippet>
+    <Snippet name="function() {}" shortcut="func" description="">function ($end$)
+{
+$tab$
+};</Snippet>
+    <Snippet name="if () {}" shortcut="if" description="">if ($end$)
+{
+$tab$
+}</Snippet>
+    <Snippet name="if () {} else {}" shortcut="ifel" description="">if ($end$)
+{
+$tab$
+}
+else
+{
+$tab$
+}</Snippet>
+    <Snippet name="switch() { case : break..." shortcut="switch" description="">switch($end$) {
+case :
+$tab$break;
+case :
+$tab$break;
+default:
+}</Snippet>
+    <Snippet name="while () {}" shortcut="while" description="">while ($end$)
+{
+$tab$
+}</Snippet>
+  </Script>
+  <Xcss>
+    <Group name="Attribute">
+      <Snippet name="-nexa-background-odd" shortcut="-nexa-background-odd" description="">$tab$-nexa-background-odd : #ffffaa;</Snippet>
+      <Snippet name="-nexa-border" shortcut="-nexa-border" description="">$tab$-nexa-border : 1px solid #999999;</Snippet>
+      <Snippet name="-nexa-color-odd" shortcut="-nexa-color-odd" description="">$tab$-nexa-color-odd : red;</Snippet>
+      <Snippet name="-nexa-edge" shortcut="-nexa-edge" description="">$tab$-nexa-edge : url("theme://images/Titlebar_bg.png") 5px 5px;</Snippet>
+      <Snippet name="-nexa-edge-odd" shortcut="-nexa-edge-odd" description="">$tab$-nexa-edge-odd : url("theme://images/Titlebar_bg.png") 5px 5px;</Snippet>
+      <Snippet name="-nexa-icon" shortcut="-nexa-icon" description="">$tab$-nexa-icon : url("theme://images/Titlebar_bg.png");</Snippet>
+      <Snippet name="-nexa-icon-position" shortcut="-nexa-icon-position" description="">$tab$-nexa-icon-position : left;</Snippet>
+      <Snippet name="-nexa-padding" shortcut="-nexa-padding" description="">$tab$-nexa-padding : 5px 5px 5px 5px;</Snippet>
+      <Snippet name="-nexa-text-align" shortcut="-nexa-text-align" description="">$tab$-nexa-text-align : left;</Snippet>
+      <Snippet name="-nexa-text-padding" shortcut="-nexa-text-padding" description="">$tab$-nexa-text-padding : 5px 5px 5px 5px;</Snippet>
+      <Snippet name="-nexa-vertical-align" shortcut="-nexa-vertical-align" description="">$tab$-nexa-vertical-align : top;</Snippet>
+      <Snippet name="-nexa-word-wrap" shortcut="-nexa-word-wrap" description="">$tab$-nexa-word-wrap : char;</Snippet>
+      <Snippet name="background" shortcut="background" description="">$tab$background : #ffffaa;</Snippet>
+      <Snippet name="border-radius" shortcut="border-radius" description="">$tab$border-radius : 5px 5px 5px 5px;</Snippet>
+      <Snippet name="box-shadow" shortcut="box-shadow" description="">$tab$box-shadow : 5px 5px 3px #ffffff;</Snippet>
+      <Snippet name="color" shortcut="color" description="">$tab$color : transparent;</Snippet>
+      <Snippet name="cursor" shortcut="cursor" description="">$tab$cursor : default;</Snippet>
+      <Snippet name="font" shortcut="font" description="">$tab$font : 9pt "Tahoma";</Snippet>
+      <Snippet name="letter-spacing" shortcut="letter-spacing" description="">$tab$letter-spacing : normal;</Snippet>
+      <Snippet name="opacity" shortcut="opacity" description="">$tab$opacity : 0.8;</Snippet>
+      <Snippet name="text-decoration" shortcut="text-decoration" description="">$tab$text-decoration : underline;</Snippet>
+      <Snippet name="word-spacing" shortcut="word-spacing" description="">$tab$word-spacing : 30px;</Snippet>
+    </Group>
+    <Group name="codesnippet1103">
+      <Group name="Attribute">
+        <Snippet name="-nexa-background-odd" shortcut="-nexa-background-odd" description="">$tab$-nexa-background-odd : #ffffaa;</Snippet>
+        <Snippet name="-nexa-border" shortcut="-nexa-border" description="">$tab$-nexa-border : 1px solid #999999;</Snippet>
+        <Snippet name="-nexa-color-odd" shortcut="-nexa-color-odd" description="">$tab$-nexa-color-odd : red;</Snippet>
+        <Snippet name="-nexa-edge" shortcut="-nexa-edge" description="">$tab$-nexa-edge : url("theme://images/Titlebar_bg.png") 5px 5px;</Snippet>
+        <Snippet name="-nexa-edge-odd" shortcut="-nexa-edge-odd" description="">$tab$-nexa-edge-odd : url("theme://images/Titlebar_bg.png") 5px 5px;</Snippet>
+        <Snippet name="-nexa-icon" shortcut="-nexa-icon" description="">$tab$-nexa-icon : url("theme://images/Titlebar_bg.png");</Snippet>
+        <Snippet name="-nexa-icon-position" shortcut="-nexa-icon-position" description="">$tab$-nexa-icon-position : left;</Snippet>
+        <Snippet name="-nexa-padding" shortcut="-nexa-padding" description="">$tab$-nexa-padding : 5px 5px 5px 5px;</Snippet>
+        <Snippet name="-nexa-text-align" shortcut="-nexa-text-align" description="">$tab$-nexa-text-align : left;</Snippet>
+        <Snippet name="-nexa-text-padding" shortcut="-nexa-text-padding" description="">$tab$-nexa-text-padding : 5px 5px 5px 5px;</Snippet>
+        <Snippet name="-nexa-vertical-align" shortcut="-nexa-vertical-align" description="">$tab$-nexa-vertical-align : top;</Snippet>
+        <Snippet name="-nexa-word-wrap" shortcut="-nexa-word-wrap" description="">$tab$-nexa-word-wrap : char;</Snippet>
+        <Snippet name="background" shortcut="background" description="">$tab$background : #ffffaa;</Snippet>
+        <Snippet name="border-radius" shortcut="border-radius" description="">$tab$border-radius : 5px 5px 5px 5px;</Snippet>
+        <Snippet name="box-shadow" shortcut="box-shadow" description="">$tab$box-shadow : 5px 5px 3px #ffffff;</Snippet>
+        <Snippet name="color" shortcut="color" description="">$tab$color : transparent;</Snippet>
+        <Snippet name="cursor" shortcut="cursor" description="">$tab$cursor : default;</Snippet>
+        <Snippet name="font" shortcut="font" description="">$tab$font : 9pt "Tahoma";</Snippet>
+        <Snippet name="letter-spacing" shortcut="letter-spacing" description="">$tab$letter-spacing : normal;</Snippet>
+        <Snippet name="opacity" shortcut="opacity" description="">$tab$opacity : 0.8;</Snippet>
+        <Snippet name="text-decoration" shortcut="text-decoration" description="">$tab$text-decoration : underline;</Snippet>
+        <Snippet name="word-spacing" shortcut="word-spacing" description="">$tab$word-spacing : 30px;</Snippet>
+      </Group>
+      <Group name="Selector">
+        <Snippet name="Band" shortcut=".Band" description="">.Band
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Button" shortcut=".Button" description="">.Button
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Calendar" shortcut=".Calendar" description="">.Calendar
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Cell" shortcut=".Cell" description="">.Cell
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="CheckBox" shortcut=".CheckBox" description="">.CheckBox
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Combo" shortcut=".Combo" description="">.Combo
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="ComboControl" shortcut=".ComboControl" description="">.ComboControl
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="DatePicker" shortcut=".DatePicker" description="">.DatePicker
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Div" shortcut=".Div" description="">.Div
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Edit" shortcut=".Edit" description="">.Edit
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="FileDownload" shortcut=".FileDownload" description="">.FileDownload
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="FileUpload" shortcut=".FileUpload" description="">.FileUpload
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="FlashPlayer" shortcut=".FlashPlayer" description="">.FlashPlayer
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Grid" shortcut=".Grid" description="">.Grid
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="GroupBox" shortcut=".GroupBox" description="">.GroupBox
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="ImageViewer" shortcut=".ImageViewer" description="">.ImageViewer
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="ListBox" shortcut=".ListBox" description="">.ListBox
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Menu" shortcut=".Menu" description="">.FlashPlayer
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Radio" shortcut=".Radio" description="">.Radio
+{
+$tab$$end$
+}
+</Snippet>
+      </Group>
+      <Group name="Status">
+        <Snippet name="deactivate" shortcut="deactivate" description="">[status=deactivate]</Snippet>
+        <Snippet name="disabled" shortcut="disabled" description="">[status=disabled]</Snippet>
+        <Snippet name="focused" shortcut="focused" description="">[status=focused]</Snippet>
+        <Snippet name="mouseover" shortcut="mouseover" description="">[status=mouseover]</Snippet>
+        <Snippet name="readonly" shortcut="readonly" description="">[status=readonly]</Snippet>
+      </Group>
+      <Snippet name="/*" shortcut="" description="">/***** $end$ *****/
+</Snippet>
+      <Snippet name="/**" shortcut="" description="">/************************************************************************
+ * $end$
+ ************************************************************************/
+</Snippet>
+    </Group>
+    <Group name="codesnippet110300">
+      <Group name="Attribute">
+        <Snippet name="-nexa-background-odd" shortcut="-nexa-background-odd" description="">$tab$-nexa-background-odd : #ffffaa;</Snippet>
+        <Snippet name="-nexa-border" shortcut="-nexa-border" description="">$tab$-nexa-border : 1px solid #999999;</Snippet>
+        <Snippet name="-nexa-color-odd" shortcut="-nexa-color-odd" description="">$tab$-nexa-color-odd : red;</Snippet>
+        <Snippet name="-nexa-edge" shortcut="-nexa-edge" description="">$tab$-nexa-edge : url("theme://images/Titlebar_bg.png") 5px 5px;</Snippet>
+        <Snippet name="-nexa-edge-odd" shortcut="-nexa-edge-odd" description="">$tab$-nexa-edge-odd : url("theme://images/Titlebar_bg.png") 5px 5px;</Snippet>
+        <Snippet name="-nexa-icon" shortcut="-nexa-icon" description="">$tab$-nexa-icon : url("theme://images/Titlebar_bg.png");</Snippet>
+        <Snippet name="-nexa-icon-position" shortcut="-nexa-icon-position" description="">$tab$-nexa-icon-position : left;</Snippet>
+        <Snippet name="-nexa-padding" shortcut="-nexa-padding" description="">$tab$-nexa-padding : 5px 5px 5px 5px;</Snippet>
+        <Snippet name="-nexa-text-align" shortcut="-nexa-text-align" description="">$tab$-nexa-text-align : left;</Snippet>
+        <Snippet name="-nexa-text-padding" shortcut="-nexa-text-padding" description="">$tab$-nexa-text-padding : 5px 5px 5px 5px;</Snippet>
+        <Snippet name="-nexa-vertical-align" shortcut="-nexa-vertical-align" description="">$tab$-nexa-vertical-align : top;</Snippet>
+        <Snippet name="-nexa-word-wrap" shortcut="-nexa-word-wrap" description="">$tab$-nexa-word-wrap : char;</Snippet>
+        <Snippet name="background" shortcut="background" description="">$tab$background : #ffffaa;</Snippet>
+        <Snippet name="border-radius" shortcut="border-radius" description="">$tab$border-radius : 5px 5px 5px 5px;</Snippet>
+        <Snippet name="box-shadow" shortcut="box-shadow" description="">$tab$box-shadow : 5px 5px 3px #ffffff;</Snippet>
+        <Snippet name="color" shortcut="color" description="">$tab$color : transparent;</Snippet>
+        <Snippet name="cursor" shortcut="cursor" description="">$tab$cursor : default;</Snippet>
+        <Snippet name="font" shortcut="font" description="">$tab$font : 9pt "Tahoma";</Snippet>
+        <Snippet name="letter-spacing" shortcut="letter-spacing" description="">$tab$letter-spacing : normal;</Snippet>
+        <Snippet name="opacity" shortcut="opacity" description="">$tab$opacity : 0.8;</Snippet>
+        <Snippet name="text-decoration" shortcut="text-decoration" description="">$tab$text-decoration : underline;</Snippet>
+        <Snippet name="word-spacing" shortcut="word-spacing" description="">$tab$word-spacing : 30px;</Snippet>
+      </Group>
+      <Group name="Selector">
+        <Snippet name="Band" shortcut=".Band" description="">.Band
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Button" shortcut=".Button" description="">.Button
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Calendar" shortcut=".Calendar" description="">.Calendar
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Cell" shortcut=".Cell" description="">.Cell
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="CheckBox" shortcut=".CheckBox" description="">.CheckBox
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Combo" shortcut=".Combo" description="">.Combo
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="ComboControl" shortcut=".ComboControl" description="">.ComboControl
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="DatePicker" shortcut=".DatePicker" description="">.DatePicker
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Div" shortcut=".Div" description="">.Div
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Edit" shortcut=".Edit" description="">.Edit
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="FileDownload" shortcut=".FileDownload" description="">.FileDownload
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="FileUpload" shortcut=".FileUpload" description="">.FileUpload
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="FlashPlayer" shortcut=".FlashPlayer" description="">.FlashPlayer
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Grid" shortcut=".Grid" description="">.Grid
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="GroupBox" shortcut=".GroupBox" description="">.GroupBox
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="ImageViewer" shortcut=".ImageViewer" description="">.ImageViewer
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="ListBox" shortcut=".ListBox" description="">.ListBox
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Menu" shortcut=".Menu" description="">.FlashPlayer
+{
+$tab$$end$
+}
+</Snippet>
+        <Snippet name="Radio" shortcut=".Radio" description="">.Radio
+{
+$tab$$end$
+}
+</Snippet>
+      </Group>
+      <Group name="Status">
+        <Snippet name="deactivate" shortcut="deactivate" description="">[status=deactivate]</Snippet>
+        <Snippet name="disabled" shortcut="disabled" description="">[status=disabled]</Snippet>
+        <Snippet name="focused" shortcut="focused" description="">[status=focused]</Snippet>
+        <Snippet name="mouseover" shortcut="mouseover" description="">[status=mouseover]</Snippet>
+        <Snippet name="readonly" shortcut="readonly" description="">[status=readonly]</Snippet>
+      </Group>
+      <Snippet name="/*" shortcut="" description="">/***** $end$ *****/
+</Snippet>
+      <Snippet name="/**" shortcut="" description="">/************************************************************************
+ * $end$
+ ************************************************************************/
+</Snippet>
+    </Group>
+    <Group name="Selector">
+      <Snippet name="Band" shortcut=".Band" description="">.Band
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Button" shortcut=".Button" description="">.Button
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Calendar" shortcut=".Calendar" description="">.Calendar
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Cell" shortcut=".Cell" description="">.Cell
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="CheckBox" shortcut=".CheckBox" description="">.CheckBox
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Combo" shortcut=".Combo" description="">.Combo
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="ComboControl" shortcut=".ComboControl" description="">.ComboControl
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="DatePicker" shortcut=".DatePicker" description="">.DatePicker
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Div" shortcut=".Div" description="">.Div
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Edit" shortcut=".Edit" description="">.Edit
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="FileDownload" shortcut=".FileDownload" description="">.FileDownload
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="FileUpload" shortcut=".FileUpload" description="">.FileUpload
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="FlashPlayer" shortcut=".FlashPlayer" description="">.FlashPlayer
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Grid" shortcut=".Grid" description="">.Grid
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="GroupBox" shortcut=".GroupBox" description="">.GroupBox
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="ImageViewer" shortcut=".ImageViewer" description="">.ImageViewer
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="ListBox" shortcut=".ListBox" description="">.ListBox
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Menu" shortcut=".Menu" description="">.FlashPlayer
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Radio" shortcut=".Radio" description="">.Radio
+{
+$tab$$end$
+}
+</Snippet>
+    </Group>
+    <Group name="Status">
+      <Snippet name="deactivate" shortcut="deactivate" description="">[status=deactivate]</Snippet>
+      <Snippet name="disabled" shortcut="disabled" description="">[status=disabled]</Snippet>
+      <Snippet name="focused" shortcut="focused" description="">[status=focused]</Snippet>
+      <Snippet name="mouseover" shortcut="mouseover" description="">[status=mouseover]</Snippet>
+      <Snippet name="readonly" shortcut="readonly" description="">[status=readonly]</Snippet>
+    </Group>
+    <Snippet name="/*" shortcut="" description="">/***** $end$ *****/
+</Snippet>
+    <Snippet name="/**" shortcut="" description="">/************************************************************************
+ * $end$
+ ************************************************************************/
+</Snippet>
+  </Xcss>
+</Snippets>

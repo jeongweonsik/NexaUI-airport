@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frmSub" width="264" height="838" titletext="프레임(Left메인)" onload="frm_onlaod" cssclass="frm_LF" visible="true">
+    <Layouts>
+      <Layout height="838" width="264">
+        <Button id="btnMenu" taborder="1" text="메뉴" left="0" top="0" width="49.24%" height="36" cssclass="btn_LF_Tab_S" onclick="btnMenu_onclick"/>
+        <Button id="btnMyMenu" taborder="2" text="즐겨찾기" left="btnMenu:0" top="0" height="36" cssclass="btn_LF_LastTab" right="4" onclick="btnMenu_onclick"/>
+        <Button id="Button00" taborder="3" text="&lt;" top="43.79474940334129%" width="21" height="95" right="0"/>
+        <Div id="divLeft" taborder="0" left="0" top="btnMyMenu:0" bottom="0" url="frame::frmLeftS.xfdl" formscrolltype="none" cssclass="div_LF" right="Button00:0"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+* left frame
+*@FileName  frmLeft
+*@Creator 	{J}
+*@CreateDate 2024/10/18
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+/************************************************************************************************
+ * FORM 변수 선언 영역
+************************************************************************************************/
+
+
+/************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose)
+************************************************************************************************/
+/**
+ * @description 화면 onload시 처리내역(필수)
+**/
+this.frm_onlaod = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{	
+	
+};
+
+this.fnSetInit = function ()
+{
+   this.divLeft.form.fnSetInit();
+};
+
+this.btnMenu_onclick = function(obj)
+{
+   this.fnSetMenuChange(obj.name);
+}
+
+this.fnSetMenuChange = function (menuNm)
+{
+	  let nidx = 0;
+
+	if(menuNm == "btnMyMenu") nidx = 1;
+	
+	 this.fnSetMenuCss(nidx);	
+	this.divLeft.form.fnSetStepMenu(nidx);
+};
+
+// 메뉴 버튼 css 
+this.fnSetMenuCss = function (flag)
+{
+	//btnMymenu
+	if(flag == 1){
+	    this.btnMenu.cssclass = "btn_LF_Tab";
+	    this.btnMyMenu.cssclass = "btn_LF_LastTab_S";	 
+	     
+	}else{	
+	   this.btnMenu.cssclass = "btn_LF_Tab_S";	  
+	   this.btnMyMenu.cssclass = "btn_LF_LastTab";	 
+	 // this.btnMymenu.set_cssclass("btn_LF_LastTab");
+	}
+};
+
+
+/**
+ * @description  tree 메뉴 경로 반환
+**/
+this.fnGetMenuPath = function (menuID)
+{
+	let nRow = app.gdsMenu.findRow(com.frame.menu.id, menuID);
+	if (nRow >= 0) return this.grdMenu.getTreePath(nRow);
+}
+
+
+//펼침 / 접힘 onclick
+this.btnSetExPand_onclick = function(obj)
+{
+    var btnMenuCollApse = this.divLBottom.form.divHistory.form.btnMenuCollApse;
+	var btnSetExPand = this.divLBottom.form.divHistory.form.btnMenExpand;
+	
+    if(obj.name == "btnMenExpand"){
+		  obj.cssclass = "btn_LF_Plus_S";
+	      btnMenuCollApse.cssclass = "btn_LF_Minus";
+	}
+	
+	if(obj.name == "btnMenuCollApse"){
+	      obj.cssclass = "btn_LF_Minus_S";
+	      btnSetExPand.cssclass = "btn_LF_Plus";
+	}
+	
+	this.divLeft.form.btnSetExPand_onclick(obj);
+
+};
+
+/************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+************************************************************************************************/
+]]></Script>
+    <Objects/>
+  </Form>
+</FDL>

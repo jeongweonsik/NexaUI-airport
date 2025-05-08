@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="testForm" width="1294" height="735" titletext="테스트폼">
+    <Layouts>
+      <Layout height="735" width="1294">
+        <Div id="div00" taborder="0" text="div00" left="0" top="0" height="59" right="0">
+          <Layouts>
+            <Layout>
+              <Static id="sta00" taborder="0" text="상위코드명" left="314" top="14" width="85" height="26" cssclass="sta_WF_SearchLabel" fittocontents="width"/>
+              <Edit id="txt00" taborder="1" left="399" top="14" width="200" height="26"/>
+              <Edit id="txt00_00" taborder="2" left="685" top="14" width="200" height="26"/>
+              <Static id="sta00_00" taborder="3" text="하위코드명" left="600" top="14" width="85" height="26" cssclass="sta_WF_SearchLabel" fittocontents="width"/>
+              <Button id="btnSearch" taborder="4" text="조회" width="73" height="26" cssclass="btn_WF_SearchSearch" bottom="16" right="50" fittocontents="none"/>
+              <Button id="Button00" taborder="5" text="Button00" left="909" top="10" width="58" height="24" onclick="div00_Button00_onclick"/>
+              <Button id="Button01" taborder="6" text="Button01" left="1027" top="22" width="74" height="34" onclick="div00_Button01_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btnAdd" taborder="1" top="79" width="72" height="26" cssclass="btn_WF_AddRowTxt" text="행추가" minwidth="72" maxwidth="" right="152" fittocontents="width"/>
+        <Button id="btnDelete" taborder="2" top="79" width="72" height="26" cssclass="btn_WF_DeleteRowTxt" text="행삭제" minwidth="72" maxwidth="" right="76" fittocontents="width"/>
+        <Button id="btnSave" taborder="3" text="저장" width="72" height="26" minwidth="72" maxwidth="" cssclass="btn_WF_Save2Txt" right="0" fittocontents="width" top="79" uauth=""/>
+        <Grid id="grd00" taborder="4" left="0" top="109" binddataset="ds00" autofittype="col" right="0" bottom="50.73%">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="48"/>
+                <Column size="140"/>
+                <Column size="460"/>
+                <Column size="80"/>
+                <Column size="620"/>
+              </Columns>
+              <Rows>
+                <Row size="33" band="head"/>
+                <Row size="33"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No."/>
+                <Cell col="1" text="상위코드"/>
+                <Cell col="2" text="상위코드명" cssclass="Essential"/>
+                <Cell col="3" text="사용여부" cssclass="cellEditable"/>
+                <Cell col="4" text="비고" cssclass="cellEditable"/>
+              </Band>
+              <Band id="body">
+                <Cell/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="sta00" taborder="9" text="상위코드" left="0" top="79" width="138" height="26" cssclass="sta_WF_Title" fittocontents="width"/>
+        <Grid id="grd00_00" taborder="8" left="0" top="454" binddataset="ds00" autofittype="col" right="0" bottom="35">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="48"/>
+                <Column size="140"/>
+                <Column size="240"/>
+                <Column size="140"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="620"/>
+              </Columns>
+              <Rows>
+                <Row size="33" band="head"/>
+                <Row size="33"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No."/>
+                <Cell col="1" text="하위코드" cssclass="Essential"/>
+                <Cell col="2" text="하위코드명" cssclass="Essential"/>
+                <Cell col="3" cssclass="cellEditable" text="코드구분"/>
+                <Cell col="4" cssclass="cellEditable" text="정렬순서"/>
+                <Cell col="5" text="사용여부" cssclass="cellEditable"/>
+                <Cell col="6" text="비고" cssclass="cellEditable"/>
+              </Band>
+              <Band id="body">
+                <Cell/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btnAdd00" taborder="5" width="72" cssclass="btn_WF_AddRowTxt" text="행추가" minwidth="72" maxwidth="" right="152" fittocontents="width" bottom="grd00_00:4" height="26"/>
+        <Button id="btnDelete00" taborder="6" width="72" cssclass="btn_WF_DeleteRowTxt" text="행삭제" minwidth="72" maxwidth="" right="76" fittocontents="width" bottom="grd00_00:4" height="25"/>
+        <Button id="btnSave00" taborder="7" text="저장" width="72" minwidth="72" maxwidth="" cssclass="btn_WF_Save2Txt" right="0" fittocontents="width" bottom="grd00_00:4" height="25" uauth=""/>
+        <Static id="sta00_00" taborder="10" text="하위코드" left="0" width="138" cssclass="sta_WF_Title" fittocontents="width" bottom="grd00_00:4" height="25"/>
+        <Button id="Button00" taborder="11" text="gfnSetProfileOpenMenu" left="518" top="69" width="141" height="40" onclick="Button00_onclick"/>
+        <Button id="Button01" taborder="12" text="Button01" left="692" top="68" width="75" height="31" onclick="Button01_onclick"/>
+        <Button id="Button01_00" taborder="13" text="Button01" left="775" top="69" width="75" height="31"/>
+        <Button id="Button02" taborder="14" text="Button02" left="374" top="71" width="106" height="33" onclick="Button02_onclick"/>
+        <Button id="Button05" taborder="15" text="Button05" left="609" top="41" width="95" height="26" onclick="Button05_onclick"/>
+        <Button id="Button06" taborder="16" text="초기화" left="347" top="46" width="76" height="22" onclick="Button06_onclick"/>
+        <Button id="Button02_00" taborder="17" text="Button02" left="890" top="64" width="76" height="41" onclick="Button02_00_onclick"/>
+        <Static id="Static00" taborder="18" text="테스트01" left="0" top="0" width="315" height="76" font="normal 50pt/normal &quot;Arial&quot;"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+* 
+*@FileName testForm01
+*@Creator 	
+*@CreateDate 2025/04/18
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+
+/************************************************************************************************
+* include 영역
+************************************************************************************************/
+
+/************************************************************************************************
+* FORM 변수 선언 영역
+************************************************************************************************/
+
+/************************************************************************************************
+* FORM EVENT 영역(onload, onbeforeclose)
+************************************************************************************************/
+this.addEventHandler("onload",function(obj,e)
+{
+	trace(" form onload==>");
+	nexacro.setEnvironmentVariable("evUserId","admin");
+},this);
+
+
+/*
+*@description 화면 이동 후 넘어온 값 처리	
+*@param {string}{object}{array} 넘어온 아규먼트 처리
+*/
+this.cfnMoveOnActie = function(param)
+{
+	//trace("fnMoveOnActie formName ===>" + this.name + "<> parg ====> " + param);
+};
+
+/**
+* @description 화면 닫힐때 변경사항 체크(입력 화면에서 변경되는 Dataset 체크 필요, 선택)
+* @return {boolean} true(화면 닫지 않음) / false(화면 닫음)
+*/
+this.cfnClose = function()
+{
+	return false;
+};
+
+/************************************************************************************************
+* CALLBACK 콜백 처리부분(Transaction, Popup)
+************************************************************************************************/
+this.fnCallback = function(id,code,msg)
+{
+	// 에러 시 화면 처리 내역
+	if(code < 0) return;
+	
+	
+	switch(id) {
+	case "":
+		break;
+		
+	default:
+	}
+	
+};
+
+/************************************************************************************************
+* CRUD 및 TRANSACTION 서비스 호출 처리
+************************************************************************************************/
+
+/************************************************************************************************
+* 사용자 FUNCTION 영역
+************************************************************************************************/
+
+/************************************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+************************************************************************************************/
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+	this.setProfile("10001");
+	
+};
+
+
+/**
+* 열린메뉴 localStorate load
+* @param {string} 
+* @return 
+* @example
+* @memberOf 
+*/
+this.gfnGetPrivateOpenMenu = function()
+{
+
+   	const userId = nexacro.getEnvironmentVariable("evUserId");   
+    if(this.isNull(userId)){
+		trace("[DEV-ERR] : not null userid"); return;
+	}
+	
+	let openMenu = nexacro.getPrivateProfile("userData");
+
+   if(this.isNull(openMenu)) return  "" ;	 
+	openMenu = JSON.parse(openMenu);
+	if(!nexacro._isArray(openMenu)){
+		trace("[DEV-ERR] : type error users"); 
+		return;
+	}
+	
+	//trace(" typeof users : " + nexacro._isArray(users)  );
+	
+     trace("gfnGetPrivateOpenMenu  users : " + JSON.stringify(users));
+	const obj = openMenu.find(item => item.id === userId);
+	if(!!obj){
+	
+	   users = openMenu;
+       data = obj;
+	   
+    // trace(" JSON users2 :  " + nexacro._isArray(openMenu));
+	//  trace(" JSON users :  " + JSON.stringify(openMenu));
+	//  trace(" ## data : " +JSON.stringify(data));
+		return obj.menuId;
+	}
+	
+	//his.setProfile()
+//	trace(" openMenu : " + JSON.stringify(openMenu));
+	
+ 	return "";
+};
+
+/**
+* 열린메뉴 localStorate 추가
+* @param {string} 
+* @return 
+* @example
+* @memberOf 
+*/
+this.setProfile =  function (menuId)
+{
+    const userId = nexacro.getEnvironmentVariable("evUserId");
+	let openMenu = nexacro.getPrivateProfile("userdata");
+	
+	if(this.isNull(userId)){
+		trace("[DEV-ERR] : not null userid"); 
+		return;
+	}
+
+   // openMenu = JSON.parse(openMenu);
+	//trace(" openMenu : " +openMenu);
+
+	
+	const key = Object.keys(data).find(k => data[k] === userId);
+	if(key != "id"){	
+        data = {id:userId,menuId:[menuId]};
+	}
+    
+
+    const obj = users.find(item => item.id === userId);
+
+	if(!!obj){
+		
+		const findIdx = obj.menuId.findIndex((element, index, arr) => element === menuId);
+        
+		if(~findIdx)  return;
+		
+		obj.menuId.push(menuId);
+	
+	}else{
+
+		users.push(data);	   
+	}
+	
+   trace(" users: " + JSON.stringify(users));
+	
+	nexacro.setPrivateProfile("userdata",JSON.stringify(users));
+	
+//	 trace(" ## openMenu : " + nexacro.getPrivateProfile("openMenu"));
+	
+	
+};
+
+
+
+
+
+/**
+ * 열린메뉴(local store)ID 삭제
+ * @param {string} 
+ * @return 
+ * @example
+ this.delProfile(menuId);
+ * @memberOf 
+ */
+this.delProfile =  function (menuId)
+{
+    const userId = nexacro.getEnvironmentVariable("evUserId");
+	if(this.isNull(userId)){
+		trace("[DEV-ERR] : not null userid"); return;
+	}
+	
+    let openMenu = nexacro.getPrivateProfile("userdata");
+	
+ 	if(this.isNull(openMenu)) return;
+     
+ 	openMenu = JSON.parse(openMenu);
+		  trace("## users 1 :::>> " + JSON.stringify(users));
+// 	//trace(" opeMenu : " + JSON.stringify(openMenu));
+ 	const userOpenMenu = openMenu.find(item => item.id === userId);
+    const userData = users.find(item => item.id === userId);
+
+	if(!!userOpenMenu){
+
+		userOpenMenu.menuId = userOpenMenu.menuId.filter(e => e !== menuId);	
+		userData.menuId =  userData.menuId.filter(e => e !== menuId);	
+
+	}
+
+trace("## users2  :::>> " + JSON.stringify(users));
+
+      nexacro.setPrivateProfile("userdata",JSON.stringify(users));
+}
+
+/**
+ * 열린메뉴(local store) ID 초기화
+ * @param {string} 
+ * @return 
+ * @example
+ * @memberOf 
+ */
+this.gfnInitProfileOpenMenu =  function ()
+{
+  nexacro.removePrivateProfile("openMenu");
+  users = [];
+  data = {id:"", menuId:[]};  
+   
+  nexacro.setPrivateProfile("openMenu","");
+  
+ trace(" openMenu == > "+  nexacro.getPrivateProfile("openMenu"));
+}
+
+// 
+// /**
+//  * 열린메뉴 local storage 초기화
+//  * @param {string} 
+//  * @return 
+//  * @example
+//  * @memberOf 
+//  */
+// this.gfnInitProfileOpenMenu = function ()
+// {
+// 	nexacro.removePrivateProfile( "openMenu" )
+// };
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.setProfile("20001");
+};
+
+
+
+// const arr = [
+//   { id: "admin", menuId: "m10001" },
+//   { id: "guest", menuId: "m10002" }
+// ];
+// 
+// const obj = arr.find(item => item.id === "guest");
+// console.log(obj.menuId); // 'm10002'
+this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let userMenu = this.getPrivate("guest");
+	trace(" userMenu : " + userMenu);
+};
+
+
+this.Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.delProfile("10001")
+};
+
+this.Button04_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let arrMenu = this.gfnGetPrivateOpenMenu();
+	trace(" arrMenu : " + arrMenu);
+	/*nexacro.removePrivateProfile( "openMenu" );*/
+};
+
+this.Button05_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let arr = ['aaa', 'bbb', 'ccc', 'ddd'];
+	
+	// 원소 'ccc' 삭제
+	let filtered = arr.filter((element) => element !== 'ccc');
+	trace(" filtered : " + filtered);
+	
+};
+
+this.div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.setProfile("10002");
+};
+
+this.Button06_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.gfnInitProfileOpenMenu();
+};
+
+this.div00_Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+		var oForm = this.gfnGetTopLevelForm(this);
+		trace(" oFrom : " + oForm.name);
+};
+
+this.Button02_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+ //   this.ownerFrame["code1"] = "aaaaaaaaa";
+	//trace(" ## this.ownerFrame: " +this.getOwnerFrame().arguments);
+//	this.ownerFrame.arguments["cd"] = "10001";
+	//this.ownerFrame.arguments["name"] = "메뉴1";
+	
+//	trace(" this.ownerFrame : " + this.ownerFrame);
+// 	
+///	this.ownerFrame.forEach((key,value)=>{
+	  //   trace(" key : " +key + "<> value : " +value);
+	//});
+       
+//     this.ownerFrame.arguments = arguments;
+// 	objNewWin.arguments[this.colInfo.menu.params]   = objParam;
+// 	objNewWin.arguments[this.colInfo.menu.winid] 	= sWinId;
+// 	objNewWin.arguments[this.colInfo.menu.cd] 		= sMenuId;
+// 	objNewWin.arguments[this.colInfo.menu.nm] 		= sMenuNm;
+// 	objNewWin.arguments[this.colInfo.menu.url] 	= sMenuUrl;
+// 	objNewWin.arguments[this.colInfo.menu.navi]     = sMenuNavi;
+// 	objNewWin.arguments[this.colInfo.menu.params]   = objParam;		
+};
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,21 @@
+{
+	"name": "libCommon",
+	"version": "1.0.0.0",
+	"description": "Library for nexacro platform",
+	"license": "",
+	"scripts": [
+	"LibCommon/Constant.js",
+	"LibCommon/Override.js",
+	"LibCommon/Frame.js",
+	"LibCommon/Util.js",
+	"LibCommon/Transaction.js",
+	"LibCommon/Validation.js",
+	"LibCommon/Log.js",
+	"LibCommon/Popup.js",
+	"LibCommon/File.js",
+	"LibCommon/Message.js",
+	"LibCommon/Grid.js",
+	"LibCommon/Excel.js",
+	"LibCommon/Work.js"
+	]
+}

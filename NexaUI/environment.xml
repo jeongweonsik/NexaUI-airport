@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ENV version="2.1">
+  <Environment themeid="theme::icnairport" datatyperule="2.0" onerror="Environment_onerror" filesecurelevel="all" networksecurelevel="all" loadingimage="url('theme::images/loading.gif')">
+    <ScreenDefinition>
+      <Screen id="Desktop" type="desktop" filesecurelevel="all" networksecurelevel="all" userzoom="true" scrollindicatorsize="15" loadingimage="url('theme://images/loading.gif')" zoomfactortype="auto"/>
+    </ScreenDefinition>
+    <Variables>
+      <Variable id="evRunMode" initval="S"/>
+      <Variable id="evQuikView" initval="Y"/>
+      <Variable id="evUserId"/>
+      <Variable id="evParams"/>
+      <Variable id="evFormUrl"/>
+      <Variable id="evPopupUrl"/>
+      <Variable id="evMenuCd"/>
+    </Variables>
+    <Cookies/>
+    <httpheader/>
+  </Environment>
+  <Script type="xscript5.1"><![CDATA[/**
+ * @description 통신오류 알림
+*/
+this.Environment_onerror = function(obj:nexacro.Environment,e:nexacro.ErrorEventInfo)
+{
+	trace("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!on_onerror!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+	//trace("e.statuscode : " + e.statuscode);
+//	trace("e.errormsg : " + e.errormsg);
+	
+	// 사용자가 ESC키를 눌렀을 경우 ESC통신 중단 방지처리
+// 	if (e.statuscode == 10401) {
+// 		trace("사용자가 ESC키를 눌렀을 경우 ESC통신 중단 방지처리!!!!!");
+// 		return true;
+// 	}
+     let app = nexacro.getApplication();
+	// 스크립트 에러
+	if (e.statuscode == 0) {
+		//alert(e.statuscode + "\n"+e.errormsg);
+	} 
+	else if (e.statuscode == 404) {
+		trace(`${e.statuscode} Page Not Found ${e.errormsg}`);
+		  app.v.httpError  = true;
+		   alert(`${e.errormsg}`);
+	} 
+	else if (e.statuscode == 408) {
+	
+	    trace(`${e.statuscode} Request Timeout ${e.errormsg}`);		
+		 app.v.httpError = true;
+		  alert(`${e.errormsg}`);
+	} 
+	else if (e.statuscode == 500) {
+	
+	     trace(`${e.statuscode} Internal Server Error ${e.errormsg}`);		
+		  app.v.httpError  = true;
+		   alert(`${e.errormsg}`);
+	} 
+	else if (e.statuscode == 503) {
+	     trace(`${e.statuscode} The service is unavailable ${e.errormsg}`);				
+		 app.v.httpError  = true;
+		  alert(`${e.errormsg}`);
+	} 
+	else if (e.statuscode == 12029) {
+	      trace(`${e.statuscode} A connection with the server could not be established ${e.errormsg}`);		
+		  app.v.httpError  = true;
+		   alert(`${e.errormsg}`);
+	}else if (e.statuscode == 10499) {
+	      trace(`${e.statuscode} A connection with the server could not be established ${e.errormsg}`);		
+		  app.v.httpError  = true;
+		  alert(`${e.errormsg}`);
+	}
+};]]></Script>
+</ENV>

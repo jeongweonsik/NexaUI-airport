@@ -1,0 +1,550 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sample007Calendar" width="1070" height="1390" titletext="공통달력">
+    <Layouts>
+      <Layout height="1390" mobileorientation="landscape" width="1070">
+        <GroupBox id="grb00_00" taborder="0" text="1.월달력" left="8" top="83" width="480" height="330"/>
+        <GroupBox id="grb00" taborder="1" text="2.기간달력" left="516" top="71" width="496" height="369"/>
+        <Div id="divCalFromTo" taborder="2" text="cmmCalFromTo" left="526" top="125" width="248" height="30" ureadonly="false" ubindds="dsIn,calFrom,calTo" uessential="false" uenable="true" url="cmm::cmmCalFromTo.xfdl"/>
+        <Button id="btnInitFrmTo" taborder="3" text="초기화" left="794" top="125" width="88" height="28" onclick="btnInitFrmTo_onclick"/>
+        <Static id="Static00" taborder="4" text="초기화시 시작, 종료일자가 모두 없어짐" left="526" top="96" width="254" height="25"/>
+        <Button id="btnGetFromDate" taborder="5" text="getFromDate" left="526" top="216" width="108" height="28" onclick="btnGetFromDate_onclick"/>
+        <Edit id="editFromDate" taborder="6" left="641" top="216" width="131" height="28" readonly="true"/>
+        <Button id="btnGetToDate" taborder="7" text="getToDate" left="526" top="249" width="108" height="28" onclick="btnGetToDate_onclick"/>
+        <Edit id="editToDate" taborder="8" left="641" top="249" width="131" height="28" readonly="true"/>
+        <Button id="btnSetFromDate" taborder="9" text="setFromDate" left="526" top="282" width="108" height="28" onclick="btnSetFromDate_onclick"/>
+        <Edit id="edtSetFrom" taborder="10" left="641" top="282" width="131" height="28" maxlength="8" text="20240901" value="20240901"/>
+        <Button id="btnEnableFomToTrue" taborder="11" text="enable true" left="779" top="216" width="107" height="28" onclick="btnEnableFomToTrue_onclick"/>
+        <Button id="btnEnableFromToFalse" taborder="12" text="enable false" left="893" top="216" width="109" height="28" onclick="btnEnableFromToFalse_onclick"/>
+        <Button id="btnReadonlyFromToTrue" taborder="13" text="readonly true" left="779" top="249" width="107" height="28" onclick="btnReadonlyFromToTrue_onclick"/>
+        <Button id="btnReadonlyFromToFalse" taborder="14" text="readonly false" left="893" top="249" width="109" height="28" onclick="btnReadonlyFromToFalse_onclick"/>
+        <Button id="btnEssentialFromFalse" taborder="15" text="essential false" left="893" top="282" width="109" height="28" onclick="btnEssentialFromFalse_onclick"/>
+        <Button id="btnEssentialFromTrue" taborder="16" text="essential true" left="779" top="282" width="107" height="28" onclick="btnEssentialFromTrue_onclick"/>
+        <Div id="divCalMM" taborder="17" text="cmmCalMM" left="25" top="137" width="105" height="28" ubindds="dsIn,calMonth" uessential="false" ureadonly="false" url="cmm::cmmCalMM.xfdl"/>
+        <Button id="btnGetMMDate" taborder="18" text="getFromDate" left="22" top="228" width="108" height="28" onclick="btnGetMMDate_onclick"/>
+        <Edit id="editFromMMDate" taborder="19" left="136" top="228" width="120" height="28" readonly="true"/>
+        <Button id="btnSetMMDate" taborder="20" text="setFromDate" left="22" top="261" width="108" height="28" onclick="btnSetMMDate_onclick"/>
+        <Edit id="edtSetFrom00" taborder="21" left="136" top="261" width="120" height="28" maxlength="6" value="202409" text="202409"/>
+        <Button id="btnEnableTrueMM" taborder="22" text="enable true" left="262" top="228" width="106" height="28" onclick="btnEnableTrueMM_onclick"/>
+        <Button id="btnEnableFalseMM" taborder="23" text="enable false" left="372" top="228" width="112" height="28" onclick="btnEnableFalseMM_onclick"/>
+        <Button id="btnReadonlyTrueMM" taborder="24" text="readonly true" left="262" top="261" width="106" height="28" onclick="btnReadonlyTrueMM_onclick"/>
+        <Button id="btnReadonlyFalseMM" taborder="25" text="readonly false" left="372" top="261" width="112" height="28" onclick="btnReadonlyFalseMM_onclick"/>
+        <Button id="btnEssentialFalseMM" taborder="26" text="필수 false" left="372" top="294" width="112" height="28" onclick="btnEssentialFalseMM_onclick"/>
+        <Button id="btnEsseintialTrueMM" taborder="27" text="필수 true" left="262" top="294" width="106" height="28" onclick="btnEsseintialTrueMM_onclick"/>
+        <Button id="btnInitMM" taborder="28" text="초기화" left="377" top="137" width="88" height="28" onclick="btnInitMM_onclick"/>
+        <Button id="btnSetBind" taborder="29" text="setBind" left="526" top="398" width="108" height="28" onclick="btnInit_onclick"/>
+        <Button id="btnSaveXML" taborder="30" text="dsIn 로그" left="641" top="398" width="131" height="28" onclick="btnSaveXML_onclick"/>
+        <Button id="btnSetBindMM" taborder="31" text="setBind" left="22" top="294" width="108" height="28" onclick="btnSetBindMM_onclick"/>
+        <Button id="btnSaveXML00" taborder="32" text="dsIn 로그" left="262" top="327" width="106" height="25" onclick="btnSaveXML_onclick"/>
+        <Static id="sta01" taborder="33" text="userporoporty (uessential   &#13;&#10; true: 필수 false : 기본)" left="527" top="163" width="200" height="36"/>
+        <Static id="sta01_01" taborder="34" text="ubindds : dsname,col,col2&#13;&#10;readonly : ureadonly true" left="714" top="163" width="200" height="36"/>
+        <Static id="sta01_00" taborder="35" text="userporoporty (uessential   &#13;&#10; true: 필수 false : 기본)" left="25" top="174" width="200" height="36"/>
+        <Static id="sta01_01_00" taborder="36" text="ubindds : dsname,col,col2&#13;&#10;readonly : ureadonly true" left="183" top="174" width="200" height="36"/>
+        <Div id="divCalMM00" taborder="37" text="cmmCalMM" left="143" top="137" width="112" height="28" ubindds="dsIn,calMonth" uessential="true" ureadonly="false" url="cmm::cmmCalMM.xfdl"/>
+        <Div id="divCalMM00_00" taborder="38" text="cmmCalMM" left="262" top="137" width="112" height="28" ubindds="dsIn,calMonth" uessential="true" ureadonly="true" url="cmm::cmmCalMM.xfdl"/>
+        <Static id="Static02_00" taborder="39" text="readonly" left="243" top="109" width="71" height="28" font="bold 10pt &quot;맑은 고딕&quot;"/>
+        <Static id="Static02_00_00" taborder="40" text="essential" left="137" top="108" width="71" height="28" font="bold 10pt &quot;맑은 고딕&quot;"/>
+        <Edit id="edtSetTo" taborder="41" left="641" top="317" width="131" height="28" maxlength="8" value="20240930" text="20240930"/>
+        <Button id="btnSetToDate" taborder="42" text="setToDate" left="526" top="317" width="108" height="28" onclick="btnSetToDate_onclick"/>
+        <Button id="btnSetToDate00" taborder="43" text="setFromToDate" left="525" top="351" width="108" height="28" onclick="btnSetToDate00_onclick"/>
+        <MaskEdit id="mskFr" taborder="44" left="645" top="350" width="95" height="30" format="####-##-##" value="20240901" type="string"/>
+        <MaskEdit id="mskTo" taborder="45" left="750" top="350" width="95" height="30" format="####-##-##" value="20240930" type="string"/>
+        <Static id="sta_00" taborder="46" text="달력 (sample007)" left="0" top="0" height="40" cssclass="sta_GA_Header" right="50"/>
+        <Button id="btnSetCalMMToday" taborder="47" text="setToday" left="22" top="330" width="106" height="34" onclick="btnSetCalMMToday_onclick"/>
+        <Button id="btnSetTodayFrToMM" taborder="48" text="setToday" left="530" top="440" width="100" height="34" onclick="btnSetTodayFrToMM_onclick"/>
+        <GroupBox id="gboxLog" taborder="49" text="로그" left="16" top="425" width="467" height="245"/>
+        <TextArea id="txtA" taborder="50" left="27" top="447" width="447" height="213"/>
+      </Layout>
+      <Layout name="Layout0" width="600" height="400" mobileorientation="portrait"/>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+/**
+* 사용자 달력 샘플
+*@MenuPath  C:\Temp\NexaAtiis\sample
+*@FileName  sample007Calendar
+*@Creator 	 
+*@CreateDate 2024/09/30
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+* 
+*******************************************************************************
+*/
+
+/************************************************************************************************
+* FORM 변수 선언 영역
+************************************************************************************************/
+
+
+/***********************************************************************************************
+* FORM EVENT 영역(onload)
+/***********************************************************************************************/
+
+this.addEventHandler("onload",function(obj,e)
+{
+	let today = this.gfnToday();
+	let nRow  = this.dsList2.addRow();
+ 	this.dsList2.setColumn(nRow, "DATE", today);
+
+},this);
+
+
+this.fnLog = function (sTxt)
+{
+    this.txtA.value = "";
+	this.txtA.value = sTxt;
+	//this.gboxLog.text = txt;
+};
+
+/************************************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+************************************************************************************************/
+
+/**
+ *  dsIn savexml
+ */
+this.btnSaveXML_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	
+     this.fnLog(this.dsIn.saveXML());	
+};
+
+//갑변경 1
+this.calComm_onchanged = function (compid,obj,e)
+{
+	//trace("compid : " + compid + "<> e.pretext : " + e.pretext +"<> e.posttext : "+ e.posttext);
+};
+
+//  값 변경 2
+this.dsIn_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
+{
+    
+     // trace(" ## e.oldvalue : " + e.oldvalue);
+	//trace(" colid : " + e.columnid + "<> newvalue : " + e.newvalue);
+};
+
+
+
+/************************************************************************
+ * 1.월력
+ ************************************************************************/
+/*
+ *	월력 초기화
+ */ 
+this.btnInitMM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalMM.init();
+	this.divCalMM00.init();
+	this.divCalMM00_00.init();
+};
+
+/**
+ * 월력 getValue
+ */
+this.btnGetMMDate_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{               
+	 let sdate =  this.divCalMM.getValue();	
+	 this.editFromMMDate.value = sdate;		
+};
+
+/**
+ * 월력 setValue
+ */
+this.btnSetMMDate_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   let sdate = this.edtSetFrom00.value;
+   this.divCalMM.setValue(sdate);       
+};
+
+/*
+ *월력 바인딩
+ */ 
+this.btnSetBindMM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let bindds = this.dsIn;
+	let sCol = "calMonth";
+	this.divCalMM.setBinds(bindds,sCol);	
+};
+
+/*
+ *	월력 setEnable true
+ */ 
+this.btnEnableTrueMM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalMM.setEnable(true);	
+};
+
+/*
+ *	월력 setEnable false
+ */ 
+this.btnEnableFalseMM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalMM.setEnable(false);
+};
+
+/*
+ *	월력 readonly true
+ */
+this.btnReadonlyTrueMM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalMM.setReadonly(true);
+	
+}
+
+/*
+ *	월력 readonly false
+ */
+this.btnReadonlyFalseMM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalMM.setReadonly(false);
+};
+
+/*
+ *	월력 필수 true
+ */
+this.btnEsseintialTrueMM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalMM.setEssential(true);
+};
+
+/*
+ *	월력 필수 false
+ */
+this.btnEssentialFalseMM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalMM.setEssential(false);
+};
+
+/************************************************************************
+ * 2. 기간달력
+ ************************************************************************/
+/*
+ *	초기화
+ */ 
+this.btnInitFrmTo_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    var today = this.gfnToday();  
+	this.divCalFromTo.init(today);
+};
+
+/*
+ *	get fromDate
+ */ 
+this.btnGetFromDate_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let frdate = this.divCalFromTo.getFromDate();	
+	this.editFromDate.value = frdate;
+   // trace(" frdate : " +frdate );
+};
+
+
+/*
+ *	enable true
+ */ 
+this.btnEnableFomToTrue_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalFromTo.setEnable(true);
+};
+
+this.btnEnableFromToFalse_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalFromTo.setEnable(false);
+};
+
+/*
+ *	get toDate
+ */ 
+this.btnGetToDate_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let toDate = this.divCalFromTo.getToDate();
+	this.editToDate.valu = toDate;
+
+};
+
+/*
+ *	setr readonly true
+ */
+this.btnReadonlyFromToTrue_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalFromTo.setReadonly(true);
+};
+
+/*
+ *	set readonly false
+ */
+this.btnReadonlyFromToFalse_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalFromTo.setReadonly(false);
+};
+
+/*
+ *	set FromDate
+ */ 
+this.btnSetFromDate_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalFromTo.setFromDate(this.edtSetFrom.value);
+};
+
+/*
+ *	set ToDate
+ */ 
+this.btnSetToDate_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalFromTo.setToDate(this.edtSetTo.value);
+};
+
+/*
+ *	필수 true
+ */ 
+this.btnEssentialFromTrue_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalFromTo.ssetEssential(true);
+};
+
+/*
+ *	필수 false
+ */ 
+this.btnEssentialFromFalse_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalFromTo.ssetEssential(false);
+};
+
+
+this.btnSetToDate00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   let frDate = this.mskFr.value;
+   let toDate =  this.mskTo.value;   
+   
+   this.divCalFromTo.setFromToDate(frDate,toDate);  
+  
+};
+
+
+/************************************************************************
+ * 기간(월력)
+ ************************************************************************/
+
+// 기간(월력) 초기화
+this.btnInit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalFromTo.init();  
+};
+
+//기간(월력)  getFromDate
+this.btnGetMMFromDate_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var frDate = this.divCalMMFromTo.getFromDate();
+	
+
+	this.editMMfromDate.value = frDate;
+};
+
+//기간(월력)  enable true
+this.btnMMEnableTrue_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalMMFromTo.setEnable(true);
+};
+
+//기간(월력)  enable false
+this.btnMMEnableFalse_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalMMFromTo.setEnable(false);
+};
+
+//기간(월력) getToDate
+this.btnGetMMToDate_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var toDate = this.divCalMMFromTo.getToDate();
+	this.editMMToDate.value = toDate;
+};
+
+//기간(월력) setReadOnly
+this.btnMMReadonlyTrue_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalMMFromTo.setReadonly(true);
+};
+
+this.btnMMReadonlyFalse_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalMMFromTo.setReadonly(false);
+};
+
+//기간(월력) setFromDate
+this.btnSetMMFromDate_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   var frDate = this.edtSetMMFrom.value;
+	this.divCalMMFromTo.setFromDate(frDate);
+};
+
+//기간(월력) setToDate
+this.btnSetMMToDate_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   var toDate =  this.edtSetMMTo.value;
+
+	this.divCalMMFromTo.setToDate(toDate);
+};
+
+
+//기간(월력) 필수 true
+this.btnMMEssentialFromTrue_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalMMFromTo.setEssential(true);
+};
+
+//기간(월력) 필수 false
+this.btnMMEssentialFromFalse_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalMMFromTo.setEssential(false);
+};
+
+
+//기간(월력) setBind
+this.btnSetMMBind_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    var bindds = this.dsIn;
+	var sCol = "calMonth";
+	this.divCalMMFromTo.setBind(bindds,sCol);
+};
+
+this.btnSetMMFroMto_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    var frDate = this.mskMMFr.value;
+	var toDate  = this.mskMMTo.value;
+	 this.divCalMMFromTo.setFromToDate(frDate,toDate);  
+};
+
+
+this.btnSetCalMMToday_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+  
+	this.divCalMM.form.setToday();
+	this.divCalMM00.setToday();
+	this.divCalMM00_00.setToday();
+};
+
+
+
+this.btnSetTodayMM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+this.btnSetTodayMMFromTo_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divCalMMFromTo.setToday();
+};
+
+this.btn00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.getValue2();
+};
+
+
+]]></Script>
+    <Objects>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="dtFrom" type="STRING" size="256"/>
+          <Column id="dtTo" type="STRING" size="256"/>
+          <Column id="dtMonth" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="dtFrom">20171017</Col>
+            <Col id="dtTo">20171231</Col>
+            <Col id="dtMonth">201712</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsList2">
+        <ColumnInfo>
+          <Column id="DATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsIn" oncolumnchanged="dsIn_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="calFrom" type="STRING" size="256"/>
+          <Column id="calTo" type="STRING" size="256"/>
+          <Column id="calMonth" type="STRING" size="256"/>
+          <Column id="calYear" type="STRING" size="256"/>
+          <Column id="calMMFrom" type="STRING" size="256"/>
+          <Column id="calMMTo" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="calFrom">20100205</Col>
+            <Col id="calTo">20100210</Col>
+            <Col id="calYear">2010</Col>
+            <Col id="calMonth">202305</Col>
+            <Col id="calMMFrom">201002</Col>
+            <Col id="calMMTo">201003</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds00">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">01</Col>
+            <Col id="Column1">01</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">02</Col>
+            <Col id="Column1">02</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">03</Col>
+            <Col id="Column1">03</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">04</Col>
+            <Col id="Column1">04</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">05</Col>
+            <Col id="Column1">05</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">06</Col>
+            <Col id="Column1">06</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">07</Col>
+            <Col id="Column1">07</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">08</Col>
+            <Col id="Column1">08</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_grid" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">a</Col>
+            <Col id="Column2">20230101</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">2</Col>
+            <Col id="Column1">b</Col>
+            <Col id="Column2">20211005</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">3</Col>
+            <Col id="Column1">c</Col>
+            <Col id="Column2">20210505</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

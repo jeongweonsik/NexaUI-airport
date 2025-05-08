@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sample003Popup" width="1020" height="510" titletext="팝업 샘플">
+    <Layouts>
+      <Layout height="510" mobileorientation="landscape" width="1020">
+        <Static id="sta07" taborder="0" cssclass="sta_WF_Guide" text="h20" bottom="0" visible="false" left="0" height="20" right="0"/>
+        <Button id="btnPopup" taborder="1" text="Modal" top="90" width="119" height="28" onclick="btnPopup_onclick" fittocontents="none" right="140"/>
+        <Button id="btnPopup00" taborder="2" text="modeless" top="90" width="119" height="28" onclick="btnPopup00_onclick" fittocontents="none" right="16"/>
+        <Button id="btnCloseAll" taborder="3" text="모든 팝업 닫기" top="124" width="119" height="28" onclick="btnClose_onclick" fittocontents="none" right="21"/>
+        <TextArea id="txtRes" taborder="4" left="10" top="160" right="10" bottom="51"/>
+        <Button id="btn00" taborder="5" text="모달리스 자식창 함수 호출" top="122" width="209" height="28" onclick="btnPopup00_onclick" right="150"/>
+        <Static id="sta_00" taborder="6" text="팝업샘플(sample003)" left="0" top="0" height="40" cssclass="sta_GA_Header" right="0"/>
+        <Button id="Button00" taborder="7" text="Button00" left="94" top="76" width="128" height="48" onclick="Button00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+* 샘플 팝업
+*@FileName  sample003Popup
+*@Creator 	
+*@CreateDate 2025/04/17
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+/************************************************************************************************
+ * FORM 변수 선언 영역
+ ************************************************************************************************/
+
+/***********************************************************************************************
+* FORM EVENT 영역(onload)
+/***********************************************************************************************/
+this.addEventHandler("onload",function(obj,e)
+{
+	
+},this);
+
+/************************************************************************************************
+ * CALLBACK 콜백 처리부분
+ ************************************************************************************************/
+/**
+* fnPopupCallback : modaless popup callback
+* @param  : strId		   - [string]popup id
+* @param  : strVal		   - [string]return val
+* @return : N/A
+*/
+this.popupCallBack = function(id, reValue)
+{
+	
+	switch(id) {
+	case "popMoDal":  // modal
+	
+ /// this.fnCallSearch(reValue);
+	this.console.log(this.dsTest.saveXML());
+		break;
+	case "popModeless":  // modal
+			this.console.log( " reValue : " +reValue);
+		break;	
+	}
+	
+ 
+};
+ 
+ 
+ /************************************************************************************************
+ * 사용자 FUNCTION 영역
+ ************************************************************************************************/
+ 
+this.fnSetRes = function(txt)
+{
+
+	if(nexacro._isObject(txt)) txt = JSON.stringify(txt);
+	this.txtRes.set_value("");
+	this.txtRes.set_value(txt);
+
+};
+
+ /************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+ ************************************************************************************************/
+/**
+* btnPopup_onclick : modal popup open(기본팝업)
+* @param  : obj		   - [object]Button
+* @param  : e		   - [string]ClickEventInfo
+* @return : N/A
+*/
+this.btnPopup_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{ 
+	  //set arguments
+	  var args  = {};  	  
+	      args.id         = "popMoDal";   //필수
+		  args.url        = "sample::sample003PopupP.xfdl"; //필수
+		  args.titletext  = '샘플팝업';   //필수
+		  args.paramCode  = "abcd";
+		  args.paramNum   = "1234";	
+		  args.paramDs    = this.dsTest;
+	  
+		this.gfnShowModal( args, 
+		    (resVar)=>{
+	            trace(" resVar : " + resVar);
+            });	
+};
+
+/**
+* btnPopup00_onclick : modaless popup open
+* (필수) 모달리스는 form의 width,height를 지정해야 가운데 정렬
+* @param  : obj		   - [object]Button
+* @param  : e		   - [string]ClickEventInfo
+* @return : N/A
+
+*/
+this.btnPopup00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{ 
+    var args  = {};
+	    args.id = "popModeless";   // 필수
+		args.url = "sample::sample003PopupP.xfdl"; // 필수
+		args.titletext = "모달리스 팝업";  // 필수
+	    args.paramCode  = "abcd";
+		args.paramCode  = "abcd";
+		args.paramNum   = "1234";	
+		
+	this.gfnOpen( args,()=>{
+			
+		});						   
+};
+
+
+
+/*
+ *	전체 팝업 닫기
+ */
+this.btnClose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var arrPopFrame = nexacro.getPopupFrames();
+	//alert(arrPopFrame.length);
+	
+	for (var i=arrPopFrame.length-1; i>=0; i--) {
+	
+	trace(" arrPopFrame[i] : " + arrPopFrame[i]);
+		// html5 일때
+		//var cWindow = arrPopFrame[i]._getWindowHandle();
+		//cWindow.opener='nothing'; 
+		//cWindow.open('','_parent',''); 
+		//cWindow.close();
+		
+		// Runtime, html5에서도 모두 작동
+		var rObj = arrPopFrame[i];	
+		rObj.destroy();
+		rObj = null;
+	}
+};
+
+
+this.fnCallSearch = function()
+{
+   alert(" 부모");
+};
+
+this.sample03Popup_onbeforeclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
+{
+	
+ //return;
+};
+
+this.tab00_Tabpage1_btn00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var arrPopFrame = nexacro.getPopupFrames();
+
+	
+	if(arrPopFrame.length > 0)
+	{
+	  let popid = "modelesspopup1";
+	  if(nexacro._isFunction(arrPopFrame[popid].form.fnCall))
+	  {
+	    arrPopFrame[popid].form.fnCall();
+	  }
+	}
+	
+	
+};
+
+this.btn01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   trace(" savexml  :"  +this.dsCopy.saveXML());
+};
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("## app.frame.work : " + app.frame.work);
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsTest">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">명칭1</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">2</Col>
+            <Col id="Column1">명칭2</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsResult"/>
+      <Dataset id="dsCopy"/>
+    </Objects>
+  </Form>
+</FDL>
