@@ -144,8 +144,8 @@ this.fnSetScroll = function ()
 	else this.staGapH.height = 20;
 	
 	
-// 	 trace("## this.divWork.width  : " + this.divWork.getOffsetWidth());
-// 	 	 trace("## this.divWork.height  : " + this.divWork.getOffsetHeight());
+	 trace("## this.divWork.width  : " + this.divWork.getOffsetWidth());
+	 	 trace("## this.divWork.height  : " + this.divWork.getOffsetHeight());
 // 	 trace(" ## frmHeight :"  +frmHeight + "<> vScrollMax : " + vScrollMax);
 	this.divTitle.form.resetScroll();
 	this.resetScroll();
@@ -305,49 +305,9 @@ this.divTitle_btn00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 	this.divWork.form.resetScroll();
 };
 
-
-//전체보기 
-this.divTitle_divCorework_btnMore_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-};
-
-// 브라우저 전체화면
-this.divTitle_divZoom_btn00_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-
-	 if(this.gfnIsNexacro()) return;
-	 
-	 const documentElement = document.documentElement;
-		if (document.fullscreenElement === null) {
-			//전체화면 아닌 상태
-			this.gfnEnterFullscreen();
-		}else{
-		   //전체화면 상태
-		   this.gfnExitFullscreen();
-		}	
-};
-
 this.form_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
 {
 	this.fnSetScroll();
-};
-
-
-//화면크기축소
-this.divTitle_divZoom_btnZoomOut_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-   let staRate = this.divTitle.form.divZoom.form.staRate;
-   let nowZoom =   staRate.text.replace("%","");
-   
-	staRate.text = this.gfnZoomOut(nowZoom);
-};
-
-this.divTitle_divZoom_btnZoomIn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-   let staRate = this.divTitle.form.divZoom.form.staRate;
-   let nowZoom =  staRate.text.replace("%","");
-	
-	staRate.text = this.gfnZoomIn(nowZoom);
 };
 
 
