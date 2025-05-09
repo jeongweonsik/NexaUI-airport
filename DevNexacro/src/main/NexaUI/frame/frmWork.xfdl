@@ -28,7 +28,7 @@
     <Script type="xscript5.1"><![CDATA[/**
 * frmWork
 *@FileName  frmWork
-*@Creator 	
+*@Creator 	{J}
 *@CreateDate 2025/05/09
 *@Desction    
 ************** 소스 수정 이력 ***********************************************
@@ -62,7 +62,7 @@ this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
   // trace(" this.divWork : " + this.divWork.getOffsetWidth());
   // trace(" this.divWork : " + this.divWork.getOffsetHeight());
-
+   
 	this.menuCd      =  this.getOwnerFrame().arguments[this.colInfo.menu.cd];      // menu code
 	this.menuNm      =  this.getOwnerFrame().arguments[this.colInfo.menu.nm];      // menu name
 	this.menuUrl    =  this.getOwnerFrame().arguments[this.colInfo.menu.url];    // menu url
