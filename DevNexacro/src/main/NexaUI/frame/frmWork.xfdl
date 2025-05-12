@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frmWork" left="0" top="0" width="1334" height="802" onsize="form_onsize" onactivate="form_onactivate" onload="frm_onload" titletext="프레임 업무(work)" cssclass="frm_WF">
+  <Form id="frmWork" left="0" top="0" width="40" height="802" onsize="form_onsize" onactivate="form_onactivate" onload="frm_onload" titletext="프레임 업무(work)" cssclass="frm_WF">
     <Layouts>
       <Layout>
         <Div id="divTitle" taborder="1" text="div00" left="20" top="0" height="47" right="20" cssclass="div_WF_Title" maxwidth="" minwidth="1294" formscrolltype="none">
@@ -16,12 +16,10 @@
             <Layout/>
           </Layouts>
         </Div>
-        <Static id="Static08_00" taborder="2" text="W&#13;&#10;20" cssclass="sta_GA_Gap" visible="false" left="0" top="0" style="background:#ff000066;" width="20" bottom="0"/>
-        <Static id="Static08_00_00" taborder="3" text="W&#13;&#10;20" cssclass="sta_GA_Gap" visible="false" top="0" style="background:#ff000066;" width="20" bottom="0" right="0"/>
-        <Static id="Static08_00_01" taborder="4" text="H20" cssclass="sta_GA_Gap" visible="false" left="0" height="20" style="background:#ff000066;" right="0" bottom="0"/>
-        <Button id="btn00" taborder="5" text="btn00" left="1446" top="170" width="144" height="76" cssclass="btn_WF_FavoriteAdd" visible="false"/>
-        <Static id="staGapV" taborder="6" top="122" height="24" width="20" left="divWork:0"/>
-        <Static id="staGapH" taborder="7" width="33" height="20" right="518" top="divWork:0"/>
+        <Static id="Static08_00_01" taborder="2" text="H20" cssclass="sta_GA_Gap" visible="false" left="0" height="20" style="background:#ff000066;" right="0" bottom="0"/>
+        <Button id="btn00" taborder="3" text="btn00" left="1446" top="170" width="144" height="76" cssclass="btn_WF_FavoriteAdd" visible="false"/>
+        <Static id="staGapV" taborder="4" top="122" height="24" width="20" left="divWork:0"/>
+        <Static id="staGapH" taborder="5" width="33" height="20" right="518" top="divWork:0"/>
       </Layout>
     </Layouts>
     <Objects/>
@@ -143,8 +141,8 @@ this.fnSetScroll = function ()
 	else this.staGapH.height = 20;
 	
 
-	 trace("#####this.divWork.width  : " + this.divWork.getOffsetWidth());
-	 	 trace("## this.divWork.height  : " + this.divWork.getOffsetHeight());
+	// trace("#####this.divWork.width  : " + this.divWork.getOffsetWidth());
+	// 	 trace("## this.divWork.height  : " + this.divWork.getOffsetHeight());
 // 	 trace(" ## frmHeight :"  +frmHeight + "<> vScrollMax : " + vScrollMax);
 	this.divTitle.form.resetScroll();
 	this.resetScroll();
