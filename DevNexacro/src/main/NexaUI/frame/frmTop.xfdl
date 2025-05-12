@@ -88,8 +88,7 @@ this.btnTopSel;
 * @description 화면 onload시 처리내역(필수)
 */
 this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
-{   
-	
+{   	
 };
 
 this.fnSetInit = function ()
