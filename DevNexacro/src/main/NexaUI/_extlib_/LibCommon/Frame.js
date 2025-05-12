@@ -185,10 +185,10 @@ _pForm.gfnInitComp = function(objForm)
 			if (arrComp[i] instanceof nexacro.Edit){
 			    let _edit = arrComp[i];
 				//clear 버튼 생성
-				if (arrComp[i].ubtnclear == "true") {
-				
-					this._gfnSetEditMsClear(_edit);
-				}
+// 				if (arrComp[i].ubtnclear == "true") {
+// 				
+// 					this._gfnSetEditMsClear(_edit);
+// 				}
 				
 				
 			}else if (arrComp[i] instanceof nexacro.CheckBox){
