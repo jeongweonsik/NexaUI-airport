@@ -811,7 +811,7 @@
         </Row>
         <Row>
           <Col id="menuCd">M300154</Col>
-          <Col id="menuNm">메뉴1</Col>
+          <Col id="menuNm">메뉴1(transaciton)</Col>
           <Col id="parentCd">M300153</Col>
           <Col id="menuLvl">2</Col>
           <Col id="menuGroup">M120003</Col>
@@ -821,11 +821,11 @@
         </Row>
         <Row>
           <Col id="menuCd">M300155</Col>
-          <Col id="menuNm">메뉴2</Col>
+          <Col id="menuNm">메뉴2(팝업샘플</Col>
           <Col id="parentCd">M300153</Col>
           <Col id="menuLvl">2</Col>
           <Col id="menuGroup">M120003</Col>
-          <Col id="url">sample::sample001BaseScript.xfdl</Col>
+          <Col id="url">sample::sample003Popup.xfdl</Col>
           <Col id="sort">12032</Col>
           <Col id="menuPath">개발자샘플 &gt; SAMPLE &gt; </Col>
         </Row>

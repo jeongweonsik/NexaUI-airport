@@ -40,7 +40,7 @@ this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	const sContents = this.getOwnerFrame().paramContents;
 	const sparamType = this.getOwnerFrame().paramType;
-		
+
 	this.fnMsgSetting(sContents);
 	this.fnMsgSetType(sparamType);
 	this.resetScroll();

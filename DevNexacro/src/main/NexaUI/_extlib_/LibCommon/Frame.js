@@ -31,9 +31,9 @@
 *● gfnCboSelectText  :  콤보 라벨 추가( =전체=  =선택= )
 *● gfnInSelectText  :  공통코드 콤보  라벨 추가( =전체=  =선택= )
 *● gfnGetComCodeFilter : 공통코드 필터
-*● gfnSetMainFrame  : mainfraem  set size  
+*● gfnSetFrame  : mainfraem  set size  
 *● gfnIsLocal : 프로젝트 로컬 실행 
-*● gfnSetMainFrame  : 메인 프레임 전환(login,mdi)
+*● gfnSetFrame  : 메인 프레임 전환(login,mdi)
 *● gfnIsMainFrame : 메인프레임 활성화 여부 체크
 *● gfnIsWork    : work 메인 활성화 체크
 *● gfnLeftFrameShowHide : 레프트 프페임 펼침/접힘
@@ -938,8 +938,8 @@ _pForm.gfnIsLocal = function()
 * @param {string} size parameter   init : 초기 로그인
 * @return 
 * @example
-this.gfnSetMainFrame("login"); //login
-this.gfnSetMainFrame("mdi"); //mdi
+this.gfnSetFrame("login"); //login
+this.gfnSetFrame("mdi"); //mdi
 * @memberOf 
 */
 _pForm.gfnSetFrame = function(p)
@@ -977,12 +977,15 @@ _pForm.gfnSetFrame = function(p)
 		if(!!!app.frame.main.formurl) app.frame.main.formurl = path.main;  //set path main
 		
 		app.frame.vFrs.separatesize = '0,60,*,36';
+		//app.frame.hfrs.separatesize = '264,*,40';
 		app.frame.status = p;		
 
     }else if(p == "work") {  
 		app.frame.vFrsWork.separatesize = "0,*";
 	} else if(p == "main") {       
 		app.frame.vFrsWork.separatesize = "*,0";
+		//app.frame.hfrs.separatesize = '264,*,0';
+		
 	} 
 	
 };
