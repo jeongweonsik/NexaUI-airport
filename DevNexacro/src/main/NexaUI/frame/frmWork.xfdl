@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frmWork" left="0" top="0" width="1296" height="822" onsize="form_onsize" onactivate="form_onactivate" onload="frm_onload" titletext="프레임 업무(work)" cssclass="frm_WF">
+    <Layouts>
+      <Layout>
+        <Div id="divTitle" taborder="1" text="div00" left="20" top="0" height="47" cssclass="div_WF_Title" maxwidth="" formscrolltype="none" width="1240">
+          <Layouts>
+            <Layout>
+              <Button id="btnFavorite" taborder="0" left="0" top="12" width="20" height="26" cssclass="btn_WF_FavoriteAdd" tooltiptext="마이메뉴 추가" onclick="divTitle_btnFavorite_onclick"/>
+              <Static id="staTitle" taborder="1" text="화면타이틀 (화면아이디)" left="25" top="12" height="26" cssclass="sta_WF_HeaderTitle" fittocontents="width" wordWrap="none" right="0"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="divWork" taborder="0" text="divWork" left="20" top="divTitle:0" maxwidth="" maxheight="" right="20" bottom="20">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Static id="staGapH" taborder="2" width="33" height="20" right="518" top="divWork:0"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.1"><![CDATA[/**
+* fraem work
+*@FileName  frmWork
+*@Creator 	{J}
+*@CreateDate 2024/10/11
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+
+/************************************************************************************************
+* FORM 변수 선언 영역
+************************************************************************************************/
+
+this.menuCd,this.menuNm,this.menuUrl;
+this.menuParams,this.menuWinid,this.menuNavi;
+
+this.fvIsTime = false;    //60000 : 1분
+this.fvMilli = {'1':60000,'5':300000,'10':600000};
+this.fvTimerID  = -9999;
+
+
+/***********************************************************************************************
+* FORM EVENT 영역(onload)
+/***********************************************************************************************/
+/**
+* form onload 함수
+* @return 
+* @example
+* @memberOf 
+*/
+this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+
+	this.menuCd      =  this.getOwnerFrame().arguments[this.colInfo.menu.cd];      // menu code
+	this.menuNm      =  this.getOwnerFrame().arguments[this.colInfo.menu.nm];      // menu name
+	this.menuUrl     =  this.getOwnerFrame().arguments[this.colInfo.menu.url];    // menu url
+	this.menuParams  =  this.getOwnerFrame().arguments[this.colInfo.menu.params];  // parms
+    this.menuWinid   =  this.getOwnerFrame().arguments[this.colInfo.menu.winid];   // winid	
+	this.menuNavi    =   this.getOwnerFrame().arguments[this.colInfo.menu.navi];   // menu navi	
+	
+    this.divTitle.form.staTitle.text = this.menuNm + "(" + this.menuCd  +")";
+	this.fnSetFavor();
+	this.fnSetUrl();
+	
+	trace(" divWork.width : " + this.divWork.form.width + "<>  divWork.height : " + this.divWork.form.height);
+			
+};
+
+//
+this.fnSetFavor = function ()
+{
+// 	const gdsFavor  = app.gdsFavor;
+// 	let findCode = gdsFavor.findRow(this.colInfo.menu.cd,this.menuCd);
+// 	
+// 	if(findCode > -1)  this.divTitle.form.btnFavorite.cssclass = "btn_WF_FavoriteRemove";
+// 	  else  this.divTitle.form.btnFavorite.cssclass = "btn_WF_FavoriteAdd";
+	
+};
+
+// set url
+this.fnSetUrl = function ()
+{    
+    this.divWork.url = ''; //setUrl
+	this.divWork.url = this.menuUrl; //setUrl
+	this.fnSetScroll();
+};
+
+// set work frame scroll
+this.fnSetScroll = function ()
+{   
+// 	let vScrollMax = this.divWork.form.vscrollbar.max;
+// 	let HscrollbarMax = this.divWork.form.hscrollbar.max;
+// 	let ngap = 20;
+// 	let frmHeight =app.mainframe.showtitlebar ?  this.height + 30 : this.height ;
+// 	
+//     //가로 size
+// 	if(frmHeight < 802){
+//        
+//      	this.divWork.bottom = "";
+// 		this.divWork.height = 802;		
+// 		
+// 	}else{
+// 	   this.divWork.height = "";
+// 	  	   
+// 	   //가로 스크롤
+// 	   if(HscrollbarMax > 0) this.divWork.bottom = 0;  
+// 	   else  this.divWork.bottom = 2;
+// 	}	
+// 	
+// 	//세로 스크롤
+// 	if(vScrollMax > 0){
+// 	  this.divTitle.right = 0;
+// 	  this.divWork.right = 0;
+// 	}else{
+// 	   this.divTitle.right = 20;
+// 	   this.divWork.right = 20;
+// 	}
+	
+
+//   if(this.vscrollbar.max > 0)   this.staGapV.width = 0;
+// 	 else this.staGapV.width = 20;
+// 	 
+// 	if( this.hscrollbar.max > 0)  this.staGapH.height = 0;
+// 	else this.staGapH.height = 20;
+	
+	this.divTitle.form.resetScroll();
+	this.resetScroll();
+	  
+	trace(" this.width : " + this.width  + "<> this.height : "+ this.height);
+};
+
+/*
+*@description 화면 이동 후 넘어온 값 처리	
+*@param {string}{object}{array} 넘어온 아규먼트 처리
+*/
+this.fnMoveOnActie = function(param)
+{
+	if(nexacro._isFunction(this.divWork.form.cfnMoveOnActie))  {
+	   this.divWork.form.lookupFunc("cfnMoveOnActie").call(param); 
+	}
+};
+
+
+/*
+ *	화면 active 시 발생
+ */
+this.fnFormOnActive = function ()
+{
+
+	let winKey = this.menuWinid;	
+	let gRow =   app.gdsOpenMenu.findRow(this.colInfo.menu.winid, winKey);
+ 	let menuCd = app.gdsOpenMenu.getColumn(gRow, this.colInfo.menu.cd);	
+	let menuNm = app.gdsOpenMenu.getColumn(gRow, this.colInfo.menu.nm);	
+
+ 	// gdsOpenMenu row 이동   
+ 	app.gdsOpenMenu.rowposition = gRow;
+	if(nexacro._isFunction(app.frame.lefts.fnSetRowPosition))
+	{
+	   let nStepIdx = app.frame.lefts.getStepIndex();
+ 	       app.frame.lefts.fnSetRowPosition(menuCd,nStepIdx);
+	}
+	
+};
+
+
+/**
+* form onactivate event
+* @return 
+* @example
+*
+* @memberOf 
+*/
+this.form_onactivate = function(obj:nexacro.Form,e:nexacro.ActivateEventInfo)
+{
+   this.fnFormOnActive();
+};
+
+
+
+/************************************************************************************************
+* 사용자 FUNCTION 영역
+************************************************************************************************/
+
+// 초기화버튼 클릭 이벤트
+this.fnOninit_onclick = function (obj,e)
+{	   
+	//this.divWork.url = '';
+	//this.divWork.url = this.fvUrlNm;
+	this.divWork.form.reload();
+	this.divWork.form.resetScroll();
+};
+/**
+*  넘어온 아규먼트 처리 설정
+* @param  {XaComp} this(현재form)
+* @return
+* @example
+* fnSetOwnFrameArgu(this);
+* @memberOf 
+*/
+this.fnSetOwnFrameArgu = function(o)
+{	
+	//alert(" this.parent.name : " + this.parent.name);	
+		
+	
+}
+
+/**
+* gdsMenu에서 버튼권한 가져오기
+* @param {string} menuId: 메뉴Id
+* @param {string} colId: 컬럼(권한별) Id
+* @return 
+* @example
+*
+* @memberOf 
+*/
+this.fnGetAuth = function(menuId, colId)
+{   
+	var sValue = app.gdsMenu.lookupAs(app.gvMenuColumns.menuId, menuId, colId);		
+	if(this.isNull(sValue))
+	{
+		sValue = "YNNNNN";
+	}
+	return sValue;	
+}
+
+/**
+* @description workFrame close 시 처리
+*/
+this.fnWorkFrameClose = function()
+{
+
+	if (!nexacro._isFunction(this.divWork.form.cfnClose))
+	{
+		//trace("해당화면에 fnClose 함수가 없습니다. fnClose 함수가 없으면 데이타 변경여부 체크를 하지 않습니다.");
+	}
+	else
+	{
+		if (this.divWork.form.cfnClose() == false)
+		{
+			var sMsgId 		 = "10070";		//변경사항이 저장되지 않을 수 있습니다. [{0}]화면을 종료 하시겠습니까?		//메세지ID
+			var arrArg 		 = ["화면 " +this.menuNm];	//현재				메세지취환될값 배열[생략가능]
+			
+			this.gfnConfirm(sMsgId,arrArg,(yes)=>{
+          
+				 if(yes)
+				 {
+				   app.frame.mdi.form.fnCloseMenu(this.menuCd,false);			
+				   return true;
+				 }
+
+			},"q");	
+			
+			return false;
+		}		
+	}
+	
+	//this.parent.parent.fnClose(this.fvWinId);
+	return true;
+	//this.close();
+	
+};
+
+
+/*
+ *	work form clsoe 함수 체크 
+ */
+ 
+this.isClosWork =  function ()
+{
+	 if (nexacro._isFunction(this.divWork.form.cfnClose)){
+	 
+	     return this.divWork.form.cfnClose();	 
+	 }
+	 
+	 return true;
+};
+
+
+this.divTitle_btn00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divWork.form.resetScroll();
+};
+
+
+//전체보기 
+this.divTitle_divCorework_btnMore_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+};
+
+// 브라우저 전체화면
+this.divTitle_divZoom_btn00_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+	 if(this.gfnIsNexacro()) return;
+	 
+	 const documentElement = document.documentElement;
+		if (document.fullscreenElement === null) {
+			//전체화면 아닌 상태
+			this.gfnEnterFullscreen();
+		}else{
+		   //전체화면 상태
+		   this.gfnExitFullscreen();
+		}	
+};
+
+this.form_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
+{
+
+
+	this.fnSetScroll();
+};
+
+
+//화면크기축소
+this.divTitle_divZoom_btnZoomOut_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   let staRate = this.divTitle.form.divZoom.form.staRate;
+   let nowZoom =   staRate.text.replace("%","");
+   
+	staRate.text = this.gfnZoomOut(nowZoom);
+};
+
+this.divTitle_divZoom_btnZoomIn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   let staRate = this.divTitle.form.divZoom.form.staRate;
+   let nowZoom =  staRate.text.replace("%","");
+	
+	staRate.text = this.gfnZoomIn(nowZoom);
+};
+
+
+this.divTitle_btnFavorite_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+	switch(obj.cssclass) {
+	case "btn_WF_FavoriteRemove":
+	   this.fnDelMyMenu();  //삭제
+		break;	
+	default:
+	    this.fnAddMyMenu(); //추가
+	}
+
+    this.gdsTranMyMenu((id,code,msg)=>{
+	  if(code < 0) return;
+	  
+	      this.fnSetCssFavor();
+	})	
+};
+
+
+/*
+ *	마이메뉴 추가
+ */ 
+this.fnAddMyMenu = function ()
+{
+	let gdsMyMenu =  app.gdsMyMenu;
+	let addRow = gdsMyMenu.addRow();
+		gdsMyMenu.setColumn(addRow,this.colInfo.menu.cd,this.menuCd);
+		gdsMyMenu.setColumn(addRow,this.colInfo.menu.nm,this.menuNm);
+		gdsMyMenu.setColumn(addRow,this.colInfo.menu.navi,this.menuNavi);
+};
+
+/*
+ *	마이메뉴 삭제
+*/ 
+this.fnDelMyMenu = function ()
+{
+    let gdsMyMenu =  app.gdsMyMenu;	 
+	let findCode  = gdsMyMenu.findRow(this.colInfo.menu.cd,this.menuCd);
+	if(findCode == -1) return;
+	  gdsMyMenu.deleteRow(findCode);   
+};
+
+/*
+ *	미이메뉴 css 처리
+*/ 
+this.fnSetCssFavor = function ()
+{
+	
+	let obFavor  =  this.divTitle.form.btnFavorite;
+	let gdsFavor =  app.gdsFavor;	 
+	let findCode   = gdsFavor.findRow(this.colInfo.menu.cd,this.menuCd);
+	
+	if(findCode > -1)  objMyMenu.cssclass = "btn_WF_FavoriteRemove";
+	else  obFavor.cssclass = "btn_WF_FavoriteAdd";
+	 
+};]]></Script>
+  </Form>
+</FDL>
