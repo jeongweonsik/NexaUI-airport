@@ -3,12 +3,44 @@
   <Form id="frmTop" width="1598" height="60" titletext="TopFrame" cssclass="frm_TF" onload="frm_onload" scrolltype="none" onsize="frmTop_onsize" scrollbartype="none">
     <Layouts>
       <Layout height="60" width="1598">
-        <ImageViewer id="ImageViewer00" taborder="1" text="인천공항 인사급여" left="9" top="7" width="194" height="45"/>
-        <Menu id="menuTop" taborder="1" left="ImageViewer00:67" top="5" innerdataset="dsTopMenu" idcolumn="menuCd" levelcolumn="menuLvl" captioncolumn="menuNm" right="10" bottom="5"/>
+        <ImageViewer id="ImageViewer00" taborder="1" text="인천공항 인사급여" left="9" top="7" width="194" height="45" padding="0px 5px"/>
+        <Div id="divTopBtn" taborder="1" text="divTop" left="270" top="0" width="1220" bottom="0"/>
       </Layout>
     </Layouts>
     <Objects>
-      <Dataset id="dsTopMenu"/>
+      <Dataset id="dsTopMenu">
+        <ColumnInfo>
+          <Column id="menuCd" type="STRING" size="32"/>
+          <Column id="menuNm" type="STRING" size="32"/>
+          <Column id="parentCd" type="STRING" size="32"/>
+          <Column id="menuLvl" type="STRING" size="256"/>
+          <Column id="menuGroup" type="STRING" size="32"/>
+          <Column id="url" type="STRING" size="32"/>
+          <Column id="sort" type="STRING" size="256"/>
+          <Column id="menuPath" type="STRING" size="32"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="menuCd">M120003</Col>
+            <Col id="menuNm">탑메뉴1</Col>
+            <Col id="parentCd">M000120</Col>
+            <Col id="menuLvl">0</Col>
+            <Col id="menuGroup">0</Col>
+            <Col id="url"/>
+            <Col id="sort">1203</Col>
+            <Col id="menuPath">개발자샘플 &gt; </Col>
+          </Row>
+          <Row>
+            <Col id="menuCd">M220003</Col>
+            <Col id="menuNm">탑메뉴2</Col>
+            <Col id="parentCd">M100121</Col>
+            <Col id="menuLvl">0</Col>
+            <Col id="menuGroup">0</Col>
+            <Col id="sort">1203</Col>
+            <Col id="menuPath">개발자샘플 &gt; </Col>
+          </Row>
+        </Rows>
+      </Dataset>
       <Dataset id="dsMenuSearch">
         <ColumnInfo>
           <Column id="MENU_CD" type="STRING" size="32"/>
@@ -43,7 +75,7 @@
 * FORM 변수 선언 영역
 ************************************************************************************************/
 this.fvFirstGap 		= 0;
-this.fvBtnGap 			= 20;
+this.fvBtnGap 			= 0;
 this.fvBtnHeight 		= 26;
 this.fvTotWidth         = 0 
 this.fvTopBtnPrefix 	= "TOP_";
@@ -77,29 +109,112 @@ this.fnSetTopMenu = function ()
 	// Top 메뉴 복사
 	this.dsTopMenu.copyData(app.gdsMenu, true);
  	app.gdsMenu.filter("");
-	
-	
-	
-    //if(nexacro._isFunction(app.frame.left.form.fnSetInit)) app.frame.left.form.fnSetInit();
 
-// this.colInfo.menu.tcd
-// 	
-// 	for (let i = 0; i < this.dsTopMenu.getRowCount(); i++) 
-// 	{
-// 		
-// 		//	let sMenuCd   = this.dsTopMenu.getColumn(i,this.colInfo.menu.cd);
-// 	    let sTopId  =  this.dsTopMenu.getColumn(i,this.colInfo.menu.tmenu);
-// 		let sMenuNm = this.dsTopMenu.getColumn(i,this.colInfo.menu.nm);		
-// 		
-// 		this.fnCreateTopMenu(sTopId, sMenuNm,i);
-// 	}
-// 	
-// 	this.divTopMenu.width = this.fvTotWidth;
-//     this.divTopMenu.form.resetScroll();
-// 	this.resetScroll();
-	// 메뉴버튼 Redraw
-	//	this.fnRedrawBtn();
+
+	for (let i = 0; i < this.dsTopMenu.getRowCount(); i++) 
+	{
+		
+		//	let sMenuCd   = this.dsTopMenu.getColumn(i,this.colInfo.menu.cd);
+	    let sTopId  =  this.dsTopMenu.getColumn(i,this.colInfo.menu.cd);
+		let sMenuNm = this.dsTopMenu.getColumn(i,this.colInfo.menu.nm);		
+		//trace(" ## sTopId : " + sTopId + "<> sMenuNm : "  + sMneuNm);
+		this.fnCreateTopMenu(sTopId, sMenuNm,i);
+	}
+
+	this.divTopBtn.width = this.fvTotWidth;
+    this.divTopBtn.form.resetScroll();
+	this.resetScroll();
+	
+	//메뉴버튼 Redraw
+	this.fnRedrawBtn();
 };
+
+
+/**
+ * @description 버튼 redraw 
+ */
+this.fnRedrawBtn = function ()
+{
+	// 모든 버튼 체크 
+	this.fnCheckShowBtnAll();
+	
+
+};
+
+
+/**
+ * @description 모든 버튼 체크 
+ */
+this.fnCheckShowBtnAll = function ()
+{
+	if (this.dsTopMenu.rowcount == 0) return;
+
+	var objTopFirst = this.fnFindObj(this.fvTopBtnPrefix + this.dsTopMenu.getColumn(0, this.colInfo.menu.cd));
+	var objTopLast = this.fnFindObj(this.fvTopBtnPrefix + this.dsTopMenu.getColumn(this.dsTopMenu.rowcount - 1, this.colInfo.menu.cd));
+
+	var nLeft = objTopFirst.getOffsetLeft();
+	var nRight = objTopLast.getOffsetRight();
+
+	if (this.divTopBtn.getOffsetWidth() >= (nRight - nLeft)) 
+	{
+		this.fnMoveFirst(0);
+		return;
+	}
+};
+
+
+/**
+ * @description menu tab 버튼 첫번째 이동 함수
+ */
+this.fnMoveFirst = function (nMoveIdx)
+{
+	var nIndex;
+	var sTopId;
+	var objTop;
+	var objTopFirst;
+
+	nIndex = this.fnGetFirstTopIndex();
+	
+	if (nIndex < 0) return;
+
+	if (nMoveIdx < 0) return;
+
+	if (nMoveIdx >= this.dsTopMenu.rowcount) return;
+
+	sTopId = this.dsTopMenu.getColumn(nIndex, this.colInfo.menu.cd);
+	objTopFirst = this.fnFindObj(this.fvTopBtnPrefix + sTopId);
+
+	sTopId = this.dsTopMenu.getColumn(nMoveIdx, this.colInfo.menu.cd);
+	objTop = this.fnFindObj(this.fvTopBtnPrefix + sTopId);
+	
+	var nShiftPos = objTop.getOffsetLeft() - objTopFirst.getOffsetLeft();
+	for (var i = 0; i < this.dsTopMenu.rowcount; i++) 
+	{
+		sTopId = this.dsTopMenu.getColumn(i, this.colInfo.menu.cd);
+		objTop = this.fnFindObj(this.fvTopBtnPrefix + sTopId);
+		objTop.move(objTop.getOffsetLeft() - nShiftPos, objTop.getOffsetTop());
+	}
+};
+
+/**
+ * @description menu top 버튼 첫번째 index 가져오는 함수
+ */
+this.fnGetFirstTopIndex = function ()
+{
+	for (let i=0; i < this.dsTopMenu.rowcount;i++)
+	{
+		const sTopId  = this.dsTopMenu.getColumn(i, this.colInfo.menu.cd);
+		const objTop = this.fnFindObj(this.fvTopBtnPrefix + sTopId);
+		if (this.gfnIsNull(objTop) == false) 
+		{
+			if (0 <= objTop.getOffsetLeft()) return i;
+		}
+	}
+	return -1;
+};
+
+
+
 
 /************************************************************************************************
 * 사용자 FUNCTION 영역
@@ -128,23 +243,24 @@ this.fnSetUserInfo = function ()
 this.fnCreateTopMenu = function (sTopId, sName,idx)
 {
 //     let objPrevTab = this.fnGetLeft(sTopId)[0];
-// 	let nLeft   = this.fnGetLeft(sTopId)[1] || 0;
-// 	
-// 	// Creating page button
-// 	let objBtn = new Button();
-// 	objBtn.init(this.fvTopBtnPrefix + sTopId,nLeft, 0, 0, null, null, 0);
-// 	this.divTopMenu.form.addChild(objBtn.name, objBtn);
-// 	
-// 	objBtn.text = sName;
-// 	objBtn.cssclass = idx == 0 ? "btn_TF_Menu_S" : "btn_TF_Menu";	
-// 	objBtn.show();
-// 	if(idx == 0 && objBtn.cssclass == "btn_TF_Menu_S") this.btnTopSel =  objBtn;
-// 	// 버튼 width 셋팅
-// 	objBtn.fittocontents = "width";
-//     objBtn.addEventHandler("onclick",this.btnTopMenu_onclick,this);
-// 	let nWidth = objBtn.getOffsetWidth();
-// 	let ngap = this.dsTopMenu.getRowCount()-1 == idx ? 0 : this.fvBtnGap;
-// 	this.fvTotWidth  +=   Number(nWidth) + ngap;
+	let nLeft   = this.fnGetLeft(sTopId)[1] || 0;
+	
+	// Creating page button
+	let objBtn = new Button();
+	objBtn.init(this.fvTopBtnPrefix + sTopId,nLeft, 0, 0, null, null, 0);
+	this.divTopBtn.form.addChild(objBtn.name, objBtn);
+
+	objBtn.text = sName;
+	objBtn.cssclass = idx == 0 ? "btn_TF_Menu_S" : "btn_TF_Menu";	
+	objBtn.show();
+	if(idx == 0 && objBtn.cssclass == "btn_TF_Menu_S") this.btnTopSel =  objBtn;
+	// 버튼 width 셋팅
+	objBtn.fittocontents = "width";
+    objBtn.addEventHandler("onclick",this.btnTopMenu_onclick,this);
+	let nWidth = objBtn.getOffsetWidth();
+//	let ngap = this.dsTopMenu.getRowCount()-1 == idx ? 0 : this.fvBtnGap;
+	let ngap =  0;
+	this.fvTotWidth  +=   Number(nWidth) + ngap;
 	
 };
 
@@ -157,17 +273,14 @@ this.fnCreateTopMenu = function (sTopId, sName,idx)
 */
 this.btnTopMenu_onclick = function (obj,e)
 {
-	
-	this.btnTopSel.cssclass = "btn_TF_Menu";
-	obj.cssclass = "btn_TF_Menu_S";
-	this.btnTopSel = obj;
-	
-	let sTopMenu = obj.name.split("_")[1];
-	
-	app.frame.lefts.fnSetMenuL(sTopMenu)
+// 	this.btnTopSel.cssclass = "btn_TF_Menu";
+// 	obj.cssclass = "btn_TF_Menu_S";
+// 	this.btnTopSel = obj;
+// 	
+// 	let sTopMenu = obj.name.split("_")[1];
+// 	
+// 	app.frame.lefts.fnSetMenuL(sTopMenu)
 };
-
-
 
 /**
 * @description 이전 버튼을 기준으로 버튼위치 리턴
@@ -177,17 +290,19 @@ this.fnGetLeft = function (sTopId)
 	let nCurRow = this.dsTopMenu.findRow( this.colInfo.menu.cd, sTopId);
 	if (nCurRow == 0) return this.fvFirstGap;
 	
-	let objPrevTab = this.fnFindObj(this.fvTopBtnPrefix + this.dsTopMenu.getColumn(nCurRow - 1, this.colInfo.menu.cd));
+	let objPrevTab = this.fnFindObj(this.fvTopBtnPrefix + this.dsTopMenu.getColumn(nCurRow - 1, this.colInfo.menu.cd));	
 	let nSize = objPrevTab.getOffsetRight() + this.fvBtnGap;
+	
 	return [objPrevTab,nSize];
 };
 
 /**
-* @description menu tab 찾는 함수
-*/
+ * @description menu tab 찾는 함수
+ */
 this.fnFindObj = function (sId)
 {
-	return this.divTopMenu.form.components[sId];
+
+	return this.divTopBtn.form.components[sId];
 };
 
 /************************************************************************************************
@@ -200,8 +315,9 @@ this.fnFindObj = function (sId)
 
 this.frmTop_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
 {
-	
-	this.resetScroll();
+		// 메뉴버튼 Redraw
+	this.fnRedrawBtn();
+	// this.resetScroll();
 };
 
 

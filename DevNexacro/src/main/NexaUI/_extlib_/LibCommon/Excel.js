@@ -15,8 +15,8 @@
 /**
 * @class excel export <br>
 * @param {Object} objGrid - Grid Object	
-* @param {String} [sSheetName]	- sheet name
 * @param {String} [sFileName]	- file name
+* @param {String} [sSheetName]	- sheet name
 * @param {strign} default supress
 "suppress" 설정 시 suppress 된 결과대로 1 개 Cell 만 값을 Export 합니다.
 나머지 Row 의 해당 Cell 은 병합되지 않으며 모두 공백으로 처리됩니다.
@@ -28,15 +28,16 @@
 
 * @return N/A
 * @example
-* this.gfnExcelExport(this.grid_export, "SheetName","","",true);
+* this.gfnExcelExport(this.grid_export,"엑셀1", "Sheet00","",true);
 */
-_pForm.gfnExcelExport = function(objGrid,  sSheetName, sFileName,sSuppress,head)
+_pForm.gfnExcelExport = function(objGrid ,sFileName ,sSheetName ,sSuppress ,head)
 {
     const ishead = this.gfnNvl(head,true);
 	
 	//var objGrid_excel = objGrid;
     const pSupppress =   	this.gfnNvl(sSuppress,"suppress"); 
 	let objGrid_excel;
+	
 	
 	
 	/************************************************************************
@@ -81,11 +82,13 @@ _pForm.gfnExcelExport = function(objGrid,  sSheetName, sFileName,sSuppress,head)
 	
 	/************************************************************************
 	* @description 엑셀 저장용 그리드 생성 End
-	************************************************************************/	 
-	
+	************************************************************************/	 	
 	const regExp = /[?*:\/\[\]\.]/g;  				//(엑셀에서 지원하지않는 모든 문자)
 	//	sFileName = this.gfnIsNull(sFileName) ? this.gfnGetArgument("menuNm") || this.name+"_"+this.gfnGetDate() : sFileName;
-	sFileName = this.gfnIsNull(sFileName) ?  this.gfnGetMenuNm()+"_" + objGrid.name + "_" + this.gfnGetDate('time')  : sFileName;
+	if(!!sFileName)  sFileName = sFileName  + "_" + this.gfnGetDate('time') ;
+	else  sFileName = this.gfnGetMenuNm() +"_" + objGrid.name + "_" + this.gfnGetDate('time')  ;
+	
+//	sFileName = this.gfnIsNull(sFileName) ?  this.gfnGetMenuNm() +"_" + objGrid.name + "_" + this.gfnGetDate('time')  : sFileName;
 	//sheetName nullcheck
 	sSheetName = this.gfnIsNull(sSheetName) ? "sheet1" : sSheetName;
 	
@@ -98,10 +101,16 @@ _pForm.gfnExcelExport = function(objGrid,  sSheetName, sFileName,sSuppress,head)
 		sSheetName =  "sheet1";
 	}
 	
-	const svcUrl = "svcUrl::XExportImport.do";
+	if(~prjPath.indexOf("127.0.0.1")){
+	   alert(" 사용 하실 수  없습니다.  : "+ prjPath);
+	   return;	
+	}
+	
+	const svcUrl = "svcUrl::XExportImport";
+	
 	this.objExport = null
 	this.objExport = new ExcelExportObject();
-	this.objExport.exporttype = exacro.ExportTypes.EXCEL2007 ;
+	this.objExport.exporttype = nexacro.ExportTypes.EXCEL2007 ;
 	this.objExport.objgrid = objGrid_excel;
 	this.objExport.exporturl = svcUrl;
 	//this.objExport.addExportItem(nexacro.ExportItemTypes.GRID, objGrid_excel, sSheetName+"!A1","allband","allrecord","suppress","allstyle","none","", "both"); 
@@ -179,10 +188,10 @@ this.gfnExcelImport("dsList",(errorCode,outDs)=>{
 _pForm.gfnExcelImport = function()
 {
 	const args = Array.from(arguments);
- 	
+	
 	let sDataset, sSheet, sHead, sBody, callback, sImportId, objForm;
 	let outds,outdTemp;
-	
+
 	if(args.length < 1) return;
 	args.every((value,key) => {	  			
 			
@@ -289,7 +298,6 @@ _pForm.gfnImportOnsuccess = function(obj,  e)
 		
 		objOrgDs.clearData();
 		objOrgDs.copyData(objOutDs);	  
-		
 	}
 	
 	if("callback" in obj){   // 
@@ -300,7 +308,7 @@ _pForm.gfnImportOnsuccess = function(obj,  e)
 			let sImportId = obj.importid;
 			let objForm = obj.form;	   		
 			
-			if(nexacro._isFunction(callback)) callback.call(this,objOutDs);
+			if(nexacro._isFunction(callback)) callback.call(this,objOutDs,objOrgDs);
 			else this[callback].call(this,sImportId,objOutDs,objOrgDs);
 		}	
 	}  

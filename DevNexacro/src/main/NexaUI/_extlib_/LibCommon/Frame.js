@@ -634,7 +634,7 @@ trace(smenuId);   // S00001
 */
 _pForm.gfnGetMenuCd= function()
 {
-   if(!!!app.frame || this.gfnIsQuickView()) return "";
+   if(!!!app.frame || this.gfnIsQuickView()) return this.name;
 	
    if(this.gfnIsQuickView()) return;
     let pform = this.getOwnerFrame();
@@ -962,16 +962,15 @@ _pForm.gfnSetFrame = function(p)
 		if(!!!app.frame.top.formurl){
 			app.frame.top.formurl = path.top;    // set path top
 		} else {		
-
 			app.frame.top.form.fnSetInit();
 		}
-		
 		
 		if(!!!app.frame.left.formurl){
 		    app.frame.left.formurl = path.left;  //set path left 
 		}else{
 			
-			app.frame.lefts.fnSetInit();			
+			 app.frame.left.form.fnSetInit();		
+			//app.frame.lefts.fnSetInit();			
 		}
 		
 		if(!!!app.frame.mdi.formurl) app.frame.mdi.formurl = path.mdi;  //set path mdi

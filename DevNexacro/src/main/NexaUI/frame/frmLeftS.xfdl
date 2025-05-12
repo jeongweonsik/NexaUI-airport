@@ -1,12 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frmLeftS" left="0" top="0" width="243" height="838" onload="form_onload" stepalign="center middle" visible="true" stepitemsize="0" stepshowtype="action" scrolltype="vertical" titletext="프레임(Left폼서브)" ondragmove="LeftFrameS_ondragmove" ondrop="LeftFrameS_ondrop" onsize="LeftFrameS_onsize" cssclass="frm_LF">
+  <Form id="frmLeftS" left="0" top="0" width="243" height="643" onload="form_onload" stepalign="center middle" visible="true" stepitemsize="0" stepshowtype="action" scrolltype="vertical" titletext="프레임(Left폼서브)" ondragmove="LeftFrameS_ondragmove" ondrop="LeftFrameS_ondrop" onsize="LeftFrameS_onsize" cssclass="frm_LF">
     <Layouts>
       <Layout stepcount="2">
         <CheckBox id="chkSelAll" taborder="2" text="전체선택" left="11" top="7" width="82" height="26" positionstep="1" onchanged="chkSelAll_onchanged" value=""/>
-        <Button id="btnCollapseAll" taborder="4" top="10" width="20" height="20" tooltiptext="메뉴접기" right="10" cssclass="btn_LF_CollapseAll" onclick="btnSetExPand_onclick"/>
-        <Button id="btnExapndAll" taborder="3" top="10" width="20" height="20" tooltiptext="메뉴펼치기" right="btnCollapseAll:4" cssclass="btn_LF_ExpandAll" onclick="btnSetExPand_onclick"/>
-        <Grid id="grdMenu" taborder="0" left="0" bottom="0" top="btnExapndAll:10" binddataset="dsMenu" autoenter="none" autosizingtype="none" extendsizetype="none" treeinitstatus="collapse,null" treeusecheckbox="false" treeuseline="false" treeuseimage="true" oncellclick="grdMenu_oncellclick" scrolltype="vertical" unodata="false" cursor="pointer" usort="false" ucopy="false" autofittype="col" scrollbartrackbarsize="100" scrollbardecbuttonsize="0" scrollbarincbuttonsize="0" right="0">
+        <Grid id="grdMenu" taborder="0" left="1" top="0" binddataset="dsMenu" autoenter="none" autosizingtype="none" extendsizetype="none" treeinitstatus="collapse,null" treeusecheckbox="false" treeuseline="false" treeuseimage="true" oncellclick="grdMenu_oncellclick" scrolltype="vertical" unodata="false" cursor="pointer" usort="false" ucopy="false" autofittype="col" scrollbartrackbarsize="100" scrollbardecbuttonsize="0" scrollbarincbuttonsize="0" height="759" width="241">
           <Formats>
             <Format id="default">
               <Columns>
@@ -22,8 +20,7 @@
           </Formats>
         </Grid>
         <Button id="btnDeleteAll" taborder="1" top="10" width="20" height="20" tooltiptext="메뉴삭제(전체)" right="10" cssclass="btn_LF_Delete" positionstep="1" onclick="btnDeleteAll_onclick"/>
-        <Static id="staTitle" taborder="5" left="0" top="7" width="205" height="26" cssclass="sta_LF_MenuTitle" fittocontents="height" visible="true"/>
-        <Grid id="grdMyMenu" taborder="6" left="0" top="40" bottom="0" binddataset="gdsMyMenu" scrollbartrackbarsize="100" positionstep="1" oncellclick="grdMyMenu_oncellclick" unodata="false" autofittype="col" scrollbardecbuttonsize="0" scrollbarincbuttonsize="0" right="0">
+        <Grid id="grdMyMenu" taborder="3" left="1" top="40" binddataset="gdsMyMenu" scrollbartrackbarsize="100" positionstep="1" oncellclick="grdMyMenu_oncellclick" unodata="false" autofittype="col" scrollbardecbuttonsize="0" scrollbarincbuttonsize="0" right="0" height="729">
           <Formats>
             <Format id="default">
               <Columns>
@@ -92,25 +89,25 @@ this.fnSetInit  = function(){
 	let sTopMenu = app.gdsMenu.getColumn(firstCol, this.colInfo.menu.cd);
 	
 	 this.fnSetMenuL(sTopMenu);
-	 
+	// trace(" this.getOffsetHeight : " +this.getOffsetHeight());
 		 
-	 if(!app.v.login){
-	     const rowCnt = this.gfnLoadDsStore("openMenu",app.gdsOpenMenu);  // local storage 저장 메뉴 가져오기
-	     //열린메뉴 체크
-		 if(rowCnt >0)
-		 {
-			for (let n=0; n<rowCnt;n++)
-			{
-				const menuCd = app.gdsOpenMenu.getColumn(n, this.colInfo.menu.cd);
-				this.gfnOpenMenu(menuCd,"",true);
-				
-			}
-		  //  const menuCd = app.gdsOpenMenu.geto
-		  //  
-		 }
-	 }else{
-	   this.gfnRemoveStoreMenu("openMenu");	 
-	 }
+// 	 if(!app.v.login){
+// 	     const rowCnt = this.gfnLoadDsStore("openMenu",app.gdsOpenMenu);  // local storage 저장 메뉴 가져오기
+// 	     //열린메뉴 체크
+// 		 if(rowCnt >0)
+// 		 {
+// 			for (let n=0; n<rowCnt;n++)
+// 			{
+// 				const menuCd = app.gdsOpenMenu.getColumn(n, this.colInfo.menu.cd);
+// 				this.gfnOpenMenu(menuCd,"",true);
+// 				
+// 			}
+// 		  //  const menuCd = app.gdsOpenMenu.geto
+// 		  //  
+// 		 }
+// 	 }else{
+// 	   this.gfnRemoveStoreMenu("openMenu");	 
+// 	 }
 }
 
 /**
@@ -295,17 +292,17 @@ this.exceptSelfCollapse = function(obj, erow)
 this.btnSetExPand_onclick = function(obj)
 {
 	var oGrdTree = this.grdMenu;
-	
-	if(obj.name == "btnExapndAll"
-	   && oGrdTree.treeinitstatus != "expand,all")  //전체 펼침
-	{
-	  oGrdTree.treeinitstatus = "expand,all";
-	} 
-	else if(obj.name == "btnCollapseAll" 
-	      && oGrdTree.treeinitstatus != "collapse,all")  //전체 닫힘
-	{
-	  oGrdTree.treeinitstatus = "collapse,all";
-	}
+// 	
+// 	if(obj.name == "btnExapndAll"
+// 	   && oGrdTree.treeinitstatus != "expand,all")  //전체 펼침
+// 	{
+// 	  oGrdTree.treeinitstatus = "expand,all";
+// 	} 
+// 	else if(obj.name == "btnCollapseAll" 
+// 	      && oGrdTree.treeinitstatus != "collapse,all")  //전체 닫힘
+// 	{
+// 	  oGrdTree.treeinitstatus = "collapse,all";
+// 	}
 };
 
 

@@ -3,11 +3,17 @@
   <Form id="frm" width="1280" height="720" titletext="New Form">
     <Layouts>
       <Layout height="720" width="1280">
-        <Button id="Button00" taborder="0" text="Button00" left="130" top="69" width="135" height="81" onclick="Button00_onclick"/>
-        <Button id="Button01" taborder="1" text="Button01" left="456" top="103" width="176" height="62" onclick="Button01_onclick"/>
-        <Button id="Button02" taborder="2" text="Button02" left="424" top="41" width="171" height="39" onclick="Button02_onclick"/>
-        <Button id="Button03" taborder="3" text="Button03" left="660" top="77" width="97" height="55" onclick="Button03_onclick"/>
-        <Div id="Div00" taborder="4" text="Div00" left="187" top="199" width="883" height="321" url="test::sample009CommonCode.xfdl"/>
+        <Button id="Button00" taborder="0" text="Button00" left="665" top="50" width="135" height="81" onclick="Button00_onclick"/>
+        <Button id="Button01" taborder="1" text="Button01" left="767" top="140" width="176" height="62" onclick="Button01_onclick" icon="url('theme://images/titlebar_icon.png')"/>
+        <Button id="Button02" taborder="2" text="Button02" left="429" top="152" width="171" height="39" onclick="Button02_onclick"/>
+        <Button id="Button03" taborder="3" text="Button03" left="650" top="133" width="97" height="55" onclick="Button03_onclick"/>
+        <Div id="Div00" taborder="4" text="Div00" left="690" top="250" width="540" height="321" url="test::sample009CommonCode.xfdl">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Menu id="menuTop" taborder="5" left="820" top="55" innerdataset="dsTopMenu" idcolumn="menuCd" levelcolumn="menuLvl" captioncolumn="menuNm" right="90" bottom="587" iconcolumn="icon"/>
+        <Div id="Div01" taborder="6" text="Div01" left="27" top="32" width="313" height="540" url="frame::frmLeftS.xfdl"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
@@ -172,6 +178,49 @@ this.Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 ]]></Script>
     <Objects>
       <Dataset id="Dataset00"/>
+      <Dataset id="dsTopMenu">
+        <ColumnInfo>
+          <Column id="menuCd" type="STRING" size="32"/>
+          <Column id="menuNm" type="STRING" size="32"/>
+          <Column id="parentCd" type="STRING" size="32"/>
+          <Column id="menuLvl" type="STRING" size="256"/>
+          <Column id="menuGroup" type="STRING" size="32"/>
+          <Column id="url" type="STRING" size="32"/>
+          <Column id="sort" type="STRING" size="256"/>
+          <Column id="menuPath" type="STRING" size="32"/>
+          <Column id="icon" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="menuCd">M120003</Col>
+            <Col id="menuNm">탑메뉴1</Col>
+            <Col id="parentCd">M000120</Col>
+            <Col id="menuLvl">0</Col>
+            <Col id="menuGroup">0</Col>
+            <Col id="url"/>
+            <Col id="sort">1203</Col>
+            <Col id="menuPath">개발자샘플 &gt; </Col>
+            <Col id="icon">url('theme://images/titlebar_icon.png')</Col>
+          </Row>
+          <Row>
+            <Col id="menuCd">M220003</Col>
+            <Col id="menuNm">탑메뉴2</Col>
+            <Col id="parentCd">M100121</Col>
+            <Col id="menuLvl">0</Col>
+            <Col id="menuGroup">0</Col>
+            <Col id="sort">1203</Col>
+            <Col id="menuPath">개발자샘플 &gt; </Col>
+            <Col id="icon">url('theme://images/titlebar_icon.png')</Col>
+          </Row>
+          <Row>
+            <Col id="menuCd">M320003</Col>
+            <Col id="menuNm">탑메뉴1_2</Col>
+            <Col id="menuLvl">1</Col>
+            <Col id="menuGroup">0</Col>
+            <Col id="icon">url('theme://images/titlebar_icon.png')</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
   </Form>
 </FDL>

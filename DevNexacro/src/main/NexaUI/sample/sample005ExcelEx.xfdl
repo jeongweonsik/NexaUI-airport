@@ -216,12 +216,7 @@ this.addEventHandler("onload",function(obj,e)
 
 this.fnCallback = function(id,code,msg)
 {
-	// 에러 시 화면 처리 내역
-	if(code < 0) return;
-	
-	this.fnCallback = function(id,code,msg)
-{
-	// 에러 시 화면 처리 내역
+  // 에러 시 화면 처리 내역
 	if(code < 0) return;
 	
 	switch(id) {
@@ -230,7 +225,7 @@ this.fnCallback = function(id,code,msg)
 
 	default:
 	}
-};
+
 };
 
 /************************************************************************************************
@@ -241,9 +236,9 @@ this.fnCallback = function(id,code,msg)
 * 사용자 FUNCTION 영역
 ************************************************************************************************/
 //import callback
-this.fnImportCallback = function (errorCode,importId,objDs)
+this.fnImportCallback = function (id,outDs,orgDs)
 {   
-	this.console.log(" # objDs : " +objDs.saveXML());  //excel 생성된 dataset
+	this.console.log(" # ds : " +ds.saveXML());  //excel 생성된 dataset
 };
 
 
@@ -256,10 +251,9 @@ this.fnImportCallback = function (errorCode,importId,objDs)
  */
 this.btn_excelExportUser_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var objGrid  =  this.grid_user;
-	var sSheetNm = "sheet1";
-	var sFileNm = "test004";   // 파일명 없으면 메뉴명_todaytime.xsl
-	this.gfnExcelExport(objGrid); 
+	var objGrid  =  this.grid_user;	
+	var sFileNm = "엑셀그리드0_1";   // 파일명 
+	this.gfnExcelExport(objGrid,sFileNm); 
 };
 
 
@@ -268,11 +262,12 @@ this.btn_excelExportUser_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
 this.btn_excelImportUser_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 
-    var dsName = "ds_grd";
-	var id  =  " importExcel";   // 생략가능
-	
-	var callback = "fnImportCallback";  //생략가능
-	this.gfnExcelImport(dsName,id);	
+    var dsName = "ds_grd";  
+	this.gfnExcelImport(dsName,
+	(outDs,orgDs)=>{  //callback
+	  
+	trace(" ## outDs : " + outDs + "<> orgDs : " +orgDs);
+	});	
 };
 
 ]]></Script>

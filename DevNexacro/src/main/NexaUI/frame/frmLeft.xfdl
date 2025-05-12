@@ -1,12 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frmSub" width="264" height="838" titletext="프레임(Left메인)" onload="frm_onlaod" cssclass="frm_LF" visible="true">
+  <Form id="frmSub" width="262" height="826" titletext="프레임(Left메인)" onload="frm_onlaod" visible="true" scrolltype="none" scrollbartype="none none" onsize="frm_onsize">
     <Layouts>
-      <Layout height="838" width="264">
-        <Button id="btnMenu" taborder="1" text="메뉴" left="0" top="0" width="49.24%" height="36" cssclass="btn_LF_Tab_S" onclick="btnMenu_onclick"/>
-        <Button id="btnMyMenu" taborder="2" text="즐겨찾기" left="btnMenu:0" top="0" height="36" cssclass="btn_LF_LastTab" right="4" onclick="btnMenu_onclick"/>
-        <Button id="Button00" taborder="3" text="&lt;" top="43.79474940334129%" width="21" height="95" right="0"/>
-        <Div id="divLeft" taborder="0" left="0" top="btnMyMenu:0" bottom="0" url="frame::frmLeftS.xfdl" formscrolltype="none" cssclass="div_LF" right="Button00:0"/>
+      <Layout height="826" width="262">
+        <Button id="btnMenu" taborder="0" text="메뉴" left="20" top="132" width="45.038167938931295%" height="36" cssclass="btn_LF_Tab_S" onclick="btnMenu_onclick"/>
+        <Button id="btnMyMenu" taborder="1" text="즐겨찾기" left="btnMenu:0" top="132" height="36" cssclass="btn_LF_LastTab" right="11" onclick="btnMenu_onclick"/>
+        <Div id="divLeft" taborder="2" text="Div00" left="0" top="180" url="frame::frmLeftS.xfdl" formscrollbartype="none none" width="258" height="644"/>
+        <Static id="staName" taborder="3" text="한지성&#13;&#10;" left="100" top="11" width="149" height="25"/>
+        <ImageViewer id="ImageViewer00" taborder="4" text="ImageViewer00" left="7" top="6" width="78" height="72"/>
+        <Edit id="edtMenuSearch" taborder="5" left="2" top="80" height="42" cssclass="edi_LF_Sch" displaynulltext="메뉴명을 입력하세요." right="4" onkeyup="edtMenuSearch_onkeyup"/>
+        <Button id="btnMenuSearch" taborder="6" top="87" height="25" cssclass="btn_LF_Sch" onclick="btnMenuSearch_onclick" left="226" right="edtMenuSearch:-251"/>
+        <Static id="staName00" taborder="7" text="IT202501" left="100" top="30" width="60" height="25"/>
+        <Static id="Static00" taborder="8" text="|" left="156" top="27" width="8" height="31"/>
+        <Static id="staName00_00" taborder="9" text="대표이사" left="174" top="30" width="60" height="25"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
@@ -21,6 +27,8 @@
 *  
 *******************************************************************************
 */
+
+
 /************************************************************************************************
  * FORM 변수 선언 영역
 ************************************************************************************************/
@@ -40,6 +48,8 @@ this.frm_onlaod = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.fnSetInit = function ()
 {
    this.divLeft.form.fnSetInit();
+//   trace(" left height :  " + this.height);
+//   trace(" left getOffsetWidth :  " + this.getOffsetWidth());
 };
 
 this.btnMenu_onclick = function(obj)
@@ -53,7 +63,7 @@ this.fnSetMenuChange = function (menuNm)
 
 	if(menuNm == "btnMyMenu") nidx = 1;
 	
-	 this.fnSetMenuCss(nidx);	
+	// this.fnSetMenuCss(nidx);	
 	this.divLeft.form.fnSetStepMenu(nidx);
 };
 
@@ -61,15 +71,15 @@ this.fnSetMenuChange = function (menuNm)
 this.fnSetMenuCss = function (flag)
 {
 	//btnMymenu
-	if(flag == 1){
-	    this.btnMenu.cssclass = "btn_LF_Tab";
-	    this.btnMyMenu.cssclass = "btn_LF_LastTab_S";	 
-	     
-	}else{	
-	   this.btnMenu.cssclass = "btn_LF_Tab_S";	  
-	   this.btnMyMenu.cssclass = "btn_LF_LastTab";	 
-	 // this.btnMymenu.set_cssclass("btn_LF_LastTab");
-	}
+// 	if(flag == 1){
+// 	    this.btnMenu.cssclass = "btn_LF_Tab";
+// 	    this.btnMyMenu.cssclass = "btn_LF_LastTab_S";	 
+// 	     
+// 	}else{	
+// 	   this.btnMenu.cssclass = "btn_LF_Tab_S";	  
+// 	   this.btnMyMenu.cssclass = "btn_LF_LastTab";	 
+// 	 // this.btnMymenu.set_cssclass("btn_LF_LastTab");
+// 	}
 };
 
 
@@ -86,26 +96,39 @@ this.fnGetMenuPath = function (menuID)
 //펼침 / 접힘 onclick
 this.btnSetExPand_onclick = function(obj)
 {
-    var btnMenuCollApse = this.divLBottom.form.divHistory.form.btnMenuCollApse;
-	var btnSetExPand = this.divLBottom.form.divHistory.form.btnMenExpand;
-	
-    if(obj.name == "btnMenExpand"){
-		  obj.cssclass = "btn_LF_Plus_S";
-	      btnMenuCollApse.cssclass = "btn_LF_Minus";
-	}
-	
-	if(obj.name == "btnMenuCollApse"){
-	      obj.cssclass = "btn_LF_Minus_S";
-	      btnSetExPand.cssclass = "btn_LF_Plus";
-	}
-	
-	this.divLeft.form.btnSetExPand_onclick(obj);
+//     var btnMenuCollApse = this.divLBottom.form.divHistory.form.btnMenuCollApse;
+// 	var btnSetExPand = this.divLBottom.form.divHistory.form.btnMenExpand;
+// 	
+//     if(obj.name == "btnMenExpand"){
+// 		  obj.cssclass = "btn_LF_Plus_S";
+// 	      btnMenuCollApse.cssclass = "btn_LF_Minus";
+// 	}
+// 	
+// 	if(obj.name == "btnMenuCollApse"){
+// 	      obj.cssclass = "btn_LF_Minus_S";
+// 	      btnSetExPand.cssclass = "btn_LF_Plus";
+// 	}
+// 	
+// 	this.divLeft.form.btnSetExPand_onclick(obj);
 
 };
 
 /************************************************************************************************
  * 각 COMPONENT 별 EVENT 영역
 ************************************************************************************************/
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+
+this.frm_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
+{
+   // trace(" ##  this.divLeft.top : " + );
+	//trace("## e.cx : " + e.cx + "<> e.cy : " + e.cy);	
+	this.divLeft.height =  Number(e.cy) - Number(this.divLeft.top);
+};
 ]]></Script>
     <Objects/>
   </Form>

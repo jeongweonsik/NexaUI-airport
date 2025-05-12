@@ -50,7 +50,7 @@ _pForm.gfnAlert = function ()
 	if(!nexacro._isObject(args[0]) && Object.keys(args[0]).length < 1) return; 
 	
 	let sMsgId,arrParam=[],sType='',callback='';
-	let oparams = {msgurl:"cmm::cmmAlert.xfdl",popid:this.gfnGetUniqueId("alert" + "_"),titlebar:false};		
+	let oparams = {msgurl:"cmm::cmmAlert.xfdl",popid:this.gfnGetUniqueId("Alert" + "_"),titlebar:false};		
 	Object.assign(oparams,this._gfnMsgParam(args));
 	 this._gfnShowMsg(oparams);
 };
@@ -86,7 +86,7 @@ _pForm.gfnConfirm = function()
 	
 	if(!nexacro._isObject(args[0]) && Object.keys(args[0]).length < 1) return; 
 	let smsg,sType='',callback;
-	let oparams = {msgurl:"cmm::cmmConfirm.xfdl",popid:this.gfnGetUniqueId("confirm" + "_"),titlebar:false};	
+	let oparams = {msgurl:"cmm::cmmConfirm.xfdl",popid:this.gfnGetUniqueId("Confirm" + "_"),titlebar:false};	
 	   Object.assign(oparams,this._gfnMsgParam(args));	  
 	 this._gfnShowMsg(oparams); 
  
@@ -150,12 +150,11 @@ _pForm._gfnShowMsg = function ()
 			   if("msg" in value) sMsg = value['msg'];			
 				  if("type" in value) stype  = value['type'];	
 				     if("callback" in value)  callback  = value['callback'];				  
-		
       });
 
     if(!!!msgurl) return;	
-    let oargs = {paramContents:sMsg,paramType:stype,titlebar:titlebar};	
-	let  oparam = {id :popid,url: msgurl};	
+    let oargs = {paramContents:sMsg,paramType:stype,titlebar:"false"};	
+	let  oparam = {id:"msg_"+popid ,url: msgurl};	
 	    Object.assign(oargs,oparam);
 	
     this.gfnShowModal( oargs,

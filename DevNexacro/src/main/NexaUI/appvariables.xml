@@ -187,9 +187,9 @@
       </ColumnInfo>
       <Rows>
         <Row>
-          <Col id="id">admin</Col>
-          <Col id="nm">관리자</Col>
-          <Col id="emil">aaa@naver.com</Col>
+          <Col id="id">test</Col>
+          <Col id="nm">테스트사용자</Col>
+          <Col id="emil">test@naver.com</Col>
         </Row>
       </Rows>
     </Dataset>

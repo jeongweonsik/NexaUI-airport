@@ -14,7 +14,7 @@
         <Combo id="cboGDS" taborder="1" top="60" height="26" innerdataset="@dsGDS" datacolumn="NAME" onkeydown="combo_onkeydown" displayrowcount="25" type="filterlike" onitemchanged="cboGDS_onitemchanged" width="300" codecolumn="PATH" left="144"/>
         <Button id="btnGlobalFilter" taborder="8" text="필터해제" width="74" height="26" onclick="btnGlobalFilter_onclick" top="60" left="448" cssclass="btn_WF_Inner"/>
         <Combo id="cboGrid" taborder="2" text="Combo00" top="25" height="26" innerdataset="@dsGrid" datacolumn="NAME" codecolumn="PATH" onitemchanged="fnMakeGridFormats" displayrowcount="25" onkeydown="combo_onkeydown" left="814" right="25" minwidth="300" maxwidth=""/>
-        <Tab id="tabComponent" taborder="3" left="20" top="111" right="22" tabindex="0" scrollbars="autoboth" onchanged="tabComponent_onchanged" maxwidth="" border="1px solid red" height="509">
+        <Tab id="tabComponent" taborder="3" left="20" top="111" right="22" tabindex="0" scrollbars="autoboth" onchanged="tabComponent_onchanged" maxwidth="" height="509">
           <Tabpages>
             <Tabpage id="tabpage1" text="Dataset">
               <Layouts>

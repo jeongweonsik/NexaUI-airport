@@ -142,7 +142,7 @@ this.fnSetScroll = function ()
 	if( this.hscrollbar.max > 0)  this.staGapH.height = 0;
 	else this.staGapH.height = 20;
 	
-	
+
 	 trace("#####this.divWork.width  : " + this.divWork.getOffsetWidth());
 	 	 trace("## this.divWork.height  : " + this.divWork.getOffsetHeight());
 // 	 trace(" ## frmHeight :"  +frmHeight + "<> vScrollMax : " + vScrollMax);

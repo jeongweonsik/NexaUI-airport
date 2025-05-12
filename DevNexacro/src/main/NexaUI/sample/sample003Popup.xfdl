@@ -5,7 +5,7 @@
       <Layout height="510" mobileorientation="landscape" width="1020">
         <Static id="sta07" taborder="0" cssclass="sta_WF_Guide" text="h20" bottom="0" visible="false" left="0" height="20" right="0"/>
         <Button id="btnPopup" taborder="1" text="Modal" top="90" width="119" height="28" onclick="btnPopup_onclick" fittocontents="none" right="140"/>
-        <Button id="btnPopup00" taborder="2" text="modeless" top="90" width="119" height="28" onclick="btnPopup00_onclick" fittocontents="none" right="16"/>
+        <Button id="btnPopup00" taborder="2" text="modeless" top="92" width="119" height="28" onclick="btnPopup00_onclick" fittocontents="none" right="41"/>
         <Button id="btnCloseAll" taborder="3" text="모든 팝업 닫기" top="124" width="119" height="28" onclick="btnClose_onclick" fittocontents="none" right="21"/>
         <TextArea id="txtRes" taborder="4" left="10" top="160" right="10" bottom="51"/>
         <Button id="btn00" taborder="5" text="모달리스 자식창 함수 호출" top="122" width="209" height="28" onclick="btnPopup00_onclick" right="150"/>

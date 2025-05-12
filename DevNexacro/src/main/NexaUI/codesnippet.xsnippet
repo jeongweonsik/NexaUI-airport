@@ -29,6 +29,22 @@
         <Snippet name="v.mode " shortcut="app" description="">app.v.mode&#13;
 </Snippet>
       </Group>
+      <Group name="cal">
+        <Snippet name="calFromTo.getFromDate" shortcut="cal" description="기간달력 set from date">$end$.getFromDate(sdate);</Snippet>
+        <Snippet name="calFromTo.getToDate" shortcut="cal" description="기간달력 from 날짜 가져오는 함수">$end$.getToDate();</Snippet>
+        <Snippet name="calFromTo.init" shortcut="cal" description="기간달력 초기화">$end$.init();</Snippet>
+        <Snippet name="calFromTo.setBinds" shortcut="cal" description="기간달력 set binds">$end$.setBinds(binds,colFr,colTo);</Snippet>
+        <Snippet name="calFromTo.setFromDate" shortcut="cal" description="기간달력 fromdate 날짜 셋팅">$end$.setFromDate(sdate);</Snippet>
+        <Snippet name="calFromTo.setFromToDate" shortcut="cal" description="기간 달력 from to 날짜 셋팅 함수">$end$.setFromToDate(sfr,sto);</Snippet>
+        <Snippet name="calFromTo.setToDate" shortcut="cal" description="기간달력 todaet 날짜 셋팅">$end$.setToDate(sdate);</Snippet>
+        <Snippet name="calMM.getValue" shortcut="cal" description="월력 값 가져오는 함수">$end$.getValue();</Snippet>
+        <Snippet name="calMM.init" shortcut="cal" description="월력 초기화 함수&#13;&#10;">$end$.init();</Snippet>
+        <Snippet name="calMM.setBinds" shortcut="cal" description="월력 바인딩 셋&#13;&#10;bindds,colFrom,calTo&#13;&#10;">$end$.setBinds(bindds,colFrom,calTo);</Snippet>
+        <Snippet name="calMM.setEnable" shortcut="cal" description="월력 컴퍼넌트 enable 활성/비활성">$end$.setEnable(benable);</Snippet>
+        <Snippet name="calMM.setEssential" shortcut="cal" description="필수 여부 처리   true/false">$end$.setEssential(true);</Snippet>
+        <Snippet name="calMM.setReadonly" shortcut="cal" description="월력 readonly ">$end$.setReadonly(true);</Snippet>
+        <Snippet name="calMM.setValue" shortcut="cal" description="월력 날짜값 셋팅">$end$.setValue(sdate);</Snippet>
+      </Group>
       <Group name="callback">
         <Snippet name="fnCallback" shortcut="callback" description="transaction calllback 함수">/**&#13;
  * &#13;
@@ -57,7 +73,7 @@ this.fnCallback = function(id,code,msg)&#13;
  *@param {dataset}  original excel column dataset&#13;
   *@param {dataset} input dataset import dataset&#13;
  */ &#13;
-this.fnExcelImportCallback = function(importId,dsCol,dsImport)&#13;
+this.fnExcelImportCallback = function(id,dsOrgCol,dsImport)&#13;
 {&#13;
 	&#13;
 }&#13;
@@ -68,7 +84,7 @@ this.fnExcelImportCallback = function(importId,dsCol,dsImport)&#13;
  *@param{string} import id&#13;
  *@param {dataset} result  dataset&#13;
  */ &#13;
-this.fnImportCallback = function (errorCode,obj,resDs)&#13;
+this.fnImportCallback = function (id,outDs,orgDs)&#13;
 {   &#13;
 &#13;
 };&#13;
@@ -134,22 +150,6 @@ this.cfnTitlebarClose_onclick = function()&#13;
 {&#13;
    return false;&#13;
 }</Snippet>
-      </Group>
-      <Group name="cal">
-        <Snippet name="calFromTo.getFromDate" shortcut="cal" description="기간달력 set from date">$end$.getFromDate(sdate);</Snippet>
-        <Snippet name="calFromTo.getToDate" shortcut="cal" description="기간달력 from 날짜 가져오는 함수">$end$.getToDate();</Snippet>
-        <Snippet name="calFromTo.init" shortcut="cal" description="기간달력 초기화">$end$.init();</Snippet>
-        <Snippet name="calFromTo.setBinds" shortcut="cal" description="기간달력 set binds">$end$.setBinds(binds,colFr,colTo);</Snippet>
-        <Snippet name="calFromTo.setFromDate" shortcut="cal" description="기간달력 fromdate 날짜 셋팅">$end$.setFromDate(sdate);</Snippet>
-        <Snippet name="calFromTo.setFromToDate" shortcut="cal" description="기간 달력 from to 날짜 셋팅 함수">$end$.setFromToDate(sfr,sto);</Snippet>
-        <Snippet name="calFromTo.setToDate" shortcut="cal" description="기간달력 todaet 날짜 셋팅">$end$.setToDate(sdate);</Snippet>
-        <Snippet name="calMM.getValue" shortcut="cal" description="월력 값 가져오는 함수">$end$.getValue();</Snippet>
-        <Snippet name="calMM.init" shortcut="cal" description="월력 초기화 함수&#13;&#10;">$end$.init();</Snippet>
-        <Snippet name="calMM.setBinds" shortcut="cal" description="월력 바인딩 셋&#13;&#10;bindds,colFrom,calTo&#13;&#10;">$end$.setBinds(bindds,colFrom,calTo);</Snippet>
-        <Snippet name="calMM.setEnable" shortcut="cal" description="월력 컴퍼넌트 enable 활성/비활성">$end$.setEnable(benable);</Snippet>
-        <Snippet name="calMM.setEssential" shortcut="cal" description="필수 여부 처리   true/false">$end$.setEssential(true);</Snippet>
-        <Snippet name="calMM.setReadonly" shortcut="cal" description="월력 readonly ">$end$.setReadonly(true);</Snippet>
-        <Snippet name="calMM.setValue" shortcut="cal" description="월력 날짜값 셋팅">$end$.setValue(sdate);</Snippet>
       </Group>
       <Group name="colInfo">
         <Snippet name="file.ext" shortcut="colInfo" description="">this.colInfo.file.ext</Snippet>
@@ -237,20 +237,11 @@ return;</Snippet>
         <Snippet name="gfnEach " shortcut="" description="">this.gfnEach(object, func, scope);  </Snippet>
         <Snippet name="gfnEnterFullscreen" shortcut="" description="브라우저 전체화면으로 전환">this.gfnEnterFullscreen();</Snippet>
         <Snippet name="gfnExcelExport " shortcut="" description="">this.gfnExcelExport(objGrid,sSheetNm,sFileNm); </Snippet>
-        <Snippet name="gfnExcelImport " shortcut="" description="">    var dsName = "dsUser";&#13;
-	var id = "importExcel&#13;
-	this.gfnExcelImport(dsName,id,"fnImportCallback");&#13;
-		&#13;
-		 &#13;
-	//	 var dsExcel = "dsList";&#13;
-	//	 var id        = "importExGrid00"; // 생략가능&#13;
-	//	 var sheetNm   = "SheetName";  // 생략가능&#13;
-	//	 var bodyNm    =  "A2";   // 생략가능&#13;
-	//	 var headNm    = "!A1:Q1";    // 생략가능&#13;
-	//	 var callback   ="fnImportCallback";	   // 생략가능	 &#13;
-		 &#13;
-  // this.gfnExcelImport(dsExcel,id,sheetNm,bodyNm,headNm,callback);&#13;
-</Snippet>
+        <Snippet name="gfnExcelImport " shortcut="" description="">var dsName = "ds_grd";  &#13;
+this.gfnExcelImport(dsName,&#13;
+(outDs,orgDs)=&gt;{  //callback&#13;
+  $tab$$end$&#13;
+});	</Snippet>
         <Snippet name="gfnExitFullscreen" shortcut="" description="브라우저 전체화면 종료">this.gfnExitFullscreen();</Snippet>
         <Snippet name="gfnFileDelete" shortcut="" description="">this.gfnFileDelete(ds,nRow,fileNm);  &#13;
 </Snippet>
