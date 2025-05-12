@@ -185,7 +185,7 @@ this.edt_keyup = function(obj:nexacro.Edit,e:nexacro.KeyEventInfo)
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="sysUserId"/>
+            <Col id="sysUserId">test</Col>
           </Row>
         </Rows>
       </Dataset>
