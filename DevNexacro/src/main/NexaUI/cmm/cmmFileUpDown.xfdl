@@ -122,7 +122,6 @@ this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
  */
 this.setinit = function ()
 { 	
-
 	this.uopenmode      = this.objTarget.openmode || "multi";   // multi, single
 	this.ureadonly =    this.objTarget.ureadonly == "true" ? true : false;  // 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운
 	this.uauth =  this.objTarget.uauth ;  // 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운
@@ -130,10 +129,9 @@ this.setinit = function ()
 	this.umbsizeaccept  = this.objTarget.mbsizeaccept  || "";  //사이즈 제한	
 	this.gFileSeq       =  this.objTarget.ugfileseq  || "";  //gfileSeq	
 	this.fileId  = "cmmFileUp_" +this.parent.name;  
-	
-	
-	this.btnDialog.set_visible(!this.ureadonly);  //파일 찾기 활성화 처리	
-	this.isButtonCheck();
+    
+    this.btnDialog.visible = !this.ureadonly;  //파일 찾기 활성화 처리	
+	// this.isButtonCheck();
    // this.tranFileSearch(); // 파일정보 조회
 };
 
@@ -147,8 +145,7 @@ this.setinit = function ()
 this.canUpload = function ()
 {
 	var nRow = this.dsUpload.findRowExprNF(""+this.colInfo.file.seq+" == undefined || "+this.colInfo.file.seq+" == ''");
-
-//this.colInfo.file.seq	
+//this.colInfo.file.seq
 
    if(nRow < 0) return false;
 	
