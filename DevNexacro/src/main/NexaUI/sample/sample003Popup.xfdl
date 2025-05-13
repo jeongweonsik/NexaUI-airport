@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="sample003Popup" width="1244" height="755" titletext="팝업 샘플">
+  <Form id="sample003Popup" width="1217" height="773" titletext="팝업 샘플">
     <Layouts>
-      <Layout height="755" mobileorientation="landscape" width="1244">
+      <Layout height="773" mobileorientation="landscape" width="1217">
         <Static id="sta07" taborder="0" cssclass="sta_WF_Guide" text="h20" bottom="0" visible="false" left="0" height="20" right="0"/>
         <Button id="btnPopup00" taborder="2" text="modeless" top="90" width="119" height="28" onclick="btnPopup00_onclick" fittocontents="none" right="21"/>
         <Button id="btnPopup" taborder="1" text="Modal" top="90" width="119" height="28" onclick="btnPopup_onclick" fittocontents="none" right="btnPopup00:5"/>
         <Button id="btnCloseAll" taborder="3" text="모든 팝업 닫기" top="124" width="119" height="28" onclick="btnClose_onclick" fittocontents="none" right="21"/>
-        <TextArea id="txtRes" taborder="4" left="10" top="160" width="1234" bottom="0"/>
+        <TextArea id="txtRes" taborder="4" left="10" top="160" height="595" right="20"/>
         <Button id="btn00" taborder="5" text="모달리스 자식창 함수 호출" top="122" width="209" height="28" onclick="btnPopup00_onclick" right="btnCloseAll:5"/>
         <Static id="sta_00" taborder="6" text="팝업샘플(sample003)" left="0" top="0" height="40" cssclass="sta_GA_Header" right="0"/>
         <Button id="Button00" taborder="7" text="Button00" left="94" top="76" width="128" height="48" onclick="Button00_onclick"/>
