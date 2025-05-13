@@ -11,7 +11,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Div id="divWork" taborder="0" text="divWork" left="20" top="divTitle:0" maxwidth="" maxheight="" right="20" bottom="20">
+        <Div id="divWork" taborder="0" text="divWork" left="20" top="divTitle:0" maxwidth="" maxheight="" right="20" bottom="20" minwidth="1284" minheight="755">
           <Layouts>
             <Layout/>
           </Layouts>
@@ -67,7 +67,7 @@ this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     this.divTitle.form.staTitle.text = this.menuNm + "(" + this.menuCd  +")";
 	this.fnSetFavor();
 	this.fnSetUrl();
-	
+	trace(" this.width : " + this.width + "<> this.height : " + this.height);
 	trace(" divWork.width : " + this.divWork.form.width + "<>  divWork.height : " + this.divWork.form.height);
 			
 };

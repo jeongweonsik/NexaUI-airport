@@ -7,7 +7,7 @@
           <Frames>
             <ChildFrame id="frmLogin" formurl="" dragmovetype="none" showtitlebar="false" showtitleicon="false"/>
             <ChildFrame id="frmTop" showtitleicon="false" showtitlebar="false" dragmovetype="none" formurl="frame::frmTop.xfdl"/>
-            <HFrameSet id="hfrs" separatesize="264,*,40" showtitlebar="false" showtitleicon="false">
+            <HFrameSet id="hfrs" separatesize="264,*" showtitlebar="false" showtitleicon="false">
               <Frames>
                 <ChildFrame id="frmLeft" showtitlebar="false" dragmovetype="none" showtitleicon="false" formurl="frame::frmLeft.xfdl"/>
                 <VFrameSet id="vfrsWork" separatesize="*,0" showtitlebar="false" showtitleicon="false">
@@ -18,7 +18,6 @@
                     </FrameSet>
                   </Frames>
                 </VFrameSet>
-                <ChildFrame id="frmRight" formurl="" showstatusbar="false" showtitlebar="false" showtitleicon="false"/>
               </Frames>
             </HFrameSet>
             <ChildFrame id="frmMdi" showtitlebar="false" showtitleicon="false" dragmovetype="none" formurl="frame::frmMdi.xfdl"/>

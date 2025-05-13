@@ -11,7 +11,7 @@
           </Layouts>
         </Div>
         <Button id="btnHome" taborder="2" left="-4" top="0" width="76" tooltiptext="메인화면" bottom="0" onclick="btnHome_onclick" text="MAIN"/>
-        <Div id="divTab" taborder="0" left="btnHome:0" top="0" bottom="0" right="divMenuButton:0"/>
+        <Div id="divTab" taborder="0" left="btnHome:0" top="0" bottom="0" right="divMenuButton:0" formscrollbartype="none none" formscrolltype="none"/>
         <Button id="btn00_00" taborder="1" left="0" top="50" width="36" height="36" tooltiptext="메뉴보이기" cssclass="btn_MDI_MenuShow" visible="false"/>
         <Button id="btn_MDI_Menu" taborder="3" left="72" top="50" width="160" height="36" text="화면타이틀8글자..." cssclass="btn_MDI_Menu" visible="false"/>
         <Button id="btn00_02_00" taborder="4" left="232" top="50" width="160" height="36" text="선택화면타이틀8..." cssclass="btn_MDI_Menu_S" visible="false"/>
