@@ -7,11 +7,7 @@
         <Button id="Button01" taborder="1" text="Button01" left="767" top="140" width="176" height="62" onclick="Button01_onclick" icon="url('theme://images/titlebar_icon.png')"/>
         <Button id="Button02" taborder="2" text="Button02" left="429" top="152" width="171" height="39" onclick="Button02_onclick"/>
         <Button id="Button03" taborder="3" text="Button03" left="650" top="133" width="97" height="55" onclick="Button03_onclick"/>
-        <Div id="Div00" taborder="4" text="Div00" left="690" top="250" width="540" height="321" url="test::sample009CommonCode.xfdl">
-          <Layouts>
-            <Layout/>
-          </Layouts>
-        </Div>
+        <Div id="Div00" taborder="4" text="Div00" left="690" top="250" width="540" height="321" url="sample::sample004Message.xfdl"/>
         <Menu id="menuTop" taborder="5" left="820" top="55" innerdataset="dsTopMenu" idcolumn="menuCd" levelcolumn="menuLvl" captioncolumn="menuNm" right="90" bottom="587" iconcolumn="icon"/>
         <Div id="Div01" taborder="6" text="Div01" left="27" top="32" width="313" height="540" url="frame::frmLeftS.xfdl"/>
       </Layout>

@@ -8,34 +8,26 @@
 const pEdit =  nexacro.Edit.prototype;
 
 
-/********************************************************************************************
-*● on_fire_onload : form open 시 초기 처리(필수 선언)
-********************************************************************************************/
-
-_pForm._on_load = function(_a, _b) {
-	if (!this._load_callbacklist) {
-		return;
+_pForm.on_fire_onload = function(_a, _b) {
+	if (this._is_fired_onload) {
+		return true;
 	}
-	
-	var _c = this._p_parent;
-	if (this._p_parent && this._p_parent.form == this) {
-		_c = nexacro;
-	}
-	if (_c && _c._addLoadCallbacklist) {
-		var _d = this;
+	if (this.onload && this.onload._has_handlers) {
+		this._bFireLoadEvent = true;
+		trace(" 111 ");
+		this._gfn_on_loadForm(_a, _b);  // 폼 공통
 		
-		var _e = _c._addLoadCallbacklist({
-                target: _d,
-                callback: _d._on_loadcallback,
-                url: this.url
-            });
-		
-		if (!_e) {
-			this._gfn_on_loadForm(_a, _b);  // 폼 공통 
-			this._on_loadcallback(_a, _b); 		
+		var _c = new nexacro.LoadEventInfo(_a,"onload",_b);
+		var _d = this.onload._fireEvent(this, _c);
+		this._bFireLoadEvent = false;
+		_c.destroy();
+		if (!this._is_loading) {
+			this._is_fired_onload = true;
 		}
+		return _d;
 	}
-};
+	return true;
+}
 
 /**
 * @class close(내부 처리 함수)
