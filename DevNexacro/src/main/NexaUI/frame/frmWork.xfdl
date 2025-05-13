@@ -3,20 +3,19 @@
   <Form id="frmWork" left="0" top="0" width="1296" height="822" onsize="form_onsize" onactivate="form_onactivate" onload="frm_onload" titletext="프레임 업무(work)" cssclass="frm_WF">
     <Layouts>
       <Layout>
-        <Div id="divTitle" taborder="1" text="div00" left="20" top="0" height="47" cssclass="div_WF_Title" maxwidth="" formscrolltype="none" width="1240">
+        <Div id="divTitle" taborder="1" text="div00" left="25" top="0" height="47" cssclass="div_WF_Title" maxwidth="" formscrolltype="none" right="84">
           <Layouts>
             <Layout>
-              <Button id="btnFavorite" taborder="0" left="0" top="12" width="20" height="26" cssclass="btn_WF_FavoriteAdd" tooltiptext="마이메뉴 추가" onclick="divTitle_btnFavorite_onclick"/>
-              <Static id="staTitle" taborder="1" text="화면타이틀 (화면아이디)" left="25" top="12" height="26" cssclass="sta_WF_HeaderTitle" fittocontents="width" wordWrap="none" right="0"/>
+              <Static id="staTitle" taborder="1" text="화면타이틀 (화면아이디)" left="15" top="12" height="26" fittocontents="width" wordWrap="none" right="110"/>
             </Layout>
           </Layouts>
         </Div>
-        <Div id="divWork" taborder="0" text="divWork" left="20" top="divTitle:0" maxwidth="" maxheight="" right="20" bottom="20" minwidth="1284" minheight="755">
+        <Div id="divWork" taborder="0" text="divWork" left="25" top="divTitle:0" maxwidth="" maxheight="" bottom="0" right="84" minwidth="1213">
           <Layouts>
             <Layout/>
           </Layouts>
         </Div>
-        <Static id="staGapH" taborder="2" width="33" height="20" right="518" top="divWork:0"/>
+        <Static id="Static00" taborder="2" text="Static00" top="4" width="84" height="438" background="blue" left="divWork:0"/>
       </Layout>
     </Layouts>
     <Objects/>
