@@ -145,7 +145,7 @@ this.canUpload = function ()
 {
 	var nRow = this.dsUpload.findRowExprNF(""+this.colInfo.file.seq+" == undefined || "+this.colInfo.file.seq+" == ''");
 //this.colInfo.file.seq
-
+    
    if(nRow < 0) return false;
 	
 	return true;

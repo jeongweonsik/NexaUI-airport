@@ -1200,24 +1200,25 @@ _pForm.gfnGetTextSize = function(sText)
  * @example
 // 사용 예시 (대문자 변환)
 const data = { name: "John", items: [{ id: 1 }] };
-const result = this.gfnTransformKeys(data, key => key.toUpperCase());
+const result = this.gfnJsonKeyUpperCase(data);
  * @memberOf 
  */
-_pForm.gfnTransformKeys = function(obj, transformFn) {
-  if (typeof obj !== 'object' || obj === null) return obj;
-  
-  if (Array.isArray(obj)) {
-    return obj.map(item => this.gfnTransformKeys(item, transformFn));
+_pForm.gfnJsonKeyUpperCase = function(object) {
+  if (Array.isArray(object)) {
+    // 배열의 각 객체에 대해 재귀적으로 처리
+    return object.map(item => this.gfnJsonKeyUpperCase(item));
+  } else if (object !== null && typeof object === 'object') {
+    // 객체의 각 키를 대문자로 변환
+    return Object.fromEntries(
+      Object.entries(object).map(([key, value]) => [
+        key.toUpperCase(),
+        this.gfnJsonKeyUpperCase(value)
+      ])
+    );
   }
-
-  return Object.fromEntries(
-    Object.entries(obj).map(([key, value]) => [
-      this.gfnTransformKeys(key),
-      this.gfnTransformKeys(value, transformFn)
-    ])
-  );
+  // 원시값은 그대로 반환
+  return object;
 }
-
 _pForm.gfnGetTextLength = function(str) {
     var len = 0;
     for (var i = 0; i < str.length; i++) {

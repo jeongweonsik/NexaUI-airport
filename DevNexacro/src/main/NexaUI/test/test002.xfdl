@@ -187,9 +187,14 @@ this.Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.Button04_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var nm = this.gfnGetMenuNm();
-	trace(" ## nm : " + nm);
+	const data = { name: "John", items: [{ id: 1 }] };
+	const objdata = this.jsonKeyUpperCase(data);
+//const result = this.gfnTransformKeys(data, key => key.toUpperCase());
+
+trace(JSON.stringify(objdata));
 };
+
+
 ]]></Script>
     <Objects/>
   </Form>

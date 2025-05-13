@@ -546,6 +546,7 @@ this.gfnSearchOpenCloseInit(stage);</Snippet>
         <Snippet name="gfnWindownOpenMenu" shortcut="" description="menu form modeless 실행"> this.gfnWindownOpenMenu("M10001",{param1 : "aaa"},(resVar)=&gt;{&#13;
      &#13;
    });</Snippet>
+        <Snippet name="gfnSetupdateColumn" shortcut="" description="updateColumn  "> this.gfnSetupdateColumn(this.ds_grd,outDs);</Snippet>
       </Group>
       <Group name="gv">
         <Snippet name="gvFrameInfo" shortcut="" description="">var objApp = nexacro.getApplication();&#13;

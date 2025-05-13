@@ -612,7 +612,10 @@ _pDiv.tranFileSearch = function (svcid,callback)
 	if(nexacro._isFunction(this.form.tranFileSearch)) this.form.tranFileSearch(svcid,callback);
 };
 
-
+_pDiv.canUpload =  function ()
+{
+	 if(nexacro._isFunction(this.form.canUpload)) return this.form.canUpload();
+};
 
 /************************************************************************
 * edit overriding

@@ -11,7 +11,7 @@
 *● gfnExcelImportAll : excel import(데이터 헤더포함)
 *● gfnExcelImport  : excel import( 데이터 헤더제외 )
 *********************************************************************************************/
-
+const urlExcelExportImport = "svcUrl::XExportImport";
 /**
 * @class excel export <br>
 * @param {Object} objGrid - Grid Object	
@@ -106,7 +106,7 @@ _pForm.gfnExcelExport = function(objGrid ,sFileName ,sSheetName ,sSuppress ,head
 	   return;	
 	}
 	
-	const svcUrl = "svcUrl::XExportImport";
+	const svcUrl = urlExcelExportImport;
 	
 	this.objExport = null
 	this.objExport = new ExcelExportObject();
@@ -240,7 +240,7 @@ _pForm.gfnExcelImport = function()
 	outds = sHead == "" ? outTemp.name : sDataset;
 	
 	let objImport;	
-	const svcUrl = "svcUrl::XExportImport.do";
+	const svcUrl = urlExcelExportImport;
 	objImport = new nexacro.ExcelImportObject(sDataset+"_ExcelImport",this);				
 	objImport.importurl = svcUrl;						
 	objImport.importtype = nexacro.ImportTypes.EXCEL97;
@@ -249,6 +249,7 @@ _pForm.gfnExcelImport = function()
 	objImport.outds  = outds;
 	
 	if(!!sImportId) objImport.importid = sImportId;
+	else  objImport.importid  = "IdExcelImport_"+ sDataset;
 	
 	if (!this.gfnIsNull(callback))
 	{
@@ -279,26 +280,26 @@ _pForm.gfnImportOnsuccess = function(obj,  e)
 {		
 	
 	let outds = this.objects[obj.outds];	
-	let sColumnId;
-	let objOrgDs =  obj.orgds;
-	let objOutDs =  this[obj.outds];	//excel ouput dataset 
-	
-	if(this.isNull(obj['head'])){	
-		
-		//기존 데이터셋의 내용으로 헤더복사
-		for (let i=0; i<objOrgDs.getColCount(); i++)
-		{
-			sColumnId = "Column"+i;  // column => 원본 데이타 컬럼명  update
-			
-			if (sColumnId != objOrgDs.getColID(i))
-			{
-				objOutDs.updateColID(sColumnId, objOrgDs.getColID(i))
-			}
-		}
-		
-		objOrgDs.clearData();
-		objOrgDs.copyData(objOutDs);	  
-	}
+	//let sColumnId;
+//	let objOrgDs =  obj.orgds;
+//	let objOutDs =  this[obj.outds];	//excel ouput dataset 
+
+// 	if(this.isNull(obj['head'])){	
+// 		
+// 		//기존 데이터셋의 내용으로 헤더복사
+// 		for (let i=0; i<objOrgDs.getColCount(); i++)
+// 		{
+// 			sColumnId = "Column"+i;  // column => 원본 데이타 컬럼명  update
+// 			
+// 			if (sColumnId != objOrgDs.getColID(i))
+// 			{
+// 				objOutDs.updateColID(sColumnId, objOrgDs.getColID(i))
+// 			}
+// 		}
+// 		
+// 		//objOrgDs.clearData();
+// 		//objOrgDs.copyData(objOutDs);	  
+// 	}
 	
 	if("callback" in obj){   // 
 		
@@ -307,9 +308,9 @@ _pForm.gfnImportOnsuccess = function(obj,  e)
 		if (!this.gfnIsNull(callback)) {
 			let sImportId = obj.importid;
 			let objForm = obj.form;	   		
-			
-			if(nexacro._isFunction(callback)) callback.call(this,objOutDs,objOrgDs);
-			else this[callback].call(this,sImportId,objOutDs,objOrgDs);
+	
+			if(nexacro._isFunction(callback)) callback.call(this,outds);
+			else this[callback].call(this,sImportId,outds);
 		}	
 	}  
 	
@@ -337,6 +338,31 @@ _pForm.gfnImportAllOnerror = function(obj,  e)
 	
 	this.gfnAlert(e.errormsg,"","e");  
 	
+};
+
+
+ 
+ /*
+ *@param {dataset} 원본 dataset
+ *@param {dataset} target dataset
+ * @return update output  dataset
+ * @example
+  var resDs = this.gfnSetupdateColumn(this.ds_grd,outDs);
+ */ 
+_pForm.gfnSetupdateColumn = function (bindds,outDs)
+{
+
+		for (let i=0; i<outDs.getColCount(); i++)
+		{
+			var sColumnId = "Column"+i;  // column => 원본 데이타 컬럼명  update
+	
+			if (sColumnId != bindds.getColID(i))
+			{
+				outDs.updateColID(sColumnId, bindds.getColID(i))
+			}
+		}
+		
+	return outDs;	
 };
 
 delete _pForm;

@@ -78,10 +78,10 @@
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
-* 파일 업/다운 샘플
-*@FileName  sample006FileUpDownload
-*@Creator 	
-*@CreateDate 2024/10/31
+*  파일 업/다운 샘플
+*@FileName  sample008FileUpDownload
+*@Creator {J}
+*@CreateDate 2025/05/13
 *@Desction    
 ************** 소스 수정 이력 ***********************************************
 *  date          		Modifier                Description
@@ -89,16 +89,15 @@
 *  
 *******************************************************************************
 */
+
 /************************************************************************************************
 * FORM 변수 선언 영역
 ************************************************************************************************/
 
-
-//
-//1. uopenmode : single, multi
-//2. ureadonly : 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운   
-//3. uextaccecpt : 파일형식 제한
-//4. mbsizeaccept  : 사이즈 제한
+//1. uopenmode    : single, multi
+//2. ureadonly    : 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운   
+//3. uextaccecpt  : 파일형식 제한
+//4. mbsizeaccept : 사이즈 제한
 
 /************************************************************************************************
 * FORM EVENT 영역(onload, onbeforeclose)
@@ -144,13 +143,15 @@ this.cfnTranFileUpDownCallback= function (id,code, msg ,dsUpload)
 */
 this.cfnFileDialog_onclose = function (id,filename,fileExt,filesize,vFile)
 {
-     this.console.log(" ## cfnFileDialog_onclose :::>>> ");
+   
+     trace(" ## id : " + id + "<> filename : " + filename + "<> filesize : " +filesize + "<> vFile : " +vFile);
+   
  
-	this.gfnLog({id:id,filename:filename,filesize:filesize,vFile:vFile});
+//	this.gfnLog({id:id,filename:filename,filesize:filesize,vFile:vFile});
 	
 	if(id=="fileUp_fileSelect")
 	{
-	  this.txtFileNm.set_value(filename);
+	  this.txtFileNm.value = filename;
 	  alert(" vFile : " +vFile + "<> filesize : " +filesize);
 	//     this.gfnFileUpload(e.virtualfiles);		   
 	}
@@ -169,18 +170,16 @@ this.cfnFileDialog_onclose = function (id,filename,fileExt,filesize,vFile)
 */
 this.cfnFileUp_success = function (id,obj,resDs)
 {
-    
 	
    this.console.log(" ## cfnFileUp_success :::>>> ");
-	this.console.log(" id  : " +id + "<> obj : " + obj );
-	this.console.log(" fileUpload resultDataset == > "  +resDs.saveXML());
+   this.console.log(" id  : " +id + "<> obj : " + obj );
+   this.console.log(" fileUpload resultDataset == > "  +resDs.saveXML());
 
 };
 
 //file up error
 this.cfnFileUp_onerror = function (id,obj,e)
 {
-	    
    this.gfnAlert(" 파일 업로드 에러 ");
    return;
 };
@@ -219,32 +218,32 @@ this.fnCallback = function(id,code,msg)
 /************************************************************************************************
 * 각 COMPONENT 별 EVENT 영역
 ************************************************************************************************/
-
-
-this.btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-    trace(" rowcont====  " +objTaPage1.divFileUp00.form.dsUpload.rowcount);
-	trace(" objTaPage1.divFileUp00.form.canUpload()====  " +objTaPage1.divFileUp00.form.canUpload());
-    
-	if ( !objTaPage1.divFileUp00.form.canUpload() && objTaPage1.divFileUp00.form.dsUpload.rowcount == 0 ) {
-		
-			var sMsgId = "5531";  //"파일을 선택 해 주세요."
-			var arrArg = [];
-			this.gfnAlert(sMsgId,arrArg,function(id,res){});
-			return;
-
-	}
-	
-	if (objTaPage1.divFileUp00.form.canUpload() && objTaPage1.divFileUp00.form.dsUpload.rowcount > 0  )
-	{
-		 objTaPage1.divFileUp00.form.setFileUpload();
-	}
-	else
-	{
-		 objTaPage1.divFileUp00.form.fnSaveFile();
-	}
-	
-};
+// 
+// 
+// this.btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+// {
+//     trace(" rowcont====  " +objTaPage1.divFileUp00.form.dsUpload.rowcount);
+// 	trace(" objTaPage1.divFileUp00.form.canUpload()====  " +objTaPage1.divFileUp00.form.canUpload());
+// 
+// //	if ( !objTaPage1.divFileUp00.form.canUpload() && objTaPage1.divFileUp00.form.dsUpload.rowcount == 0 ) {
+// 	if (this.divFileUp.canUpload()){
+// 		
+// 		var sMsgId = "5531";  //"파일을 선택 해 주세요."
+// 		var arrArg = [];
+// 		this.gfnAlert(sMsgId,arrArg,function(id,res){});
+// 		return;
+// 	}
+// 	
+// 	if (objTaPage1.divFileUp00.form.canUpload() && objTaPage1.divFileUp00.form.dsUpload.rowcount > 0  )
+// 	{
+// 		 objTaPage1.divFileUp00.form.setFileUpload();
+// 	}
+// 	else
+// 	{
+// 		 objTaPage1.divFileUp00.form.fnSaveFile();
+// 	}
+// 	
+// };
 
 
 
@@ -261,11 +260,9 @@ this.btnFileSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
 {
     var svcId    = "svcFileSearch";
 	var callback = "fnCallback";
-	
 	this.divFileUp.tranFileSearch(svcId,callback);
 
 };
-
 
 // 파일 선택 후  업로드
 this.btnFileSelect_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -283,8 +280,7 @@ this.btnFileSelect_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
 // download
 this.btnDownload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-
-   var nRow = this.dsUpload.findRowExprNF("FILE_SEQ == undefined || FILE_SEQ == ''");
+    var nRow = this.dsUpload.findRowExprNF("FILE_SEQ == undefined || FILE_SEQ == ''");
 	
 	if (nRow < 0) return;
 	
@@ -342,13 +338,11 @@ this.btnGetAuth_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		     var sbutton = cooms.split(":")[0];
 			 var sEnable = cooms.split(":")[1];
 			 
-	this.console.log( " sbutton : " + sbutton +  "  sEnable : " +sEnable);
+			this.console.log( " sbutton : " + sbutton +  "  sEnable : " +sEnable);
 			 
 
 		  }
 	});
-	
-
 };
 ]]></Script>
     <Objects>

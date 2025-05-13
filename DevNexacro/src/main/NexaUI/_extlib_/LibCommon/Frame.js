@@ -83,12 +83,12 @@ _pForm._gfn_on_loadForm = function (obj,e)
 		this.ownerFrame = this.getOwnerFrame();	
 		this.menuCd = "";
 		let params;
-		
+	//	trace(" obj.name: " + obj.name);
 		
 		if(this.gfnIsQuickView()) nexacro.getApplication().mainframe.showtitlebar = true;
 		// trace(" ## this.ownerFrame.id : " + this.ownerFrame.id + " <> this.ownerFrame.titletext: " + this.ownerFrame.titletext);
 		if(!!this.ownerFrame.arguments){
-			
+				
 			parmas =  this.ownerFrame.arguments[this.colInfo.menu.params];	
 			this.menuCd  = this.ownerFrame.arguments[this.colInfo.menu.cd];	
 			if(!!parmas &&  nexacro._isFunction(this.cfnMove_onactive)) this.cfnMove_onactive(parmas);		   

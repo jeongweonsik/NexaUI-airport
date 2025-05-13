@@ -192,10 +192,13 @@ _pForm._tranCallback = function(oparam,errorCode,errorMsg)
 	if(errorCode < 0){	// -1 : 실패  0 : 정상
 	
 	    let omsg = {ERRROCODE : errorCode,ERRORMSG  : errorMsg};
-		    omsg = Object.assign(omsg,this.gfnTransformKeys(oparam,key => key.toUpperCase()));
+		    omsg = Object.assign(omsg,this.gfnJsonKeyUpperCase(oparam));
 		    omsg.DATETYPE    = dateType == 0 ? "XML" : dateType == 2 ? "SSV" : dateType == 3 ? "JSON" : "unknown type";
 		    omsg.ELAPSETIME  = enddate;
-		    omsg.ENDDATE     = elapseTime;           
+		    omsg.ENDDATE     = elapseTime;    
+			//delete omsg.CALLBACK;
+			delete omsg.CALLBACK;
+			
 			this.gfnLog(omsg);   // error console log
 	}	
 	

@@ -5,7 +5,7 @@
       <Layout height="720" width="1280">
         <Button id="btn_excelExportUser" taborder="1" text="Excel Export" left="72" top="35" width="98" height="20" onclick="btn_excelExportUser_onclick"/>
         <Button id="btn_excelImportUser" taborder="0" text="Excel Import" left="btn_excelExportUser:4" top="35" width="98" height="20" onclick="btn_excelImportUser_onclick"/>
-        <Grid id="grid_user" taborder="2" left="72" top="70" width="878" height="320" binddataset="ds_grd" formatid="default" scrolltype="both" selectchangetype="down" showselection="true" showcellselection="true">
+        <Grid id="grid_user" taborder="2" left="72" top="70" width="958" height="320" binddataset="ds_grd" formatid="default" scrolltype="both" selectchangetype="down" showselection="true" showcellselection="true">
           <Formats>
             <Format id="default">
               <Columns>
@@ -63,6 +63,7 @@
             </Format>
           </Formats>
         </Grid>
+        <Button id="btnClear" taborder="3" text="clear" left="275" top="35" width="107" height="20" onclick="btnClear_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -236,9 +237,9 @@ this.fnCallback = function(id,code,msg)
 * 사용자 FUNCTION 영역
 ************************************************************************************************/
 //import callback
-this.fnImportCallback = function (id,outDs,orgDs)
+this.fnImportCallback = function (id,outDs)
 {   
-	this.console.log(" # ds : " +ds.saveXML());  //excel 생성된 dataset
+	this.console.log(" # ds : " +outDs.saveXML());  //excel 생성된 dataset
 };
 
 
@@ -264,12 +265,34 @@ this.btn_excelImportUser_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
 
     var dsName = "ds_grd";  
 	this.gfnExcelImport(dsName,
-	(outDs,orgDs)=>{  //callback
+	(outDs)=>{  //callback
 	  
-	trace(" ## outDs : " + outDs + "<> orgDs : " +orgDs);
+	     /*
+		 *{dataset} 원본 dataset
+		 *{dataset} target dataset
+		 */		
+	 //    var resDs = this.gfnSetupdateColumn(this.ds_grd,outDs);  // 현재 dataset 컬럼 정보 업데이트 시 사용
+	//	 trace(resDs.saveXML());
+					
+
 	});	
+	
+//      var dsName = "ds_grd";  
+// 	var	sImportId = "idExcelImport1";
+// 	var sSheet = "Sheet0";
+// 	var sHead = "A2";
+// 	var sBody = "A3";
+// 	this.gfnExcelImport(dsName,sImportId,sSheet,sHead,sBody,
+// 	(outDs,orgDs)=>{  //callback
+// 	  	
+// 	});
 };
 
+
+this.btnClear_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_grd.clearData();
+};
 ]]></Script>
   </Form>
 </FDL>
