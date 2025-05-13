@@ -66,8 +66,8 @@ this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     this.divTitle.form.staTitle.text = this.menuNm + "(" + this.menuCd  +")";
 	this.fnSetFavor();
 	this.fnSetUrl();
-	trace(" this.width : " + this.width + "<> this.height : " + this.height);
-	trace(" divWork.width : " + this.divWork.form.width + "<>  divWork.height : " + this.divWork.form.height);
+	// trace(" this.width : " + this.width + "<> this.height : " + this.height);
+// trace(" divWork.width : " + this.divWork.form.width + "<>  divWork.height : " + this.divWork.form.height);
 			
 };
 
