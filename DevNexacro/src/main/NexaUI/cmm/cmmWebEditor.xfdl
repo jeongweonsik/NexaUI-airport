@@ -62,6 +62,8 @@ this.init = function (param)
 	
 	//  this.surl = this.gfnGetServerUrl() + "html/webEditor/index.html" + "?readonly="+this.readonly+"";	
 	this.surl = webPath  + "editor/index.html" + "?readonly="+bReadOnly+"";	
+	
+	trace(" this.surl : " + this.surl);
 	this.webEditor.url = "";
 	this.webEditor.url = this.surl;
 };

@@ -183,10 +183,10 @@ _pForm._tranCallback = function(oparam,errorCode,errorMsg)
 	if(!!errorMsg) sErrorMsg += " errormsg : " +errorMsg;
 	
 	//httpError 처리 
-// 	if(app.v.httpError){
-// 		app.v.httpError = false;
-// 		return;
-// 	}
+	if(app.v.httpError){
+		app.v.httpError = false;
+	//	return;
+	}
 	
 	// 에러 공통 처리
 	if(errorCode < 0){	// -1 : 실패  0 : 정상

@@ -42,9 +42,12 @@
 **/
 this.frm_onlaod = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {	
-	  trace(" ## frame left ");
+
 	this.divLeft.url  = "frame::frmLeftS.xfdl";
+	this.divLeft.form.resetScroll();
 	this.resetScroll();
+	
+	trace(" ## width :  " + this.width);
 };
 
 this.fnSetInit = function ()

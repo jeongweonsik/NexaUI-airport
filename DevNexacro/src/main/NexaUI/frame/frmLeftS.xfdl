@@ -4,7 +4,7 @@
     <Layouts>
       <Layout stepcount="2">
         <CheckBox id="chkSelAll" taborder="2" text="전체선택" left="11" top="7" width="82" height="26" positionstep="1" onchanged="chkSelAll_onchanged" value=""/>
-        <Grid id="grdMenu" taborder="0" left="1" top="0" binddataset="dsMenu" autoenter="none" autosizingtype="none" extendsizetype="none" treeinitstatus="collapse,null" treeusecheckbox="false" treeuseline="false" treeuseimage="true" oncellclick="grdMenu_oncellclick" scrolltype="vertical" unodata="false" cursor="pointer" usort="false" ucopy="false" autofittype="col" scrollbartrackbarsize="100" scrollbardecbuttonsize="0" scrollbarincbuttonsize="0" height="759" width="241">
+        <Grid id="grdMenu" taborder="0" left="1" top="1" binddataset="dsMenu" autoenter="none" autosizingtype="none" extendsizetype="none" treeinitstatus="collapse,null" treeusecheckbox="false" treeuseline="false" treeuseimage="true" oncellclick="grdMenu_oncellclick" scrolltype="vertical" unodata="false" cursor="pointer" usort="false" ucopy="false" autofittype="col" scrollbartrackbarsize="100" scrollbardecbuttonsize="0" scrollbarincbuttonsize="0" bottom="0" right="2">
           <Formats>
             <Format id="default">
               <Columns>
@@ -20,7 +20,7 @@
           </Formats>
         </Grid>
         <Button id="btnDeleteAll" taborder="1" top="10" width="20" height="20" tooltiptext="메뉴삭제(전체)" right="10" cssclass="btn_LF_Delete" positionstep="1" onclick="btnDeleteAll_onclick"/>
-        <Grid id="grdMyMenu" taborder="3" left="1" top="40" binddataset="gdsMyMenu" scrollbartrackbarsize="100" positionstep="1" oncellclick="grdMyMenu_oncellclick" unodata="false" autofittype="col" scrollbardecbuttonsize="0" scrollbarincbuttonsize="0" right="0" height="729">
+        <Grid id="grdMyMenu" taborder="3" left="1" top="40" binddataset="gdsMyMenu" scrollbartrackbarsize="100" positionstep="1" oncellclick="grdMyMenu_oncellclick" unodata="false" autofittype="col" scrollbardecbuttonsize="0" scrollbarincbuttonsize="0" right="0" bottom="0">
           <Formats>
             <Format id="default">
               <Columns>
@@ -83,6 +83,7 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
    app.frame.lefts  = obj;   //set glbal variable  left sub form
    this.resetScroll();
 
+
 };
 
 this.fnSetInit  = function(){
@@ -92,24 +93,24 @@ this.fnSetInit  = function(){
 	
 	 this.fnSetMenuL(sTopMenu);
 	// trace(" this.getOffsetHeight : " +this.getOffsetHeight());
-		 
-// 	 if(!app.v.login){
-// 	     const rowCnt = this.gfnLoadDsStore("openMenu",app.gdsOpenMenu);  // local storage 저장 메뉴 가져오기
-// 	     //열린메뉴 체크
-// 		 if(rowCnt >0)
-// 		 {
-// 			for (let n=0; n<rowCnt;n++)
-// 			{
-// 				const menuCd = app.gdsOpenMenu.getColumn(n, this.colInfo.menu.cd);
-// 				this.gfnOpenMenu(menuCd,"",true);
-// 				
-// 			}
-// 		  //  const menuCd = app.gdsOpenMenu.geto
-// 		  //  
-// 		 }
-// 	 }else{
-// 	   this.gfnRemoveStoreMenu("openMenu");	 
-// 	 }
+		// 저장 메뉴 open  
+	 if(!app.v.login){
+	     const rowCnt = this.gfnLoadDsStore("openMenu",app.gdsOpenMenu);  // local storage 저장 메뉴 가져오기
+	     //열린메뉴 체크
+		 if(rowCnt >0)
+		 {
+			for (let n=0; n<rowCnt;n++)
+			{
+				const menuCd = app.gdsOpenMenu.getColumn(n, this.colInfo.menu.cd);
+				this.gfnOpenMenu(menuCd,"",true);
+				
+			}
+		  //  const menuCd = app.gdsOpenMenu.geto
+		  //  
+		 }
+	 }else{
+	   this.gfnRemoveStoreMenu("openMenu");	 
+	 }
 }
 
 /**
@@ -218,7 +219,7 @@ this.fnGrdMenu_oncellclick = function(obj,cRow,sMenuFlag)
 	let menuNm = bindds.getColumn(bindds.rowposition, this.colInfo.menu.nm );  //menu명
 	let url = bindds.getColumn(bindds.rowposition, this.colInfo.menu.url);    //URL
     
- 	trace(" ## menuCd  : " + menuCd + "<> menuNm : " + menuNm + "<> url : " + url);
+ 	// trace(" ## menuCd  : " + menuCd + "<> menuNm : " + menuNm + "<> url : " + url);
     
 	if(this.isNull(url) || this.isNull(menuCd)) return;	
 	   

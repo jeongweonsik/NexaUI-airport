@@ -6,10 +6,10 @@
         <Div id="divLogin" taborder="0" text="" left="440" top="95" width="400" height="305" background="#fafafc" cssclass="div_LOGIN_Bg" formscrollbartype="none none" boxShadow="3px 3px 10px #cacbd9" borderRadius="3px">
           <Layouts>
             <Layout>
-              <Static id="staUserId" taborder="2" left="30" top="140" height="50" right="30" border="0px none, 0px none, 2px solid #e9ebf3, 0px none" background="URL(&quot;imagerc::frame/sta_LOGIN_Id.png&quot;) no-repeat left transparent"/>
-              <Button id="btnLogin" taborder="1" text="로그인" left="0" bottom="0" height="70" right="0" cssclass="btn_POP_Confirm" onclick="divLogin_btnLogin_onclick" font="bold 18px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;"/>
-              <Edit id="edtUserId" taborder="0" left="153" top="146" width="210" height="33" text="" cssclass="edt_LOGIN_Input" onkeyup="edt_keyup"/>
-              <Static id="Static00" taborder="3" left="30" top="45" width="297" height="70" text="&lt;b v='true'&gt;인천공항&lt;/b&gt;&#13;&#10;&lt;fs v='11'&gt;&lt;fc v='#5BAFF8'&gt;인사급여&lt;/fc&gt;&lt;/fs&gt;" cssclass="sta_WF_GTxt01" usedecorate="true"/>
+              <Static id="staUserId" taborder="2" left="20" top="93" height="50" right="40" border="0px none, 0px none, 2px solid #e9ebf3, 0px none" text="ID"/>
+              <Button id="btnLogin" taborder="1" text="로그인" left="0" bottom="0" height="70" right="0" onclick="divLogin_btnLogin_onclick" font="bold 18px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;"/>
+              <Edit id="edtUserId" taborder="0" left="143" top="99" width="210" height="33" text="" onkeyup="edt_keyup"/>
+              <Static id="Static00" taborder="3" left="30" top="45" width="297" height="70" text="&lt;b v='true'&gt;인천공항&lt;/b&gt;&#13;&#10;&lt;fs v='11'&gt;&lt;fc v='#5BAFF8'&gt;인사급여&lt;/fc&gt;&lt;/fs&gt;" usedecorate="true"/>
             </Layout>
           </Layouts>
         </Div>

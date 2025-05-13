@@ -68,7 +68,7 @@
     <Service prefixid="xjs" type="js" url="./xjs/" version="0" cachelevel="dynamic" include_subdir="false" communicationversion="0"/>
     <Service prefixid="frame" type="form" url="./frame/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="cmm" type="form" url="./cmm/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
-    <Service prefixid="editor" type="file" url="./editor/" version="0" cachelevel="dynamic" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="editor" type="file" url="./editor/" version="0" cachelevel="dynamic" include_subdir="true" communicationversion="0"/>
     <Service prefixid="design" type="form" url="./design/" version="0" cachelevel="dynamic" include_subdir="true" communicationversion="0"/>
     <Service prefixid="sample" type="form" url="./sample/" version="0" cachelevel="dynamic" include_subdir="true" communicationversion="0"/>
     <Service prefixid="test" type="form" url="./test/" version="0" cachelevel="dynamic" include_subdir="true" communicationversion="0"/>
