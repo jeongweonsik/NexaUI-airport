@@ -19,7 +19,7 @@
 * left frame
 *@FileName  frmLeft
 *@Creator 	{J}
-*@CreateDate 2024/10/18
+*@CreateDate 2025/05/13
 *@Desction    
 ************** 소스 수정 이력 ***********************************************
 *  date          		Modifier                Description
@@ -47,7 +47,7 @@ this.frm_onlaod = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	this.divLeft.form.resetScroll();
 	this.resetScroll();
 	
-	trace(" ## width :  " + this.width);
+	// trace(" ## width :  " + this.width);
 };
 
 this.fnSetInit = function ()
