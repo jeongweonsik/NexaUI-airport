@@ -64,16 +64,15 @@
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[/**
-*파일 업/다운 공통 폼 
-*@MenuPath  C:\work\devWork\nxui\cmm
+* 파일 업/다운 공통 폼 
 *@FileName  cmmFileUpDown
-*@Creator 	 {J}
-*@CreateDate 2023/08/23
+*@Creator 	{J}
+*@CreateDate 2025/05/13
 *@Desction    
 ************** 소스 수정 이력 ***********************************************
 *  date          		Modifier                Description
 *******************************************************************************
-* 
+*  
 *******************************************************************************
 */
 

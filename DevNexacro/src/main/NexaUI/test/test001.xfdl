@@ -10,6 +10,7 @@
         <Div id="Div00" taborder="4" text="Div00" left="690" top="250" width="540" height="321" url="sample::sample004Message.xfdl"/>
         <Menu id="menuTop" taborder="5" left="820" top="55" innerdataset="dsTopMenu" idcolumn="menuCd" levelcolumn="menuLvl" captioncolumn="menuNm" right="90" bottom="587" iconcolumn="icon"/>
         <Div id="Div01" taborder="6" text="Div01" left="27" top="32" width="313" height="540" url="frame::frmLeftS.xfdl"/>
+        <Button id="Button04" taborder="7" text="Button04" left="398" top="57" width="154" height="60" onclick="Button04_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
@@ -170,6 +171,16 @@ alert(" this.Div :  " + objDiv.name);
 this.Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	trace(" max : " +this.Div00.form.vscrollbar.max);
+};
+
+this.Button04_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	  // 원하는 글자
+  var message = "브라우저 하단에 표시할 메시지입니다.";
+
+  // 하단 영역에 글자 표시
+  document.getElementById('bottom-banner').textContent = message;
+  document.getElementById('bottom-banner').style.display = 'block';
 };
 ]]></Script>
     <Objects>

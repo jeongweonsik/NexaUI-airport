@@ -10,7 +10,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Button id="btnHome" taborder="2" left="-4" top="0" width="76" tooltiptext="메인화면" bottom="0" onclick="btnHome_onclick" text="Home"/>
+        <Button id="btnHome" taborder="2" left="-4" top="0" width="76" tooltiptext="메인화면" bottom="0" onclick="btnHome_onclick" text="MAIN"/>
         <Div id="divTab" taborder="0" left="btnHome:0" top="0" bottom="0" right="divMenuButton:0"/>
         <Button id="btn00_00" taborder="1" left="0" top="50" width="36" height="36" tooltiptext="메뉴보이기" cssclass="btn_MDI_MenuShow" visible="false"/>
         <Button id="btn_MDI_Menu" taborder="3" left="72" top="50" width="160" height="36" text="화면타이틀8글자..." cssclass="btn_MDI_Menu" visible="false"/>
@@ -42,6 +42,7 @@
           </Layouts>
         </PopupDiv>
         <Button id="btn00_02_00_00" taborder="12" left="260" top="134" width="160" height="36" text="선택화면타이틀8..." cssclass="btn_MDI_Menu_S" visible="false"/>
+        <Static id="staInfoNavi" taborder="10" text="메뉴1&gt;메뉴2&gt;메뉴3" left="1630" top="12" width="130" height="21" background="#000000" color="#ffffff" visible="false" padding="0px 0px 0px 5px"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**

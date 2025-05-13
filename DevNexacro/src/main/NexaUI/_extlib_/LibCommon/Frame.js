@@ -83,6 +83,8 @@ _pForm._gfn_on_loadForm = function (obj,e)
 		this.ownerFrame = this.getOwnerFrame();	
 		this.menuCd = "";
 		let params;
+		
+		
 		if(this.gfnIsQuickView()) nexacro.getApplication().mainframe.showtitlebar = true;
 		// trace(" ## this.ownerFrame.id : " + this.ownerFrame.id + " <> this.ownerFrame.titletext: " + this.ownerFrame.titletext);
 		if(!!this.ownerFrame.arguments){

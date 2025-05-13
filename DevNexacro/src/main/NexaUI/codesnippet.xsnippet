@@ -150,6 +150,52 @@ this.cfnTitlebarClose_onclick = function()&#13;
 {&#13;
    return false;&#13;
 }</Snippet>
+        <Snippet name="cfnTranFileUpDownCallback" shortcut="" description="파일 조회 콜벡">this.cfnTranFileUpDownCallback= function (id,code, msg ,dsUpload)&#13;
+{&#13;
+&#13;
+      if(code &lt; -1 ) return;&#13;
+&#13;
+		 switch(id) {&#13;
+		 case "svcSelectFileInfo":   //파일조회&#13;
+			break;&#13;
+		 case "svcDeleteFileList":  // 파일삭제&#13;
+&#13;
+			break;&#13;
+		&#13;
+		 }&#13;
+&#13;
+};&#13;
+</Snippet>
+        <Snippet name="cfnFileDialog_onclose" shortcut="" description="파일 다이알로그 콜벡">this.cfnFileDialog_onclose = function (id,filename,fileExt,filesize,vFile)&#13;
+{&#13;
+     this.console.log(" ## cfnFileDialog_onclose :::&gt;&gt;&gt; ");&#13;
+ &#13;
+	this.gfnLog({id:id,filename:filename,filesize:filesize,vFile:vFile});&#13;
+	&#13;
+	if(id=="fileUp_fileSelect")&#13;
+	{&#13;
+	  this.txtFileNm.set_value(filename);&#13;
+	  alert(" vFile : " +vFile + "&lt;&gt; filesize : " +filesize);&#13;
+	//     this.gfnFileUpload(e.virtualfiles);		   &#13;
+	}&#13;
+};&#13;
+</Snippet>
+        <Snippet name="cfnFileUp_success_error" shortcut="" description="파일 업로드 콜벡">this.cfnFileUp_success = function (id,obj,resDs)&#13;
+{&#13;
+    	&#13;
+   this.console.log(" ## cfnFileUp_success :::&gt;&gt;&gt; ");&#13;
+	this.console.log(" id  : " +id + "&lt;&gt; obj : " + obj );&#13;
+	this.console.log(" fileUpload resultDataset == &gt; "  +resDs.saveXML());&#13;
+&#13;
+};&#13;
+&#13;
+//file up error&#13;
+this.cfnFileUp_onerror = function (id,obj,e)&#13;
+{&#13;
+	    &#13;
+   this.gfnAlert(" 파일 업로드 에러 ");&#13;
+   return;&#13;
+};</Snippet>
       </Group>
       <Group name="colInfo">
         <Snippet name="file.ext" shortcut="colInfo" description="">this.colInfo.file.ext</Snippet>

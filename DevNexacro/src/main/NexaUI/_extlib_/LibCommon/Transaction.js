@@ -159,7 +159,7 @@ _pForm._tranCallback = function(oparam,errorCode,errorMsg)
 {
     //wait cursor
 	env.usewaitcursor = true; // set  
-
+   
 	let svcid     = oparam.id;      
 	let url      = oparam.url;	
 	let inds      = oparam.inds;   

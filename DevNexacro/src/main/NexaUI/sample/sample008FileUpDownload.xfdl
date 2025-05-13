@@ -110,6 +110,8 @@ this.addEventHandler("onload",function(obj,e)
 {
 	
 },this);
+
+
 /************************************************************************
  * callback 
  ************************************************************************/
@@ -128,11 +130,6 @@ this.cfnTranFileUpDownCallback= function (id,code, msg ,dsUpload)
 		
 		 }
 
-};
-
-this.fnTest = function ()
-{
-	alert("fnTest >>");
 };
 
 /**

@@ -14,15 +14,19 @@ _pForm.on_fire_onload = function(_a, _b) {
 	}
 	if (this.onload && this.onload._has_handlers) {
 		this._bFireLoadEvent = true;
-		trace(" 111 ");
+	
 		this._gfn_on_loadForm(_a, _b);  // 폼 공통
-		
 		var _c = new nexacro.LoadEventInfo(_a,"onload",_b);
 		var _d = this.onload._fireEvent(this, _c);
 		this._bFireLoadEvent = false;
+			
 		_c.destroy();
 		if (!this._is_loading) {
+
+		
 			this._is_fired_onload = true;
+		}else{
+		
 		}
 		return _d;
 	}
