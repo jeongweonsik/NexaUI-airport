@@ -41,9 +41,9 @@
 * @description 화면 onload시 처리내역(필수)
 */
 this.addEventHandler("onload", function(obj,e)
-{
-
-},this);
+	{
+		
+	},this);
 
 /*
 *@description 화면 이동 후 넘어온 값 처리	
@@ -64,17 +64,17 @@ this.cfnClose = function()
 };
 
 /**
- * //paging 버튼 // next prev 클릭 이벤트 후처리
- * @param {number} 누른 페이지
-  * @param {number} 시작데이터rownum계산
- * @return 
- * @example
- * @memberOf 
- */
+* //paging 버튼 // next prev 클릭 이벤트 후처리
+* @param {number} 누른 페이지
+* @param {number} 시작데이터rownum계산
+* @return 
+* @example
+* @memberOf 
+*/
 this.cfnPaging_onclick = function(nPage,nRecordOffset)
 {
 	trace(" ## nPage : " +nPage + "<> nRecordOffset : " + nRecordOffset);
-
+	
 }
 
 /************************************************************************************************
@@ -85,14 +85,13 @@ this.fnCallback = function(id,code,msg)
 	// 에러 시 화면 처리 내역
 	if(code < 0) return;
 	
-	
 	switch(id) {
 	case "":
 		break;
-
+		
 	default:
 	}
-
+	
 };
 
 /************************************************************************************************
@@ -102,6 +101,18 @@ this.fnCallback = function(id,code,msg)
 /************************************************************************************************
 * 사용자 FUNCTION 영역
 ************************************************************************************************/
+/**
+ * 
+ * @param {string} 
+ * @return 
+ * @example
+ * @memberOf 
+ */
+this.fnSetUserTest = function ()
+{
+
+};
+
 
 /************************************************************************************************
 * 각 COMPONENT 별 EVENT 영역
@@ -113,18 +124,18 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 
 this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
- {
-// 	 let objDivPaging = new Div();
-// 	//objDivPaging.init("divPage", 0, 5, 800, 23, null, null);
-// 	//	objDivPaging.init("divPage", 0, 0, 800, 23, null, null);
-// 	//objDivPaging.init("divPage", 0, 0, null, null,0 , 0);
-// 	objDivPaging.init("Div", 30, 120, 196, 46, null, null);
-var objDivPaging = new Div("Div", 0, 5, 800, 23, null, null);
-objDivPaging.text = "divpaging";
+{
+	// 	 let objDivPaging = new Div();
+	// 	//objDivPaging.init("divPage", 0, 5, 800, 23, null, null);
+	// 	//	objDivPaging.init("divPage", 0, 0, 800, 23, null, null);
+	// 	//objDivPaging.init("divPage", 0, 0, null, null,0 , 0);
+	// 	objDivPaging.init("Div", 30, 120, 196, 46, null, null);
+	var objDivPaging = new Div("Div", 0, 5, 800, 23, null, null);
+	objDivPaging.text = "divpaging";
 	objDivPaging.border = "1px solid red";
 	objDivPaging.background = "#ffffaa";
-
-alert(" objDivPaging : " + objDivPaging);
+	
+	alert(" objDivPaging : " + objDivPaging);
     this.addChild(objDivPaging.name, objDivPaging);
     objDivPaging.show();  
 	
@@ -132,7 +143,7 @@ alert(" objDivPaging : " + objDivPaging);
 	let objBtnFirst = new Button("btnFirst", 0, 0, 100,100, null, null);   
 	objBtnFirst.border = "1px solid red";
 	objBtnFirst.background = "#ffffaa";
-		objDivPaging.addChild(objBtnFirst.name, objBtnFirst);
+	objDivPaging.addChild(objBtnFirst.name, objBtnFirst);
 	objBtnFirst.show();
 	
 	
@@ -141,31 +152,31 @@ alert(" objDivPaging : " + objDivPaging);
 this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	// Create Object  
-// var objDiv = new Div();  
-// objDiv.init("Div", 30, 120, 196, 46, null, null);
-
-// objDiv.init("Div", null, null, 300, "400px", "80%", 300);
-// or
-let objDiv = new Div("Div", 30, 120, 196, 46, null, null);
-//var objDiv = new Div("Div", null, null, 300, "400px", "80%", 300);
- 
-// Add Object to Parent Form  
-this.addChild("Div", objDiv); 
- 
-// Insert Object to Parent Form  
-//this.insertChild(1, "Div", objDiv); 
- 
-// Remove Object form Parent Form  
-//this.removeChild("Div"); 
- 
-// Show Object  
-objDiv.show(); 
-objDiv.background = "#ffffaa";
-objDiv.text = "text";
-
-alert(" this.Div :  " + objDiv.name);
-
-
+	// var objDiv = new Div();  
+	// objDiv.init("Div", 30, 120, 196, 46, null, null);
+	
+	// objDiv.init("Div", null, null, 300, "400px", "80%", 300);
+	// or
+	let objDiv = new Div("Div", 30, 120, 196, 46, null, null);
+	//var objDiv = new Div("Div", null, null, 300, "400px", "80%", 300);
+	
+	// Add Object to Parent Form  
+	this.addChild("Div", objDiv); 
+	
+	// Insert Object to Parent Form  
+	//this.insertChild(1, "Div", objDiv); 
+	
+	// Remove Object form Parent Form  
+	//this.removeChild("Div"); 
+	
+	// Show Object  
+	objDiv.show(); 
+	objDiv.background = "#ffffaa";
+	objDiv.text = "text";
+	
+	alert(" this.Div :  " + objDiv.name);
+	
+	
 };
 
 this.Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -175,12 +186,12 @@ this.Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.Button04_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	  // 원하는 글자
-  var message = "브라우저 하단에 표시할 메시지입니다.";
-
-  // 하단 영역에 글자 표시
-  document.getElementById('bottom-banner').textContent = message;
-  document.getElementById('bottom-banner').style.display = 'block';
+	// 원하는 글자
+	var message = "브라우저 하단에 표시할 메시지입니다.";
+	
+	// 하단 영역에 글자 표시
+	document.getElementById('bottom-banner').textContent = message;
+	document.getElementById('bottom-banner').style.display = 'block';
 };
 ]]></Script>
     <Objects>

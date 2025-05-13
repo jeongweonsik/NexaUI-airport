@@ -271,8 +271,8 @@ this.btn_excelImportUser_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
 		 *{dataset} 원본 dataset
 		 *{dataset} target dataset
 		 */		
-	 //    var resDs = this.gfnSetupdateColumn(this.ds_grd,outDs);  // 현재 dataset 컬럼 정보 업데이트 시 사용
-	//	 trace(resDs.saveXML());
+	    //  var resDs = this.gfnSetupdateColumn(this.ds_grd,outDs);  // 현재 dataset 컬럼 정보 업데이트 시 사용
+	   //	trace(resDs.saveXML());
 					
 
 	});	

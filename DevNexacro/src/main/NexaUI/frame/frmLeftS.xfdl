@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frmLeftS" left="0" top="0" width="243" height="643" onload="form_onload" stepalign="center middle" visible="true" stepitemsize="0" stepshowtype="action" scrolltype="vertical" titletext="프레임(Left폼서브)" ondragmove="LeftFrameS_ondragmove" ondrop="LeftFrameS_ondrop" onsize="LeftFrameS_onsize" cssclass="frm_LF">
+  <Form id="frmLeftS" left="0" top="0" width="243" height="643" onload="form_onload" stepalign="center middle" visible="true" stepitemsize="0" stepshowtype="action" scrolltype="vertical" titletext="프레임(Left폼서브)" ondragmove="LeftFrameS_ondragmove" ondrop="LeftFrameS_ondrop" onsize="LeftFrameS_onsize">
     <Layouts>
       <Layout stepcount="2">
         <CheckBox id="chkSelAll" taborder="2" text="전체선택" left="11" top="7" width="82" height="26" positionstep="1" onchanged="chkSelAll_onchanged" value=""/>
@@ -79,7 +79,9 @@ this.fvOrgScroll = 0;
 */
 this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	 app.frame.lefts  = obj;   //set glbal variable  left sub form
+
+   app.frame.lefts  = obj;   //set glbal variable  left sub form
+   this.resetScroll();
 
 };
 

@@ -386,6 +386,7 @@ this.setDecorateFilter = function(inp)
 			nLen = nVal.indexOf(this.txtMenuSearch.value, nLen+1, nVal.length);			
 			cnt += 1;						
 		}
+		
 		if(arrLen.length > 0)
 		{
 			
@@ -431,7 +432,6 @@ this.fnPidvOpenMenuGrd_onsize = function(h)
 	let ngap = 20;
     let ngapTop = 4;
 	
-	
 	if(ds.rowcount == 0){
 		this.txtMenuSearch.value = null;	 
 		this.txtMenuSearch.displaynulltext = this.gfnGetMessage("10147"); //해당 값을 찾을 수 없습니다.
@@ -464,8 +464,6 @@ this.txtMenuSearch_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventIn
 
 this.pdivMenuSearch_grdMenuList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	
-	
     let ds = obj.getBindDataset();
 	let sMenuId = ds.getColumn( e.row, this.colInfo.menu.cd);  //menuCode
 	let menuNm = ds.getColumn( e.row, this.colInfo.menu.nm);  //menuName
@@ -479,8 +477,6 @@ this.pdivMenuSearch_grdMenuList_oncellclick = function(obj:nexacro.Grid,e:nexacr
 	//	this.gfnOpenMenu(sMenuId, objParam , true);   // 초기화 url 오픈 시 사용
 	
 };
-
-
 
 this.pdivMenuSearch_grdMenuList_onkeyup = function(obj:nexacro.Grid,e:nexacro.KeyEventInfo)
 {
@@ -539,13 +535,11 @@ this.btnSieteMap_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	let pdiv = this.pdivSiiteMap;
 	let btnSiteMap = this.btnSieteMap;
 	let nGapTop = 4;
-
+	let nTop        = Number(btnSiteMap.height) + nGapTop;
+	let nLeft       = Number(btnSiteMap.width) /2 -10;
+	let nwidth      = Number(app.frame.vFrs.width) ;
+	let nHeight     =  Number(app.frame.vFrs.height) -Number(this.height)+4;
 	
-	 let nTop        = Number(btnSiteMap.height) + nGapTop;
-	 let nLeft       = Number(btnSiteMap.width) /2 -10;
-	 let nwidth      = Number(app.frame.vFrs.width) ;
-
-	  let nHeight     =  Number(app.frame.vFrs.height) -Number(this.height)+4;
      pdiv.form.setFirtScroll();
 	 pdiv.trackPopupByComponent(btnSiteMap,nLeft,nTop,nwidth,nHeight,"popDivCallback",false);
 	

@@ -5,7 +5,7 @@
       <Layout height="826" width="262">
         <Button id="btnMenu" taborder="0" text="메뉴" left="20" top="132" width="45.038167938931295%" height="36" cssclass="btn_LF_Tab_S" onclick="btnMenu_onclick"/>
         <Button id="btnMyMenu" taborder="1" text="즐겨찾기" left="btnMenu:0" top="132" height="36" cssclass="btn_LF_LastTab" right="11" onclick="btnMenu_onclick"/>
-        <Div id="divLeft" taborder="2" text="Div00" left="0" top="180" url="frame::frmLeftS.xfdl" formscrollbartype="none none" width="258" height="644"/>
+        <Div id="divLeft" taborder="2" text="Div00" left="10" top="180" formscrollbartype="none none" width="243" bottom="2"/>
         <Static id="staName" taborder="3" text="한지성&#13;&#10;" left="100" top="11" width="149" height="25"/>
         <Edit id="edtMenuSearch" taborder="4" left="2" top="80" height="42" cssclass="edi_LF_Sch" displaynulltext="메뉴명을 입력하세요." right="4" onkeyup="edtMenuSearch_onkeyup"/>
         <Button id="btnMenuSearch" taborder="5" top="87" height="25" cssclass="btn_LF_Sch" onclick="btnMenuSearch_onclick" left="226" right="edtMenuSearch:-251"/>
@@ -42,7 +42,9 @@
 **/
 this.frm_onlaod = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {	
-	
+	  trace(" ## frame left ");
+	this.divLeft.url  = "frame::frmLeftS.xfdl";
+	this.resetScroll();
 };
 
 this.fnSetInit = function ()
@@ -127,7 +129,7 @@ this.frm_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
 {
    // trace(" ##  this.divLeft.top : " + );
 	//trace("## e.cx : " + e.cx + "<> e.cy : " + e.cy);	
-	this.divLeft.height =  Number(e.cy) - Number(this.divLeft.top);
+//	this.divLeft.height =  Number(e.cy) - Number(this.divLeft.top);
 };
 ]]></Script>
     <Objects/>
