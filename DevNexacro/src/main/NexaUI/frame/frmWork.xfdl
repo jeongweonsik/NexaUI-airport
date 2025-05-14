@@ -3,19 +3,13 @@
   <Form id="frmWork" left="0" top="0" width="1334" height="822" onsize="form_onsize" onactivate="form_onactivate" onload="frm_onload" titletext="프레임 업무(work)" cssclass="frm_WF_Frame">
     <Layouts>
       <Layout>
-        <Div id="divTitle" taborder="1" text="div00" left="25" top="0" height="47" maxwidth="" formscrolltype="none" right="0">
-          <Layouts>
-            <Layout>
-              <Static id="staTitle" taborder="1" text="화면타이틀 (화면아이디)" left="35" top="12" height="26" fittocontents="width" wordWrap="none" right="90" cssclass="sta_WF_HeaderTitle"/>
-            </Layout>
-          </Layouts>
-        </Div>
-        <Div id="divWork" taborder="0" text="divWork" left="20" top="divTitle:0" maxwidth="" maxheight="" bottom="8" right="60" minwidth="1253" boxShadow="3px 3px 10px #cacbd9" background="#fafafc" borderRadius="3px">
+        <Static id="staBlur" taborder="2" left="1" top="1" boxShadow="inset 3px 3px 10px 0px #cacbd9" background="#fafafc" borderRadius="4px" bottom="1" right="1"/>
+        <Div id="divWork" taborder="0" text="divWork" left="1" top="0" maxwidth="" maxheight="" bottom="5" right="40" minwidth="1253" boxShadow="3px 3px 10px #cacbd9" background="#fafafc" borderRadius="10px">
           <Layouts>
             <Layout/>
           </Layouts>
         </Div>
-        <Static id="staRight" taborder="2" top="0" cssclass="sta_TF_Bg" bottom="0" left="divWork:20" width="40"/>
+        <Static id="staRight" taborder="1" top="0" cssclass="sta_TF_Bg" left="divWork:0" width="40" height="60" border="0px none" borderRadius="0px 0px 20px" boxShadow="inset 3px 0px 3px 0px transparent"/>
       </Layout>
     </Layouts>
     <Objects/>
@@ -63,9 +57,9 @@ this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     this.menuWinid   =  this.getOwnerFrame().arguments[this.colInfo.menu.winid];   // winid	
 	this.menuNavi    =   this.getOwnerFrame().arguments[this.colInfo.menu.navi];   // menu navi	
 	
-    this.divTitle.form.staTitle.text = this.menuNm + "(" + this.menuCd  +")";
-	this.fnSetFavor();
-	this.fnSetUrl();
+//     this.divTitle.form.staTitle.text = this.menuNm + "(" + this.menuCd  +")";
+// 	this.fnSetFavor();
+// 	this.fnSetUrl();
 	
 	//trace(" app.frame.left.width : " + app.frame.left.form.width);
 	// trace(" this.width : " + this.width + "<> this.height : " + this.height);

@@ -1,9 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frameMain" width="1080" height="958" titletext="MainFrame" onload="frm_onload" onsize="formOnsize" cssclass="frm_WF_Frame">
+  <Form id="frameMain" width="1334" height="822" titletext="MainFrame" onload="frm_onload" onsize="formOnsize" cssclass="frm_WF_Frame">
     <Layouts>
-      <Layout height="958" width="1080">
-        <Static id="sta00" taborder="0" text="MAIN" left="0" top="0" font="bold 48pt &quot;Arial&quot;" textAlign="center" right="0" bottom="0"/>
+      <Layout height="822" width="1334">
+        <Static id="staBlur" taborder="2" left="1" top="1" boxShadow="inset 3px 3px 10px 0px #cacbd9" background="#fafafc" borderRadius="4px" bottom="5" right="1"/>
+        <Div id="divMain" taborder="0" text="Main" left="1" top="0" maxwidth="" maxheight="" bottom="5" right="40" minwidth="1253" boxShadow="3px 3px 10px #cacbd9" background="#fafafc" borderRadius="10px">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Static id="staRight" taborder="1" top="0" cssclass="sta_TF_Bg" left="1294" width="40" height="60" border="0px none" borderRadius="0px 0px 20px" boxShadow="inset 3px 0px 3px 0px transparent"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**

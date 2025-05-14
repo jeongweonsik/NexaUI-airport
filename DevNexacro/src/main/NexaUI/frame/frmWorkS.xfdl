@@ -15,7 +15,7 @@
             <Layout/>
           </Layouts>
         </Div>
-        <Static id="staRight" taborder="2" top="0" cssclass="sta_TF_Bg" bottom="0" left="divWork:20" width="40"/>
+        <Static id="staRight" taborder="2" top="0" cssclass="sta_TF_Bg" bottom="775" left="divWork:20" width="40"/>
       </Layout>
     </Layouts>
     <Objects/>

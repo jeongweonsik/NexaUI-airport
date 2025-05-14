@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="60" width="1598">
         <Div id="divTopBtn" taborder="0" text="divTop" left="270" top="0" width="1220" bottom="0"/>
-        <Static id="staLogo" taborder="1" text="인사급여시스템" left="0" top="0" cssclass="sta_TF_Logo" onclick="staLogo_onclick" width="210" cursor="pointer" bottom="0"/>
+        <Static id="staLogo" taborder="1" text="Incheon Airport" left="0" top="0" cssclass="sta_TF_Logo" onclick="staLogo_onclick" width="210" cursor="pointer" bottom="0"/>
       </Layout>
     </Layouts>
     <Objects>
