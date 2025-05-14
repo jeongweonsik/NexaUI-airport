@@ -3,19 +3,23 @@
   <Form id="frmSub" width="262" height="826" titletext="프레임(Left메인)" onload="frm_onlaod" visible="true" scrolltype="none" scrollbartype="none none" onsize="frm_onsize" cssclass="frm_LF_Bg">
     <Layouts>
       <Layout height="826" width="262">
-        <Static id="staBlur" taborder="12" left="0" top="1" boxShadow="inset 4px 3px 10px 0px #cacbd9" background="#fafafc" borderRadius="4px" bottom="4" right="3"/>
-        <Div id="Div00" taborder="11" text="Div00" left="2" top="72" height="56" cssclass="div_LF_Search" right="2"/>
-        <Static id="Static02" taborder="10" left="0" top="0" height="78" cssclass="sta_LF_MenuSetting" borderRadius="0px 0px 0px 20px" right="0"/>
+        <Static id="staBlur" taborder="10" left="0" top="1" boxShadow="inset 4px 3px 10px 0px #cacbd9" background="#fafafc" borderRadius="4px" bottom="4" right="3"/>
+        <Div id="Div00" taborder="9" text="Div00" left="2" top="72" height="56" cssclass="div_LF_Search" right="2">
+          <Layouts>
+            <Layout>
+              <Edit id="edtMenuSearch" taborder="0" left="2" top="12" height="42" cssclass="edi_LF_Sch" displaynulltext="메뉴명을 입력하세요." right="0" onkeyup="edtMenuSearch_onkeyup"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="8" left="0" top="0" height="78" cssclass="sta_LF_MenuSetting" borderRadius="0px 0px 0px 20px" right="0"/>
         <Button id="btnMenu" taborder="0" text="메뉴" left="5" top="132" width="50%" height="36" cssclass="btn_LF_System_S" onclick="btnMenu_onclick"/>
         <Button id="btnMyMenu" taborder="1" text="즐겨찾기" left="btnMenu:2%" top="132" height="36" cssclass="btn_LF_System" right="11" onclick="btnMenu_onclick"/>
         <Div id="divLeft" taborder="2" text="Div00" left="11" top="180" formscrollbartype="none none" width="234" bottom="2"/>
         <Static id="staName" taborder="3" text="한지성&#13;&#10;" left="100" top="11" width="149" height="25" color="#ffffff"/>
-        <Edit id="edtMenuSearch" taborder="4" left="2" top="80" height="42" cssclass="edi_LF_Sch" displaynulltext="메뉴명을 입력하세요." right="4" onkeyup="edtMenuSearch_onkeyup"/>
-        <Button id="btnMenuSearch" taborder="5" top="87" height="25" cssclass="btn_LF_Sch" onclick="btnMenuSearch_onclick" left="226" right="edtMenuSearch:-251"/>
-        <Static id="staName00" taborder="6" text="IT202501" left="100" top="30" width="60" height="25" color="#ffffff"/>
-        <Static id="Static00" taborder="7" text="|" left="156" top="27" width="8" height="31" color="#ffffff"/>
-        <Static id="staName00_00" taborder="8" text="대표이사" left="174" top="30" width="60" height="25" color="#ffffff"/>
-        <Static id="Static01" taborder="9" text="사진" left="5" top="3" width="71" height="67" color="#ffffff" textAlign="center"/>
+        <Static id="staName00" taborder="4" text="IT202501" left="100" top="30" width="60" height="25" color="#ffffff"/>
+        <Static id="Static00" taborder="5" text="|" left="156" top="27" width="8" height="31" color="#ffffff"/>
+        <Static id="staName00_00" taborder="6" text="대표이사" left="174" top="30" width="60" height="25" color="#ffffff"/>
+        <Static id="Static01" taborder="7" text="사진" left="5" top="3" width="71" height="67" color="#ffffff" textAlign="center"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
