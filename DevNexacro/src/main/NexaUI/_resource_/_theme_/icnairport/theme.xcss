@@ -79,6 +79,15 @@
 	background : url("theme://images/bg_MDI_Bg.png") repeat-x left #F7F9FD;
 }
 
+.Button.btn_LOGIN_Login,
+.Button.btn_LOGIN_Login[status=disabled]
+{
+	-nexa-border : 1px solid #00B4D9;
+	background : #00B4D9;
+	color : #ffffff;
+	font : 600 16px "Malgun Gothic";
+}
+
 .Button.btn_TF_Menu,
 .Button.btn_TF_Menu[status=focused]
 {
@@ -2957,6 +2966,58 @@
 	background : linear-gradient(to bottom,rgba(255,255,255, 0) 0%,#ffffff);
 	-nexa-border : 1px solid #cccccc, 0px none, 0px none;
         
+}
+
+
+
+/*20250514*/
+.Edit.edi_LOGIN_Id
+{
+	-nexa-border : 1px solid #E1E1E1;
+	-nexa-padding : 0px 0px 0px 72px;
+	background : url("theme://images/img_LOGIN_Id.png") no-repeat 6% center;
+	border-radius : 4px;
+	color : #222222;
+	font : 14px "Malgun Gothic";
+}
+.Edit.edi_LOGIN_Id[status=mouseover],.Edit.edi_LOGIN_Id[status=focused]
+{
+	-nexa-border : 1px solid #161940;
+	background : url("theme://images/img_LOGIN_Id.png") no-repeat 6% center;
+}
+.Edit.edi_LOGIN_Id[status=disabled]
+{
+	-nexa-border : 1px solid #E1E1E1;
+	background : url("theme://images/img_LOGIN_Id.png") no-repeat 6% center #F7F9FD;
+	color : #222222;
+}
+.Edit.edi_LOGIN_Password
+{
+	-nexa-border : 1px solid #E1E1E1;
+	-nexa-padding : 0px 0px 0px 72px;
+	background : url("theme://images/img_LOGIN_Pw.png") no-repeat 6.5% center;
+	border-radius : 4px;
+	color : #222222;
+	font : 14px "Malgun Gothic";
+}
+.Edit.edi_LOGIN_Password[status=mouseover],.Edit.edi_LOGIN_Password[status=focused]
+{
+	-nexa-border : 1px solid #161940;
+	background : url("theme://images/img_LOGIN_Pw.png") no-repeat 6.5% center;
+}
+.Edit.edi_LOGIN_Password[status=disabled]
+{
+	-nexa-border : 1px solid #E1E1E1;
+	background : url("theme://images/img_LOGIN_Pw.png") no-repeat 6.5% center #F7F9FD;
+	color : #222222;
+}
+
+.Static.sta_LOGIN_Title
+{
+	-nexa-vertical-align : top;
+	color : #333451;
+	font : 500 44px "Malgun Gothic";
+	letter-spacing : -2px;
 }]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
   <CSSData type="mobile_large"><![CDATA[]]></CSSData>

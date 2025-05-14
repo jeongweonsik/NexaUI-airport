@@ -196,9 +196,9 @@ _pForm._tranCallback = function(oparam,errorCode,errorMsg)
 		    omsg.DATETYPE    = dateType == 0 ? "XML" : dateType == 2 ? "SSV" : dateType == 3 ? "JSON" : "unknown type";
 		    omsg.ELAPSETIME  = enddate;
 		    omsg.ENDDATE     = elapseTime;    
-			//delete omsg.CALLBACK;
-			delete omsg.CALLBACK;
 			
+			//delete omsg.CALLBACK;
+			if("CALLBACK" in omsg) delete omsg.CALLBACK;
 			this.gfnLog(omsg);   // error console log
 	}	
 	
