@@ -43,6 +43,7 @@
         </PopupDiv>
         <Button id="btn00_02_00_00" taborder="12" left="260" top="134" width="160" height="36" text="선택화면타이틀8..." cssclass="btn_MDI_Menu_S" visible="false"/>
         <Static id="staInfoNavi" taborder="10" text="메뉴1&gt;메뉴2&gt;메뉴3" left="1630" top="12" width="130" height="21" background="#000000" color="#ffffff" visible="false" padding="0px 0px 0px 5px"/>
+        <Static id="Static00" taborder="11" left="0" right="528" bottom="0" height="1" cssclass="sta_MDI_Line"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
@@ -180,7 +181,8 @@ this.fnAddTabBtn = function (sTabID, sTabName)
 	objTab.cssclass = this.fvCssMdiS;	
 	objTab.show();
 	objTab.setEventHandler("onclick", this.btnTab_onclick, this);
-
+	objTab.setEventHandler("onmouseenter", this.btnTab_onmouseenter, this);
+	
 	if (this.fnFindObj(sExBtnId) == null) 
 	{		
 		objBtn = new Button();		
@@ -191,6 +193,8 @@ this.fnAddTabBtn = function (sTabID, sTabName)
 		//objBtn.set_cursor("pointer");
 		objBtn.show();		
 		objBtn.setEventHandler("onclick", this.btnExtra_onclick, this);		
+		
+		
 	}
 }
 
@@ -215,6 +219,14 @@ this.form_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
 /*******************************************************************************************************************************
  * 사용자 Function 영역
 *******************************************************************************************************************************/
+
+/*
+*	mouse enter
+*/ 
+this.btnTab_onmouseenter = function (obj,e)
+{
+	trace(" mouse enter === > ");
+};
 
 /**
  * mdi arrange 처리 함수

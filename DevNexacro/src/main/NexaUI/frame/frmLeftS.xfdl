@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frmLeftS" left="0" top="0" width="243" height="643" onload="form_onload" stepalign="center middle" visible="true" stepitemsize="0" stepshowtype="action" scrolltype="vertical" titletext="프레임(Left폼서브)" ondragmove="LeftFrameS_ondragmove" ondrop="LeftFrameS_ondrop" onsize="LeftFrameS_onsize">
+  <Form id="frmLeftS" left="0" top="0" height="643" onload="form_onload" stepalign="center middle" visible="true" stepitemsize="0" stepshowtype="action" scrolltype="vertical" titletext="프레임(Left폼서브)" ondragmove="LeftFrameS_ondragmove" ondrop="LeftFrameS_ondrop" onsize="LeftFrameS_onsize" width="234">
     <Layouts>
       <Layout stepcount="2">
         <CheckBox id="chkSelAll" taborder="2" text="전체선택" left="11" top="7" width="82" height="26" positionstep="1" onchanged="chkSelAll_onchanged" value=""/>
-        <Grid id="grdMenu" taborder="0" left="1" top="1" binddataset="dsMenu" autoenter="none" autosizingtype="none" extendsizetype="none" treeinitstatus="collapse,null" treeusecheckbox="false" treeuseline="false" treeuseimage="true" oncellclick="grdMenu_oncellclick" scrolltype="vertical" unodata="false" cursor="pointer" usort="false" ucopy="false" autofittype="col" scrollbartrackbarsize="100" scrollbardecbuttonsize="0" scrollbarincbuttonsize="0" bottom="0" right="2">
+        <Grid id="grdMenu" taborder="0" left="0" top="1" binddataset="dsMenu" autoenter="none" autosizingtype="none" extendsizetype="none" treeinitstatus="collapse,null" treeusecheckbox="false" treeuseline="false" treeuseimage="true" oncellclick="grdMenu_oncellclick" scrolltype="vertical" unodata="false" cursor="pointer" usort="false" ucopy="false" autofittype="col" scrollbartrackbarsize="100" scrollbardecbuttonsize="0" scrollbarincbuttonsize="0" bottom="0" right="-2">
           <Formats>
             <Format id="default">
               <Columns>
@@ -51,6 +51,83 @@
           <Column id="sort" type="STRING" size="256"/>
           <Column id="menuPath" type="STRING" size="32"/>
         </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="menuCd">M300153</Col>
+            <Col id="menuNm">테스트메뉴</Col>
+            <Col id="parentCd">M120003</Col>
+            <Col id="menuLvl">1</Col>
+            <Col id="menuGroup">M120003</Col>
+            <Col id="url"/>
+            <Col id="sort">12031</Col>
+            <Col id="menuPath">개발자샘플 &gt; SAMPLE &gt; </Col>
+          </Row>
+          <Row>
+            <Col id="menuCd">M300154</Col>
+            <Col id="menuNm">메뉴1(transaciton)</Col>
+            <Col id="parentCd">M300153</Col>
+            <Col id="menuLvl">2</Col>
+            <Col id="menuGroup">M120003</Col>
+            <Col id="url">sample::sample002Transaction.xfdl</Col>
+            <Col id="sort">12032</Col>
+            <Col id="menuPath">개발자샘플 &gt; SAMPLE &gt; </Col>
+          </Row>
+          <Row>
+            <Col id="menuCd">M300155</Col>
+            <Col id="menuNm">메뉴2(팝업샘플</Col>
+            <Col id="parentCd">M300153</Col>
+            <Col id="menuLvl">2</Col>
+            <Col id="menuGroup">M120003</Col>
+            <Col id="url">sample::sample003Popup.xfdl</Col>
+            <Col id="sort">12032</Col>
+            <Col id="menuPath">개발자샘플 &gt; SAMPLE &gt; </Col>
+          </Row>
+          <Row>
+            <Col id="menuCd">M300156</Col>
+            <Col id="menuNm">메뉴3</Col>
+            <Col id="parentCd">M300153</Col>
+            <Col id="menuLvl">2</Col>
+            <Col id="menuGroup">M120003</Col>
+            <Col id="url">sample::sample002Transaction.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="menuCd">M300157</Col>
+            <Col id="menuNm">테스트메뉴2</Col>
+            <Col id="parentCd">M120003</Col>
+            <Col id="menuLvl">1</Col>
+            <Col id="menuGroup">M120003</Col>
+            <Col id="sort">12031</Col>
+            <Col id="menuPath">개발자샘플 &gt; SAMPLE &gt; </Col>
+          </Row>
+          <Row>
+            <Col id="menuCd">M300158</Col>
+            <Col id="menuNm">메뉴1</Col>
+            <Col id="parentCd">M300153</Col>
+            <Col id="menuLvl">2</Col>
+            <Col id="menuGroup">M120003</Col>
+            <Col id="url">design::testForm01.xfdl</Col>
+            <Col id="sort">12032</Col>
+            <Col id="menuPath">개발자샘플 &gt; SAMPLE &gt; </Col>
+          </Row>
+          <Row>
+            <Col id="menuCd">M300159</Col>
+            <Col id="menuNm">메뉴2</Col>
+            <Col id="parentCd">M300153</Col>
+            <Col id="menuLvl">2</Col>
+            <Col id="menuGroup">M120003</Col>
+            <Col id="url">sample::sample001BaseScript.xfdl</Col>
+            <Col id="sort">12032</Col>
+            <Col id="menuPath">개발자샘플 &gt; SAMPLE &gt; </Col>
+          </Row>
+          <Row>
+            <Col id="menuCd">M300160</Col>
+            <Col id="menuNm">메뉴3</Col>
+            <Col id="parentCd">M300153</Col>
+            <Col id="menuLvl">2</Col>
+            <Col id="menuGroup">M120003</Col>
+            <Col id="url">sample::sample002Transaction.xfdl</Col>
+          </Row>
+        </Rows>
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[/**
@@ -82,8 +159,7 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
    app.frame.lefts  = obj;   //set glbal variable  left sub form
    this.resetScroll();
-
-
+   
 };
 
 this.fnSetInit  = function(){
@@ -434,12 +510,12 @@ this.chkFavorite_onclick = function(obj:nexacro.CheckBox,e:nexacro.ClickEventInf
 	var bindds = this.grdFavor.getBindDataset();   //binddataset;
 	var schk  = obj.value;
 	
-	bindds.set_enableevent(false);
+	bindds.enableevent = false;
 	for(var i = 0; i < bindds.getRowCount(); i++)
 	{
 		bindds.setColumn(i,"CHK",schk);     
 	}
-	bindds.set_enableevent(true);
+	bindds.enableevent = true;
 	
 };
 

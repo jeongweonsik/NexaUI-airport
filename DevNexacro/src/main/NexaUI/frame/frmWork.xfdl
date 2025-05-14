@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frmWork" left="0" top="0" width="1296" height="822" onsize="form_onsize" onactivate="form_onactivate" onload="frm_onload" titletext="프레임 업무(work)" cssclass="frm_WF">
+  <Form id="frmWork" left="0" top="0" width="1334" height="822" onsize="form_onsize" onactivate="form_onactivate" onload="frm_onload" titletext="프레임 업무(work)" cssclass="frm_WF_Frame">
     <Layouts>
       <Layout>
-        <Div id="divTitle" taborder="1" text="div00" left="25" top="0" height="47" cssclass="div_WF_Title" maxwidth="" formscrolltype="none" right="84">
+        <Div id="divTitle" taborder="1" text="div00" left="25" top="0" height="47" cssclass="div_WF_Title" maxwidth="" formscrolltype="none" right="0">
           <Layouts>
             <Layout>
-              <Static id="staTitle" taborder="1" text="화면타이틀 (화면아이디)" left="15" top="12" height="26" fittocontents="width" wordWrap="none" right="110"/>
+              <Static id="staTitle" taborder="1" text="화면타이틀 (화면아이디)" left="35" top="12" height="26" fittocontents="width" wordWrap="none" right="90" cssclass="sta_WF_HeaderTitle"/>
             </Layout>
           </Layouts>
         </Div>
-        <Div id="divWork" taborder="0" text="divWork" left="25" top="divTitle:0" maxwidth="" maxheight="" bottom="0" right="84" minwidth="1213">
+        <Div id="divWork" taborder="0" text="divWork" left="20" top="divTitle:0" maxwidth="" maxheight="" bottom="0" right="60" minwidth="1253">
           <Layouts>
             <Layout/>
           </Layouts>
         </Div>
-        <Static id="Static00" taborder="2" text="Static00" top="4" width="84" height="438" background="blue" left="divWork:0"/>
+        <Static id="staRight" taborder="2" top="0" cssclass="sta_TF_Bg" bottom="0" left="divWork:20" width="40"/>
       </Layout>
     </Layouts>
     <Objects/>
@@ -66,8 +66,12 @@ this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     this.divTitle.form.staTitle.text = this.menuNm + "(" + this.menuCd  +")";
 	this.fnSetFavor();
 	this.fnSetUrl();
+	
+	//trace(" app.frame.left.width : " + app.frame.left.form.width);
 	// trace(" this.width : " + this.width + "<> this.height : " + this.height);
-// trace(" divWork.width : " + this.divWork.form.width + "<>  divWork.height : " + this.divWork.form.height);
+	 
+	//trace(" ## this.divWork.width : " + this.divWork.getOffsetWidth());
+   // trace(" divWork.width : " + this.divWork.form.width + "<>  divWork.height : " + this.divWork.form.height);
 			
 };
 
@@ -93,6 +97,20 @@ this.fnSetUrl = function ()
 // set work frame scroll
 this.fnSetScroll = function ()
 {   
+
+   let vscrollMax =  this.divWork.form.vscrollbar.max;
+  
+   if(vscrollMax > 0){
+    this.staRight.left = "divWork:0px";
+     this.divWork.right = 40;
+      
+        //trace(" ## vscrollMax : " + vscrollMax);
+   }else{
+     this.staRight.left = "divWork:20px";
+		this.divWork.right = 60;
+   }
+  // trace(" ## scrollV : " + scrollV);
+   
 // 	let vScrollMax = this.divWork.form.vscrollbar.max;
 // 	let HscrollbarMax = this.divWork.form.hscrollbar.max;
 // 	let ngap = 20;
@@ -127,7 +145,7 @@ this.fnSetScroll = function ()
 // 	 
 // 	if( this.hscrollbar.max > 0)  this.staGapH.height = 0;
 // 	else this.staGapH.height = 20;
-	
+	this.divWork.form.resetScroll();
 	this.divTitle.form.resetScroll();
 	this.resetScroll();
 	  

@@ -2,7 +2,7 @@
 <ADL version="2.0">
   <Application id="hrpamngrfe" screenid="Desktop" licenseurl=".\license\NexacroN_client_license.xml" onload="Application_onload">
     <Layout>
-      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="false" width="1600" height="960" titletext="인천공항인사급여시스템" showcascadetitletext="false" openalign="center middle">
+      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="false" width="1600" height="960" titletext="인천국제공항" showcascadetitletext="false" openalign="center middle">
         <VFrameSet id="vfrs" showtitleicon="false" showtitlebar="false" showstatusbar="false" separatesize="*,0,0,0">
           <Frames>
             <ChildFrame id="frmLogin" formurl="" dragmovetype="none" showtitlebar="false" showtitleicon="false"/>
@@ -10,7 +10,7 @@
             <HFrameSet id="hfrs" separatesize="264,*" showtitlebar="false" showtitleicon="false">
               <Frames>
                 <ChildFrame id="frmLeft" showtitlebar="false" dragmovetype="none" showtitleicon="false" formurl="frame::frmLeft.xfdl"/>
-                <VFrameSet id="vfrsWork" separatesize="*,0" showtitlebar="false" showtitleicon="false">
+                <VFrameSet id="vfrsWork" separatesize="*,0" showtitlebar="false" showtitleicon="false" border="1px none">
                   <Frames>
                     <ChildFrame id="frmMain" showtitlebar="false" dragmovetype="none" showtitleicon="false" formurl="frame::frmMain.xfdl"/>
                     <FrameSet id="frmWork" showtitlebar="false" showtitleicon="false">

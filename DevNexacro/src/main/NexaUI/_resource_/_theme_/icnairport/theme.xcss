@@ -16,6 +16,40 @@
   Last-modified    : 2024-11-20
 */
 
+/*
+.MainFrame,.ChildFrame,.FrameSet,.VFrameSet,.HFrameSet,.TileFrameSet
+{
+	-nexa-border : 1px solid #b7b1b2;
+}
+
+*/
+
+.MainFrame
+{
+	-nexa-border : 1px solid #b7b1b2;
+}
+
+.FrameSet,.VFrameSet,.HFrameSet,.TileFrameSet
+{
+	-nexa-border 		: 0px none;
+	background  		: transparent;
+}
+
+.Form.frm_WF_Frame,.Div.div_WF_Frame
+{
+	background 		: #f4f5f9;
+}
+
+.Form.frm_LF_Bg
+{
+	-nexa-border 		: 0px none, 1px solid #e1e2e7, 0px none, 0px none;
+	background 		: #ffffff;
+}
+
+.Form.frm_TF
+{
+	background : #23273c;
+}
 /* Frame/Form */
 .Form
 {
@@ -34,10 +68,70 @@
 {
 	color : #999999;
 }
-.MainFrame,.ChildFrame,.FrameSet,.VFrameSet,.HFrameSet,.TileFrameSet
+.Div.div_WF_Title
 {
-	-nexa-border : 1px solid #b7b1b2;
+	-nexa-border : 0px none, 0px none, 1px solid #333451, 0px none;
 }
+
+.Form.frm_MDI,
+.Div.div_MDI
+{
+	background : url("theme://images/bg_MDI_Bg.png") repeat-x left #F7F9FD;
+}
+
+.Button.btn_TF_Menu,
+.Button.btn_TF_Menu[status=focused]
+{
+	-nexa-border 		: 0px none;
+	-nexa-padding 		: 0px 25px 0px 25px;
+	background 		: transparent;
+	color 			: #ffffff;
+	font 			: bold 15px "Malgun Gothic";
+}
+.Button.btn_TF_Menu[userstatus=selected],
+.Button.btn_TF_Menu[status=mouseover],.Button.btn_TF_Menu[userstatus=pushed],
+.Button.btn_TF_MenuS,
+.Button.btn_TF_MenuS[status=focused],
+.Button.btn_TF_MenuS[userstatus=selected],
+.Button.btn_TF_MenuS[status=mouseover],.Button.btn_TF_MenuS[userstatus=pushed]
+{
+	-nexa-border 		: 0px none;
+	-nexa-padding 		: 0px 25px 0px 25px;
+	background 		: transparent;
+	color 			: #31bff2;
+	font 			: bold 15px "Malgun Gothic";
+}
+
+.Button.btn_LF_System,
+.Button.btn_LF_System[status=focused],
+.Button.btn_LF_System[userstatus=selected],
+.Button.btn_LF_System[status=mouseover],
+.Button.btn_LF_System[userstatus=pushed],
+.Button.btn_LF_System[status=disabled]
+{
+	-nexa-border 		: 0px none;
+	-nexa-text-align	: center; 
+	background 		: #E2E2E4; 
+	border-radius 		: 0px 0px;
+	color 			: #65615C;
+	font 			: 11px "Malgun Gothic","Arial" ;
+}
+
+.Button.btn_LF_System_S,
+.Button.btn_LF_System_S[status=focused],
+.Button.btn_LF_System_S[userstatus=selected],
+.Button.btn_LF_System_S[status=mouseover],
+.Button.btn_LF_System_S[userstatus=pushed],
+.Button.btn_LF_System_S[status=disabled]
+{
+	-nexa-border 		: 0px none;
+	-nexa-text-align	: center; 
+	background 		: #005EAD; 
+	border-radius 		: 0px 0px;
+	color 			: #ffffff;
+	font 			: bold 11px "Malgun Gothic","Arial" ;
+}
+
 
 /* Button */
 /* FileDownload */
@@ -1216,7 +1310,40 @@
 {
 	-nexa-icon : URL('theme://images/btn_WF_Spindown_D.png');
 }
+.Static.sta_WF_HeaderTitle 
+{
+	/*-nexa-word-wrap : none;*/
+	color : #222222;
+	font : 600 16px "Malgun Gothic";
+}
 
+.Static.sta_MDI_Line, .Static.sta_LF_Line
+{
+	background		: #e1e2e7;
+}
+
+.Static.sta_TF_Logo
+{
+	-nexa-text-align 	: center;
+	background 		: linear-gradient(to right top,#3683e2,#38b1db);
+	color 			: #ffffff;
+	font 			: bold 16px "Malgun Gothic";
+} 
+.Static.sta_TF_Bg
+{
+	-nexa-border 		: 0px none, 0px none, 1px solid #05060e, 0px none;
+	background 		: #23273c;
+}
+
+.Static.sta_LF_MenuSetting
+{
+	-nexa-border 		: 0px none;
+	-nexa-padding 		: 0px 80px 0px 10px;
+	-nexa-text-align 	: left;
+	background 		: #2C364B;
+	color 			: #ffffff;
+	font 			: bold 11px "Malgun Gothic","Arial" ;
+}
 
 /* Static */
 .Static,.StaticControl
@@ -1262,7 +1389,10 @@
 	-nexa-border : 1px solid #d5d5d5;
 }
 
-
+.Div.div_LF_Search
+{
+	background 		: #CBCBCB;
+}
 /* Div (No style applied) */
 /* PopupDiv (No style applied) */
 .Div,.PopupDiv
