@@ -40,16 +40,8 @@
 	background 		: #f4f5f9;
 }
 
-.Form.frm_LF_Bg
-{
-	-nexa-border 		: 0px none, 1px solid #e1e2e7, 0px none, 0px none;
-	background 		: #ffffff;
-}
 
-.Form.frm_TF
-{
-	background :#3683e2;
-}
+
 /* Frame/Form */
 .Form
 {
@@ -1331,28 +1323,7 @@
 	background		: #e1e2e7;
 }
 
-.Static.sta_TF_Logo
-{
-	-nexa-text-align 	: center;
-	background 		: linear-gradient(to right top,#38b1db,#3683e2);
-	color 			: #ffffff;
-	font 			: bold 16px "Malgun Gothic";
-} 
-.Static.sta_TF_Bg
-{
-	-nexa-border 		: 0px none, 0px none, 1px solid #05060e, 0px none;
-	background 		:#3683e2;
-}
 
-.Static.sta_LF_MenuSetting
-{
-	-nexa-border 		: 0px none;
-	-nexa-padding 		: 0px 80px 0px 10px;
-	-nexa-text-align 	: left;
-	background 		: #3683e2;
-	color 			: #ffffff;
-	font 			: bold 11px "Malgun Gothic","Arial" ;
-}
 
 /* Static */
 .Static,.StaticControl
@@ -2970,7 +2941,25 @@
 
 
 
-/*20250514*/
+/*20250514 임시*/
+
+.Form.frm_LF_Bg
+{
+	-nexa-border 		: 0px none, 1px solid #e1e2e7, 0px none, 0px none;
+	background 		: #ffffff;
+}
+
+.Form.frm_TF
+{
+	background :#3683e2;
+}
+
+
+.Form.frm_MAIN
+{
+	background :#3683e2;
+}
+
 .Edit.edi_LOGIN_Id
 {
 	-nexa-border : 1px solid #E1E1E1;
@@ -3012,12 +3001,79 @@
 	color : #222222;
 }
 
+.Static.sta_LF_MenuSetting
+{
+	-nexa-border 		: 0px none;
+	-nexa-padding 		: 0px 80px 0px 10px;
+	-nexa-text-align 	: left;
+	background 		: #3683e2;
+	color 			: #ffffff;
+	font 			: bold 11px "Malgun Gothic","Arial" ;
+}
+
+.Static.sta_TF_Logo
+{
+	-nexa-text-align 	: center;
+	background 		: linear-gradient(to right top,#38b1db,#3683e2);
+	color 			: #ffffff;
+	font 			: bold 16px "Malgun Gothic";
+} 
+
 .Static.sta_LOGIN_Title
 {
 	-nexa-vertical-align : top;
 	color : #333451;
 	font : 500 44px "Malgun Gothic";
 	letter-spacing : -2px;
+}
+
+
+.Static.sta_TF_Bg
+{
+	-nexa-border 		: 0px none, 0px none, 1px solid #05060e, 0px none;
+	background 		:#3683e2;
+}
+
+.Static.sta_WF_DetailLabelT
+{
+	-nexa-border : 1px solid #292B57, 1px solid #C1CFDF, 1px solid #C1CFDF, 1px solid #C1CFDF;
+	-nexa-padding : 0px 8px;
+	-nexa-word-wrap : char;
+	background : #F7F9FD;
+	color : #3F4168;
+	font : 600 12px/14px "Malgun Gothic";
+}
+
+.Static.sta_WF_DetailBgT
+{
+	-nexa-border : 1px solid #292B57, 1px solid #DFDFDF, 1px solid #DFDFDF, 1px solid #DFDFDF;
+	background : #ffffff;
+}
+
+.Button.btn_WF_Inner
+{
+	-nexa-border : 1px solid #9899a7;
+	-nexa-padding : 0px 12px;
+	background : #9899a7;
+	border-radius : 4px;
+	color : #FFFFFF;
+	cursor : pointer;
+}
+
+.Static.sta_WF_DetailLabelB
+{
+	-nexa-border : 1px solid #C1CFDF, 1px solid #C1CFDF, 1px solid #BBBBBB, 1px solid #C1CFDF;
+	-nexa-padding : 0px 8px;
+	-nexa-word-wrap : char;
+	background : #F7F9FD;
+	color : #3F4168;
+	font : 600 12px/14px "Malgun Gothic";
+}
+
+.Static.sta_WF_DetailBgB
+{
+	-nexa-border : 1px solid #DFDFDF, 1px solid #DFDFDF, 1px solid #BBBBBB, 1px solid #DFDFDF;
+	background : #ffffff;
 }]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
   <CSSData type="mobile_large"><![CDATA[]]></CSSData>
