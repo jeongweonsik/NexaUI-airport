@@ -6,8 +6,8 @@
         <Div id="divLogin" taborder="0" text="" left="440" top="120" width="400" height="280" background="#fafafc" cssclass="div_LOGIN_Bg" formscrollbartype="none none" boxShadow="3px 3px 10px #cacbd9" borderRadius="3px">
           <Layouts>
             <Layout>
-              <Button id="btnLogin" taborder="1" text="로그인" left="1" bottom="2" height="69" right="1" onclick="divLogin_btnLogin_onclick" font="bold 18px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" cssclass="btn_LOGIN_Login"/>
-              <Edit id="edtUserId" taborder="1" left="60" top="110" width="320" height="40" cssclass="edi_LOGIN_Id" displaynulltext="아이디를 입력해주세요." onkeyup="edt_keyup"/>
+              <Button id="btnLogin" taborder="1" text="로그인" left="1" right="1" onclick="divLogin_btnLogin_onclick" font="bold 18px/normal &quot;Malgun Gothic&quot;,&quot;Arial&quot;" cssclass="btn_LOGIN_Login" height="69" bottom="1"/>
+              <Edit id="edtUserId" taborder="1" left="60" top="100" width="320" height="40" cssclass="edi_LOGIN_Id" displaynulltext="아이디를 입력해주세요." onkeyup="edt_keyup"/>
               <Edit id="txtUserPw" taborder="2" left="60" top="146" width="320" height="40" cssclass="edi_LOGIN_Password" displaynulltext="비빌번호를 입력해주세요." password="true" onkeyup="fnKeyup" visible="false"/>
               <Static id="sta00" taborder="3" text="로그인" left="60" top="30" width="194" height="60" cssclass="sta_LOGIN_Title"/>
             </Layout>
@@ -114,7 +114,6 @@ this.fnLoginTran = function (id)
 						nexacro.setEnvironmentVariable("evUserId",app.gdsUserInfo.getColumn(0,this.colInfo.user.id)); // sso userId
 						
 						if(app.gdsUserInfo.getRowCount() > 0){ 
-
 						         this.gfnSetFrame("mdi");
 						}else{
 						     this.gfnAlert("사용자 데이타가 존재하지 않습니다. 관리자에게 문의해 주세요.","","e"); // 로그인 에러 메시지
