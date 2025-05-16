@@ -810,7 +810,7 @@ _pMultiComboListControl._createSelectAllCheckBoxControl = function(_a) {
         var _b = this.selectallcheckbox;
         if (!_b) {
             _b = this.selectallcheckbox = new nexacro._SelectAllCheckBoxControl("selectallcheckbox",0,0,0,0,null,null,null,null,null,null,this);
-            _b.set_text(nexacro._toString("전체"));
+            _b.set_text(nexacro._toString("전체선택"));
             _b._setPopupContains(true);
             _b.createComponent(true);
         }
