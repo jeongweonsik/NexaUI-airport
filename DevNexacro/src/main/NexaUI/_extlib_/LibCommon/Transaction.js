@@ -74,7 +74,7 @@ _pForm.gfnTran = function()
 				value = nexacro._isUndefined(value) ? "" : value;
 				if(value instanceof Function		    
 					|| (typeof value == "string" 
-						&& value.toLowerCase().indexOf("callback") > -1)){  
+						&& ~value.toLowerCase().indexOf("callback"))){  
 					
 					callback = value;
 					
@@ -198,13 +198,13 @@ _pForm._tranCallback = function(oparam,errorCode,errorMsg)
 					//httpError 처리 
 			if(app.v.httpError){
 				app.v.httpError = false;
-			//	return;
+			
 			}else{
 			   alert(errorMsg);
 			}
-	
-		// if(!app.v.httpError)
-		//	return;
+			
+	     //	return;
+
 	}	
 	
 	// 화면의 callBack 함수 실행	
