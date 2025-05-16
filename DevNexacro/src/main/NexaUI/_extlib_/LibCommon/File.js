@@ -74,7 +74,9 @@ _pForm.gfnFileDialog = function(fileid,constOpenMode,strAccept, dsFileUp,gFileSe
    }    
     
      let svcFileid = this.isNull(fileid) ?  this.parent.name :  fileid;
+	
 	 
+	trace("  ### pThis.oSvcId :::>>> " +pThis.oSvcId);
 	pThis.sObjDialogNm         = pThis.oObjDialogNm + this.parent.name;
     pThis.sObjDialogTransferNm = pThis.oObjDialogTransferNm + this.parent.name;
     pThis.sObjFileDownTransfer = pThis.oObjFileDownTransfer + this.parent.name;
@@ -649,9 +651,10 @@ _pForm.gfnCreateFileDownTransfer = function()
 _pForm.gfnFileDelete = function(dsUpload,nRow,callback)
 {
    //var pThis = this.gfnGetTopLevelForm(this);  
-   const pThis = this;  
+   const pThis = this; 
+   const colSeq = "FILE_SEQ";
    let nIndex  = "";  
-   let findSeq = dsUpload.findRowExprNF("FILE_SEQ == undefined || FILE_SEQ == ''");
+   let findSeq = dsUpload.findRowExprNF(""+colSeq+" == undefined || "+colSeq+" == ''");
  
    if(dsUpload.getRowCount() == 0 
    || findSeq > -1 ){
@@ -668,7 +671,7 @@ _pForm.gfnFileDelete = function(dsUpload,nRow,callback)
 			   let ofileTrans  = pThis[pThis.sObjDialogTransferNm];  //fileObj   			 
 			  
 			   //upload 수행 후 
-			   if(!this.gfnIsNull(dsUpload.getColumn(nRow,"FILE_SEQ"))) {   
+			   if(!this.gfnIsNull(dsUpload.getColumn(nRow,colSeq))) {   
 			   
 			  
 			      if (!this.gfnIsNull(ofileTrans)) {
@@ -776,98 +779,96 @@ _pForm.gfnJavascriptUploadFileList = function(fileList, fileUpTransferObj) {
 	
 	if(this.gfnIsNexacro())
 	{
-	  this.gfnAlert("webBrowser에서만 실행 가능 합니다.","","w");
-	 
+	  this.gfnAlert("webBrowser에서만 실행 가능 합니다.","","w");	 
 	  return;
 	}
+		 
+	let CHUNK_SIZE = _pForm.CHUNK_SIZE ;
+	let uploadPath = this.gfnGetUploadPath();
 	
-	 
-	var CHUNK_SIZE = _pForm.CHUNK_SIZE ;
-	var uploadPath = this.gfnGetUploadPath();
-	var removeList = [];
-
-	for (var i = 0; i < fileList.length; i++) {
-		var vFile = fileList[i];	
-		var file = vFile._handle;
-        var filesize = file.size  || 0;
-	    
-		if (file.size > CHUNK_SIZE) {
-
-			removeList.push(vFile.id);
-			this.gfnJavascriptUploadFile(vFile, uploadPath, fileUpTransferObj);
-		}
-	}	
-	
-	for (var i = 0; i < removeList.length; i++) {
-		fileUpTransferObj.removeFile(removeList[i]);
-	}
+// 	var removeList = [];
+// 
+// 	for (var i = 0; i < fileList.length; i++) {
+// 		var vFile = fileList[i];	
+// 		var file = vFile._handle;
+//         var filesize = file.size  || 0;
+// 	    
+// 		if (file.size > CHUNK_SIZE) {
+// 
+// 			removeList.push(vFile.id);
+// 			this.gfnJavascriptUploadFile(vFile, uploadPath, fileUpTransferObj);
+// 		}
+// 	}	
+// 	
+// 	for (var i = 0; i < removeList.length; i++) {
+// 		fileUpTransferObj.removeFile(removeList[i]);
+// 	}
 	
    //일반일 경우
 	if(fileUpTransferObj.filelist.length > 0){
   //  this.console.log( "#### _pForm.gFileSeq : " +_pForm.gFileSeq);
-	  if(!!_pForm.gFileSeq) fileUpTransferObj.setPostData("GFILE_SEQ", _pForm.gFileSeq);
-	  
+	//  if(!!_pForm.gFileSeq) fileUpTransferObj.setPostData("GFILE_SEQ", _pForm.gFileSeq);	  
 		fileUpTransferObj.upload( "svcUrl::file/upload");
 	}
 	
 }
-
-_pForm.gfnJavascriptUploadFile = function(vFile, uploadPath, fileUpTransferObj) {
-	var CHUNK_SIZE = _pForm.CHUNK_SIZE ;
-	var file = vFile._handle;
-	var totalChunks = Math.ceil(file.size / CHUNK_SIZE);
-
-    for (let i = 0; i < totalChunks; i++) {
-        var start = i * CHUNK_SIZE;
-        var end = Math.min(file.size, start + CHUNK_SIZE);
-        var chunk = file.slice(start, end);  // 조각 생성
-
-        var formData = new FormData();
-        formData.append("file", chunk);
-        formData.append("chunkIndex", i);
-        formData.append("totalChunks", totalChunks);
-        formData.append("orgFilename", vFile.filename);
-		formData.append("filePath", uploadPath);
-		 this.gfnSetImgLoding(true);
-		var uploadUrl = nexacro._getServiceLocation("svcUrl::" + "file/upload-chunk", null, null, false, true);
-		fetch(uploadUrl, {
-                method: "POST",
-                body: formData,
-				
-        }).then((response) => {
-			return response.text();
-		}).then(str => {
-			var strData = nexacro.trimLeft(str);
-			var dataType = strData.slice(0, 5).toUpperCase();
-			if (dataType.indexOf("<?XML") == 0) {
-				dataType = "XML";
-			}
-			if (dataType.indexOf("SSV") == 0) {
-				dataType = "SSV";
-			}
-			if (dataType.indexOf("{") == 0) {
-				dataType = "JSON";
-			}
-			if (dataType == "XML") {
-				strData = nexacro._parseXMLDocument(strData);
-			}
-			if (nexacro._Deserializer[dataType]) {
-				var data = nexacro._Deserializer[dataType](strData);
-				var parameter = data[0];
-				var dataSetList = data[1];
-				if (parameter.ErrorCode == 0) { // chunck 가 다 업로드되었을 때 : 0 반환 , 진행 중일 때 : 1 반환
-					fileUpTransferObj.on_load(data, uploadUrl, -1);
-				}
-			}
-			
-			
-		}).catch((error) => {
-			console.log('Error', error);
-			
-		});
-    }
-	// this.gfnSetImgLoding(false);
-}
+// 
+// _pForm.gfnJavascriptUploadFile = function(vFile, uploadPath, fileUpTransferObj) {
+// 	var CHUNK_SIZE = _pForm.CHUNK_SIZE ;
+// 	var file = vFile._handle;
+// 	var totalChunks = Math.ceil(file.size / CHUNK_SIZE);
+// 
+//     for (let i = 0; i < totalChunks; i++) {
+//         var start = i * CHUNK_SIZE;
+//         var end = Math.min(file.size, start + CHUNK_SIZE);
+//         var chunk = file.slice(start, end);  // 조각 생성
+// 
+//         var formData = new FormData();
+//         formData.append("file", chunk);
+//         formData.append("chunkIndex", i);
+//         formData.append("totalChunks", totalChunks);
+//         formData.append("orgFilename", vFile.filename);
+// 		formData.append("filePath", uploadPath);
+// 		 this.gfnSetImgLoding(true);
+// 		var uploadUrl = nexacro._getServiceLocation("svcUrl::" + "file/upload-chunk", null, null, false, true);
+// 		fetch(uploadUrl, {
+//                 method: "POST",
+//                 body: formData,
+// 				
+//         }).then((response) => {
+// 			return response.text();
+// 		}).then(str => {
+// 			var strData = nexacro.trimLeft(str);
+// 			var dataType = strData.slice(0, 5).toUpperCase();
+// 			if (dataType.indexOf("<?XML") == 0) {
+// 				dataType = "XML";
+// 			}
+// 			if (dataType.indexOf("SSV") == 0) {
+// 				dataType = "SSV";
+// 			}
+// 			if (dataType.indexOf("{") == 0) {
+// 				dataType = "JSON";
+// 			}
+// 			if (dataType == "XML") {
+// 				strData = nexacro._parseXMLDocument(strData);
+// 			}
+// 			if (nexacro._Deserializer[dataType]) {
+// 				var data = nexacro._Deserializer[dataType](strData);
+// 				var parameter = data[0];
+// 				var dataSetList = data[1];
+// 				if (parameter.ErrorCode == 0) { // chunck 가 다 업로드되었을 때 : 0 반환 , 진행 중일 때 : 1 반환
+// 					fileUpTransferObj.on_load(data, uploadUrl, -1);
+// 				}
+// 			}
+// 			
+// 			
+// 		}).catch((error) => {
+// 			console.log('Error', error);
+// 			
+// 		});
+//     }
+// 	// this.gfnSetImgLoding(false);
+// }
 
 _pForm.gfnGetUploadPath = function() {
 	return this.gfnUploadDirectory() + "/" + this.gfnGenerateUUID();

@@ -790,16 +790,16 @@ var dsOutComCode    = this.dsOutComCode;  //화면에서 받아올 dataset
 dsOutComCode  = this.gfnGetComCodeFilter(filterCode,dsOutComCode);
 * @memberOf 
 */
-_pForm.gfnGetComCodeFilter = function (param,targetDs,selType)
+_pForm.gfnGetComCodeFilter = function (param,targetDs)
 {
 	let ncnt = 0;
 	let paramDataset = app.gdsComCode;
 	
 	if(this.isNull(targetDs)) return;
-	targetDs.assign(paramDataset);
+	targetDs.copyData(paramDataset);	
 	targetDs.clearData();
 	
-	
+
 	if(paramDataset.getRowCount() > 0)
 	{
 		paramDataset.filter("");
@@ -871,9 +871,9 @@ _pForm.gfnGetComCodeFilter = function (param,targetDs,selType)
 		
 		if(targetDs.getRowCount() < 1) this.console.error("[데이타 nul[ 해당 코드 값 filter 값이 존재하지 않습니다");
 		
-		if(!nexacro._isUndefined(selType)){
-		    this.gfnInSelectText(targetDs,selType);
-		}
+// 		if(!nexacro._isUndefined(selType)){
+// 		    this.gfnInSelectText(targetDs,selType);
+// 		}
 		
 	}
 	else
@@ -913,13 +913,14 @@ _pForm.gfnCboNullText =  function (cbo,sType)
 * @example
 * @memberOf 
 */
-_pForm.gfnInSelectText =  function (dsCombo,sType)
-{
-	dsCombo.insertRow( 0 );
-	dsCombo.setColumn( 0 , "CODE_CD"   , "" );
-	dsCombo.setColumn( 0 , "CODE_NM", this.gfnNullTxt(sType)); // - 선택 -		
+_pForm.gfnInSelectText =  function (dsCombo,colCode,colData,sType)
+{   
+	dsCombo.insertRow(0);
+	dsCombo.setColumn( 0 , colCode   , "" );   
+	dsCombo.setColumn( 0 , colData, this.gfnNullTxt(sType)); // - 선택 -		
 };
-
+//com.cd
+//com.nm
 /**
 * @class  프로젝트 로컬 실행 여부
 * @param {string} 
@@ -1157,7 +1158,7 @@ _pForm.gfnGetScreenId = function ()
 
 _pForm.gfnNullTxt = function (p)
 {		 		 
-	return  (p == "s" ? "= 선택 =" :  p == "a" ? "= 전체 =" : "");		 
+	return  (p == "s" ? "선택" :  p == "a" ? "전체" : "");		 
 };
 
 

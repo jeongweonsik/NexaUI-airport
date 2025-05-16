@@ -35,14 +35,9 @@
     <Component type="JavaScript" id="Dataset" classname="nexacro.NormalDataset"/>
     <Component type="JavaScript" id="ListView" classname="nexacro.ListView"/>
     <Component type="JavaScript" id="DataObject" classname="nexacro.DataObject"/>
-    <Component type="JavaScript" id="CheckBoxSet" classname="nexacro.CheckBoxSet"/>
     <Component type="JavaScript" id="MultiCombo" classname="nexacro.MultiCombo"/>
     <Component type="JavaScript" id="Panel" classname="nexacro.Panel"/>
     <Component type="JavaScript" id="TextField" classname="nexacro.TextField"/>
-    <Component type="JavaScript" id="MultiLineTextField" classname="nexacro.MultiLineTextField"/>
-    <Component type="JavaScript" id="DateField" classname="nexacro.DateField"/>
-    <Component type="JavaScript" id="DateRangePicker" classname="nexacro.DateRangePicker"/>
-    <Component type="JavaScript" id="PopupDateRangePicker" classname="nexacro.PopupDateRangePicker"/>
     <Component type="JavaScript" id="WebBrowser" classname="nexacro.WebBrowser"/>
     <Component type="JavaScript" id="FileDialog" classname="nexacro.FileDialog"/>
     <Component type="JavaScript" id="FileDownload" classname="nexacro.FileDownload"/>
@@ -52,7 +47,6 @@
     <Component type="JavaScript" id="ExcelExportObject" classname="nexacro.ExcelExportObject"/>
     <Component type="JavaScript" id="ExcelImportObject" classname="nexacro.ExcelImportObject"/>
     <Component type="JavaScript" id="VirtualFile" classname="nexacro.VirtualFile"/>
-    <Component type="JavaScript" id="Graphics" classname="nexacro.Graphics"/>
   </Components>
   <Services>
     <Service prefixid="svcUrl" type="JSP" cachelevel="none" url="http://localhost:8180/" version="0" communicationversion="0" include_subdir="false"/>

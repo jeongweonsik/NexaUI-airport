@@ -6,11 +6,11 @@
         <Static id="sta02" taborder="0" text="File UPLOAD/DOWNLOAD " left="0" top="60" height="30" cssclass="sta_WF_GuideTxt01" right="0"/>
         <Static id="staSub" taborder="1" text="파일 업/다운로드 샘플" left="0" top="sta02:0" height="40" cssclass="sta_WF_GuideTxt01" right="0"/>
         <Static id="Static00" taborder="2" text="1) file upload/Down 공통(webBrowser전용)" left="5" top="141" width="265" height="28" font="bold 10pt &quot;맑은 고딕&quot;"/>
-        <Div id="divFileUp" taborder="3" left="20" top="200" height="260" text="cmmFileUpDown" right="503" ureadonly="false" uopenmode="multi" uextaccecpt="" umbsizeaccept="10" ugfileseq="" uauth="btnDialog:false,btnFileDeleteAll:false,btnFileDownLoadAll:false" url="cmm::cmmFileUpDown.xfdl"/>
+        <Div id="divFileUp" taborder="3" left="20" top="200" height="260" text="cmmFileUpDown" right="503" ureadonly="false" uopenmode="multi" uextaccept="" umbsizeaccept="10" ugfileseq="" uauth="btnDialog:false,btnFileDeleteAll:false,btnFileDownLoadAll:false" url="cmm::cmmFileUpDown.xfdl"/>
         <Button id="btnFileUpGetDataset" taborder="5" text="getDatasetFileUP" left="16" top="divFileUp:10" width="117" height="38" onclick="btnFileUpGetDataset_onclick"/>
         <Button id="btnFileSearch" taborder="6" text="파일조회" left="btnFileUpGetDataset:4" top="470" width="72" height="38" onclick="btnFileSearch_onclick"/>
         <Button id="btDsFileUpCopy" taborder="11" text=" datasset  복사" left="btnFileSearch:4" top="470" width="106" height="38" onclick="btDsFileUpCopy_onclick"/>
-        <Static id="sta00" taborder="4" text="*=====  user property    =====*&#13;&#10;1. uopenmode      : single, multi&#13;&#10;2. ureadonly      : 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운   &#13;&#10;3. uextaccecpt    : 파일형식 제한&#13;&#10;4. umbsizeaccept  : 사이즈 제한" left="461" top="61" width="490" height="103"/>
+        <Static id="sta00" taborder="4" text="*=====  user property    =====*&#13;&#10;1. uopenmode      : single, multi&#13;&#10;2. ureadonly      : 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운   &#13;&#10;3. uextaccept    : 파일형식 제한&#13;&#10;4. umbsizeaccept  : 사이즈 제한" left="461" top="61" width="490" height="103"/>
         <Button id="btnFileSelect" taborder="7" text="파일선택/업로드" top="221" width="122" height="39" onclick="btnFileSelect_onclick" right="130"/>
         <Edit id="txtFileNm" taborder="9" top="221" width="231" readonly="true" right="btnFileSelect:8" height="36"/>
         <Button id="btnDownload" taborder="10" text="다운로드" top="221" width="96" height="39" onclick="btnDownload_onclick" right="20"/>
@@ -70,18 +70,16 @@
           </Formats>
         </Grid>
         <Button id="btnFieSearch" taborder="12" text="fielSearch" top="170" width="98" height="37" onclick="btnFieSearch_onclick" right="22"/>
-        <Button id="btnSetGfileSeq" taborder="13" text="set Q_FILE_SEQ" left="btnFileSearch:116" top="470" width="124" height="38" onclick="btnSetGfileSeq_onclick"/>
-        <Button id="btnGetGfileSeq" taborder="14" text="get Q_FILE_SEQ" left="btnFileSearch:116" top="517" width="124" height="38" onclick="btnGetGfileSeq_onclick"/>
-        <Static id="sta_00" taborder="15" text="파일 업/다운(sample006)" left="0" top="0" height="40" cssclass="sta_GA_Header" right="0"/>
-        <Button id="btnSetAuth" taborder="16" text="버튼권한(set)" left="20" top="522" width="114" height="42" onclick="btnAuth_onclick"/>
-        <Button id="btnGetAuth" taborder="17" text="버튼권한(get)" left="156" top="522" width="114" height="42" onclick="btnGetAuth_onclick"/>
+        <Static id="sta_00" taborder="13" text="파일 업/다운(sample006)" left="0" top="0" height="40" cssclass="sta_GA_Header" right="0"/>
+        <Button id="btnSetAuth" taborder="14" text="버튼권한(set)" left="20" top="522" width="114" height="42" onclick="btnAuth_onclick"/>
+        <Button id="btnGetAuth" taborder="15" text="버튼권한(get)" left="156" top="522" width="114" height="42" onclick="btnGetAuth_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
 *  파일 업/다운 샘플
 *@FileName  sample008FileUpDownload
-*@Creator {J}
-*@CreateDate 2025/05/13
+*@Creator 	{J}
+*@CreateDate 2025/05/16
 *@Desction    
 ************** 소스 수정 이력 ***********************************************
 *  date          		Modifier                Description
@@ -96,7 +94,7 @@
 
 //1. uopenmode    : single, multi
 //2. ureadonly    : 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운   
-//3. uextaccecpt  : 파일형식 제한
+//3. uextaccept   : 파일형식 제한
 //4. mbsizeaccept : 사이즈 제한
 
 /************************************************************************************************
@@ -107,7 +105,7 @@
 */
 this.addEventHandler("onload",function(obj,e)
 {
-	
+   
 },this);
 
 
@@ -144,15 +142,14 @@ this.cfnTranFileUpDownCallback= function (id,code, msg ,dsUpload)
 this.cfnFileDialog_onclose = function (id,filename,fileExt,filesize,vFile)
 {
    
-     trace(" ## id : " + id + "<> filename : " + filename + "<> filesize : " +filesize + "<> vFile : " +vFile);
-   
+  // trace(" ## cfnFileDialog_onclose id : " + id + "<> filename : " + filename + "<> filesize : " +filesize + "<> vFile : " + vFile);
  
-//	this.gfnLog({id:id,filename:filename,filesize:filesize,vFile:vFile});
+  // this.gfnLog({id:id,filename:filename,filesize:filesize,vFile:vFile});
 	
-	if(id=="fileUp_fileSelect")
+	if(id==" fileUp_divFileUp")
 	{
 	  this.txtFileNm.value = filename;
-	  alert(" vFile : " +vFile + "<> filesize : " +filesize);
+	//  alert(" vFile : " +vFile + "<> filesize : " +filesize);
 	//     this.gfnFileUpload(e.virtualfiles);		   
 	}
 };
@@ -169,12 +166,10 @@ this.cfnFileDialog_onclose = function (id,filename,fileExt,filesize,vFile)
 * @memberOf 
 */
 this.cfnFileUp_success = function (id,obj,resDs)
-{
-	
+{	
    this.console.log(" ## cfnFileUp_success :::>>> ");
    this.console.log(" id  : " +id + "<> obj : " + obj );
    this.console.log(" fileUpload resultDataset == > "  +resDs.saveXML());
-
 };
 
 //file up error
@@ -245,11 +240,9 @@ this.fnCallback = function(id,code,msg)
 // 	
 // };
 
-
-
 this.btnFileUpGetDataset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var dsFileUp = this.divFileUp.getDsFileUp();
+	var dsFileUp = this.divFileUp.getDsFileUp();  
 };
 
 /*
@@ -300,9 +293,9 @@ this.btnFieSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo
 {
 	var svcid    = "searchMsg";
 	var callback = "fnCallback";
-	var inDs   =  "dsIn";     // 이름 , 로구분
-    var outDs    = "dsUpload";  // 이름 , 로 구분	
-    var args   = {param1:"aaa"};
+	var inDs     =  "inSys=dsIn";     
+    var outDs    = "dsUpload=outDs"; 
+    var args     = {param1:"aaa"};
 	
 	//trace(" object key  :" + Object.keys(args).length);
 	this.gfnTranFileSearch(svcid,callback,inDs,outDs,args);

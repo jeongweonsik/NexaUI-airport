@@ -38,6 +38,10 @@ _pForm.colInfo = {
 		nmorg : "originalFileNm",
 		size  : "fileSize",  //파일 사이즈
 		ext   : "fileExt"    // 파일 확장자
+	},
+	com : {
+	   cd : "CODE_CD",   //공토코드 컬럼
+	   nm : "CODE_NM"    //공토코드 명
 	}
 	
 };

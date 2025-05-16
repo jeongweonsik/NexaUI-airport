@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="test004FileP" width="480" height="260" titletext="New Form">
+    <Layouts>
+      <Layout height="260" width="480">
+        <Div id="divFileUp" taborder="0" left="0" top="0" height="260" text="cmmFileUpDown" ureadonly="false" uopenmode="multi" uextaccecpt="" umbsizeaccept="10" ugfileseq="" width="498"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

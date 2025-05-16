@@ -5,12 +5,11 @@
       <Layout height="720" width="1280">
         <DateField id="DateField00" taborder="0" left="50.00" top="50" width="210" height="50" inputtype="time" format="h:mm:ss aa" labelfloatingfixed="false" popuptype="default" usehelpertext="true" labelposition="inside"/>
         <Calendar id="Calendar00" taborder="1" left="296" top="50" width="274" height="260" type="monthonly"/>
-        <DateRangePicker id="DateRangePicker00" taborder="2" left="700" top="50" width="340" height="330" direction="horizontal" headlineposition="top" displaytype="time" type="single" useheadline="false"/>
-        <Button id="Button00" taborder="3" text="Button00" left="43" top="85" width="213" height="46" onclick="Button00_onclick"/>
-        <Button id="Button01" taborder="4" text="Button01" left="48" top="147" width="207" height="50" onclick="Button01_onclick"/>
-        <Button id="Button02" taborder="5" text="Button02" left="47" top="211" width="210" height="54" onclick="Button02_onclick"/>
-        <Button id="Button03" taborder="6" text="Button03" left="49" top="280" width="205" height="53" onclick="Button03_onclick"/>
-        <Button id="Button04" taborder="7" text="Button04" left="52" top="352" width="209" height="42" onclick="Button04_onclick"/>
+        <Button id="Button00" taborder="2" text="Button00" left="43" top="85" width="213" height="46" onclick="Button00_onclick"/>
+        <Button id="Button01" taborder="3" text="Button01" left="48" top="147" width="207" height="50" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="4" text="Button02" left="47" top="211" width="210" height="54" onclick="Button02_onclick"/>
+        <Button id="Button03" taborder="5" text="Button03" left="49" top="280" width="205" height="53" onclick="Button03_onclick"/>
+        <Button id="Button04" taborder="6" text="Button04" left="52" top="352" width="209" height="42" onclick="Button04_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**

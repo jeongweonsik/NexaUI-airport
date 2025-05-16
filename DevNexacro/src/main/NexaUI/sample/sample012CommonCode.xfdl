@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frm" width="1020" height="600" titletext="공통코드 바인딩 샘플" onload="frm_onload">
+    <Layouts>
+      <Layout height="600" mobileorientation="landscape" width="1020">
+        <Div id="Div00_00" taborder="0" left="0" top="472" height="48" cssclass="div_WF_SearchBg" text="" right="0">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Static id="sta07" taborder="1" cssclass="sta_WF_Guide" text="h20" bottom="-30" visible="false" left="0" height="20" right="0"/>
+        <Button id="btnComCodeFilter" taborder="2" text="공통코드 filter" left="266" top="57" width="139" height="27" onclick="Div00_btnComCodeFilter_onclick"/>
+        <Combo id="cboComCode" taborder="3" left="266" top="93" width="174" height="28" codecolumn="codeCd" datacolumn="codeNm" innerdataset="dsOutComCode" onitemchanged="cboComCode_onitemchanged"/>
+        <Static id="sta_00" taborder="4" text="공통코드바인딩 (sample011)" left="0" top="0" height="40" cssclass="sta_GA_Header" right="0"/>
+        <Radio id="Radio00" taborder="5" left="266" top="130" width="419" height="45" innerdataset="dsOutComCode" codecolumn="codeCd" datacolumn="codeNm" direction="vertical" rowcount="-1" columncount="-1"/>
+        <Static id="Static00" taborder="6" text="Combo" left="107" top="96" width="146" height="29"/>
+        <Static id="Static00_00" taborder="7" text="Radio" left="107" top="152" width="146" height="29"/>
+        <Static id="Static00_00_00" taborder="8" text="Grid" left="104" top="201" width="146" height="29"/>
+        <Grid id="Grid00" taborder="9" left="105" top="280" width="660" height="175" binddataset="dsOut">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="190"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="43"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="분류"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="combocontrol" edittype="combo" combodataset="dsOutComCode" combocodecol="codeCd" combodatacol="codeNm" combotype="dropdown" text="bind:Column0"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btnAdd" taborder="10" text="추가" top="231" width="100" height="39" right="256" onclick="btnAdd_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsOutComCode">
+        <ColumnInfo>
+          <Column id="codeCd" type="STRING" size="256"/>
+          <Column id="codeNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsOut">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0"></Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+*  샘플 공토코드
+*@FileName  sample012CommonCode
+*@Creator 	
+*@CreateDate 2025/05/16
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+
+/************************************************************************************************
+* include 영역(업무화면에서 꼭 필요한 경우에만 사용하세요)
+************************************************************************************************/
+
+
+/************************************************************************************************
+* FORM 변수 선언 영역
+************************************************************************************************/
+
+
+/************************************************************************************************
+* FORM EVENT 영역(onload, onbeforeclose)
+************************************************************************************************/
+/**
+* @description 화면 onload시 처리내역(필수)
+*/
+this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{ 
+	
+	
+};
+
+
+
+//공통코드 필터
+this.Div00_btnComCodeFilter_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+  /*
+   *@param {object} 필터할 코드 값 : 명
+   *@param {component} 필터할 데이타셋
+   */
+   this.gfnGetComCodeFilter({highCd : "00001"}, this.dsOutComCode);  // 전체 
+   
+      /**@param {string}  선택 값 입력 옵션   (생락갸능) 값없음
+	      @param {string}  codecolumn 명
+		    @param {string}  datacolumn 명
+	       '': 공백    's' : 선택=  'a' : 전체=*/
+  this.gfnInSelectText(this.dsOutComCode, this.cboComCode.codecolumn,this.cboComCode.datacolumn,"a"); // 전체 값 insert
+  this.cboComCode.index = 0;  
+  
+
+};
+
+this.cboComCode_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+
+};
+
+// 추가
+this.btnAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+	this.dsOut.setColumn(this.dsOut.addRow(),"Column0","")
+};
+]]></Script>
+  </Form>
+</FDL>

@@ -67,7 +67,7 @@ this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	this.menuNavi    =  this.getOwnerFrame().arguments[this.colInfo.menu.navi];   // menu navi	
 
 //   trace(" #### this.menuCd ::>>> " + this.menuCd);
- //   trace(" ## this.divWorkS .width : " + this.divWork.getOffsetWidth() + "<> height : " +this.divWork.getOffsetHeight());
+//   trace(" ## this.divWorkS .width : " + this.divWork.getOffsetWidth() + "<> height : " +this.divWork.getOffsetHeight());
 //   this.divTitle.form.staTitle.text = this.menuNm + "(" + this.menuCd  +")";
 // 	this.fnSetFavor();
  	this.fnSetUrl();
@@ -381,11 +381,11 @@ this.divTitle_btnFavorite_onclick = function(obj:nexacro.Button,e:nexacro.ClickE
  */ 
 this.fnAddMyMenu = function ()
 {
-	let gdsMyMenu =  app.gdsMyMenu;
-	let addRow = gdsMyMenu.addRow();
-		gdsMyMenu.setColumn(addRow,this.colInfo.menu.cd,this.menuCd);
-		gdsMyMenu.setColumn(addRow,this.colInfo.menu.nm,this.menuNm);
-		gdsMyMenu.setColumn(addRow,this.colInfo.menu.navi,this.menuNavi);
+	let gdsFavor =  app.gdsFavor;
+	let addRow = gdsFavor.addRow();
+		gdsFavor.setColumn(addRow,this.colInfo.menu.cd,this.menuCd);
+		gdsFavor.setColumn(addRow,this.colInfo.menu.nm,this.menuNm);
+		gdsFavor.setColumn(addRow,this.colInfo.menu.navi,this.menuNavi);
 };
 
 /*
@@ -393,10 +393,10 @@ this.fnAddMyMenu = function ()
 */ 
 this.fnDelMyMenu = function ()
 {
-    let gdsMyMenu =  app.gdsMyMenu;	 
-	let findCode  = gdsMyMenu.findRow(this.colInfo.menu.cd,this.menuCd);
+    let gdsFavor =  app.gdsFavor;	 
+	let findCode  = gdsFavor.findRow(this.colInfo.menu.cd,this.menuCd);
 	if(findCode == -1) return;
-	  gdsMyMenu.deleteRow(findCode);   
+	  gdsFavor.deleteRow(findCode);   
 };
 
 /*

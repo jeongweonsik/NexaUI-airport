@@ -6,6 +6,7 @@
         <Snippet name="app.frame.hFrs" shortcut="app" description="">app.frame.hFrs</Snippet>
         <Snippet name="app.frame.isClose" shortcut="app" description="">app.frame.isClose</Snippet>
         <Snippet name="app.frame.left" shortcut="app" description="">app.frame.left</Snippet>
+        <Snippet name="app.frame.lefts" shortcut="app" description="">app.frame.lefts</Snippet>
         <Snippet name="app.frame.login" shortcut="app" description="">app.frame.login</Snippet>
         <Snippet name="app.frame.main" shortcut="app" description="">app.frame.main</Snippet>
         <Snippet name="app.frame.mdi" shortcut="app" description="">app.frame.mdi</Snippet>
@@ -15,6 +16,7 @@
         <Snippet name="app.frame.vFrs" shortcut="app" description="">app.frame.vFrs</Snippet>
         <Snippet name="app.frame.vFrsWork" shortcut="app" description="">app.frame.vFrsWork</Snippet>
         <Snippet name="app.frame.work" shortcut="app" description="">app.frame.work</Snippet>
+        <Snippet name="app.frame.works" shortcut="app" description="">app.frame.works</Snippet>
         <Snippet name="app.httpError" shortcut="app" description="">app.httpError</Snippet>
         <Snippet name="app.path.bottom" shortcut="app" description="bottom frame url">app.frame.path.bottom</Snippet>
         <Snippet name="app.path.left" shortcut="app" description="frame left url">app.frame.path.left</Snippet>
@@ -28,8 +30,6 @@
         <Snippet name="app.v.httpError" shortcut="app" description="">app.v.httpError</Snippet>
         <Snippet name="app.v.mode " shortcut="app" description="">app.v.mode&#13;
 </Snippet>
-        <Snippet name="app.frame.works" shortcut="app" description="">app.frame.works</Snippet>
-        <Snippet name="app.frame.lefts" shortcut="app" description="">app.frame.lefts</Snippet>
       </Group>
       <Group name="cal">
         <Snippet name="calFromTo.getFromDate" shortcut="cal" description="기간달력 set from date">$end$.getFromDate(sdate);</Snippet>
@@ -228,6 +228,8 @@ this.cfnTitlebarClose_onclick = function()&#13;
         <Snippet name="user.id" shortcut="colInfo" description="">this.colInfo.user.id</Snippet>
         <Snippet name="user.nm" shortcut="colInfo" description="">this.colInfo.user.nm&#13;
 </Snippet>
+        <Snippet name="com.cd" shortcut="colInfo" description="">this.colInfo.com.cd</Snippet>
+        <Snippet name="com.nm" shortcut="colInfo" description="공토코드 명">this.colInfo.com.cd</Snippet>
       </Group>
       <Group name="editor">
         <Snippet name="getValue" shortcut="editor" description="editor 가져오는 함수">$end$.getValue(); </Snippet>
@@ -313,39 +315,6 @@ this.gfnFileDialog(constOpenMode,strAccept);&#13;
         <Snippet name="gfnGetBirthDateBySSN" shortcut="" description="">this.gfnGetBirthDateBySSN(ssn); </Snippet>
         <Snippet name="gfnGetBirthYear " shortcut="" description="">this.gfnGetBirthYear(sJuminNo); </Snippet>
         <Snippet name="gfnGetCellIdx " shortcut="" description="">this.gfnGetCellIdx(objGrid, strCompColumnId); </Snippet>
-        <Snippet name="gfnGetComCode" shortcut="" description="컴퍼넌트 공통코드 바인딩">	var param = [&#13;
-			// combo&#13;
-			{&#13;
-				objectId : this.Div00.form.cboComobo1&#13;
-				//, filterCode : {CD_SEL : "029,011" ,CD_CODE:"001"}   // 필터 컬럼 설정  (멀티)&#13;
-				, filterCode : {HIGH_CD : "00001"}   // 필터 컬럼 설정  (멀티)&#13;
-				, selectType : "a"    // "" 공백 "a" (전체기본) "s" (선택)&#13;
-			}&#13;
-			// radio  &#13;
-			,{&#13;
-				  objectId : this.Div00.form.rdo00&#13;
-				, filterCode : {HIGH_CD : "00020" }&#13;
-				, selectType : ""    //"" 공백 "a" (전체기본) "s" (선택)&#13;
-				, direction : "vertical"   //라디오 정렬 옵션&#13;
-			} &#13;
-			// grid&#13;
-			,{&#13;
-				objectId : this.grdHeader&#13;
-				, selectType : "NONE"&#13;
-				, filterCode : { HIGH_CD : "00005" }&#13;
-				, bindColumn : "EMPL_ID"   // 그리드 바인딩 아이디 컬럼&#13;
-				, edit : "true"&#13;
-				, selectType : "s"    // "" 공백 "a" (전체기본) "s" (선택)&#13;
-			  ,displayType : "combocontrol"    // combo display   combocontrol or combotext &#13;
-			} // multiCombo&#13;
-			,{&#13;
-				 objectId : this.Div00.form.MultiCombo&#13;
-				, filterCode : { HIGH_CD : "00001" }		&#13;
-			} &#13;
-	];	&#13;
-	&#13;
- this.gfnGetComCode(param);		
-				   </Snippet>
         <Snippet name="gfnGetComponentFullName " shortcut="" description="">this.gfnGetComponentFullName(objComp); </Snippet>
         <Snippet name="gfnGetCurrentForm" shortcut="" description="">this.gfnGetCurrentForm();</Snippet>
         <Snippet name="gfnGetDataSet " shortcut="" description="">this.gfnGetDataSet(sDs); </Snippet>
@@ -407,7 +376,6 @@ this.gfnGetFileName(sPath, bExt);</Snippet>
         <Snippet name="gfnIsNexacro" shortcut="" description="넥사크로 브라우저 여부 체크 함수">var isNexaro = this.gfnIsNexacro();</Snippet>
         <Snippet name="gfnIsNotNull" shortcut="" description="not null 함수">this.gfnIsNotNull($end$);</Snippet>
         <Snippet name="gfnIsNull" shortcut="" description="">this.gfnIsNull($end$)</Snippet>
-        <Snippet name="gfnIsNullEssential" shortcut="" description="true 면 정상 false면 에러">this.gfnIsNullEssential($end$);</Snippet>
         <Snippet name="gfnIsPrjMain" shortcut="" description="">this.gfnIsPrjMain();</Snippet>
         <Snippet name="gfnIsQuickView" shortcut="" description="개발툴 실행모드 여부">this.gfnIsQuickView()</Snippet>
         <Snippet name="gfnIsSpecialChar" shortcut="" description="">this.gfnIsSpecialChar(strValue);</Snippet>
@@ -549,7 +517,10 @@ this.gfnSearchOpenCloseInit(stage);</Snippet>
         <Snippet name="gfnWindownOpenMenu" shortcut="" description="menu form modeless 실행"> this.gfnWindownOpenMenu("M10001",{param1 : "aaa"},(resVar)=&gt;{&#13;
      &#13;
    });</Snippet>
+        <Snippet name="gfnGetComCodeFilter" shortcut="" description=" /*&#10;   *@param {object} 필터할 코드 값 : 명&#10;   &#13;&#10;*@param {component} 필터할 데이타셋&#10;   */">this.gfnGetComCodeFilter({highCd : "00001"}, this.dsOutComCode); </Snippet>
+        <Snippet name="gfnInSelectText" shortcut="" description=" /**@param {string}  선택 값 입력 옵션   (생락갸능) 값없음&#13;&#10;&#9;       '': 공백    's' : 선택=  'a' : 전체=*/">this.gfnInSelectText(this.dsOutComCode, this.cboComCode.codecolumn,this.cboComCode.datacolumn,"a"); // 전체 값 insert</Snippet>
       </Group>
+      <Group name="file"/>
       <Group name="gv">
         <Snippet name="gvFrameInfo" shortcut="" description="">var objApp = nexacro.getApplication();&#13;
 objApp.gvFrameInfo;</Snippet>
