@@ -178,21 +178,6 @@ this.tab00_Tabpage1_btn00_onclick = function(obj:nexacro.Button,e:nexacro.ClickE
 	
 	
 };
-
-this.btn01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-   trace(" savexml  :"  +this.dsCopy.saveXML());
-};
-
-this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	alert("## app.frame.work : " + app.frame.work);
-};
-
-this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	trace(" ## app.frame.works : " + app.frame.works.divWork.getOffsetWidth());
-};
 ]]></Script>
     <Objects>
       <Dataset id="dsTest">
