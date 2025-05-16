@@ -67,7 +67,7 @@
 * 파일 업/다운 공통 폼 
 *@FileName  cmmFileUpDown
 *@Creator 	{J}
-*@CreateDate 2025/05/13
+*@CreateDate 2025/05/16
 *@Desction    
 ************** 소스 수정 이력 ***********************************************
 *  date          		Modifier                Description
@@ -79,7 +79,7 @@
 this.objTarget = this.parent;
 this.uopenmode ="";  // multi, single
 this.ureadonly;  // 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운   
-this.uextaccecpt = "";  // 파일형식 제한  mega byte
+this.uextaccept = "";  // 파일형식 제한  mega byte
 // add : "false" , delAll: "false" , delDewon :"false
 this.uauth  = "";   // 버튼 권한
 this.umbsizeaccept = "";  //사이즈 제한
@@ -104,7 +104,7 @@ this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
  	//초기 설정
 	this.setinit();
-   
+    
 };
 
 
@@ -122,16 +122,16 @@ this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.setinit = function ()
 { 	
 	this.uopenmode      = this.objTarget.openmode || "multi";   // multi, single
-	this.ureadonly =    this.objTarget.ureadonly == "true" ? true : false;  // 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운
-	this.uauth =  this.objTarget.uauth ;  // 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운
-    this.uextaccecpt    = this.objTarget.extaccecpt || ""; // 파일형식 제한  mega byte
+	this.ureadonly      = this.objTarget.ureadonly == "true" ? true : false;  // 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운
+	this.uauth          = this.objTarget.uauth ;  // 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운
+    this.uextaccept    = this.objTarget.extaccecpt || ""; // 파일형식 제한  mega byte
 	this.umbsizeaccept  = this.objTarget.mbsizeaccept  || "";  //사이즈 제한	
-	this.gFileSeq       =  this.objTarget.ugfileseq  || "";  //gfileSeq	
-	this.fileId  = "cmmFileUp_" +this.parent.name;  
-    
+	this.gFileSeq       = this.objTarget.ugfileseq  || "";  //gfileSeq	
+	this.fileId         = this.parent.name;  
+   
     this.btnDialog.visible = !this.ureadonly;  //파일 찾기 활성화 처리	
 	// this.isButtonCheck();
-   // this.tranFileSearch(); // 파일정보 조회
+    // this.tranFileSearch(); // 파일정보 조회
 };
 
 
@@ -143,7 +143,7 @@ this.setinit = function ()
  */
 this.canUpload = function ()
 {
-	var nRow = this.dsUpload.findRowExprNF(""+this.colInfo.file.seq+" == undefined || "+this.colInfo.file.seq+" == ''");
+	const nRow = this.dsUpload.findRowExprNF(""+this.colInfo.file.seq+" == undefined || "+this.colInfo.file.seq+" == ''");
 //this.colInfo.file.seq
     
    if(nRow < 0) return false;
@@ -164,14 +164,15 @@ this.canUpload = function ()
 this.setFileDialog = function ()
 {
    if(this.dsUpload.getRowCount() == 0)  this.dsUpload.clearData();
-  /*
-	* @param {number} 1 : "single" : LOAD 
-	*                 2 : "multi"  : "MULTILOAD"
-	* @param {string}[생략가능] FileDialog 에 적용될 파일형식을 확장자 또는 MIME 형태로 설정합니다
-	*                 (".png", ".exe", ".png, .exe" 형식의 확장자 형태로 파일형식을 설정)
+   
+    /*
+	 * @param {number} 1 : "single" : LOAD 
+	 *                 2 : "multi"  : "MULTILOAD"
+	 * @param {string}[생략가능] FileDialog 에 적용될 파일형식을 확장자 또는 MIME 형태로 설정합니다
+	 *                 (".png", ".exe", ".png, .exe" 형식의 확장자 형태로 파일형식을 설정)
 	*/
 	let uopenmode = this.uopenmode;
-	let sAccept   = this.uextaccecpt; 
+	let sAccept   = this.uextaccept; 
     
 	this.gfnFileDialog(this.fileId,uopenmode,sAccept,this.dsUpload,this.gFileSeq);
 
@@ -188,7 +189,7 @@ this.setFileDialog = function ()
  */
 this.cfnFileDialog_onclose = function (id,filename,fileExt,filesize,vFile)
 {   
-    let sAccept = this.uextaccecpt; 
+    let sAccept = this.uextaccept; 
 	
 	//var sExt = filename.substring(this.gfnIndexOf(filename,"."),filename.length);
 	//    sExt = sExt.toLocaleUpperCase();
@@ -309,7 +310,7 @@ this.fileTranCallback = function (svcId,code, msg,dsUpload)
 	 
 	 if(svcId == "svcDeleteFileList"){
 	 
-	     	this.gfnAlert("10077");  // 삭제 되었습니다.
+	   this.gfnAlert("10077");  // 삭제 되었습니다.
 	 }
 	 
 	 this.isButtonCheck();
