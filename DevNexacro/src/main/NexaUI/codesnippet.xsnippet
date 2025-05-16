@@ -23,11 +23,13 @@
         <Snippet name="app.path.mdi" shortcut="app" description="mdi frame url">app.frame.path.mdi</Snippet>
         <Snippet name="app.path.top" shortcut="app" description="top frame url">app.frame.path.top</Snippet>
         <Snippet name="app.path.work" shortcut="app" description="work fom path">app.frame.path.work</Snippet>
-        <Snippet name="v.exit" shortcut="app" description="">app.v.exit&#13;
+        <Snippet name="app.v.exit" shortcut="app" description="">app.v.exit&#13;
 </Snippet>
-        <Snippet name="v.httpError" shortcut="app" description="">app.v.httpError</Snippet>
-        <Snippet name="v.mode " shortcut="app" description="">app.v.mode&#13;
+        <Snippet name="app.v.httpError" shortcut="app" description="">app.v.httpError</Snippet>
+        <Snippet name="app.v.mode " shortcut="app" description="">app.v.mode&#13;
 </Snippet>
+        <Snippet name="app.frame.works" shortcut="app" description="">app.frame.works</Snippet>
+        <Snippet name="app.frame.lefts" shortcut="app" description="">app.frame.lefts</Snippet>
       </Group>
       <Group name="cal">
         <Snippet name="calFromTo.getFromDate" shortcut="cal" description="기간달력 set from date">$end$.getFromDate(sdate);</Snippet>
