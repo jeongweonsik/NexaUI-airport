@@ -65,11 +65,6 @@
 	-nexa-border : 0px none, 0px none, 1px solid #333451, 0px none;
 }
 
-.Form.frm_MDI,
-.Div.div_MDI
-{
-	background : url("theme://images/bg_MDI_Bg.png") repeat-x left #F7F9FD;
-}
 
 .Button.btn_LOGIN_Login,
 .Button.btn_LOGIN_Login[status=disabled]
@@ -3074,6 +3069,11 @@
 {
 	-nexa-border : 1px solid #DFDFDF, 1px solid #DFDFDF, 1px solid #BBBBBB, 1px solid #DFDFDF;
 	background : #ffffff;
+}
+
+.Static.sta_WF_Total
+{
+	color : #222222;
 }]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
   <CSSData type="mobile_large"><![CDATA[]]></CSSData>
