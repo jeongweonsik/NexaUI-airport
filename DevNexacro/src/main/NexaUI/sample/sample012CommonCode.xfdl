@@ -11,12 +11,11 @@
         <Static id="sta07" taborder="1" cssclass="sta_WF_Guide" text="h20" bottom="-30" visible="false" left="0" height="20" right="0"/>
         <Button id="btnComCodeFilter" taborder="2" text="공통코드 filter" left="266" top="57" width="139" height="27" onclick="Div00_btnComCodeFilter_onclick"/>
         <Combo id="cboComCode" taborder="3" left="266" top="93" width="174" height="28" codecolumn="codeCd" datacolumn="codeNm" innerdataset="dsOutComCode" onitemchanged="cboComCode_onitemchanged"/>
-        <Static id="sta_00" taborder="4" text="공통코드바인딩 (sample011)" left="0" top="0" height="40" cssclass="sta_GA_Header" right="0"/>
-        <Radio id="Radio00" taborder="5" left="266" top="130" width="419" height="45" innerdataset="dsOutComCode" codecolumn="codeCd" datacolumn="codeNm" direction="vertical" rowcount="-1" columncount="-1"/>
-        <Static id="Static00" taborder="6" text="Combo" left="107" top="96" width="146" height="29"/>
-        <Static id="Static00_00" taborder="7" text="Radio" left="107" top="152" width="146" height="29"/>
-        <Static id="Static00_00_00" taborder="8" text="Grid" left="104" top="201" width="146" height="29"/>
-        <Grid id="Grid00" taborder="9" left="105" top="280" width="660" height="175" binddataset="dsOut">
+        <Radio id="Radio00" taborder="4" left="266" top="130" width="419" height="45" innerdataset="dsOutComCode" codecolumn="codeCd" datacolumn="codeNm" direction="vertical" rowcount="-1" columncount="-1"/>
+        <Static id="Static00" taborder="5" text="Combo" left="107" top="96" width="73" height="29"/>
+        <Static id="Static00_00" taborder="6" text="Radio" left="107" top="148" width="146" height="29"/>
+        <Static id="Static00_00_00" taborder="7" text="Grid" left="104" top="200" width="146" height="29"/>
+        <Grid id="Grid00" taborder="8" left="105" top="259" width="660" height="175" binddataset="dsOut">
           <Formats>
             <Format id="default">
               <Columns>
@@ -35,7 +34,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btnAdd" taborder="10" text="추가" top="231" width="100" height="39" right="256" onclick="btnAdd_onclick"/>
+        <Button id="btnAdd" taborder="9" text="추가" top="210" width="64" height="39" right="256" onclick="btnAdd_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
