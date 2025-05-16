@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frmWork" left="0" top="0" width="1334" height="822" onsize="form_onsize" onactivate="form_onactivate" onload="frm_onload" titletext="프레임 업무(work)" cssclass="frm_WF_Frame">
+  <Form id="frmWork" left="0" top="0" width="1293" height="827" onsize="form_onsize" onactivate="form_onactivate" onload="frm_onload" titletext="프레임 업무(work)" cssclass="frm_WF_Frame">
     <Layouts>
       <Layout>
         <Div id="divTitle" taborder="1" text="div00" left="25" top="0" height="47" maxwidth="" formscrolltype="none" right="0">
@@ -10,12 +10,11 @@
             </Layout>
           </Layouts>
         </Div>
-        <Div id="divWork" taborder="0" text="divWork" left="20" top="divTitle:0" maxwidth="" maxheight="" bottom="8" right="60" minwidth="1253" boxShadow="3px 3px 10px #cacbd9" background="#fafafc" borderRadius="3px">
+        <Div id="divWork" taborder="0" text="divWork" left="20" top="divTitle:0" maxwidth="" maxheight="" bottom="20" right="20">
           <Layouts>
             <Layout/>
           </Layouts>
         </Div>
-        <Static id="staRight" taborder="2" top="0" cssclass="sta_TF_Bg" bottom="775" left="divWork:20" width="40"/>
       </Layout>
     </Layouts>
     <Objects/>
@@ -42,11 +41,14 @@ this.menuParams,this.menuWinid,this.menuNavi;
 this.fvIsTime = false;    //60000 : 1분
 this.fvMilli = {'1':60000,'5':300000,'10':600000};
 this.fvTimerID  = -9999;
+this.nScrollGap = 20;
 
+// work size : 1293 * 827
 
 /***********************************************************************************************
 * FORM EVENT 영역(onload)
 /***********************************************************************************************/
+
 /**
 * form onload 함수
 * @return 
@@ -56,26 +58,36 @@ this.fvTimerID  = -9999;
 this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 
-	this.menuCd      =  this.getOwnerFrame().arguments[this.colInfo.menu.cd];      // menu code
+    app.frame.works = this;
+ 	this.menuCd      =  this.getOwnerFrame().arguments[this.colInfo.menu.cd];      // menu code
 	this.menuNm      =  this.getOwnerFrame().arguments[this.colInfo.menu.nm];      // menu name
 	this.menuUrl     =  this.getOwnerFrame().arguments[this.colInfo.menu.url];    // menu url
 	this.menuParams  =  this.getOwnerFrame().arguments[this.colInfo.menu.params];  // parms
     this.menuWinid   =  this.getOwnerFrame().arguments[this.colInfo.menu.winid];   // winid	
-	this.menuNavi    =   this.getOwnerFrame().arguments[this.colInfo.menu.navi];   // menu navi	
-	
-    this.divTitle.form.staTitle.text = this.menuNm + "(" + this.menuCd  +")";
-	this.fnSetFavor();
-	this.fnSetUrl();
-	
+	this.menuNavi    =  this.getOwnerFrame().arguments[this.colInfo.menu.navi];   // menu navi	
+
+//   trace(" #### this.menuCd ::>>> " + this.menuCd);
+ //   trace(" ## this.divWorkS .width : " + this.divWork.getOffsetWidth() + "<> height : " +this.divWork.getOffsetHeight());
+//   this.divTitle.form.staTitle.text = this.menuNm + "(" + this.menuCd  +")";
+// 	this.fnSetFavor();
+ 	this.fnSetUrl();
+
+
+     // trace(" ## this.menuCd : " +this.menuCd); 	
 	//trace(" app.frame.left.width : " + app.frame.left.form.width);
 	// trace(" this.width : " + this.width + "<> this.height : " + this.height);
 	 
-	//trace(" ## this.divWork.width : " + this.divWork.getOffsetWidth());
+	
    // trace(" divWork.width : " + this.divWork.form.width + "<>  divWork.height : " + this.divWork.form.height);
 			
 };
 
-//
+this.form_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
+{   
+	this.fnSetScroll();
+};
+
+
 this.fnSetFavor = function ()
 {
 // 	const gdsFavor  = app.gdsFavor;
@@ -98,17 +110,16 @@ this.fnSetUrl = function ()
 this.fnSetScroll = function ()
 {   
 
-   let vscrollMax =  this.divWork.form.vscrollbar.max;
-  
-   if(vscrollMax > 0){
-    this.staRight.left = "divWork:0px";
-     this.divWork.right = 40;
-      
-        //trace(" ## vscrollMax : " + vscrollMax);
-   }else{
-     this.staRight.left = "divWork:20px";
-		this.divWork.right = 60;
-   }
+    let vScrolllMax =  this.divWork.form.vscrollbar.max;
+	let hScrollMax = this.divWork.form.hscrollbar.max;
+//    // trace("## vscrollMax : " + vscrollMax);
+//    
+   if(vScrolllMax > 0)  this.divWork.right = 0;
+   else  this.divWork.right = this.nScrollGap;
+   
+   if(hScrollMax > 0)  this.divWork.bottom = 0;
+   else  this.divWork.bottom = this.nScrollGap;
+   
   // trace(" ## scrollV : " + scrollV);
    
 // 	let vScrollMax = this.divWork.form.vscrollbar.max;
@@ -146,7 +157,7 @@ this.fnSetScroll = function ()
 // 	if( this.hscrollbar.max > 0)  this.staGapH.height = 0;
 // 	else this.staGapH.height = 20;
 	this.divWork.form.resetScroll();
-	this.divTitle.form.resetScroll();
+	// this.divTitle.form.resetScroll();
 	this.resetScroll();
 	  
 	trace(" this.width : " + this.width  + "<> this.height : "+ this.height);
@@ -326,12 +337,6 @@ this.divTitle_divZoom_btn00_00_00_onclick = function(obj:nexacro.Button,e:nexacr
 		}	
 };
 
-this.form_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
-{
-
-
-	this.fnSetScroll();
-};
 
 
 //화면크기축소

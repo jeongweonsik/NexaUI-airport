@@ -129,12 +129,6 @@ this.btnSetExPand_onclick = function(obj)
  * 각 COMPONENT 별 EVENT 영역
 ************************************************************************************************/
 
-this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	
-};
-
-
 this.frm_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
 {
    // trace(" ##  this.divLeft.top : " + );

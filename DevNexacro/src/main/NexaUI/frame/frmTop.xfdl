@@ -238,11 +238,11 @@ this.fnGetFirstTopIndex = function ()
 */
 this.fnSetUserInfo = function ()
 {
-//     let userNm =  app.gdsUserInfo.getColumn(this.colInfo.user.nm);
-// 	
-// 	this.divRightForm.form.staUserInfo.text = userNm + "<fc v='#9899A7'>님 환영합니다.</fc>";
-// 	this.divRightForm.form.resetScroll();
-// 	this.resetScroll();
+	//  let userNm =  app.gdsUserInfo.getColumn(this.colInfo.user.nm);
+	// 	
+	// 	this.divRightForm.form.staUserInfo.text = userNm + "<fc v='#9899A7'>님 환영합니다.</fc>";
+	// 	this.divRightForm.form.resetScroll();
+	// 	this.resetScroll();
 };
 
 

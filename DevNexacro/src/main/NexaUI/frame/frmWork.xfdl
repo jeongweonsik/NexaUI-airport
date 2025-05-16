@@ -3,12 +3,7 @@
   <Form id="frmWork" left="0" top="0" width="1334" height="822" onsize="form_onsize" onactivate="form_onactivate" onload="frm_onload" titletext="프레임 업무(work)" cssclass="frm_WF_Frame">
     <Layouts>
       <Layout>
-        <Static id="staBlur" taborder="2" left="1" top="1" boxShadow="inset 3px 3px 10px 0px #cacbd9" background="#fafafc" borderRadius="4px" bottom="1" right="1"/>
-        <Div id="divWork" taborder="0" text="divWork" left="1" top="0" maxwidth="" maxheight="" bottom="5" right="40" minwidth="1253" boxShadow="3px 3px 10px #cacbd9" background="#fafafc" borderRadius="10px">
-          <Layouts>
-            <Layout/>
-          </Layouts>
-        </Div>
+        <Div id="divWork" taborder="0" text="divWork" left="1" top="0" maxwidth="" maxheight="" bottom="5" right="40" minwidth="1293" boxShadow="3px 3px 10px #cacbd9" background="#fafafc" borderRadius="10px" formscrollbartype="none none" formscrolltype="none" url="frame::frmWorkS.xfdl"/>
         <Static id="staRight" taborder="1" top="0" cssclass="sta_TF_Bg" left="divWork:0" width="40" height="60" border="0px none" borderRadius="0px 0px 20px" boxShadow="inset 3px 0px 3px 0px transparent"/>
       </Layout>
     </Layouts>
@@ -36,7 +31,7 @@ this.menuParams,this.menuWinid,this.menuNavi;
 this.fvIsTime = false;    //60000 : 1분
 this.fvMilli = {'1':60000,'5':300000,'10':600000};
 this.fvTimerID  = -9999;
-
+// work size 1293 * 827
 
 /***********************************************************************************************
 * FORM EVENT 영역(onload)
@@ -50,12 +45,12 @@ this.fvTimerID  = -9999;
 this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 
-	this.menuCd      =  this.getOwnerFrame().arguments[this.colInfo.menu.cd];      // menu code
-	this.menuNm      =  this.getOwnerFrame().arguments[this.colInfo.menu.nm];      // menu name
-	this.menuUrl     =  this.getOwnerFrame().arguments[this.colInfo.menu.url];    // menu url
-	this.menuParams  =  this.getOwnerFrame().arguments[this.colInfo.menu.params];  // parms
-    this.menuWinid   =  this.getOwnerFrame().arguments[this.colInfo.menu.winid];   // winid	
-	this.menuNavi    =   this.getOwnerFrame().arguments[this.colInfo.menu.navi];   // menu navi	
+// 	this.menuCd      =  this.getOwnerFrame().arguments[this.colInfo.menu.cd];      // menu code
+// 	this.menuNm      =  this.getOwnerFrame().arguments[this.colInfo.menu.nm];      // menu name
+// 	this.menuUrl     =  this.getOwnerFrame().arguments[this.colInfo.menu.url];    // menu url
+// 	this.menuParams  =  this.getOwnerFrame().arguments[this.colInfo.menu.params];  // parms
+//     this.menuWinid   =  this.getOwnerFrame().arguments[this.colInfo.menu.winid];   // winid	
+// 	this.menuNavi    =   this.getOwnerFrame().arguments[this.colInfo.menu.navi];   // menu navi	
 	
 //     this.divTitle.form.staTitle.text = this.menuNm + "(" + this.menuCd  +")";
 // 	this.fnSetFavor();
@@ -63,8 +58,8 @@ this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	
 	//trace(" app.frame.left.width : " + app.frame.left.form.width);
 	// trace(" this.width : " + this.width + "<> this.height : " + this.height);
-	 
-	//trace(" ## this.divWork.width : " + this.divWork.getOffsetWidth());
+ 
+	//trace(" ## this.divWork.width : " + this.divWork.getOffsetWidth() + "<> this.divWork.getOffsetHeight() : " + this.divWork.getOffsetHeight());
    // trace(" divWork.width : " + this.divWork.form.width + "<>  divWork.height : " + this.divWork.form.height);
 			
 };
@@ -93,6 +88,8 @@ this.fnSetScroll = function ()
 {   
 
    let vscrollMax =  this.divWork.form.vscrollbar.max;
+   
+   
   
    if(vscrollMax > 0){
     this.staRight.left = "divWork:0px";
@@ -324,7 +321,7 @@ this.form_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
 {
 
 
-	this.fnSetScroll();
+	// this.fnSetScroll();
 };
 
 

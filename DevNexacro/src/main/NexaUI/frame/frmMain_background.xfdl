@@ -3,7 +3,13 @@
   <Form id="frameMain" width="1334" height="822" titletext="MainFrame" onload="frm_onload" onsize="formOnsize" cssclass="frm_WF_Frame">
     <Layouts>
       <Layout height="822" width="1334">
-        <Static id="Static00" taborder="0" text="MAIN" left="0" top="0" right="0" bottom="0" font="normal 40pt/normal &quot;Arial&quot;" textAlign="center"/>
+        <Static id="staBlur" taborder="2" left="1" top="1" boxShadow="inset 3px 3px 10px 0px #cacbd9" background="#fafafc" borderRadius="4px" bottom="5" right="1"/>
+        <Div id="divMain" taborder="0" text="Main" left="1" top="0" maxwidth="" maxheight="" bottom="5" right="40" minwidth="1253" boxShadow="3px 3px 10px #cacbd9" background="#fafafc" borderRadius="10px">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Static id="staRight" taborder="1" top="0" cssclass="sta_TF_Bg" left="divMain:0" width="40" height="60" border="0px none" borderRadius="0px 0px 20px" boxShadow="inset 3px 0px 3px 0px transparent"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
@@ -68,6 +74,8 @@ this.fnCallback = function(id,code,msg)
 	default:
 	}
 };
+
+
 /************************************************************************************************
 * CRUD 및 TRANSACTION 서비스 호출 처리
 ************************************************************************************************/

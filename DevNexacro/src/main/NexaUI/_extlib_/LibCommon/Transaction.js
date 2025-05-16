@@ -182,12 +182,6 @@ _pForm._tranCallback = function(oparam,errorCode,errorMsg)
 	let sErrorMsg = "errorCode : " + errorCode;
 	if(!!errorMsg) sErrorMsg += " errormsg : " +errorMsg;
 	
-	//httpError 처리 
-	if(app.v.httpError){
-		app.v.httpError = false;
-	//	return;
-	}
-	
 	// 에러 공통 처리
 	if(errorCode < 0){	// -1 : 실패  0 : 정상
 	
@@ -200,6 +194,17 @@ _pForm._tranCallback = function(oparam,errorCode,errorMsg)
 			//delete omsg.CALLBACK;
 			if("CALLBACK" in omsg) delete omsg.CALLBACK;
 			this.gfnLog(omsg);   // error console log
+			
+					//httpError 처리 
+			if(app.v.httpError){
+				app.v.httpError = false;
+			//	return;
+			}else{
+			   alert(errorMsg);
+			}
+	
+		// if(!app.v.httpError)
+		//	return;
 	}	
 	
 	// 화면의 callBack 함수 실행	

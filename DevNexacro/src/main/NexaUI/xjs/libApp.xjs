@@ -56,7 +56,8 @@ this.appOnload = function (obj,e)
 	    login   : "frame::frmLogin.xfdl", 
 		top     : "frame::frmTop.xfdl",
 		left    : "frame::frmLeft.xfdl",
-		work    : "frame::frmWork.xfdl",
+		work    : "frame::frmWork.xfdl",	
+		works   : "",
 		mdi     : "frame::frmMdi.xfdl",
 		main    : "frame::frmMain.xfdl",
 		bottom  : "frame::frmBottom.xfdl"

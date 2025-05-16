@@ -124,6 +124,36 @@ this.cfnEditor_onload = function (userData)&#13;
 //   this.divWebEditor.setReadOnly(vReadOnly);&#13;
 	// trace("  == webEidtor userdata : " + userData);&#13;
 };</Snippet>
+        <Snippet name="cfnFileDialog_onclose" shortcut="" description="파일 다이알로그 콜벡">this.cfnFileDialog_onclose = function (id,filename,fileExt,filesize,vFile)&#13;
+{&#13;
+     this.console.log(" ## cfnFileDialog_onclose :::&gt;&gt;&gt; ");&#13;
+ &#13;
+	this.gfnLog({id:id,filename:filename,filesize:filesize,vFile:vFile});&#13;
+	&#13;
+	if(id=="fileUp_fileSelect")&#13;
+	{&#13;
+	  this.txtFileNm.set_value(filename);&#13;
+	  alert(" vFile : " +vFile + "&lt;&gt; filesize : " +filesize);&#13;
+	//     this.gfnFileUpload(e.virtualfiles);		   &#13;
+	}&#13;
+};&#13;
+</Snippet>
+        <Snippet name="cfnFileUp_success_error" shortcut="" description="파일 업로드 콜벡">this.cfnFileUp_success = function (id,obj,resDs)&#13;
+{&#13;
+    	&#13;
+   this.console.log(" ## cfnFileUp_success :::&gt;&gt;&gt; ");&#13;
+	this.console.log(" id  : " +id + "&lt;&gt; obj : " + obj );&#13;
+	this.console.log(" fileUpload resultDataset == &gt; "  +resDs.saveXML());&#13;
+&#13;
+};&#13;
+&#13;
+//file up error&#13;
+this.cfnFileUp_onerror = function (id,obj,e)&#13;
+{&#13;
+	    &#13;
+   this.gfnAlert(" 파일 업로드 에러 ");&#13;
+   return;&#13;
+};</Snippet>
         <Snippet name="cfnMove_onactive" shortcut="" description="">/*&#13;
 *@description 화면 이동 후 넘어온 값 처리	&#13;
 *@param {string}{object}{array} 넘어온 아규먼트 처리&#13;
@@ -166,36 +196,6 @@ this.cfnTitlebarClose_onclick = function()&#13;
 &#13;
 };&#13;
 </Snippet>
-        <Snippet name="cfnFileDialog_onclose" shortcut="" description="파일 다이알로그 콜벡">this.cfnFileDialog_onclose = function (id,filename,fileExt,filesize,vFile)&#13;
-{&#13;
-     this.console.log(" ## cfnFileDialog_onclose :::&gt;&gt;&gt; ");&#13;
- &#13;
-	this.gfnLog({id:id,filename:filename,filesize:filesize,vFile:vFile});&#13;
-	&#13;
-	if(id=="fileUp_fileSelect")&#13;
-	{&#13;
-	  this.txtFileNm.set_value(filename);&#13;
-	  alert(" vFile : " +vFile + "&lt;&gt; filesize : " +filesize);&#13;
-	//     this.gfnFileUpload(e.virtualfiles);		   &#13;
-	}&#13;
-};&#13;
-</Snippet>
-        <Snippet name="cfnFileUp_success_error" shortcut="" description="파일 업로드 콜벡">this.cfnFileUp_success = function (id,obj,resDs)&#13;
-{&#13;
-    	&#13;
-   this.console.log(" ## cfnFileUp_success :::&gt;&gt;&gt; ");&#13;
-	this.console.log(" id  : " +id + "&lt;&gt; obj : " + obj );&#13;
-	this.console.log(" fileUpload resultDataset == &gt; "  +resDs.saveXML());&#13;
-&#13;
-};&#13;
-&#13;
-//file up error&#13;
-this.cfnFileUp_onerror = function (id,obj,e)&#13;
-{&#13;
-	    &#13;
-   this.gfnAlert(" 파일 업로드 에러 ");&#13;
-   return;&#13;
-};</Snippet>
       </Group>
       <Group name="colInfo">
         <Snippet name="file.ext" shortcut="colInfo" description="">this.colInfo.file.ext</Snippet>
@@ -464,7 +464,7 @@ this.gfnNvl($end$,s2);</Snippet>
 	  args.titletext  = '샘플팝업';   //필수&#13;
 	  args.paramCode  = "abcd";    // paremeter&#13;
 &#13;
-	this.gfnOpen( args,"popupCallBack");	</Snippet>
+	this.gfnOpen(args);	</Snippet>
         <Snippet name="gfnOpenMenu" shortcut="" description="">this.gfnOpenMenu(sMenuId, objParam,pReload);</Snippet>
         <Snippet name="gfnPosReverse" shortcut="" description="">this.gfnPosReverse(sOrg, sFind, nStart);</Snippet>
         <Snippet name="gfnReload" shortcut="" description="프로젝트 reload 함수">this.gfnReload();</Snippet>
@@ -498,6 +498,7 @@ this.gfnSearchOpenCloseInit(stage);</Snippet>
 </Snippet>
         <Snippet name="gfnSetOpenMenuDs" shortcut="" description="">this.gfnSetOpenMenuDs(winid, menuid, strTitle, spageUrl, sGroupId); </Snippet>
         <Snippet name="gfnSetTotal" shortcut="" description="total 수량 체크 함수">this.gfnSetTotal(sta00,ds.rowcount);</Snippet>
+        <Snippet name="gfnSetupdateColumn" shortcut="" description="updateColumn  "> this.gfnSetupdateColumn(this.ds_grd,outDs);</Snippet>
         <Snippet name="gfnSetValidation" shortcut="" description="">this.gfnSetValidation(obj, sColumID, sColumName, sValidRule);</Snippet>
         <Snippet name="gfnSetWaitcursor" shortcut="" description="">this.gfnSetWaitcursor($tab$);</Snippet>
         <Snippet name="gfnShowModal" shortcut="" description="팝업(모달) 실행 함수&#13;&#10;/**&#13;&#10; * @param {string}{필수} id,url&#13;&#10; * @param {string} titletext  : 타이틀 테스트 설정(생락 시 팝업 폼 titletext 설정 됨)&#13;&#10;* @param {boolean} resize  : 폼 사이즈 자동 여부 기본 true&#13;&#10; * @param {string}{function}  callaback&#13;&#10; * @return {function}  callaback&#13;&#10; */">  var args  = {};  	  &#13;
@@ -546,7 +547,6 @@ this.gfnSearchOpenCloseInit(stage);</Snippet>
         <Snippet name="gfnWindownOpenMenu" shortcut="" description="menu form modeless 실행"> this.gfnWindownOpenMenu("M10001",{param1 : "aaa"},(resVar)=&gt;{&#13;
      &#13;
    });</Snippet>
-        <Snippet name="gfnSetupdateColumn" shortcut="" description="updateColumn  "> this.gfnSetupdateColumn(this.ds_grd,outDs);</Snippet>
       </Group>
       <Group name="gv">
         <Snippet name="gvFrameInfo" shortcut="" description="">var objApp = nexacro.getApplication();&#13;
