@@ -1,0 +1,78 @@
+﻿{
+    "version" : "24.0.0.1",
+    "runtime" :
+    {
+        "target" :
+        {
+            "os" : "windows"
+        },
+        "framework" :
+        [    
+        "./nexacrolib/framework/Framework.js"
+        ],
+        "component" :
+        [    
+        "./nexacrolib/component/CompBase.js",
+        "./nexacrolib/component/ComComp.js",
+        "./nexacrolib/component/Grid.js",
+        "./nexacrolib/component/ListView.js",
+        "./nexacrolib/component/DeviceAPI.js",
+        "./nexacrolib/component/Graphics.js",
+        "./nexacrolib/component/MobileComp.js",
+        "./nexacrolib/component/LibCommon/Constant.js",
+        "./nexacrolib/component/LibCommon/Override.js",
+        "./nexacrolib/component/LibCommon/Frame.js",
+        "./nexacrolib/component/LibCommon/Util.js",
+        "./nexacrolib/component/LibCommon/Transaction.js",
+        "./nexacrolib/component/LibCommon/Validation.js",
+        "./nexacrolib/component/LibCommon/Log.js",
+        "./nexacrolib/component/LibCommon/Popup.js",
+        "./nexacrolib/component/LibCommon/File.js",
+        "./nexacrolib/component/LibCommon/Message.js",
+        "./nexacrolib/component/LibCommon/Grid.js",
+        "./nexacrolib/component/LibCommon/Excel.js",
+        "./nexacrolib/component/LibCommon/Work.js"
+        ],
+        "environment" :
+        [    
+        {
+        "file":"./environment.xml.js"
+        }
+        ],
+        "screen" :
+        [    
+        {"id":"Desktop","type":"desktop","userzoom":"true","scrollindicatorsize":"15","loadingimage":"url('theme://images/loading.gif')","zoomfactortype":"auto","filesecurelevel":"all","networksecurelevel":"all","themeid":"theme::icnairport"}
+        ],
+        "xadl" :
+        [
+        {
+        	"screenid":"Desktop",
+        	"launch":"./AppDesktop.xadl.js",
+        	"quickview":"./AppDesktop.xadl.quickview.js",
+        	"form":[
+        				"./frame/frmTop.xfdl.js",
+        		"./frame/frmLeft.xfdl.js",
+        		"./frame/frmMain.xfdl.js",
+        		"./frame/frmMdi.xfdl.js"
+        	]
+        }
+        ],  
+        "protocol" :
+        {
+            "adaptors" :
+            []
+        },
+        "resource" :
+        {
+
+        },
+		"deploy" :
+        {
+
+        },
+        "userfont" :
+        [
+
+        ]
+    }
+}

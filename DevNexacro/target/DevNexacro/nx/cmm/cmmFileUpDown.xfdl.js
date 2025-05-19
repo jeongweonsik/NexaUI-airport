@@ -1,0 +1,683 @@
+(function()
+{
+    return function()
+    {
+        if (!this._is_form)
+            return;
+        
+        var obj = null;
+        
+        this.on_create = function()
+        {
+            this.set_name("cmmGridFilter");
+            this.set_titletext("파일 업/다운 공통");
+            if (Form == this.constructor)
+            {
+                this._setFormPosition(560,242);
+            }
+            
+            // Object(Dataset, ExcelExportObject) Initialize
+            obj = new Dataset("dsUpload", this);
+            obj._setContents("<ColumnInfo><Column id=\"fileSize\" type=\"bigdecimal\" size=\"16\"/><Column id=\"modifyDt\" type=\"datetime\" size=\"17\"/><Column id=\"originalFileNm\" type=\"string\" size=\"32\"/><Column id=\"filePath\" type=\"string\" size=\"32\"/><Column id=\"modifyId\" type=\"string\" size=\"32\"/><Column id=\"createDt\" type=\"datetime\" size=\"17\"/><Column id=\"note\" type=\"string\" size=\"32\"/><Column id=\"fileNm\" type=\"string\" size=\"32\"/><Column id=\"fileType\" type=\"string\" size=\"32\"/><Column id=\"fileExt\" type=\"string\" size=\"32\"/><Column id=\"createId\" type=\"string\" size=\"32\"/><Column id=\"gfileSeq\" type=\"bigdecimal\" size=\"16\"/><Column id=\"fileSeq\" type=\"bigdecimal\" size=\"16\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+            
+            // UI Components Initialize
+            obj = new Button("btnFileDownLoadAll",null,"0","98","26","0",null,null,null,null,null,this);
+            obj.set_taborder("1");
+            obj.set_fittocontents("none");
+            obj.set_cssclass("btn_WF_FileAllDown");
+            obj.getSetter("utooltip").set("100000171");
+            obj.set_visible("true");
+            obj.set_text("전체다운로드");
+            obj.set_enable("true");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btnFileDeleteAll",null,"0","74","26","102",null,null,null,null,null,this);
+            obj.set_taborder("2");
+            obj.set_fittocontents("none");
+            obj.set_cssclass("btn_WF_FileAllDel");
+            obj.getSetter("utooltip").set("100000169");
+            obj.set_visible("true");
+            obj.set_text("전체삭제");
+            obj.set_enable("true");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btnDialog",null,"0","74","26","btnFileDeleteAll:4",null,null,null,null,null,this);
+            obj.set_taborder("0");
+            obj.set_fittocontents("none");
+            obj.set_cssclass("btn_WF_FileAdd");
+            obj.getSetter("utooltip").set("100000167");
+            obj.set_text("파일추가");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("grdFileUpDown","0","30",null,null,"0","0",null,null,null,null,this);
+            obj.set_taborder("3");
+            obj.set_binddataset("dsUpload");
+            obj.set_autofittype("col");
+            obj.set_fillareatype("none");
+            obj.set_cssclass("grd_WF_File");
+            obj.getSetter("unodata").set("false");
+            obj.set_nodatatext("파일을 이곳에 드래그 & 드롭하여 업로드하세요.");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"40\" band=\"left\"/><Column size=\"320\"/><Column size=\"0\"/><Column size=\"80\" band=\"right\"/><Column size=\"30\" band=\"right\"/><Column size=\"30\" band=\"right\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"No.\" expandchar=\"20112\"/><Cell col=\"1\" text=\"파일명\" expandchar=\"20113\"/><Cell col=\"2\" text=\"up\"/><Cell col=\"3\" text=\"용량\" expandchar=\"20114\"/><Cell col=\"4\"/><Cell col=\"5\"/></Band><Band id=\"body\"><Cell textAlign=\"center\" expr=\"currow+1\"/><Cell col=\"1\" text=\"bind:originalFileNm\" textAlign=\"left\" padding=\"0px 0px 0px 5px\"/><Cell col=\"2\" text=\"bind:FILE_SEQ\" expr=\"FILE_SEQ != null &amp;&amp; FILE_SEQ.length &gt; 0 ? &quot;U&quot;: &quot;&quot;\" textAlign=\"center\"/><Cell col=\"3\" text=\"bind:fileSize\" textAlign=\"center\"/><Cell col=\"4\" cssclass=\"cellDownload\" displaytype=\"buttoncontrol\" edittype=\"button\" tooltiptext=\"다운로드\"/><Cell col=\"5\" cssclass=\"cellDelete\" displaytype=\"buttoncontrol\" edittype=\"button\" tooltiptext=\"삭제\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static10_02","0","0","170","26",null,null,null,null,null,null,this);
+            obj.set_taborder("4");
+            obj.set_text("파일업로드 ");
+            obj.set_cssclass("sta_WF_TitleSm");
+            obj.set_fittocontents("width");
+            obj.getSetter("uword").set("20111");
+            this.addChild(obj.name, obj);
+
+            obj = new ImageViewer("imgLoading","570","9","310","61",null,null,null,null,null,null,this);
+            obj.set_taborder("5");
+            obj.set_visible("false");
+            obj.set_image("url(\'theme://images/loadingFileUp.gif\')");
+            this.addChild(obj.name, obj);
+            // Layout Functions
+            //-- Default Layout : this
+            obj = new Layout("default","",560,242,this,function(p){});
+            obj.set_mobileorientation("landscape");
+            this.addLayout(obj.name, obj);
+            
+            // BindItem Information
+
+            
+            // TriggerItem Information
+
+        };
+        
+        this.loadPreloadList = function()
+        {
+
+        };
+        
+        // User Script
+        this.registerScript("cmmFileUpDown.xfdl", function() {
+        /**
+        * 파일 업/다운 공통 폼
+        *@FileName  cmmFileUpDown
+        *@Creator 	{J}
+        *@CreateDate 2025/05/16
+        *@Desction
+        ************** 소스 수정 이력 ***********************************************
+        *  date          		Modifier                Description
+        *******************************************************************************
+        *
+        *******************************************************************************
+        */
+
+        this.objTarget = this.parent;
+        this.uopenmode ="";  // multi, single
+        this.ureadonly;  // 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운
+        this.uextaccept = "";  // 파일형식 제한  mega byte
+        // add : "false" , delAll: "false" , delDewon :"false
+        this.uauth  = "";   // 버튼 권한
+        this.umbsizeaccept = "";  //사이즈 제한
+        this.fileId =  "";
+
+        /************************************************************************************************
+        * include 영역
+        ************************************************************************************************/
+
+        /************************************************************************************************
+        * FORM 변수 선언 영역
+        ************************************************************************************************/
+
+
+        /************************************************************************************************
+        * FORM EVENT 영역(onload, onbeforeclose)
+        ************************************************************************************************/
+        /**
+        * @description 화면 onload시 처리내역(필수)
+        */
+        this.formOnload = function(obj,e)
+        {
+         	//초기 설정
+        	this.setinit();
+
+        };
+
+
+        /************************************************************************************************
+        * 사용자 FUNCTION 영역
+        ************************************************************************************************/
+
+        /**
+         * @class 파일 업/다운(up/down) 기본 setting
+         * @param {string}
+         * @return
+         * @example
+         * @memberOf
+         */
+        this.setinit = function ()
+        {
+        	this.uopenmode      = this.objTarget.openmode || "multi";   // multi, single
+        	this.ureadonly      = this.objTarget.ureadonly == "true" ? true : false;  // 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운
+        	this.uauth          = this.objTarget.uauth ;  // 기본은 false   true  : 파일다운로드 기능만     false : 파일 업/ 다운
+            this.uextaccept    = this.objTarget.extaccecpt || ""; // 파일형식 제한  mega byte
+        	this.umbsizeaccept  = this.objTarget.mbsizeaccept  || "";  //사이즈 제한
+        	this.gFileSeq       = this.objTarget.ugfileseq  || "";  //gfileSeq
+        	this.fileId         = this.parent.name;
+
+            this.btnDialog.visible = !this.ureadonly;  //파일 찾기 활성화 처리
+        	// this.isButtonCheck();
+            // this.tranFileSearch(); // 파일정보 조회
+        };
+
+
+        /**
+         * @ File Upload 건 존재 여부
+         * @return boolean : Upload 건 존재 여부
+         * @example
+         * @memberOf
+         */
+        this.canUpload = function ()
+        {
+        	const nRow = this.dsUpload.findRowExprNF(""+this.colInfo.file.seq+" == undefined || "+this.colInfo.file.seq+" == ''");
+        //this.colInfo.file.seq
+
+           if(nRow < 0) return false;
+
+        	return true;
+        };
+
+        /**
+         * @class 파일 선택
+         * @param {number} 1 : "LOAD"  or
+         *                 2 : ""MULTILOAD"
+         * @param {string}[생략가능] FileDialog 에 적용될 파일형식을 확장자 또는 MIME 형태로 설정합니다
+         *                 (".png", ".exe", ".png, .exe" 형식의 확장자 형태로 파일형식을 설정)
+         * @return
+         * @example
+         * @memberOf
+         */
+        this.setFileDialog = function ()
+        {
+           if(this.dsUpload.getRowCount() == 0)  this.dsUpload.clearData();
+
+            /*
+        	 * @param {number} 1 : "single" : LOAD
+        	 *                 2 : "multi"  : "MULTILOAD"
+        	 * @param {string}[생략가능] FileDialog 에 적용될 파일형식을 확장자 또는 MIME 형태로 설정합니다
+        	 *                 (".png", ".exe", ".png, .exe" 형식의 확장자 형태로 파일형식을 설정)
+        	*/
+        	let uopenmode = this.uopenmode;
+        	let sAccept   = this.uextaccept;
+
+        	this.gfnFileDialog(this.fileId,uopenmode,sAccept,this.dsUpload,this.gFileSeq);
+
+        };
+
+        /**
+         *   파일 다이얼로그 callback
+         * @param {string} 파일이름
+         * @param {string} 파일사이즈
+         * @param {object} virture file
+         * @return
+         * @example
+         * @memberOf
+         */
+        this.cfnFileDialog_onclose = function (id,filename,fileExt,filesize,vFile)
+        {
+            let sAccept = this.uextaccept;
+
+        	//var sExt = filename.substring(this.gfnIndexOf(filename,"."),filename.length);
+        	//    sExt = sExt.toLocaleUpperCase();
+        	var contain = this.gfnContains(sAccept, fileExt);
+
+        	if (!this.gfnIsNull(sAccept) && !contain )
+        	{
+        		//var sMsgId = "허용되지 않는 파일의 확장자 입니다. \n\n허용되는 확장자는 [{0}] 입니다.";
+        		let sMsgId = "10155";
+        		let arrArg = [sAccept];
+        		this.gfnAlert(sMsgId,arrArg,"","e");
+        		return;
+        	}
+
+        	const addRow = this.dsUpload.addRow();
+        	/**
+        	 * set upload dataset
+        	 */
+        	this.dsUpload.setColumn(addRow,this.colInfo.file.nm,filename);
+        	this.dsUpload.setColumn(addRow,this.colInfo.file.size,filesize);
+        	this.dsUpload.setColumn(addRow,this.colInfo.file.ext,fileExt);
+
+        	const oForm = this.gfnGetTopLevelForm(this);
+        	if(nexacro._isFunction(oForm.cfnFileDialog_onclose))
+        	{
+        	   oForm.cfnFileDialog_onclose(id,filename,filesize,vFile);
+        	}
+        };
+
+        /**
+         * @ 파일 업로드 호출
+         * @param {string}
+         * @return
+         * @example
+         * @memberOf
+         */
+        this.setFileUpload = function ()
+        {
+        	if (this.readonly) return;
+
+        	if (!this.canUpload())
+        	{
+        		let sMsgId = "5531"; //파일을 선택하세요.
+        		let arrArg = [""];
+        		this.gfnAlert(sMsgId,arrArg);
+        		return;
+        	}
+
+        	if (!this.imgLoading.visible)
+        	{
+        		let topform = this;
+        		let l = Math.round((topform.getOffsetWidth() - this.imgLoading.getOffsetWidth())/2);
+        		let t = Math.round((topform.getOffsetHeight() - this.imgLoading.getOffsetHeight())/2);
+
+        		this.imgLoading.move(l, t, this.imgLoading.getOffsetWidth(), this.imgLoading.getOffsetHeight());
+        		this.imgLoading.set_visible(true);
+        	}
+
+        	//if(this.gfnNvl(this.fileid, "")=="" && this.gfnNvl(sFileId, "") !="" ) this.fileid = sFileId;
+
+        	//trace("module =========== " +this.module);
+        	//trace("this.filepath =========== " +this.filepath);
+        	//trace("sFileId =========== " +this.fileid);
+
+
+        	this.gfnFileUpload(this.module, this.filepath);
+        };
+
+
+        /**
+         * @ 파일 업로드 콜벡
+         * 파일 업로드 결과에 대한 Response 를 onsuccess 이벤트의 "e.datasets" 속성으로 전달할 수 있습니다.
+           "e.datasets" 속성은 XML 또는 SSV 형식의 DataSet 으로 구성되어야 합니다.
+         * @param {string}
+         * @return
+         * @example
+         * @memberOf
+         */
+        this.cfnFileUp_success = function (id,obj,resDs)
+        {
+
+        	//this.dsUpload.copyData(resDs);
+        // 	if(this.dsUpload.getRowCOunt() == 0){
+        // 	   this.dsUpload.opyData();
+        // 	}
+        	this.dsUpload.copyData(resDs);
+
+        	this.isButtonCheck();
+        	let oForm = this.gfnGetTopLevelForm(this);
+
+        	if(nexacro._isFunction(oForm.cfnFileUp_success))
+        	{
+        	   oForm.cfnFileUp_success(id,obj,resDs);
+        	}
+
+        };
+        //file up error
+        this.cfnFileUp_onerror = function (id,obj,resDs)
+        {
+
+        	let oForm = this.gfnGetTopLevelForm(this);
+
+        	if(nexacro._isFunction(oForm.cfnFileUp_onerror))
+        	{
+        	   oForm.cfnFileUp_onerror(id,obj,resDs);
+        	}
+        };
+
+
+        /*
+         *	callback fileTransaction
+         */
+
+        this.fileTranCallback = function (svcId,code, msg,dsUpload)
+        {
+
+             if(code < 0) return;
+
+        	 if(svcId == "svcDeleteFileList"){
+
+        	   this.gfnAlert("10077");  // 삭제 되었습니다.
+        	 }
+
+        	 this.isButtonCheck();
+
+        	 let topForm = this.gfnGetTopLevelForm(this);
+        	// alert("isFunction : " + nexacro._isFunction(topForm.cfnTranFileUpDownCallback));
+
+        	 if(!!!dsUpload) dsUpload = this.dsUpload;
+
+        	if(nexacro._isFunction(topForm.cfnTranFileUpDownCallback)){
+        	   topForm.cfnTranFileUpDownCallback(svcId, code, msg, dsUpload);
+        	}
+
+
+        };
+
+        /**
+         *  파일 정보 select trasnaction
+         */
+        this.tranFileSearch = function(svcId,callback,params)
+        {
+
+          	 svcId = svcId || "svcSelectFileInfo";
+        	 callback = callback || "fileTranCallback";
+
+        	let oparam = {
+        		id : svcId, // transaction을 구분하기 위한 svc id값
+          	    url : "file/list",		 // trabsaction을 요청할 주소
+          		inds :  "",  // 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+          		outds :"dsUpload=output1", // 입력값으로 보낼 arguments, strFormData="20120607"
+          		argus : {}
+        	 	};
+
+            if(!!params) Object.assign(oparam.argus,params);   //aruments 처리
+
+
+        	this.gfnTran(oparam,(id,code,msg)=>{
+        	   if(code < 0) return;
+
+        	   let topForm = this.gfnGetTopLevelForm(this.parent);
+
+        	  if(nexacro._isFunction(callback)) callback.call(topForm,id,code,msg);
+        	    else if(nexacro._isFunction(topForm[callback])) topForm[callback].call(topForm,id,code,msg);
+        	});
+        };
+
+        //파일업로드 파일 조회
+        this.tranSearch = function (svcid,svcurl,sqlid,outDs,callback,args)
+        {
+
+        	this.gfnTranSearch(svcid,svcurl,sqlid,outDs,"",(id,code,msg)=>{
+        	   if(code < 0)  return;
+
+        	   this.isButtonCheck();
+
+        	  let topForm = this.gfnGetTopLevelForm(this.parent);
+
+        	  if(nexacro._isFunction(callback)) callback.call(topForm,id,code,msg);
+        	    else if(nexacro._isFunction(topForm[callback])) topForm[callback].call(topForm,id,code,msg);
+        	},args);
+
+        };
+        /**
+         *  파일 정보 copy
+         */
+        this.setCopyDsFileUpload = function(dsIn)
+        {
+            if ( this.gfnIsNull(dsIn) ) return;
+        	if ( this.gfnTypeOf(dsIn) != "Dataset" ) return;
+
+
+        	this.dsUpload.copyData(dsIn);
+        	this.isButtonCheck();
+        };
+
+        //dataset 가져오는 함수
+        this.getDsFileUp = function ()
+        {
+        	return this.dsUpload;
+        };
+
+        /*
+         * 버튼 권한 가져오기
+         */
+
+        this.getAuth = function ()
+        {
+        	return this.uauth;
+        };
+
+        /**
+         * setting usercomp 필수
+         * @param {stirng}  //add : 파일추가  delAll : 파알전체삭제 delDown : "파일전체다운로드"
+         * @return
+         * @example
+         	var sAuth = "btnDialog:false,btnFileDeleteAll:false,btnFileDownLoadAll:false";
+        	this.divFileUp.setAuth(sAuth);
+         * @memberOf
+         */
+
+        this.setAuth = function (_s)
+        {
+            if(!!!_s) return;
+        	this.uauth =  _s.trim() || "";
+
+
+            this.uauth.split(",").forEach((data,idx)=>{
+        	     if(data.indexOf(":") > -1 ){
+         		     let comp = data.split(":")[0];
+         			 let sEnable = data.split(":")[1];
+
+         			 if(this[comp]) this[comp].set_enable(sEnable);
+
+        		 }
+
+        	});
+        //
+
+        };
+
+
+
+        this.isButtonCheck = function ()
+        {
+
+
+          this.setAuth(this.uauth); // 버튼권한
+
+        //    if(  this.dsUpload.getRowCount() > 0){
+        //       this.btnFileDownLoadAll.set_enable(true);
+        // 	  this.btnFileDeleteAll.set_enable(true);
+        //    }else{
+        //       this.btnFileDownLoadAll.set_enable(false);
+        // 	   this.btnFileDeleteAll.set_enable(false);
+        //    }
+        };
+
+        /************************************************************************************************
+        * 각 COMPONENT 별 EVENT 영역
+        ************************************************************************************************/
+
+        //파일 추가
+        this.btnDialog_onclick = function(obj,e)
+        {
+
+          this.setFileDialog();
+        };
+
+
+        //upload 실행
+        // this.btnUpload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+        // {
+        // 	this.setFileUpload();
+        // };
+
+        //파일 선택 다운로드
+        this.btnFileDownLoad_onclick = function(obj,e)
+        {
+
+        	/*
+        	for(var i = 0; i < this.dsUpload.getRowCount(); i++)
+        	{
+        	  var chk = this.dsUpload.getColumn(i,"check")
+        	  if(chk)
+        	  {
+        	     var sId =  this.dsUpload.getColumn(i,"FILE_SEQ");
+        		 var sSeq =  i;
+        		 var sFileNm =  this.dsUpload.getColumn(i,"FILE_NM");
+                 this.gfnFileDownLoad(sId,sSeq,sFileNm);
+        	  }
+        	}*/
+
+        	let i       = this.dsUpload.rowposition;
+        	let sSeq 	=  i;
+        	let sId  	=  this.dsUpload.getColumn(i,"FILE_SEQ").toString();
+        	let sFileNm =  this.dsUpload.getColumn(i,"FILE_NM");
+        	let ds      =  this.dsUpload;
+            this.gfnFileDownLoad(sId, sSeq, sFileNm, this.filepath, ds);
+
+        };
+
+
+        //파일 전체 다운로드
+        this.btnFileDownLoadAll_onclick = function(obj,e)
+        {
+           let fileSeqList = [];
+           for (let i=0; i<this.dsUpload.getRowCount();i++)
+           {
+               let fileSeq = this.dsUpload.getColumn(i,"FILE_SEQ");
+        	   if(!!fileSeq)    fileSeqList.push(fileSeq);
+
+        	   //this.gfnFileDownLoad(fileSeq);
+           }
+
+           if(fileSeqList.length == 0){
+              this.gfnAlert("다운로드 할 데이타가 존재하지 않습니다.");
+              return;
+           }
+
+           let fileNm = this.parent.name  + "_"+ this.gfnGetDate("time") ;
+           this.gfnFileDownLoad(fileSeqList.join(","),fileNm);
+        };
+
+
+
+        //파일 삭제
+        this.btnFileDelete_onclick = function(obj,e)
+        {
+        	if (this.readonly) return;
+
+        	let ds = this.dsUpload;
+        	let nRow =this.dsUpload.rowposition;
+
+        	this.gfnFileDelete(ds,nRow,"fileTranCallback");
+
+        };
+
+        /**
+         * @ 파일 전체 삭제
+         * @param {string}
+         * @return
+         * @example
+         * @memberOf
+         */
+        this.btnFileDeleteAll_onclick = function(obj,e)
+        {
+        	if (this.readonly) return;
+
+        	 let ds = this.dsUpload;
+        	 this.gfnFileDeleteAll(ds,"fileTranCallback");
+        };
+
+
+
+
+        /************************************************************************
+         *  그리드 파일 drag & drop
+         ************************************************************************/
+
+
+        this.grdFileUpDown_ondragenter = function(obj,e)
+        {
+        	 if(e.datatype == "file")
+            {
+
+        		 obj.set_opacity(0.5);
+
+            }
+        };
+
+        this.grdFileUpDown_ondragleave = function(obj,e)
+        {
+        	  obj.set_opacity(1);
+        };
+
+
+        this.grdFileUpDown_ondrop = function(obj,e)
+        {
+        	 if(e.datatype == "file")
+            {
+        	    obj.set_opacity(1);
+        	   this.gfnAddSelectFileList(this.fileId,e.filelist,this.dsUpload);
+
+        	}
+        };
+
+        /************************************************************************
+         *  component event
+         ************************************************************************/
+
+
+        this.grdFileUpDown_oncellclick = function(obj,e)
+        {
+        	if(e.cell==4){ // 다운로드
+
+        	  let bindds = obj.getBindDataset();
+        	  let fileSeq = bindds.getColumn(e.row,"FILE_SEQ");
+                 this.gfnFileDownLoad(fileSeq);
+
+        	}else if(e.cell==5){
+               this.gfnFileDelete(this.dsUpload,e.row,"fileTranCallback");
+        	}
+        };
+
+
+
+        this.dsUpload_onload = function(obj,e)
+        {
+
+        //    if( obj.getRowCount() > 0){
+        //       this.btnFileDownLoadAll.set_enable(true);
+        // 	  this.btnFileDeleteAll.set_enable(true);
+        //    }else{
+        //       this.btnFileDownLoadAll.set_enable(false);
+        // 	   this.btnFileDeleteAll.set_enable(false);
+        //    }
+
+
+        };
+
+        // gfildSeq setting
+        this.setGfileSeq = function (gFileSeq)
+        {
+        	//if(this.isNull(gFileSeq)) return;
+
+        	this.gFileSeq = gFileSeq;
+        	this.objTarget.ugfileseq  = gFileSeq;
+        };
+
+
+        // gfildSeq setting
+        this.getGfileSeq = function ()
+        {
+        	return this.objTarget.ugfileseq ;
+        };
+        });
+        
+        // Regist UI Components Event
+        this.on_initEvent = function()
+        {
+            this.addEventHandler("onload",this.formOnload,this);
+            this.btnFileDownLoadAll.addEventHandler("onclick",this.btnFileDownLoadAll_onclick,this);
+            this.btnFileDeleteAll.addEventHandler("onclick",this.btnFileDeleteAll_onclick,this);
+            this.btnDialog.addEventHandler("onclick",this.btnDialog_onclick,this);
+            this.grdFileUpDown.addEventHandler("oncellclick",this.grdFileUpDown_oncellclick,this);
+            this.grdFileUpDown.addEventHandler("ondragenter",this.grdFileUpDown_ondragenter,this);
+            this.grdFileUpDown.addEventHandler("ondragleave",this.grdFileUpDown_ondragleave,this);
+            this.grdFileUpDown.addEventHandler("ondrop",this.grdFileUpDown_ondrop,this);
+            this.dsUpload.addEventHandler("onload",this.dsUpload_onload,this);
+        };
+        this.loadIncludeScript("cmmFileUpDown.xfdl");
+        this.loadPreloadList();
+        
+        // Remove Reference
+        obj = null;
+    };
+}
+)();
