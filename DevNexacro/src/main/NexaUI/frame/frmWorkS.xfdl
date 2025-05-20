@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frmWork" left="0" top="0" width="1293" height="827" onsize="form_onsize" onactivate="form_onactivate" onload="frm_onload" titletext="프레임 업무(work)" cssclass="frm_WF_Frame">
+  <Form id="frmWork" left="0" top="0" width="1267" height="813" onsize="form_onsize" onactivate="form_onactivate" onload="frm_onload" titletext="프레임 업무(work)" cssclass="frm_WF_Frame">
     <Layouts>
       <Layout>
-        <Div id="divTitle" taborder="1" text="div00" left="25" top="0" height="47" maxwidth="" formscrolltype="none" right="0">
+        <Div id="divTitle" taborder="1" text="div00" left="30" top="0" height="47" maxwidth="" formscrolltype="none" right="0">
           <Layouts>
             <Layout>
               <Static id="staTitle" taborder="1" text="화면타이틀 (화면아이디)" left="35" top="12" height="26" fittocontents="width" wordWrap="none" right="90" cssclass="sta_WF_HeaderTitle"/>
             </Layout>
           </Layouts>
         </Div>
-        <Div id="divWork" taborder="0" text="divWork" left="20" top="divTitle:0" maxwidth="" maxheight="" bottom="20" right="20">
+        <Div id="divWork" taborder="0" text="divWork" left="30" top="divTitle:0" maxwidth="" maxheight="" bottom="20" right="20">
           <Layouts>
             <Layout/>
           </Layouts>
@@ -67,7 +67,8 @@ this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	this.menuNavi    =  this.getOwnerFrame().arguments[this.colInfo.menu.navi];   // menu navi	
 
 //   trace(" #### this.menuCd ::>>> " + this.menuCd);
-//   trace(" ## this.divWorkS .width : " + this.divWork.getOffsetWidth() + "<> height : " +this.divWork.getOffsetHeight());
+    trace(" ## this.divWorkS .width : " + this.divWork.getOffsetWidth() + "<> height : " +this.divWork.getOffsetHeight());
+   	trace(" ## this.width : " + this.width  + "<> this.height : "+ this.height);
 //   this.divTitle.form.staTitle.text = this.menuNm + "(" + this.menuCd  +")";
 // 	this.fnSetFavor();
  	this.fnSetUrl();
@@ -160,7 +161,7 @@ this.fnSetScroll = function ()
 	// this.divTitle.form.resetScroll();
 	this.resetScroll();
 	  
-	trace(" this.width : " + this.width  + "<> this.height : "+ this.height);
+
 };
 
 /*

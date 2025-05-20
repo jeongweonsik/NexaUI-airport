@@ -872,7 +872,7 @@
           <Col id="parentCd">M300153</Col>
           <Col id="menuLvl">2</Col>
           <Col id="menuGroup">M120003</Col>
-          <Col id="url">sample::sample002Transaction.xfdl</Col>
+          <Col id="url">view::test/test001.xfdl</Col>
         </Row>
         <Row>
           <Col id="menuCd">M220003</Col>
@@ -917,7 +917,7 @@
           <Col id="menuNm">메뉴3</Col>
           <Col id="parentCd">M400153</Col>
           <Col id="menuLvl">2</Col>
-          <Col id="url">sample::sample002Transaction.xfdl</Col>
+          <Col id="url">view:test/test001.xfdl</Col>
           <Col id="menuGroup">M220003</Col>
         </Row>
       </Rows>

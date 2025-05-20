@@ -798,7 +798,6 @@ _pForm.gfnGetComCodeFilter = function (param,targetDs)
 	if(this.isNull(targetDs)) return;
 	targetDs.copyData(paramDataset);	
 	targetDs.clearData();
-	
 
 	if(paramDataset.getRowCount() > 0)
 	{
@@ -979,7 +978,7 @@ _pForm.gfnSetFrame = function(p)
 		if(!!!app.frame.mdi.formurl) app.frame.mdi.formurl = path.mdi;  //set path mdi
 		if(!!!app.frame.main.formurl) app.frame.main.formurl = path.main;  //set path main
 		
-		app.frame.vFrs.separatesize = '0,60,*,36';
+		app.frame.vFrs.separatesize = '0,70,*,40';  // login,top,work,bottom
 		//app.frame.hfrs.separatesize = '264,*,40';
 		app.frame.status = p;		
 

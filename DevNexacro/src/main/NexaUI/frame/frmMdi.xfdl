@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frmMdi" width="1598" height="36" titletext="MdiFrame" onsize="form_onsize" cssclass="frm_MDI" onload="formOnload">
+  <Form id="frmMdi" width="1598" height="40" titletext="MdiFrame" onsize="form_onsize" cssclass="frm_MDI" onload="formOnload">
     <Layouts>
-      <Layout height="36" width="1598">
+      <Layout height="40" width="1598">
         <Static id="staBlur" taborder="12" left="0" top="0" boxShadow="inset 3px 3px 10px 0px #cacbd9" background="#fafafc" borderRadius="4px" bottom="0" right="0"/>
         <Div id="divMenuButton" taborder="8" top="0" width="174" bottom="0" right="16" visible="false">
           <Layouts>

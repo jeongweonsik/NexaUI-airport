@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frmWork" left="0" top="0" width="1334" height="822" onsize="form_onsize" onactivate="form_onactivate" onload="frm_onload" titletext="프레임 업무(work)" cssclass="frm_WF_Frame">
+  <Form id="frmWork" left="0" top="0" width="1300" height="822" onsize="form_onsize" onactivate="form_onactivate" onload="frm_onload" titletext="프레임 업무(work)" cssclass="frm_WF_Frame">
     <Layouts>
       <Layout>
-        <Div id="divWork" taborder="0" text="divWork" left="1" top="0" maxwidth="" maxheight="" bottom="5" right="40" minwidth="1293" boxShadow="3px 3px 10px #cacbd9" background="#fafafc" borderRadius="10px" formscrollbartype="none none" formscrolltype="none" url="frame::frmWorkS.xfdl"/>
-        <Static id="staRight" taborder="1" top="0" cssclass="sta_TF_Bg" left="divWork:0" width="40" height="60" border="0px none" borderRadius="0px 0px 20px" boxShadow="inset 3px 0px 3px 0px transparent"/>
+        <Div id="divWork" taborder="0" text="divWork" left="1" top="0" maxwidth="" maxheight="" bottom="5" right="30" boxShadow="3px 3px 10px #cacbd9" background="#fafafc" borderRadius="10px" formscrollbartype="none none" formscrolltype="none" minwidth="1260" url="frame::frmWorkS.xfdl"/>
+        <Static id="staRight" taborder="1" top="0" cssclass="sta_TF_Bg" left="divWork:0" width="30" height="60" border="0px none" borderRadius="0px 0px 20px" boxShadow="inset 3px 0px 3px 0px transparent"/>
       </Layout>
     </Layouts>
     <Objects/>

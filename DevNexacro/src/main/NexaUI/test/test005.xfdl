@@ -24,6 +24,7 @@
             </Format>
           </Formats>
         </Grid>
+        <Button id="Button01" taborder="3" text="Button01" left="49" top="31" width="140" height="94" onclick="Button01_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
@@ -107,6 +108,11 @@ this.fnCallback = function(id,code,msg)
 /************************************************************************************************
 * 각 COMPONENT 별 EVENT 영역
 ************************************************************************************************/
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var str = "aaaaaaaaaaaa";
+};
 ]]></Script>
     <Objects>
       <Dataset id="dsSeacch">

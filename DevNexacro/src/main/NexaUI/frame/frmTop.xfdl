@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frmTop" width="1598" height="60" titletext="TopFrame" cssclass="frm_TF" onload="frm_onload" scrolltype="none" onsize="frmTop_onsize" scrollbartype="none">
+  <Form id="frmTop" width="1598" height="70" titletext="TopFrame" cssclass="frm_TF" onload="frm_onload" scrolltype="none" onsize="frmTop_onsize" scrollbartype="none">
     <Layouts>
-      <Layout height="60" width="1598">
+      <Layout height="70" width="1598">
         <Div id="divTopBtn" taborder="0" text="divTop" left="270" top="0" width="1220" bottom="0"/>
         <Static id="staLogo" taborder="1" text="Incheon Airport" left="0" top="0" cssclass="sta_TF_Logo" onclick="staLogo_onclick" width="210" cursor="pointer" bottom="0"/>
       </Layout>
