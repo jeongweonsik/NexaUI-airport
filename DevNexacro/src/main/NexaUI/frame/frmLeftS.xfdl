@@ -156,10 +156,11 @@ this.fvOrgScroll = 0;
 */
 this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-alert(" lefts");
-   app.frame.lefts  = obj;   //set glbal variable  left sub form
-   this.resetScroll();
-   
+  if("frame" in app){
+    app.frame.lefts  = obj;   //set glbal variable  left sub form
+    this.resetScroll();
+  }
+     
 };
 
 this.fnSetInit  = function(){
