@@ -3,9 +3,29 @@
   <Form id="test004" width="800" height="600" titletext="New Form">
     <Layouts>
       <Layout height="600" width="800">
-        <Button id="Button00" taborder="0" text="Button00" left="105" top="95" width="153" height="59" onclick="Button00_onclick"/>
+        <btn id="Button00" taborder="0" text="Button00" left="105" top="95" width="153" height="59" onclick="Button00_onclick"/>
+        <btn id="Button01" taborder="1" text="Button01" left="334" top="39" width="127" height="82" onclick="Button01_onclick"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[]]></Script>
+    <Script type="xscript5.1"><![CDATA[
+
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//this.gfnAlert("5524");
+	//return;
+	
+	  var args  = {};
+		  args.id         = "popPopupP";   //필수
+		  args.url        = "sample::sample003PopupP.xfdl"; //필수
+		  args.titletext  = '샘플팝업';   //필수
+		  args.paramCode  = "abcd";    // paremeter
+
+		this.gfnShowModal(args,
+		     (resVar)=>{  //callback
+			//	alert(" ## resVar : " + resVar);
+			 });
+};
+]]></Script>
   </Form>
 </FDL>
