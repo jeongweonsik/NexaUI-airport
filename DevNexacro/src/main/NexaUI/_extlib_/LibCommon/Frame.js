@@ -379,14 +379,16 @@ _pForm.gfnOnkeydown = function(obj, e)
 
 _pForm.gfnIsFrameForm = function (objForm)
 {
-	if( objForm.name == "FrmLeft"  || objForm.name == "frmLogin"
-		|| objForm.name == "frmLoginS" || objForm.name =="frmMdi"
-		|| objForm.name == "frmTop" || objForm.name == "frmWork"
-		|| objForm.name == "cmmDebug"){
-		return true;
-	}else{
-		return false;
-	}
+    if(objForm.parent.name == "divWork") return false;
+	else return true;
+// 	if( objForm.name == "FrmLeft"  || objForm.name == "frmLogin"
+// 		|| objForm.name == "frmLoginS" || objForm.name =="frmMdi"
+// 		|| objForm.name == "frmTop" || objForm.name == "frmWork"
+// 		|| objForm.name == "cmmDebug"){
+// 		return true;
+// 	}else{
+// 		return false;
+// 	}
 };
 
 /**

@@ -11,8 +11,8 @@
     <Module url="extlib::LibCommon.json"/>
   </Modules>
   <Components>
-    <Component type="JavaScript" id="Button" classname="nexacro.Button"/>
-    <Component type="JavaScript" id="Combo" classname="nexacro.Combo"/>
+    <Component type="JavaScript" id="Button" classname="nexacro.Button" prefixid="btn"/>
+    <Component type="JavaScript" id="Combo" classname="nexacro.Combo" prefixid="cbo"/>
     <Component type="JavaScript" id="Edit" classname="nexacro.Edit"/>
     <Component type="JavaScript" id="MaskEdit" classname="nexacro.MaskEdit"/>
     <Component type="JavaScript" id="TextArea" classname="nexacro.TextArea"/>

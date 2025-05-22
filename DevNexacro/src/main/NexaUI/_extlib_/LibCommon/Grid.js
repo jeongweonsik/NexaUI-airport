@@ -14,7 +14,7 @@
 *● _gfnGirdUserHeaderExcuteSort : 유저헤더를 이용한 정렬
 *● _gfnGridSetSortStatus : 정렬가능여부리턴
 *● _gfnGridGetBodyCellIndex : head cell에 match되는 body cell을 얻어온다
-*● _gfnGridGetBindColumnNameByIndex : index로 binding 된 컬럼명을 얻어온다.\
+*● _gfnGridGetBindColumnNameByIndex : index로 binding 된 컬럼명을 얻어온다.tnwj
 *● _gfnGridExecuteSort : 소트를 실행한다
 *● _gfnGridGetGridCellObject : Cell object 를 반환 (Grid 내부 속성이므로 get 용도로만 사용)
 *● _gfnClearSortMark : 그리드의 Sort Mark 제거
@@ -70,7 +70,6 @@ grid 기능 property
 _pForm.gfnSetGrid = function(objGrid)
 {    
     if(this.isNull(objGrid)) return;
-	const evUserId = nexacro.getEnvironmentVariable("evUserId");
     const grdFrCount = objGrid.getFormatColCount();
 	const oForm     =  this.gfnGetTopLevelForm(this); 
 	
@@ -88,54 +87,54 @@ _pForm.gfnSetGrid = function(objGrid)
 		objDs.bindgrid = objGrid;
 	}	
 	
-	objGrid.orgformat = objGrid.getCurFormatString();
-	
-	let gdsGridPersonal = app.gdsGridPersonal;
-	//let sFormatId = this._getUniqueId(objGrid);			
-	let sFormatId  = `${this._getUniqueId(objGrid)}_${evUserId}`;
-	let nFormatRow = gdsGridPersonal.findRow("formatId", sFormatId);
-	let oGridPersonal;
-    
-	if( nFormatRow > -1){
-		
-		let sFormat = "<Formats>" + gdsGridPersonal.getColumn(nFormatRow, "colDesc") + "</Formats>";
-		let grdId = oForm.name + "_"+ objGrid.name;
-		
-		if(oForm.isValidObject(grdId)){
-			// Remove Object form Parent Form  
-			oForm.removeChild(grdId); 
-			oGridPersonal = oForm[grdId];
-			// Destroy Object  
-			oGridPersonal.destroy(); 
-			oGridPersonal = null;		
-		}
-		oGridPersonal = new Grid(grdId, 0, 0, 0, 0, null, null); 
-		// Add Object to Parent Form  
-		oForm.addChild(grdId, oGridPersonal); 
-		oGridPersonal.visible = false;
-		// Show Object  
-		oGridPersonal.show(); 		
-		
-		oGridPersonal.formats = sFormat;		
-		
-		let grdColCntFrom  = objGrid.getFormatColCount();
-		let grdColCntTo    = oGridPersonal.getFormatColCount();		
-		
-		if(grdColCntFrom != grdColCntTo){  // 컬럼 정보 비교
-			
-	        this.gfnToast("추가된 컬럼 정보가 존재합니다. 초기화 합니다."); // 추가된 컬럼 정보가 존재합니다. 초기화 합니다.
-			objGrid.orgformat2 = objGrid.getFormatString();
-			this._gfnGridPersonalizeInit(objGrid);    //초기화
-		}else{
-			
-			objGrid.orgformat2 = gdsGridPersonal.getColumn(nFormatRow, "colOrgDesc");			
-			objGrid.formats = sFormat;	
-		}				
-		
-	}
-	else{
-		objGrid.orgformat2 = objGrid.getFormatString();
-	}
+// 	objGrid.orgformat = objGrid.getCurFormatString();
+// 	
+// 	let gdsGridPersonal = app.gdsGridPersonal;
+// 	//let sFormatId = this._getUniqueId(objGrid);			
+// 	let sFormatId  = `${this._getUniqueId(objGrid)}_${evUserId}`;
+// 	let nFormatRow = gdsGridPersonal.findRow("formatId", sFormatId);
+// 	let oGridPersonal;
+//     
+// 	if( nFormatRow > -1){
+// 		
+// 		let sFormat = "<Formats>" + gdsGridPersonal.getColumn(nFormatRow, "colDesc") + "</Formats>";
+// 		let grdId = oForm.name + "_"+ objGrid.name;
+// 		
+// 		if(oForm.isValidObject(grdId)){
+// 			// Remove Object form Parent Form  
+// 			oForm.removeChild(grdId); 
+// 			oGridPersonal = oForm[grdId];
+// 			// Destroy Object  
+// 			oGridPersonal.destroy(); 
+// 			oGridPersonal = null;		
+// 		}
+// 		oGridPersonal = new Grid(grdId, 0, 0, 0, 0, null, null); 
+// 		// Add Object to Parent Form  
+// 		oForm.addChild(grdId, oGridPersonal); 
+// 		oGridPersonal.visible = false;
+// 		// Show Object  
+// 		oGridPersonal.show(); 		
+// 		
+// 		oGridPersonal.formats = sFormat;		
+// 		
+// 		let grdColCntFrom  = objGrid.getFormatColCount();
+// 		let grdColCntTo    = oGridPersonal.getFormatColCount();		
+// 		
+// 		if(grdColCntFrom != grdColCntTo){  // 컬럼 정보 비교
+// 			
+// 	        this.gfnToast("추가된 컬럼 정보가 존재합니다. 초기화 합니다."); // 추가된 컬럼 정보가 존재합니다. 초기화 합니다.
+// 			objGrid.orgformat2 = objGrid.getFormatString();
+// 			this._gfnGridPersonalizeInit(objGrid);    //초기화
+// 		}else{
+// 			
+// 			objGrid.orgformat2 = gdsGridPersonal.getColumn(nFormatRow, "colOrgDesc");			
+// 			objGrid.formats = sFormat;	
+// 		}				
+// 		
+// 	}
+// 	else{
+// 		objGrid.orgformat2 = objGrid.getFormatString();
+// 	}
 	
 	/* grid 기능 property  
 	* upopmenu :false   팝업메뉴 사용안함 
@@ -143,7 +142,8 @@ _pForm.gfnSetGrid = function(objGrid)
 	* ucopy :false   복사기능 사용안함
 	*/  
 	// this._gfnMakeGridPopupMenu(objGrid,arrProp,"header");//popupmenu 생성
-	if(objGrid["upopmenu"]  != "false" ){
+	const isTreeCell = objGrid.getCellProperty("body",0,"displaytype");
+	if(objGrid["upopmenu"]  != "false"  && isTreeCell != "treeitemcontrol"){
 		this._gfnMakeGridPopupMenu(objGrid,"header");//popupmenu 생성
 		objGrid.addEventHandler("onrbuttondown", this.gfnGrid_onrbuttondown, this);	    
 	}
@@ -1036,7 +1036,7 @@ _pForm._gfnMakeGridPopupMenu = function (objGrid, stype)
 	
 	//popupmenu 동적 생성
 	const objPopMenu = new PopupMenu(sPopMenu,null, null, 130, 464);
-	objPopMenu.cssclass = "Pmnu_WF_List";
+//	objPopMenu.cssclass = "Pmnu_WF_List";
 	objParentForm.addChild(objPopMenu.name, objPopMenu);
 	objPopMenu.innerdataset = objPopupDs.name;
 	//objPopMenu.maxwidth = 464;

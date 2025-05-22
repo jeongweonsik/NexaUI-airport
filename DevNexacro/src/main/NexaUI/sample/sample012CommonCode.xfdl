@@ -50,7 +50,7 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="Column0"></Col>
+            <Col id="Column0"/>
           </Row>
         </Rows>
       </Dataset>
@@ -95,7 +95,7 @@ this.frm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 //공통코드 필터
 this.Div00_btnComCodeFilter_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-
+   
   /*
    *@param {object} 필터할 코드 값 : 명
    *@param {component} 필터할 데이타셋

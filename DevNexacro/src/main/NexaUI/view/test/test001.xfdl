@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frm" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <btn id="Button00" taborder="0" text="Button00" left="665" top="50" width="135" height="81" onclick="Button00_onclick"/>
+        <btn id="Button01" taborder="1" text="Button01" left="767" top="140" width="176" height="62" onclick="Button01_onclick" icon="url('theme://images/titlebar_icon.png')"/>
+        <btn id="Button02" taborder="2" text="Button02" left="429" top="152" width="171" height="39" onclick="Button02_onclick"/>
+        <btn id="Button03" taborder="3" text="Button03" left="650" top="133" width="97" height="55" onclick="Button03_onclick"/>
+        <Div id="fncNm" taborder="4" text="Div00" left="403" top="209" width="540" height="321" url="sample::sample004Message.xfdl"/>
+        <Menu id="menuTop" taborder="5" left="820" top="55" innerdataset="dsTopMenu" idcolumn="menuCd" levelcolumn="menuLvl" captioncolumn="menuNm" right="90" bottom="587" iconcolumn="icon"/>
+        <btn id="Button04" taborder="6" text="Button04" left="398" top="57" width="154" height="60" onclick="Button04_onclick"/>
+        <btn id="Button05" taborder="7" text="Button05" left="1017" top="160" width="158" height="75" onclick="Button05_onclick"/>
+        <btn id="Button06" taborder="8" text="Button06" left="131" top="74" width="164" height="80" onclick="Button06_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+* 
+*@FileName test001
+*@Creator 	
+*@CreateDate 2025/04/28
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+
+/************************************************************************************************
+* include 영역
+************************************************************************************************/
+
+/************************************************************************************************
+* FORM 변수 선언 영역
+************************************************************************************************/
+
+/************************************************************************************************
+* FORM EVENT 영역(onload, onbeforeclose)
+************************************************************************************************/
+/**
+* @description 화면 onload시 처리내역(필수)
+*/
+// this.addEventHandler("onload", function(obj,e)
+// 	{
+// 		
+// 	},this);
+
+/*
+*@description 화면 이동 후 넘어온 값 처리	
+*@param {string}{object}{array} 넘어온 아규먼트 처리
+*/
+this.cfnMoveOnActie = function(param)
+{
+	//trace("fnMoveOnActie formName ===>" + this.name + "<> parg ====> " + param);
+};
+
+/**
+* @description 화면 닫힐때 변경사항 체크(입력 화면에서 변경되는 Dataset 체크 필요, 선택)
+* @return {boolean} true(화면 닫지 않음) / false(화면 닫음)
+*/
+this.cfnClose = function()
+{
+	return false;
+};
+
+/**
+* //paging 버튼 // next prev 클릭 이벤트 후처리
+* @param {number} 누른 페이지
+* @param {number} 시작데이터rownum계산
+* @return 
+* @example
+* @memberOf 
+*/
+this.cfnPaging_onclick = function(nPage,nRecordOffset)
+{
+	trace(" ## nPage : " +nPage + "<> nRecordOffset : " + nRecordOffset);
+	
+}
+
+/************************************************************************************************
+* CALLBACK 콜백 처리부분(Transaction, Popup)
+************************************************************************************************/
+this.fnCallback = function(id,code,msg)
+{
+	// 에러 시 화면 처리 내역
+	if(code < 0) return;
+	
+	switch(id) {
+	case "":
+		break;
+		
+	default:
+	}
+	
+};
+
+/************************************************************************************************
+* CRUD 및 TRANSACTION 서비스 호출 처리
+************************************************************************************************/
+
+/************************************************************************************************
+* 사용자 FUNCTION 영역
+************************************************************************************************/
+/**
+ * 
+ * @param {string} 
+ * @return 
+ * @example
+ * @memberOf 
+ */
+this.fnSetUserTest = function ()
+{
+
+};
+
+
+/************************************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+************************************************************************************************/
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("id : " + app.id);
+	
+};
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	// 	 let objDivPaging = new Div();
+	// 	//objDivPaging.init("divPage", 0, 5, 800, 23, null, null);
+	// 	//	objDivPaging.init("divPage", 0, 0, 800, 23, null, null);
+	// 	//objDivPaging.init("divPage", 0, 0, null, null,0 , 0);
+	// 	objDivPaging.init("Div", 30, 120, 196, 46, null, null);
+	var objDivPaging = new Div("Div", 0, 5, 800, 23, null, null);
+	objDivPaging.text = "divpaging";
+	objDivPaging.border = "1px solid red";
+	objDivPaging.background = "#ffffaa";
+	
+	alert(" objDivPaging : " + objDivPaging);
+    this.addChild(objDivPaging.name, objDivPaging);
+    objDivPaging.show();  
+	
+	
+	let objBtnFirst = new Button("btnFirst", 0, 0, 100,100, null, null);   
+	objBtnFirst.border = "1px solid red";
+	objBtnFirst.background = "#ffffaa";
+	objDivPaging.addChild(objBtnFirst.name, objBtnFirst);
+	objBtnFirst.show();
+	
+	
+};
+
+this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	// Create Object  
+	// var objDiv = new Div();  
+	// objDiv.init("Div", 30, 120, 196, 46, null, null);
+	
+	// objDiv.init("Div", null, null, 300, "400px", "80%", 300);
+	// or
+	let objDiv = new Div("Div", 30, 120, 196, 46, null, null);
+	//var objDiv = new Div("Div", null, null, 300, "400px", "80%", 300);
+	
+	// Add Object to Parent Form  
+	this.addChild("Div", objDiv); 
+	
+	// Insert Object to Parent Form  
+	//this.insertChild(1, "Div", objDiv); 
+	
+	// Remove Object form Parent Form  
+	//this.removeChild("Div"); 
+	
+	// Show Object  
+	objDiv.show(); 
+	objDiv.background = "#ffffaa";
+	objDiv.text = "text";
+	
+	alert(" this.Div :  " + objDiv.name);
+	
+	
+};
+
+this.Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	trace(" max : " +this.Div00.form.vscrollbar.max);
+};
+
+this.Button04_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	// 원하는 글자
+	var message = "브라우저 하단에 표시할 메시지입니다.";
+	
+	// 하단 영역에 글자 표시
+	document.getElementById('bottom-banner').textContent = message;
+	document.getElementById('bottom-banner').style.display = 'block';
+};
+
+this.fnSearch = function ()
+{
+	trace(" ########### fnSearch");
+};
+
+/**
+ * 
+ * @param {string} 
+ * @return 
+ * @example
+ 
+     this.callFunction("this.fnSearch")();
+   
+   		
+	var btnNm  = 	 this.callFunction("this.Button00").name;
+	trace(" btnNm : " + btnNm);
+ * @memberOf 
+ */
+this.callFunction = function (strFunc)
+{
+    let fncNm = "return " + strFunc;
+    return new Function(fncNm).call(this);
+    
+};
+
+this.Button05_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//var o = new Function("return this.Tab00.Tabpage1.form").call(this);
+		this.callFunction("this.fnSearch")();
+		
+		
+		
+	var btnNm  = 	 this.callFunction("this.Button00").name;
+	    trace(" btnNm : " + btnNm);
+		
+		//trace(" o == > " +);
+	
+};
+
+this.Button06_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let oo = {key:"aaaa"};
+	
+	if("key" in oo){
+	 trace(" ## key ===>");
+	}
+	
+	
+};
+]]></Script>
+    <Objects>
+      <Dataset id="Dataset00"/>
+      <Dataset id="dsTopMenu">
+        <ColumnInfo>
+          <Column id="menuCd" type="STRING" size="32"/>
+          <Column id="menuNm" type="STRING" size="32"/>
+          <Column id="parentCd" type="STRING" size="32"/>
+          <Column id="menuLvl" type="STRING" size="256"/>
+          <Column id="menuGroup" type="STRING" size="32"/>
+          <Column id="url" type="STRING" size="32"/>
+          <Column id="sort" type="STRING" size="256"/>
+          <Column id="menuPath" type="STRING" size="32"/>
+          <Column id="icon" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="menuCd">M120003</Col>
+            <Col id="menuNm">탑메뉴1</Col>
+            <Col id="parentCd">M000120</Col>
+            <Col id="menuLvl">0</Col>
+            <Col id="menuGroup">0</Col>
+            <Col id="url"/>
+            <Col id="sort">1203</Col>
+            <Col id="menuPath">개발자샘플 &gt; </Col>
+            <Col id="icon">url('theme://images/titlebar_icon.png')</Col>
+          </Row>
+          <Row>
+            <Col id="menuCd">M220003</Col>
+            <Col id="menuNm">탑메뉴2</Col>
+            <Col id="parentCd">M100121</Col>
+            <Col id="menuLvl">0</Col>
+            <Col id="menuGroup">0</Col>
+            <Col id="sort">1203</Col>
+            <Col id="menuPath">개발자샘플 &gt; </Col>
+            <Col id="icon">url('theme://images/titlebar_icon.png')</Col>
+          </Row>
+          <Row>
+            <Col id="menuCd">M320003</Col>
+            <Col id="menuNm">탑메뉴1_2</Col>
+            <Col id="menuLvl">1</Col>
+            <Col id="menuGroup">0</Col>
+            <Col id="icon">url('theme://images/titlebar_icon.png')</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

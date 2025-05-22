@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frm" width="690" height="500" titletext="팝업">
+    <Layouts>
+      <Layout height="500" mobileorientation="landscape" width="690">
+        <Static id="staParam" taborder="1" text="Static00" left="50" top="56" width="310" height="64"/>
+        <btn id="btn00" taborder="1" text="닫기" top="413" width="102" height="59" right="28" onclick="btn00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*
+*@FileName  idFormP
+*@Creator 	
+*@CreateDate 2025/05/21
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+/**
+* @description 화면 onload시 처리내역(필수)
+*/
+this.addEventHandler("onload",  function(obj,e)
+{
+  
+  
+  this.staParam.text = this.paramCode;
+  //폼로드시 공통함수 
+	
+	/**
+	 * 부모 창에서 넘어온 아규먼트 받는 처리
+	 */
+	//var p_paramcode = this.paramCode;
+   //var p_paramNum = this.paramNum;
+	//var p_paramDataset = this.paramDataset;
+	
+},this);
+
+/**
+ * //paging 버튼 // next prev 클릭 이벤트 후처리
+ * @param {number} 누른 페이지
+  * @param {number} 시작데이터rownum계산
+ * @return 
+ * @example
+ * @memberOf 
+ */
+this.cfnPaging_onclick = function(nPage,nRecordOffset)
+{
+	trace(" ## nPage : " +nPage + "<> nRecordOffset : " + nRecordOffset);
+
+}
+
+//popup titlebar close(x) 버튼 클릭 event
+this.cfnTitlebarClose_onclick = function()
+{
+   return false;
+}
+
+/************************************************************************************************
+* CALLBACK 콜백 처리부분(Transaction, Popup)
+************************************************************************************************/
+
+this.fnCallback = function(id,code,msg)
+{
+	// 에러 시 화면 처리 내역
+	if(code < 0) return;
+	
+	switch(id) {
+	case "":
+		break;
+	
+	default:
+	}
+};
+
+/************************************************************************************************
+* CRUD 및 TRANSACTION 서비스 호출 처리
+************************************************************************************************/
+
+/************************************************************************************************
+* 사용자 FUNCTION 영역
+************************************************************************************************/
+
+/************************************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+************************************************************************************************/
+
+/*
+ *	닫기 버튼 실행
+ */
+ 
+this.btn00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close("홍ㅇ길동");
+};
+]]></Script>
+    <Objects/>
+  </Form>
+</FDL>

@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frm" width="1293" height="827" titletext="교육용">
+    <Layouts>
+      <Layout height="827" mobileorientation="landscape" width="1293">
+        <Grid id="Grid00" taborder="0" left="0" top="180" bottom="0" right="0" binddataset="dsOut">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="부서ID"/>
+                <Cell col="1" text="사용자명"/>
+                <Cell col="2" text="DEPT_CD"/>
+                <Cell col="3" text="POS_CD"/>
+                <Cell col="4" text="HIRE_DATE"/>
+                <Cell col="5" text="SALARY"/>
+                <Cell col="6" text="GENDER"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:EMPL_ID"/>
+                <Cell col="1" text="bind:FULL_NAME"/>
+                <Cell col="2" text="bind:DEPT_CD"/>
+                <Cell col="3" text="bind:POS_CD"/>
+                <Cell col="4" text="bind:HIRE_DATE"/>
+                <Cell col="5" text="bind:SALARY"/>
+                <Cell col="6" text="bind:GENDER"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Combo id="cobCode" taborder="1" text="공통코드" left="400" top="47" width="340" height="60" value="" index="-1" innerdataset="dsCode" codecolumn="codeCd" datacolumn="codeNm"/>
+        <Edit id="Edit00" taborder="2" left="40" top="40" width="233" height="68"/>
+        <btn id="btnFind" taborder="3" text="찾기" left="291" top="36" width="64" height="74" onclick="btnFind_onclick"/>
+        <btn id="btn01" taborder="4" text="조회" top="54" width="132" height="58" right="15" onclick="btn01_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+* 
+*@FileName payM
+*@Creator 	
+*@CreateDate 2025/05/21
+*@Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  
+*******************************************************************************
+*/
+
+/************************************************************************************************
+* include 영역
+************************************************************************************************/
+
+/************************************************************************************************
+* FORM 변수 선언 영역
+************************************************************************************************/
+
+/************************************************************************************************
+* FORM EVENT 영역(onload, onbeforeclose)
+************************************************************************************************/
+/**
+* @description 화면 onload시 처리내역(필수)
+*/
+
+/*
+*@description 화면 이동 후 넘어온 값 처리	
+*@param {string}{object}{array} 넘어온 아규먼트 처리
+*/
+this.cfnMove_onactive = function(param)
+{
+	//trace("fnMoveOnActie formName ===>" + this.name + "<> parg ====> " + param);
+};
+
+/**
+* @description 화면 닫힐때 변경사항 체크(입력 화면에서 변경되는 Dataset 체크 필요, 선택)
+* @return {boolean} true(화면 닫지 않음) / false(화면 닫음)
+*/
+this.cfn_onclose = function()
+{
+
+	return false;
+};
+
+/**
+ * //paging 버튼 // next prev 클릭 이벤트 후처리
+ * @param {number} 누른 페이지
+  * @param {number} 시작데이터rownum계산
+ * @return 
+ * @example
+ * @memberOf 
+ */
+this.cfnPaging_onclick = function(nPage,nRecordOffset)
+{
+	trace(" ## nPage : " +nPage + "<> nRecordOffset : " + nRecordOffset);
+
+}
+
+/************************************************************************************************
+* CALLBACK 콜백 처리부분(Transaction, Popup)
+************************************************************************************************/
+this.fnCallback = function(id,code,msg)
+{
+	// 에러 시 화면 처리 내역
+	//if(code < 0) return;
+	
+	
+	switch(id) {
+	case "svcSearh":
+	
+	
+	  this.dsOut.copyData(this.dsTemp);
+		break;
+     
+	default:
+	}
+
+};
+
+/************************************************************************************************
+* CRUD 및 TRANSACTION 서비스 호출 처리
+************************************************************************************************/
+
+/************************************************************************************************
+* 사용자 FUNCTION 영역
+************************************************************************************************/
+/*
+ *	공통코드 호출
+ */
+ 
+this.fnSetComCode = function ()
+{
+	  /*
+	   *@param {object} 필터할 코드 값 : 명
+	   *@param {component} 필터할 데이타셋
+	   */
+	   this.gfnGetComCodeFilter({highCd : "00001"}, this.dsCode);  // 전체
+
+	      /**@param {string}  선택 값 입력 옵션   (생락갸능) 값없음
+		      @param {string}  codecolumn 명
+			    @param {string}  datacolumn 명
+		       '': 공백    's' : 선택=  'a' : 전체=*/
+	  this.gfnInSelectText(this.dsCode, this.cobCode.codecolumn,this.cobCode.datacolumn,"a"); // 전체 값 insert
+	  this.cobCode.index = 0;
+  
+};
+/************************************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+************************************************************************************************/
+this.btn01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	 var id      = "svcSearh";   // service id
+	 var url     = "user/paycontroll.do";  //service url
+	 var inds    = "inSys=dsIn";  //input dataset
+	 var outds   = "dsOut=outSys";   //output dataset
+	 var callback = "fnCallback";    //callback
+
+	 this.gfnTran(id, url, inds, outds, callback);
+	   
+};
+
+
+this.btnFind_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	  var args  = {};
+		  args.id         = "popFindSeach";   //필수
+		  args.url        = "view::dev/idFormP.xfdl"; //필수
+		  args.titletext  = '찾기팝업';   //필수
+		  args.paramCode  = "abcd";    // paremeter
+
+		this.gfnShowModal(args,
+		     (resVar)=>{  //callback
+			    if(!this.gfnIsNull(resVar)){
+				   	this.Edit00.value = resVar;
+				}
+			
+			 });
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsTemp">
+        <ColumnInfo>
+          <Column id="COL_CHKECK" type="STRING" size="256"/>
+          <Column id="EMPL_ID" type="STRING" size="256"/>
+          <Column id="FULL_NAME" type="STRING" size="256"/>
+          <Column id="DEPT_CD" type="STRING" size="256"/>
+          <Column id="POS_CD" type="STRING" size="256"/>
+          <Column id="HIRE_DATE" type="STRING" size="256"/>
+          <Column id="SALARY" type="STRING" size="256"/>
+          <Column id="GENDER" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="EMPL_ID">AA001</Col>
+            <Col id="FULL_NAME">Olivia</Col>
+            <Col id="DEPT_CD">01</Col>
+            <Col id="POS_CD">03</Col>
+            <Col id="HIRE_DATE">20101003</Col>
+            <Col id="SALARY">83000</Col>
+            <Col id="GENDER">W</Col>
+            <Col id="COL_CHKECK">N</Col>
+          </Row>
+          <Row>
+            <Col id="EMPL_ID">AA002</Col>
+            <Col id="FULL_NAME">John</Col>
+            <Col id="DEPT_CD">02</Col>
+            <Col id="POS_CD">04</Col>
+            <Col id="HIRE_DATE">20051011</Col>
+            <Col id="SALARY">76000</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="COL_CHKECK">N</Col>
+          </Row>
+          <Row>
+            <Col id="EMPL_ID">BB001</Col>
+            <Col id="FULL_NAME">Jackson</Col>
+            <Col id="DEPT_CD">03</Col>
+            <Col id="POS_CD">03</Col>
+            <Col id="HIRE_DATE">20070206</Col>
+            <Col id="SALARY">95000</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="COL_CHKECK">N</Col>
+          </Row>
+          <Row>
+            <Col id="EMPL_ID">BB002</Col>
+            <Col id="FULL_NAME">Maia</Col>
+            <Col id="DEPT_CD">04</Col>
+            <Col id="POS_CD">02</Col>
+            <Col id="HIRE_DATE">20090512</Col>
+            <Col id="SALARY">60000</Col>
+            <Col id="GENDER">W</Col>
+            <Col id="COL_CHKECK">N</Col>
+          </Row>
+          <Row>
+            <Col id="EMPL_ID">CC001</Col>
+            <Col id="FULL_NAME">Adam</Col>
+            <Col id="DEPT_CD">01</Col>
+            <Col id="POS_CD">04</Col>
+            <Col id="HIRE_DATE">20010109</Col>
+            <Col id="SALARY">88000</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="COL_CHKECK">N</Col>
+          </Row>
+          <Row>
+            <Col id="EMPL_ID">DD001</Col>
+            <Col id="FULL_NAME">Ray</Col>
+            <Col id="DEPT_CD">02</Col>
+            <Col id="POS_CD">03</Col>
+            <Col id="HIRE_DATE">20160202</Col>
+            <Col id="SALARY">60000</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="COL_CHKECK">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCode">
+        <ColumnInfo>
+          <Column id="codeCd" type="STRING" size="256"/>
+          <Column id="codeNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsIn">
+        <ColumnInfo>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsOut">
+        <ColumnInfo>
+          <Column id="COL_CHKECK" type="STRING" size="256"/>
+          <Column id="EMPL_ID" type="STRING" size="256"/>
+          <Column id="FULL_NAME" type="STRING" size="256"/>
+          <Column id="DEPT_CD" type="STRING" size="256"/>
+          <Column id="POS_CD" type="STRING" size="256"/>
+          <Column id="HIRE_DATE" type="STRING" size="256"/>
+          <Column id="SALARY" type="STRING" size="256"/>
+          <Column id="GENDER" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Edit00" propid="value" datasetid="dsIn" columnid="name"/>
+    </Bind>
+  </Form>
+</FDL>

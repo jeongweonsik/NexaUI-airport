@@ -5,7 +5,7 @@
       <Layout height="720" mobileorientation="landscape" width="1280">
         <Button id="Button00" taborder="0" text="Button00" left="240" top="40" width="232" height="102" onclick="Button00_onclick"/>
         <Edit id="Edit00" taborder="1" left="608" top="11" width="239" height="82"/>
-        <Grid id="Grid00" taborder="2" left="151" top="198" width="448" height="151" binddataset="dsSeacch">
+        <Grid id="Grid00" taborder="2" left="151" top="230" width="447" height="119" binddataset="dsSeacch">
           <Formats>
             <Format id="default">
               <Columns>
@@ -40,6 +40,8 @@
 *******************************************************************************
 */
 
+
+
 /***********************************************************************************
 * Form Event
 ***********************************************************************************/
@@ -48,36 +50,38 @@
 */
 this.addEventHandler("onload",  function(obj,e)
 {
-  
-  //폼로드시 공통함수 
+	
+	//폼로드시 공통함수 
 	
 	/**
-	 * 부모 창에서 넘어온 아규먼트 받는 처리
-	 */
+	* 부모 창에서 넘어온 아규먼트 받는 처리
+	*/
 	//var p_paramcode = this.paramCode;
-   //var p_paramNum = this.paramNum;
+	//var p_paramNum = this.paramNum;
 	//var p_paramDataset = this.paramDataset;
+	
+	
 	
 },this);
 
 /**
- * //paging 버튼 // next prev 클릭 이벤트 후처리
- * @param {number} 누른 페이지
-  * @param {number} 시작데이터rownum계산
- * @return 
- * @example
- * @memberOf 
- */
+* //paging 버튼 // next prev 클릭 이벤트 후처리
+* @param {number} 누른 페이지
+* @param {number} 시작데이터rownum계산
+* @return 
+* @example
+* @memberOf 
+*/
 this.cfnPaging_onclick = function(nPage,nRecordOffset)
 {
 	trace(" ## nPage : " +nPage + "<> nRecordOffset : " + nRecordOffset);
-
+	
 }
 
 //popup titlebar close(x) 버튼 클릭 event
 this.cfnTitlebarClose_onclick = function()
 {
-   return false;
+	return false;
 }
 
 /************************************************************************************************
@@ -88,13 +92,14 @@ this.fnCallback = function(id,code,msg)
 {
 	// 에러 시 화면 처리 내역
 	if(code < 0) return;
-
+	
 	switch(id) {
 	case "":
 		break;
-	
+		
 	default:
 	}
+	
 };
 
 /************************************************************************************************
@@ -111,7 +116,8 @@ this.fnCallback = function(id,code,msg)
 
 this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var str = "aaaaaaaaaaaa";
+
+	
 };
 ]]></Script>
     <Objects>

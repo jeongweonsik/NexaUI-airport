@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frm" width="690" height="500" titletext="급여팝업">
+    <Layouts>
+      <Layout height="500" mobileorientation="landscape" width="690">
+        <btn id="btnClose" taborder="0" text="닫기" left="470" top="383" width="170" height="74"/>
+        <Static id="staParam" taborder="1" text="Static00" left="50" top="56" width="310" height="64"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+  </Form>
+</FDL>
